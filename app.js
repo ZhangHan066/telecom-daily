@@ -237,10 +237,9 @@ function registerCard(item, meta) {
   });
   const number = String(meta.number).padStart(2, "0");
   return `<button type="button" class="story-card" id="${esc(meta.id)}" data-item="${esc(meta.id)}" aria-haspopup="dialog">
-    <span class="item-no">${number}</span>
     <span class="card-title">${esc(title)}</span>
     <span class="card-summary"><span class="card-summary-text">${esc(summary)}</span></span>
-    <span class="card-meta">${chipHtml(meta.emoji, meta.category)}<span class="card-date">${esc(item.date || "")}</span></span>
+    <span class="card-meta"><span class="item-no">${number}</span>${chipHtml(meta.emoji, meta.category)}<span class="card-date">${esc(item.date || "")}</span></span>
   </button>`;
 }
 
@@ -290,6 +289,59 @@ function renderArchive(issues, current) {
   </section>`;
 }
 
+function renderTowerClock() {
+  const ticks = [];
+  for (let i = 0; i < 60; i += 1) {
+    const angle = (i / 60) * Math.PI * 2;
+    const fifth = i % 5 === 0;
+    const inner = fifth ? 156 : 166;
+    const outer = fifth ? 178 : 174;
+    const x1 = (200 + Math.sin(angle) * inner).toFixed(2);
+    const y1 = (200 - Math.cos(angle) * inner).toFixed(2);
+    const x2 = (200 + Math.sin(angle) * outer).toFixed(2);
+    const y2 = (200 - Math.cos(angle) * outer).toFixed(2);
+    ticks.push(`<line class="tower-tick${fifth ? " tower-tick-major" : ""}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`);
+  }
+  const romans = ["XII", "I", "II", "III", "IIII", "V", "VI", "VII", "VIII", "IX", "X", "XI"];
+  const numerals = romans.map((label, i) => {
+    const angle = (i / 12) * Math.PI * 2;
+    const x = (200 + Math.sin(angle) * 138).toFixed(2);
+    const y = (200 - Math.cos(angle) * 138).toFixed(2);
+    return `<text x="${x}" y="${y}">${label}</text>`;
+  }).join("");
+  return `<div class="tower-slot" aria-hidden="true"><svg class="tower-clock" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+    <g class="tower-face">
+      <circle class="tower-bezel" cx="200" cy="200" r="190"/>
+      <circle class="tower-bezel tower-bezel-mid" cx="200" cy="200" r="183"/>
+      <circle class="tower-guilloche" cx="200" cy="200" r="186.4"/>
+      <circle class="tower-ring" cx="200" cy="200" r="149"/>
+      <circle class="tower-ring tower-ring-fine" cx="200" cy="200" r="114"/>
+      ${ticks.join("")}
+      <g class="tower-numerals">${numerals}</g>
+      <circle class="tower-boss" cx="200" cy="200" r="16"/>
+      <circle class="tower-boss tower-boss-jade" cx="200" cy="200" r="9"/>
+      <circle class="tower-boss" cx="200" cy="200" r="3.4"/>
+    </g>
+    <g class="tower-hour">
+      <circle cx="200" cy="216" r="6.2"/>
+      <circle cx="200" cy="216" r="2.6"/>
+      <path d="M196.6 207 L196.6 166 C186 156 176 142 186 124 C193 112 200 100 200 100 C200 100 207 112 214 124 C224 142 214 156 203.4 166 L203.4 207"/>
+      <path d="M200 156 C193.5 151 191.5 138 196 126 C198.2 120 201.8 120 204 126 C208.5 138 206.5 151 200 156"/>
+      <path d="M192 208 C188 216 200 222 208 216 C206 212 203 209 200 209 C197 209 194 212 192 208"/>
+    </g>
+    <g class="tower-minute">
+      <circle cx="200" cy="224" r="7"/>
+      <circle cx="200" cy="224" r="3"/>
+      <path d="M198.7 210 L198.7 58 M201.3 210 L201.3 58"/>
+      <path d="M198.7 66 L200 48 L201.3 66"/>
+      <circle cx="200" cy="84" r="10"/>
+      <circle cx="200" cy="84" r="4.4"/>
+      <path d="M200 72 L206.2 84 L200 96 L193.8 84 Z"/>
+      <path d="M190 204 L210 204"/>
+    </g>
+  </svg></div>`;
+}
+
 function renderHero(issue) {
   const cover = issue.cover && typeof issue.cover === "object" ? issue.cover : {};
   const coverUrl = safeUrl(cover.url);
@@ -303,24 +355,17 @@ function renderHero(issue) {
   const weekday = weekdayLabel
     ? `<span class="hero-dot" aria-hidden="true"></span><span class="hero-weekday">${esc(weekdayLabel)}</span>`
     : "";
-  let credit = "";
-  if (cover.credit || cover.source) {
-    const source = safeUrl(cover.source);
-    const label = esc(cover.credit || t("source"));
-    const inner = source
-      ? `<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">${label}</a>`
-      : label;
-    credit = `<p class="credit">${esc(t("cover"))} ${inner}</p>`;
-  }
   return `<header class="hero">
+    ${renderTowerClock()}
     <div class="hero-frame">
       ${image}
       <div class="hero-shade" aria-hidden="true"></div>
+    </div>
+    <div class="hero-mast">
       <canvas class="hero-motion" aria-hidden="true"></canvas>
       <div class="hero-copy">
-        <p class="hero-date">${dateText}${weekday}</p>
         <h1>${esc(t("brand"))}</h1>
-        ${credit}
+        <p class="hero-date">${dateText}${weekday}</p>
       </div>
     </div>
   </header>`;
@@ -340,9 +385,9 @@ function mountHeroMotion(root) {
   let raf = 0;
   const t0 = performance.now();
   const orbits = [
-    { cx: 0.5, cy: 0.74, rx: 0.32, ry: 0.16, speed: 0.42, tilt: -0.38, color: "research", n: 7, depth: 0.55 },
-    { cx: 0.5, cy: 0.8, rx: 0.18, ry: 0.12, speed: -0.33, tilt: 0.48, color: "industry", n: 5, depth: 0.82 },
-    { cx: 0.62, cy: 0.7, rx: 0.1, ry: 0.09, speed: 0.58, tilt: 0.18, color: "research", n: 4, depth: 1 },
+    { cx: 0.5, cy: 0.48, rx: 0.36, ry: 0.42, speed: 0.42, tilt: -0.28, color: "research", n: 7, depth: 0.55 },
+    { cx: 0.5, cy: 0.52, rx: 0.2, ry: 0.5, speed: -0.33, tilt: 0.42, color: "industry", n: 5, depth: 0.82 },
+    { cx: 0.64, cy: 0.4, rx: 0.12, ry: 0.28, speed: 0.55, tilt: 0.16, color: "research", n: 4, depth: 1 },
   ];
 
   function luma(hex) {
@@ -402,7 +447,7 @@ function mountHeroMotion(root) {
       ctx.beginPath();
       ctx.ellipse(0, 0, orbit.rx * w, orbit.ry * h, 0, 0, Math.PI * 2);
       ctx.strokeStyle = color;
-      ctx.globalAlpha = 0.16 * tone;
+      ctx.globalAlpha = 0.1 * tone;
       ctx.lineWidth = 1;
       ctx.stroke();
       ctx.restore();
@@ -420,7 +465,7 @@ function mountHeroMotion(root) {
           y: orbit.cy * h + lx * s + ly * c,
           color,
           r: (i % 3 === 0 ? 2.2 : 1.35) * (0.75 + orbit.depth * 0.4),
-          alpha: (0.34 + orbit.depth * 0.26) * tone,
+          alpha: (0.22 + orbit.depth * 0.16) * tone,
         });
       }
     }
@@ -443,20 +488,40 @@ function mountHeroMotion(root) {
     raf = requestAnimationFrame(tick);
   }
 
+  const frame = root.querySelector(".hero");
+  let live = false;
+
   function paint() {
     for (const scene of scenes) resize(scene);
     draw(reduceQuery.matches ? 1.35 : (performance.now() - t0) / 1000);
   }
 
+  function stop() {
+    live = false;
+    frame?.classList.remove("is-live");
+    cancelAnimationFrame(raf);
+    raf = 0;
+  }
+
+  function start() {
+    if (reduceQuery.matches || live) return;
+    live = true;
+    frame?.classList.add("is-live");
+    raf = requestAnimationFrame(tick);
+  }
+
   paint();
-  if (!reduceQuery.matches) raf = requestAnimationFrame(tick);
+  frame?.addEventListener("pointerenter", start, { signal: ac.signal });
+  frame?.addEventListener("pointerleave", stop, { signal: ac.signal });
+  frame?.addEventListener("focusin", start, { signal: ac.signal });
+  frame?.addEventListener("focusout", (event) => {
+    if (!frame?.contains(event.relatedTarget)) stop();
+  }, { signal: ac.signal });
   const ro = typeof ResizeObserver === "function" ? new ResizeObserver(paint) : null;
   for (const scene of scenes) ro?.observe(scene.canvas);
   reduceQuery.addEventListener("change", () => {
-    cancelAnimationFrame(raf);
-    raf = 0;
+    stop();
     paint();
-    if (!reduceQuery.matches) raf = requestAnimationFrame(tick);
   }, { signal: ac.signal });
 
   return () => {

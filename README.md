@@ -51,7 +51,7 @@ python3 -m http.server 8000
 | `theme` | string | 主题，用于往期列表 |
 | `theme_en` | string | 可省略。英文主题。英文界面没有该字段时仍显示中文 |
 | `cover.url` | string | 封面图，`http` 或 `https` |
-| `cover.credit` | string | 封面署名，可省略 |
+| `cover.credit` | string | 封面署名，可省略。页面不展示 |
 | `cover.source` | string | 封面来源链接，可省略 |
 | `highlights` | array | 今日要点，每项 `{label, text}` |
 | `research` | array | 论文，见下 |
