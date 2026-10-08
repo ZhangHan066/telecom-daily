@@ -27,7 +27,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Cache-bust CSS and JS
-        run: sed -i "s/__ASSET_VERSION__/${GITHUB_SHA::7}/g" index.html
+        run: |
+          sha="${GITHUB_SHA::7}"
+          sed -i "s/__ASSET_VERSION__/${sha}/g" index.html
+          printf '%s\n' "{\"version\":\"${sha}\"}" > version.json
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

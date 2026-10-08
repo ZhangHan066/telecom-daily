@@ -238,7 +238,7 @@ function registerCard(item, meta) {
   return `<button type="button" class="story-card" id="${esc(meta.id)}" data-item="${esc(meta.id)}" aria-haspopup="dialog">
     <span class="item-no">${number}</span>
     <span class="card-title">${esc(title)}</span>
-    <span class="card-summary">${esc(summary)}</span>
+    <span class="card-summary"><span class="card-summary-text">${esc(summary)}</span></span>
     <span class="card-meta">${chipHtml(meta.emoji, meta.category)}<span class="card-date">${esc(item.date || "")}</span></span>
   </button>`;
 }
@@ -310,15 +310,16 @@ function renderHero(issue) {
     credit = `<p class="credit">${esc(t("cover"))} ${inner}</p>`;
   }
   return `<header class="hero">
-    ${image}
-    <div class="hero-grade" aria-hidden="true"></div>
-    <div class="hero-shade" aria-hidden="true"></div>
-    <div class="hero-copy">
-      <div class="hero-id">
-        <p class="hero-date">${dateText}${weekday}</p>
-        <h1>${esc(t("brand"))}</h1>
+    <div class="hero-frame">
+      ${image}
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <div class="hero-id">
+          <p class="hero-date">${dateText}${weekday}</p>
+          <h1>${esc(t("brand"))}</h1>
+        </div>
+        ${credit}
       </div>
-      ${credit}
     </div>
   </header>`;
 }
@@ -711,5 +712,46 @@ async function load() {
   }
 }
 
+const ASSET_RELOAD_KEY = "td-asset-reload";
+
+function bakedAssetVersion() {
+  const value = document.querySelector('meta[name="asset-version"]')?.getAttribute("content") || "";
+  if (!value || value === "__ASSET_VERSION__") return "";
+  return value;
+}
+
+function checkForUpdate() {
+  const baked = bakedAssetVersion();
+  if (!baked || location.protocol === "file:") return;
+  const url = new URL("version.json", document.baseURI);
+  url.searchParams.set("t", String(Date.now()));
+  fetch(url, { cache: "no-store" })
+    .then((response) => (response.ok ? response.json() : null))
+    .then((data) => {
+      const remote = data && typeof data.version === "string" ? data.version.trim() : "";
+      if (!remote || remote === baked) {
+        try { sessionStorage.removeItem(ASSET_RELOAD_KEY); } catch { /* ignore */ }
+        return;
+      }
+      let seen = "";
+      try {
+        seen = sessionStorage.getItem(ASSET_RELOAD_KEY) || "";
+      } catch {
+        return;
+      }
+      if (seen === remote) return;
+      try {
+        sessionStorage.setItem(ASSET_RELOAD_KEY, remote);
+      } catch {
+        return;
+      }
+      const next = new URL(location.href);
+      next.searchParams.set("v", remote);
+      location.replace(next.href);
+    })
+    .catch(() => {});
+}
+
 applyChrome();
 load();
+checkForUpdate();
