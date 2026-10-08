@@ -1,23 +1,23 @@
 :root {
   color-scheme: light;
-  --bg: #e7eef6;
-  --bg-raise: #f7fafc;
-  --ink: #14202c;
-  --ink-soft: #5c6d7e;
-  --line: rgba(18, 52, 78, 0.14);
-  --line-strong: rgba(18, 52, 78, 0.22);
-  --card: #ffffff;
-  --accent: #0c6e8a;
-  --accent-deep: #084e64;
-  --chip: #e3f3f7;
+  --bg: #f4efe7;
+  --bg-raise: #f7f3ec;
+  --ink: #2c261f;
+  --ink-soft: #5c534a;
+  --line: rgba(44, 38, 31, 0.12);
+  --line-strong: rgba(44, 38, 31, 0.22);
+  --card: #fbf7f1;
+  --accent: #7a463c;
+  --accent-deep: #5e342c;
+  --chip: #f3e7df;
   --mast-h: 48px;
   --shadow:
-    0 1px 0 rgba(255, 255, 255, 0.75) inset,
-    0 1px 2px rgba(16, 42, 64, 0.05),
-    0 10px 24px rgba(16, 42, 64, 0.07);
+    0 1px 0 rgba(255, 252, 247, 0.8) inset,
+    0 1px 2px rgba(44, 32, 24, 0.04),
+    0 12px 28px rgba(44, 32, 24, 0.06);
   --shadow-hover:
-    0 1px 0 rgba(255, 255, 255, 0.85) inset,
-    0 10px 22px rgba(12, 48, 72, 0.12);
+    0 1px 0 rgba(255, 252, 247, 0.9) inset,
+    0 12px 26px rgba(44, 32, 24, 0.1);
   --page: 1440px;
   --pad: 16px;
   --sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Noto Sans SC",
@@ -30,23 +30,23 @@
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --bg: #0c1218;
-    --bg-raise: #141c26;
-    --ink: #e7eef4;
-    --ink-soft: #9aafc0;
-    --line: rgba(186, 214, 230, 0.14);
-    --line-strong: rgba(186, 214, 230, 0.24);
-    --card: #161e28;
-    --accent: #8fd4ee;
-    --accent-deep: #c5ebf8;
-    --chip: #1a3140;
+    --bg: #1c1815;
+    --bg-raise: #2c261f;
+    --ink: #f6f0e8;
+    --ink-soft: #d4c8ba;
+    --line: rgba(246, 240, 232, 0.14);
+    --line-strong: rgba(246, 240, 232, 0.24);
+    --card: #26211d;
+    --accent: #f0c2b6;
+    --accent-deep: #f6ddd6;
+    --chip: #3a2e2a;
     --shadow:
-      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 1px 0 rgba(255, 244, 232, 0.05) inset,
       0 1px 2px rgba(0, 0, 0, 0.35),
-      0 12px 28px rgba(0, 0, 0, 0.35);
+      0 14px 30px rgba(0, 0, 0, 0.32);
     --shadow-hover:
-      0 1px 0 rgba(255, 255, 255, 0.08) inset,
-      0 14px 30px rgba(0, 0, 0, 0.45);
+      0 1px 0 rgba(255, 244, 232, 0.08) inset,
+      0 16px 32px rgba(0, 0, 0, 0.42);
   }
 }
 
@@ -66,8 +66,8 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(900px 420px at 8% -10%, rgba(12, 110, 138, 0.1), transparent 60%),
-    radial-gradient(700px 380px at 100% 0%, rgba(20, 144, 168, 0.06), transparent 55%),
+    radial-gradient(880px 380px at 8% -12%, rgba(122, 70, 60, 0.07), transparent 58%),
+    radial-gradient(640px 300px at 100% 0%, rgba(74, 92, 72, 0.06), transparent 52%),
     var(--bg);
   color: var(--ink);
   font-family: var(--sans);
@@ -205,15 +205,17 @@ html[lang="en"] .hero h1 {
 .mast-link:hover { color: var(--accent); }
 
 .hero {
+  --hero-h: clamp(210px, 30vh, 300px);
   position: relative;
   display: flex;
-  min-height: calc(100svh - var(--mast-h) - env(safe-area-inset-top));
+  min-height: var(--hero-h);
   overflow: hidden;
-  background: #071018;
-  color: #f4f8fb;
+  background: var(--bg);
+  color: var(--ink);
 }
 
 .hero-img,
+.hero-grade,
 .hero-shade {
   position: absolute;
   inset: 0;
@@ -223,13 +225,35 @@ html[lang="en"] .hero h1 {
 
 .hero-img {
   object-fit: cover;
-  object-position: center 42%;
+  object-position: center 40%;
+  filter: saturate(0.42) contrast(0.92) blur(1.5px);
+  transform: scale(1.05);
+}
+
+.hero-grade {
+  background: #b08978;
+  mix-blend-mode: color;
+  opacity: 0.62;
+  pointer-events: none;
 }
 
 .hero-shade {
-  background:
-    linear-gradient(180deg, rgba(6, 12, 20, 0.45) 0%, rgba(6, 12, 20, 0.08) 28%, rgba(6, 12, 20, 0.12) 48%, rgba(6, 12, 20, 0.55) 100%),
-    linear-gradient(90deg, rgba(6, 14, 24, 0.28), transparent 24%, transparent 76%, rgba(6, 14, 24, 0.2));
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--bg) 84%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 68%, transparent) 16%,
+    color-mix(in srgb, var(--bg) 18%, transparent) 40%,
+    color-mix(in srgb, var(--bg) 8%, transparent) 56%,
+    color-mix(in srgb, var(--bg) 64%, transparent) 82%,
+    var(--bg) 100%
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero-grade {
+    background: #7a5c50;
+    opacity: 0.72;
+  }
 }
 
 .hero-copy {
@@ -238,11 +262,11 @@ html[lang="en"] .hero h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1.25rem;
+  gap: 1rem;
   width: min(var(--page), calc(100% - 2 * var(--pad)));
-  min-height: calc(100svh - var(--mast-h) - env(safe-area-inset-top));
+  min-height: var(--hero-h);
   margin-inline: auto;
-  padding: 1.15rem 0 1rem;
+  padding: 1.05rem 0 0.85rem;
 }
 
 .hero-id {
@@ -255,8 +279,8 @@ html[lang="en"] .hero h1 {
 .hero-date,
 .hero h1 {
   margin: 0;
-  color: #f7fbfe;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+  color: var(--ink);
+  text-shadow: 0 0 16px color-mix(in srgb, var(--bg) 80%, transparent);
 }
 
 .hero-date {
@@ -273,17 +297,16 @@ html[lang="en"] .hero h1 {
 
 .credit {
   margin: 0;
-  color: rgba(244, 248, 252, 0.86);
-  font-size: 0.75rem;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
   line-height: 1.4;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
 }
 
 .credit a { color: inherit; }
 
 .content {
   min-height: calc(100svh - var(--mast-h));
-  padding-top: 22px;
+  padding-top: 8px;
   padding-bottom: max(2rem, env(safe-area-inset-bottom));
   scroll-margin-top: var(--mast-h);
 }
@@ -294,12 +317,22 @@ html[lang="en"] .hero h1 {
   align-items: start;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1100px) {
   .board {
-    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.28fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .panel-research { grid-column: 1; }
+
+  .panel-industry { grid-column: 2 / span 2; }
+
   .board .panel:only-child { grid-column: 1 / -1; }
+
+  .panel-industry .rows {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
 }
 
 .panel {
@@ -313,13 +346,13 @@ html[lang="en"] .hero h1 {
   box-shadow: var(--shadow);
 }
 
-.panel-research { --panel: #0c6e8a; }
+.panel-research { --panel: #7a463c; }
 
-.panel-industry { --panel: #8a5a2b; }
+.panel-industry { --panel: #4a5c48; }
 
 @media (prefers-color-scheme: dark) {
-  .panel-research { --panel: #8fd4ee; }
-  .panel-industry { --panel: #e4c09a; }
+  .panel-research { --panel: #f0c2b6; }
+  .panel-industry { --panel: #d5e0d0; }
 }
 
 .sec-head {
@@ -601,7 +634,7 @@ html[lang="en"] .hero h1 {
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(8, 14, 22, 0.58);
+  background: rgba(28, 22, 18, 0.55);
 }
 
 .modal-dialog {
