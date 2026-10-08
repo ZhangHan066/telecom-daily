@@ -104,4 +104,4 @@ python3 -m http.server 8000
 
 推送到 `main` 时，`.github/workflows/pages.yml` 会部署。同一工作流也可以在 Actions 页面手动运行（`workflow_dispatch`）。Pages 的 Source 需为 GitHub Actions。
 
-部署时工作流把 `index.html` 里的 `__ASSET_VERSION__` 换成该次提交 SHA 的前 7 位，`styles.css` 和 `app.js` 因此每次发布都是新地址。期刊 JSON 由页面以 `cache: "no-cache"` 请求。
+部署时工作流把 `index.html` 里的 `__ASSET_VERSION__` 换成该次提交 SHA 的前 7 位，并写入同版本的 `version.json`。`styles.css` 和 `app.js` 因此每次发布都是新地址。Pages 会把 `index.html` 缓存最多 10 分钟，所以页面还会用 `cache: "no-store"` 读取 `version.json`；版本不一致时，带一个新的查询参数刷新一次。期刊 JSON 由页面以 `cache: "no-cache"` 请求。
