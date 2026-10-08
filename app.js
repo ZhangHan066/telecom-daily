@@ -311,6 +311,7 @@ function renderHero(issue) {
   }
   return `<header class="hero">
     ${image}
+    <div class="hero-grade" aria-hidden="true"></div>
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-copy">
       <div class="hero-id">
