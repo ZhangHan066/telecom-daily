@@ -124,7 +124,6 @@ function registerCard(item, meta) {
     <span class="card-top">${chipHtml(meta.emoji, meta.category)}<span class="card-date">${esc(item.date || "")}</span></span>
     <span class="card-title">${esc(item.title || "")}</span>
     <span class="card-summary">${esc(item.summary || "")}</span>
-    <span class="card-more"><span>详情</span><span aria-hidden="true">→</span></span>
   </button>`;
 }
 
@@ -158,7 +157,7 @@ function renderArchive(issues, current) {
   </section>`;
 }
 
-function renderHero(issue) {
+function renderHero(issue, highlights) {
   const cover = issue.cover && typeof issue.cover === "object" ? issue.cover : {};
   const coverUrl = safeUrl(cover.url);
   const image = coverUrl
@@ -181,10 +180,14 @@ function renderHero(issue) {
     ${image}
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-copy">
-      <p class="hero-date">${dateText}${weekday}</p>
-      <h1 class="hero-theme">${esc(issue.theme || "")}</h1>
-      <p class="hero-title">${esc(issue.title || "")}</p>
-      ${credit}
+      <div class="hero-id">
+        <p class="hero-date">${dateText}${weekday}</p>
+        <h1>通信行业日报</h1>
+      </div>
+      <div class="hero-bottom">
+        ${renderHighlights(highlights)}
+        ${credit}
+      </div>
     </div>
   </header>`;
 }
@@ -195,8 +198,8 @@ function renderHighlights(highlights) {
     if (!item || typeof item !== "object") return "";
     return `<article class="hl-card"><span class="hl-label">${esc(item.label || "")}</span><p>${esc(item.text || "")}</p></article>`;
   }).join("");
-  return `<section class="band" aria-labelledby="hl-title">
-    <h2 id="hl-title" class="band-title">今日要点</h2>
+  return `<section class="hl" aria-labelledby="hl-title">
+    <h2 id="hl-title">今日要点</h2>
     <div class="hl-grid">${items}</div>
   </section>`;
 }
@@ -214,12 +217,12 @@ function renderIssue(issue, issues) {
   const switcher = renderSwitch(older, newer);
 
   const papers = research.length
-    ? `<section class="part" aria-labelledby="part-research">
+    ? `<section class="panel" aria-labelledby="part-research">
         <header class="sec-head">
           <h2 id="part-research">🛩️ 无人机通信科研</h2>
           <span class="sec-count">${research.length} 篇</span>
         </header>
-        <div class="card-grid">${research.map((item, i) => registerCard(item, {
+        <div class="rows">${research.map((item, i) => registerCard(item, {
           id: `item-r-${i}`,
           paper: true,
           emoji: "🛩️",
@@ -233,9 +236,9 @@ function renderIssue(issue, issues) {
     const items = Array.isArray(group.items) ? group.items : [];
     const emoji = group.emoji || "";
     const section = group.section || "";
-    return `<section class="sub">
+    return `<section class="group">
       <h3 class="group-head">${esc([emoji, section].filter(Boolean).join(" "))}</h3>
-      <div class="card-grid">${items.map((item, ii) => registerCard(item, {
+      <div class="rows">${items.map((item, ii) => registerCard(item, {
         id: `item-i-${gi}-${ii}`,
         paper: false,
         emoji,
@@ -246,12 +249,12 @@ function renderIssue(issue, issues) {
 
   const newsCount = industry.reduce((sum, group) => sum + (Array.isArray(group?.items) ? group.items.length : 0), 0);
   const news = groups
-    ? `<section class="part" aria-labelledby="part-industry">
+    ? `<section class="panel" aria-labelledby="part-industry">
         <header class="sec-head">
           <h2 id="part-industry">📰 行业动态</h2>
           <span class="sec-count">${newsCount} 条</span>
         </header>
-        ${groups}
+        <div class="groups">${groups}</div>
       </section>`
     : "";
 
@@ -266,12 +269,12 @@ function renderIssue(issue, issues) {
     notionLink.removeAttribute("href");
   }
 
-  main.innerHTML = `${renderHero(issue)}
-    <div class="page shell">
-      ${renderHighlights(highlights)}
-      ${switcher}
-      ${papers}
-      ${news}
+  main.innerHTML = `${renderHero(issue, highlights)}
+    <div id="content" class="content shell">
+      <div class="board">
+        ${papers}
+        ${news}
+      </div>
       ${switcher}
       ${renderArchive(list, issue.date)}
       <p class="colophon">通信行业日报 · ${esc(issue.date || "")}</p>
@@ -283,11 +286,82 @@ function renderIssue(issue, issues) {
   const deep = hashId();
   if (catalog.has(deep)) openModal(deep, { fromHistory: true });
   else if (deep === "archive") document.getElementById("archive")?.scrollIntoView();
+  scheduleAutoScroll();
 }
 
 function motionOk() {
   return !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
+
+let autoScroll = null;
+
+function returnedViaBack() {
+  const nav = performance.getEntriesByType("navigation")[0];
+  if (nav && nav.type === "back_forward") return true;
+  return Boolean(performance.navigation && performance.navigation.type === 2);
+}
+
+function deepLinkSkipsScroll() {
+  const deep = hashId();
+  return deep === "archive" || catalog.has(deep);
+}
+
+function cancelAutoScroll() {
+  if (!autoScroll || autoScroll.cancelled) return;
+  autoScroll.cancelled = true;
+  clearTimeout(autoScroll.timer);
+  if (autoScroll.raf) cancelAnimationFrame(autoScroll.raf);
+  autoScroll.raf = 0;
+  autoScroll.ac.abort();
+}
+
+function scheduleAutoScroll() {
+  if (autoScroll || !motionOk() || returnedViaBack() || deepLinkSkipsScroll()) return;
+  const target = document.getElementById("content");
+  if (!target) return;
+
+  const ac = new AbortController();
+  autoScroll = { cancelled: false, raf: 0, timer: 0, ac };
+  const opts = { signal: ac.signal, capture: true, passive: true };
+  window.addEventListener("wheel", cancelAutoScroll, opts);
+  window.addEventListener("touchstart", cancelAutoScroll, opts);
+  window.addEventListener("keydown", cancelAutoScroll, opts);
+  window.addEventListener("pointerdown", cancelAutoScroll, opts);
+
+  autoScroll.timer = window.setTimeout(() => {
+    if (!autoScroll || autoScroll.cancelled) return;
+    if (window.scrollY > 8) {
+      cancelAutoScroll();
+      return;
+    }
+    const mastH = document.querySelector(".mast")?.offsetHeight || 0;
+    const start = window.scrollY;
+    const dest = Math.max(0, target.getBoundingClientRect().top + start - mastH);
+    const distance = dest - start;
+    if (distance < 8) {
+      ac.abort();
+      return;
+    }
+    const duration = 1000;
+    const t0 = performance.now();
+    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    const step = (now) => {
+      if (!autoScroll || autoScroll.cancelled) return;
+      const p = Math.min(1, (now - t0) / duration);
+      window.scrollTo(0, start + distance * ease(p));
+      if (p < 1) autoScroll.raf = requestAnimationFrame(step);
+      else {
+        autoScroll.raf = 0;
+        ac.abort();
+      }
+    };
+    autoScroll.raf = requestAnimationFrame(step);
+  }, 1350);
+}
+
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) cancelAutoScroll();
+});
 
 function setPageInert(on) {
   for (const el of document.body.children) {
