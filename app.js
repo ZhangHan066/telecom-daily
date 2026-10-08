@@ -315,11 +315,8 @@ function renderHero(issue) {
   return `<header class="hero">
     <div class="hero-frame">
       ${image}
-      <canvas class="hero-motion hero-motion-frame" data-motion="frame" aria-hidden="true"></canvas>
       <div class="hero-shade" aria-hidden="true"></div>
-    </div>
-    <div class="hero-plate">
-      <canvas class="hero-motion" data-motion="plate" aria-hidden="true"></canvas>
+      <canvas class="hero-motion" aria-hidden="true"></canvas>
       <div class="hero-copy">
         <p class="hero-date">${dateText}${weekday}</p>
         <h1>${esc(t("brand"))}</h1>
@@ -343,9 +340,9 @@ function mountHeroMotion(root) {
   let raf = 0;
   const t0 = performance.now();
   const orbits = [
-    { cx: 0.5, cy: 0.5, rx: 0.36, ry: 0.3, speed: 0.42, tilt: -0.42, color: "research", n: 8, depth: 0.55 },
-    { cx: 0.5, cy: 0.48, rx: 0.22, ry: 0.38, speed: -0.33, tilt: 0.55, color: "industry", n: 6, depth: 0.82 },
-    { cx: 0.58, cy: 0.42, rx: 0.13, ry: 0.18, speed: 0.62, tilt: 0.15, color: "research", n: 4, depth: 1 },
+    { cx: 0.5, cy: 0.74, rx: 0.32, ry: 0.16, speed: 0.42, tilt: -0.38, color: "research", n: 7, depth: 0.55 },
+    { cx: 0.5, cy: 0.8, rx: 0.18, ry: 0.12, speed: -0.33, tilt: 0.48, color: "industry", n: 5, depth: 0.82 },
+    { cx: 0.62, cy: 0.7, rx: 0.1, ry: 0.09, speed: 0.58, tilt: 0.18, color: "research", n: 4, depth: 1 },
   ];
 
   function luma(hex) {
@@ -392,7 +389,7 @@ function mountHeroMotion(root) {
     const h = canvas.clientHeight;
     if (w < 2 || h < 2) return;
     const ink = palette();
-    const quiet = kind === "frame" ? 0.4 : 1;
+    const quiet = kind === "frame" ? 0.45 : 0.62;
     const wobble = Math.sin(t * 0.35) * 0.1;
     ctx.clearRect(0, 0, w, h);
     const placed = [];
