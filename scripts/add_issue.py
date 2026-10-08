@@ -74,6 +74,9 @@ def check_item(item: object, path: str, errors: list[str], *, paper: bool) -> No
     elif not isinstance(item["date"], str) or not item["date"].strip():
         errors.append(f"{path}.date must be a non-empty string label")
     require_str(item, "summary", path, errors)
+    # Optional long text. Paragraphs are separated by a blank line; do not parse it.
+    if "detail" in item and not isinstance(item["detail"], str):
+        errors.append(f"{path}.detail must be a string")
     if paper:
         for key in ("title_en", "authors"):
             if key in item and not isinstance(item[key], str):

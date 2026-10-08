@@ -29,6 +29,19 @@
     <p class="status">载入中</p>
     <noscript><p class="status">需要启用 JavaScript 才能阅读日报。</p></noscript>
   </main>
+  <div id="modal-root" class="modal-root is-closed">
+    <div class="modal-backdrop" data-close></div>
+    <div id="modal-dialog" class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-bar">
+        <button type="button" id="modal-close" class="modal-close" data-close aria-label="关闭">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
   <script src="app.js"></script>
 </body>
 </html>

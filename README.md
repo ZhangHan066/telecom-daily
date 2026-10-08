@@ -56,15 +56,19 @@ python3 -m http.server 8000
 | `industry` | array | 行业分组，见下 |
 | `notion_url` | string | 可省略。有则页头显示 Notion 链接 |
 
-`research[]`：`title`、`date`、`summary` 必填；`title_en`、`authors`、`links` 可省略。
+`research[]`：`title`、`date`、`summary` 必填；`title_en`、`authors`、`links`、`detail` 可省略。
 
 `industry[]`：`section`、`items` 必填；`emoji` 可省略。
 
-`items[]` 与论文相同，但没有 `title_en` / `authors`：`title`、`date`、`summary` 必填，`links` 可省略。
+`items[]` 与论文相同，但没有 `title_en` / `authors`：`title`、`date`、`summary` 必填；`links`、`detail` 可省略。
+
+`detail` 是可选字符串，给对话框用。卡片上只显示 `summary`（大约三行）。点开后若有 `detail` 就显示它，否则显示 `summary`。多段之间用空行分开，也就是 JSON 里的 `\n\n`，页面会渲染成多个段落。
 
 `links[]`：`{label, url}`，`url` 为 `http` 或 `https`。
 
 `highlights[].date` 不存在。论文和新闻条目的 `date` 是自由文字标签，例如 `"10/5"` 或 `"至 10/10"`，原样显示。
+
+卡片地址形如 `#item-r-0`（第 1 篇论文）或 `#item-i-0-1`（第 1 个行业分组里的第 2 条）。浏览器的返回会关掉对话框。
 
 ### `issues/index.json`
 
