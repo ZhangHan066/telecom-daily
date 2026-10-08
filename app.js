@@ -315,6 +315,32 @@ function renderHero(issue) {
   </header>`;
 }
 
+function tuneHeroPlate(img) {
+  const plate = img.closest(".hero-frame")?.querySelector(".hero-copy");
+  if (!plate || !img.src) return;
+  const probe = new Image();
+  probe.crossOrigin = "anonymous";
+  probe.onload = () => {
+    try {
+      const canvas = document.createElement("canvas");
+      canvas.width = 24;
+      canvas.height = 24;
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });
+      ctx.drawImage(probe, 0, Math.max(0, probe.naturalHeight * 0.55), probe.naturalWidth, probe.naturalHeight * 0.45, 0, 0, 24, 24);
+      const data = ctx.getImageData(0, 0, 24, 24).data;
+      let sum = 0;
+      for (let i = 0; i < data.length; i += 4) {
+        sum += 0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2];
+      }
+      plate.classList.toggle("is-light", sum / (data.length / 4) / 255 > 0.62);
+    } catch {
+      plate.classList.remove("is-light");
+    }
+  };
+  probe.onerror = () => plate.classList.remove("is-light");
+  probe.src = img.currentSrc || img.src;
+}
+
 function mountHeroMotion(root) {
   const canvases = [...root.querySelectorAll("canvas.hero-motion")];
   if (!canvases.length) return () => {};
@@ -567,7 +593,11 @@ function renderIssue(issue, issues) {
     </div>`;
 
   const heroImg = main.querySelector(".hero-img");
-  if (heroImg) heroImg.addEventListener("error", () => heroImg.remove());
+  if (heroImg) {
+    heroImg.addEventListener("error", () => heroImg.remove());
+    if (heroImg.complete) tuneHeroPlate(heroImg);
+    else heroImg.addEventListener("load", () => tuneHeroPlate(heroImg), { once: true });
+  }
   stopHeroMotion();
   stopHeroMotion = mountHeroMotion(main);
 
