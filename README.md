@@ -89,6 +89,6 @@ python3 -m http.server 8000
 
 ## 部署
 
-工作流使用 `actions/configure-pages`、`actions/upload-pages-artifact`、`actions/deploy-pages`，在推送到 `main` 时发布仓库根目录。
+线上地址：[https://zhanghan066.github.io/telecom-daily/](https://zhanghan066.github.io/telecom-daily/)。
 
-仓库需要一次性打开 Pages：**Settings → Pages → Build and deployment → Source: GitHub Actions**。未改成 GitHub Actions 之前，工作流无法完成部署。
+推送到 `main` 时，`.github/workflows/pages.yml` 会部署。同一工作流也可以在 Actions 页面手动运行（`workflow_dispatch`）。Pages 的 Source 需为 GitHub Actions。
