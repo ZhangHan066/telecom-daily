@@ -73,6 +73,7 @@ let lang = "zh";
 let loadedIssue = null;
 let loadedIssues = [];
 let firstPaint = true;
+let stopHeroMotion = () => {};
 let modalId = "";
 let opener = null;
 let lockedScroll = 0;
@@ -299,7 +300,9 @@ function renderHero(issue) {
     ? `<time datetime="${esc(issue.date)}">${esc(issue.date)}</time>`
     : esc(issue.date || "");
   const weekdayLabel = text(issue.weekday, issue.weekday_en);
-  const weekday = weekdayLabel ? ` · ${esc(weekdayLabel)}` : "";
+  const weekday = weekdayLabel
+    ? `<span class="hero-dot" aria-hidden="true"></span><span class="hero-weekday">${esc(weekdayLabel)}</span>`
+    : "";
   let credit = "";
   if (cover.credit || cover.source) {
     const source = safeUrl(cover.source);
@@ -312,16 +315,158 @@ function renderHero(issue) {
   return `<header class="hero">
     <div class="hero-frame">
       ${image}
+      <canvas class="hero-motion hero-motion-frame" data-motion="frame" aria-hidden="true"></canvas>
       <div class="hero-shade" aria-hidden="true"></div>
+    </div>
+    <div class="hero-plate">
+      <canvas class="hero-motion" data-motion="plate" aria-hidden="true"></canvas>
       <div class="hero-copy">
-        <div class="hero-id">
-          <p class="hero-date">${dateText}${weekday}</p>
-          <h1>${esc(t("brand"))}</h1>
-        </div>
+        <p class="hero-date">${dateText}${weekday}</p>
+        <h1>${esc(t("brand"))}</h1>
         ${credit}
       </div>
     </div>
   </header>`;
+}
+
+function mountHeroMotion(root) {
+  const canvases = [...root.querySelectorAll("canvas.hero-motion")];
+  if (!canvases.length) return () => {};
+  const scenes = canvases.map((canvas) => {
+    const ctx = canvas.getContext("2d");
+    return ctx ? { canvas, ctx, kind: canvas.dataset.motion || "plate" } : null;
+  }).filter(Boolean);
+  if (!scenes.length) return () => {};
+
+  const ac = new AbortController();
+  const reduceQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let raf = 0;
+  const t0 = performance.now();
+  const orbits = [
+    { cx: 0.5, cy: 0.5, rx: 0.36, ry: 0.3, speed: 0.42, tilt: -0.42, color: "research", n: 8, depth: 0.55 },
+    { cx: 0.5, cy: 0.48, rx: 0.22, ry: 0.38, speed: -0.33, tilt: 0.55, color: "industry", n: 6, depth: 0.82 },
+    { cx: 0.58, cy: 0.42, rx: 0.13, ry: 0.18, speed: 0.62, tilt: 0.15, color: "research", n: 4, depth: 1 },
+  ];
+
+  function luma(hex) {
+    const h = String(hex || "").trim().replace("#", "");
+    const full = h.length === 3 ? h.replace(/./g, (c) => c + c) : h;
+    const n = Number.parseInt(full, 16);
+    if (!Number.isFinite(n)) return 0.2;
+    const r = (n >> 16) & 255;
+    const g = (n >> 8) & 255;
+    const b = n & 255;
+    return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+  }
+
+  function rgba(hex, alpha) {
+    const h = String(hex || "").trim().replace("#", "");
+    const n = Number.parseInt(h.length === 3 ? h.replace(/./g, (c) => c + c) : h, 16);
+    if (!Number.isFinite(n)) return `rgba(36, 62, 154, ${alpha})`;
+    return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`;
+  }
+
+  function palette() {
+    const cs = getComputedStyle(document.documentElement);
+    return {
+      research: cs.getPropertyValue("--research").trim() || "#243e9a",
+      industry: cs.getPropertyValue("--industry").trim() || "#0e6b62",
+    };
+  }
+
+  function resize(scene) {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const width = scene.canvas.clientWidth;
+    const height = scene.canvas.clientHeight;
+    if (width < 2 || height < 2) return false;
+    scene.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    scene.canvas.width = Math.round(width * dpr);
+    scene.canvas.height = Math.round(height * dpr);
+    scene.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return true;
+  }
+
+  function drawScene(scene, t) {
+    const { ctx, canvas, kind } = scene;
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    if (w < 2 || h < 2) return;
+    const ink = palette();
+    const quiet = kind === "frame" ? 0.4 : 1;
+    const wobble = Math.sin(t * 0.35) * 0.1;
+    ctx.clearRect(0, 0, w, h);
+    const placed = [];
+    for (const orbit of orbits) {
+      const color = rgba(ink[orbit.color], 1);
+      const tone = quiet * (luma(ink[orbit.color]) > 0.5 ? 0.55 : 1);
+      ctx.save();
+      ctx.translate(orbit.cx * w, orbit.cy * h);
+      ctx.rotate(orbit.tilt + wobble * orbit.depth);
+      ctx.beginPath();
+      ctx.ellipse(0, 0, orbit.rx * w, orbit.ry * h, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = color;
+      ctx.globalAlpha = 0.16 * tone;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.restore();
+      for (let i = 0; i < orbit.n; i += 1) {
+        const ang = (i / orbit.n) * Math.PI * 2 + t * orbit.speed;
+        const rx = orbit.rx * w;
+        const ry = orbit.ry * h;
+        const lx = Math.cos(ang) * rx;
+        const ly = Math.sin(ang) * ry;
+        const tilt = orbit.tilt + wobble * orbit.depth;
+        const c = Math.cos(tilt);
+        const s = Math.sin(tilt);
+        placed.push({
+          x: orbit.cx * w + lx * c - ly * s,
+          y: orbit.cy * h + lx * s + ly * c,
+          color,
+          r: (i % 3 === 0 ? 2.2 : 1.35) * (0.75 + orbit.depth * 0.4),
+          alpha: (0.34 + orbit.depth * 0.26) * tone,
+        });
+      }
+    }
+    for (const dot of placed) {
+      ctx.beginPath();
+      ctx.arc(dot.x, dot.y, dot.r, 0, Math.PI * 2);
+      ctx.fillStyle = dot.color;
+      ctx.globalAlpha = dot.alpha;
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function draw(t) {
+    for (const scene of scenes) drawScene(scene, t);
+  }
+
+  function tick(now) {
+    draw((now - t0) / 1000);
+    raf = requestAnimationFrame(tick);
+  }
+
+  function paint() {
+    for (const scene of scenes) resize(scene);
+    draw(reduceQuery.matches ? 1.35 : (performance.now() - t0) / 1000);
+  }
+
+  paint();
+  if (!reduceQuery.matches) raf = requestAnimationFrame(tick);
+  const ro = typeof ResizeObserver === "function" ? new ResizeObserver(paint) : null;
+  for (const scene of scenes) ro?.observe(scene.canvas);
+  reduceQuery.addEventListener("change", () => {
+    cancelAnimationFrame(raf);
+    raf = 0;
+    paint();
+    if (!reduceQuery.matches) raf = requestAnimationFrame(tick);
+  }, { signal: ac.signal });
+
+  return () => {
+    ac.abort();
+    cancelAnimationFrame(raf);
+    ro?.disconnect();
+  };
 }
 
 function renderIssue(issue, issues) {
@@ -417,6 +562,8 @@ function renderIssue(issue, issues) {
 
   const heroImg = main.querySelector(".hero-img");
   if (heroImg) heroImg.addEventListener("error", () => heroImg.remove());
+  stopHeroMotion();
+  stopHeroMotion = mountHeroMotion(main);
 
   if (!firstPaint) return;
   firstPaint = false;

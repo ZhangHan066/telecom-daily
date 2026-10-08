@@ -183,8 +183,7 @@ a {
   color: var(--on-accent);
 }
 
-html[lang="en"] .brand,
-html[lang="en"] .hero h1 {
+html[lang="en"] .brand {
   letter-spacing: 0.04em;
 }
 
@@ -234,20 +233,20 @@ html[lang="en"] .hero h1 {
   background:
     linear-gradient(
       90deg,
-      color-mix(in srgb, var(--bg) 18%, transparent) 0%,
-      transparent 12%,
-      transparent 88%,
-      color-mix(in srgb, var(--bg) 18%, transparent) 100%
+      color-mix(in srgb, var(--bg) 16%, transparent) 0%,
+      transparent 10%,
+      transparent 90%,
+      color-mix(in srgb, var(--bg) 16%, transparent) 100%
     ),
     linear-gradient(
       180deg,
       transparent 0%,
-      transparent 58%,
-      color-mix(in srgb, var(--bg) 28%, transparent) 72%,
-      var(--bg) 86%,
+      transparent 72%,
+      color-mix(in srgb, var(--bg) 45%, transparent) 88%,
       var(--bg) 100%
     );
   pointer-events: none;
+  z-index: 1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -259,17 +258,55 @@ html[lang="en"] .hero h1 {
   }
 }
 
-.hero-copy {
+.hero-motion {
   position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-motion-frame {
+  z-index: 0;
+  opacity: 0.28;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0 55%, #000 88%);
+  mask-image: linear-gradient(180deg, transparent 0 55%, #000 88%);
+}
+
+.hero-plate {
+  position: relative;
+  width: min(var(--page), calc(100% - 2 * var(--pad)));
+  min-height: 168px;
+  margin: 8px auto 2px;
+  overflow: hidden;
+}
+
+.hero-plate::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  z-index: 0;
+  width: min(680px, 88%);
+  height: 170px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--research) 13%, transparent) 0%,
+    color-mix(in srgb, var(--industry) 7%, transparent) 40%,
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+.hero-copy {
+  position: relative;
   z-index: 1;
-  right: 0;
-  bottom: 0;
-  left: 0;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0 1.15rem 0.85rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.45rem 1rem 0.95rem;
+  text-align: center;
 }
 
 @media (max-width: 699px) {
@@ -280,19 +317,9 @@ html[lang="en"] .hero h1 {
     border-radius: 16px;
   }
 
-  .hero-copy {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.15rem;
-    padding: 0 0.9rem 0.7rem;
-  }
-}
+  .hero-plate { min-height: 148px; }
 
-.hero-id {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 0.85rem;
+  .hero-copy { padding: 1.15rem 0.75rem 0.75rem; }
 }
 
 .hero-date,
@@ -302,19 +329,66 @@ html[lang="en"] .hero h1 {
 }
 
 .hero-date {
-  font-size: 0.84rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-weight: 560;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.18em;
+}
+
+.hero-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--research);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--research) 65%, transparent);
+}
+
+.hero-weekday {
+  color: var(--industry);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
 }
 
 .hero h1 {
-  font-size: 0.95rem;
+  margin-top: 0.42rem;
+  font-size: clamp(1.75rem, 3.3vw, 2.6rem);
   font-weight: 650;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.2em;
+  line-height: 1.25;
+  text-indent: 0.2em;
 }
 
+.hero h1::after {
+  content: "";
+  display: block;
+  width: 3.4rem;
+  height: 2px;
+  margin: 0.72rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--research), var(--industry));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--research) 50%, transparent);
+  text-indent: 0;
+}
+
+html[lang="en"] .hero h1 {
+  font-family: var(--latin);
+  font-weight: 600;
+  font-size: clamp(2.05rem, 3.8vw, 2.9rem);
+  letter-spacing: 0.015em;
+  text-indent: 0;
+}
+
+html[lang="en"] .hero-date { letter-spacing: 0.12em; }
+
 .credit {
-  margin: 0;
+  max-width: 36rem;
+  margin: 0.85rem 0 0;
   color: var(--ink-soft);
   font-size: 0.72rem;
   line-height: 1.4;
@@ -808,6 +882,7 @@ html[lang="en"] .hero h1 {
   .hero { color: #000; background: none; padding: 0; }
   .hero-frame { height: auto; border: 0; box-shadow: none; background: none; }
   .hero-copy { position: static; padding: 0.4rem 0; }
-  .hero-img, .hero-shade, .modal-root { display: none; }
-  .hero-date, .hero h1, .credit, .credit a { color: #000; }
+  .hero-img, .hero-shade, .hero-motion, .hero-plate::before, .modal-root { display: none; }
+  .hero h1::after { box-shadow: none; }
+  .hero-date, .hero h1, .hero-weekday, .credit, .credit a { color: #000; }
 }
