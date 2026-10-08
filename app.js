@@ -289,29 +289,57 @@ function renderArchive(issues, current) {
   </section>`;
 }
 
-function renderClock(className) {
-  return `<svg class="${className}" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-    <g class="hero-clock-face">
-      <circle class="hero-clock-ring" cx="100" cy="100" r="92"/>
-      <circle class="hero-clock-ring hero-clock-ring-inner" cx="100" cy="100" r="79"/>
-      <g class="hero-clock-ticks">
-        <line x1="100.00" y1="27.00" x2="100.00" y2="9.00"/>
-        <line x1="140.50" y1="29.85" x2="145.50" y2="21.19"/>
-        <line x1="170.15" y1="59.50" x2="178.81" y2="54.50"/>
-        <line x1="173.00" y1="100.00" x2="191.00" y2="100.00"/>
-        <line x1="170.15" y1="140.50" x2="178.81" y2="145.50"/>
-        <line x1="140.50" y1="170.15" x2="145.50" y2="178.81"/>
-        <line x1="100.00" y1="173.00" x2="100.00" y2="191.00"/>
-        <line x1="59.50" y1="170.15" x2="54.50" y2="178.81"/>
-        <line x1="29.85" y1="140.50" x2="21.19" y2="145.50"/>
-        <line x1="27.00" y1="100.00" x2="9.00" y2="100.00"/>
-        <line x1="29.85" y1="59.50" x2="21.19" y2="54.50"/>
-        <line x1="59.50" y1="29.85" x2="54.50" y2="21.19"/>
-      </g>
+function renderTowerClock() {
+  const ticks = [];
+  for (let i = 0; i < 60; i += 1) {
+    const angle = (i / 60) * Math.PI * 2;
+    const fifth = i % 5 === 0;
+    const inner = fifth ? 156 : 166;
+    const outer = fifth ? 178 : 174;
+    const x1 = (200 + Math.sin(angle) * inner).toFixed(2);
+    const y1 = (200 - Math.cos(angle) * inner).toFixed(2);
+    const x2 = (200 + Math.sin(angle) * outer).toFixed(2);
+    const y2 = (200 - Math.cos(angle) * outer).toFixed(2);
+    ticks.push(`<line class="tower-tick${fifth ? " tower-tick-major" : ""}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`);
+  }
+  const romans = ["XII", "I", "II", "III", "IIII", "V", "VI", "VII", "VIII", "IX", "X", "XI"];
+  const numerals = romans.map((label, i) => {
+    const angle = (i / 12) * Math.PI * 2;
+    const x = (200 + Math.sin(angle) * 138).toFixed(2);
+    const y = (200 - Math.cos(angle) * 138).toFixed(2);
+    return `<text x="${x}" y="${y}">${label}</text>`;
+  }).join("");
+  return `<div class="tower-slot" aria-hidden="true"><svg class="tower-clock" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+    <g class="tower-face">
+      <circle class="tower-bezel" cx="200" cy="200" r="190"/>
+      <circle class="tower-bezel tower-bezel-mid" cx="200" cy="200" r="183"/>
+      <circle class="tower-guilloche" cx="200" cy="200" r="186.4"/>
+      <circle class="tower-ring" cx="200" cy="200" r="149"/>
+      <circle class="tower-ring tower-ring-fine" cx="200" cy="200" r="114"/>
+      ${ticks.join("")}
+      <g class="tower-numerals">${numerals}</g>
+      <circle class="tower-boss" cx="200" cy="200" r="16"/>
+      <circle class="tower-boss tower-boss-jade" cx="200" cy="200" r="9"/>
+      <circle class="tower-boss" cx="200" cy="200" r="3.4"/>
     </g>
-    <g class="hero-clock-hour"><line x1="156.48" y1="150.85" x2="163.91" y2="157.55"/></g>
-    <g class="hero-clock-minute"><line x1="57.50" y1="163.01" x2="49.11" y2="175.44"/></g>
-  </svg>`;
+    <g class="tower-hour">
+      <circle cx="200" cy="216" r="6.2"/>
+      <circle cx="200" cy="216" r="2.6"/>
+      <path d="M196.6 207 L196.6 166 C186 156 176 142 186 124 C193 112 200 100 200 100 C200 100 207 112 214 124 C224 142 214 156 203.4 166 L203.4 207"/>
+      <path d="M200 156 C193.5 151 191.5 138 196 126 C198.2 120 201.8 120 204 126 C208.5 138 206.5 151 200 156"/>
+      <path d="M192 208 C188 216 200 222 208 216 C206 212 203 209 200 209 C197 209 194 212 192 208"/>
+    </g>
+    <g class="tower-minute">
+      <circle cx="200" cy="224" r="7"/>
+      <circle cx="200" cy="224" r="3"/>
+      <path d="M198.7 210 L198.7 58 M201.3 210 L201.3 58"/>
+      <path d="M198.7 66 L200 48 L201.3 66"/>
+      <circle cx="200" cy="84" r="10"/>
+      <circle cx="200" cy="84" r="4.4"/>
+      <path d="M200 72 L206.2 84 L200 96 L193.8 84 Z"/>
+      <path d="M190 204 L210 204"/>
+    </g>
+  </svg></div>`;
 }
 
 function renderHero(issue) {
@@ -328,6 +356,7 @@ function renderHero(issue) {
     ? `<span class="hero-dot" aria-hidden="true"></span><span class="hero-weekday">${esc(weekdayLabel)}</span>`
     : "";
   return `<header class="hero">
+    ${renderTowerClock()}
     <div class="hero-frame">
       ${image}
       <div class="hero-shade" aria-hidden="true"></div>
@@ -335,8 +364,6 @@ function renderHero(issue) {
     <div class="hero-mast">
       <canvas class="hero-motion" aria-hidden="true"></canvas>
       <div class="hero-copy">
-        ${renderClock("hero-clock")}
-        ${renderClock("hero-clock hero-clock-echo")}
         <h1>${esc(t("brand"))}</h1>
         <p class="hero-date">${dateText}${weekday}</p>
       </div>

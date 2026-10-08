@@ -67,6 +67,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
@@ -201,6 +202,7 @@ html[lang="en"] .brand {
 .mast-link:hover { color: var(--ink); }
 
 .hero {
+  position: relative;
   background: var(--bg);
   padding: 10px 0 0;
   color: var(--ink);
@@ -208,6 +210,7 @@ html[lang="en"] .brand {
 
 .hero-frame {
   position: relative;
+  z-index: 1;
   width: min(var(--page), calc(100% - 2 * var(--pad)));
   height: clamp(244px, 28vh, 286px);
   margin-inline: auto;
@@ -256,8 +259,9 @@ html[lang="en"] .brand {
 
 .hero-mast {
   position: relative;
+  z-index: 3;
   width: min(var(--page), calc(100% - 2 * var(--pad)));
-  min-height: 292px;
+  min-height: 132px;
   margin: 0 auto;
 }
 
@@ -285,75 +289,108 @@ html[lang="en"] .brand {
   text-align: center;
 }
 
-.hero-clock {
+.tower-slot {
   position: absolute;
-  z-index: 0;
-  left: 50%;
-  top: 2.45rem;
-  width: 460px;
-  height: 460px;
-  color: var(--research);
-  opacity: 0.55;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
   pointer-events: none;
-  transform: translate(-50%, -50%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 16%, #000 40%, #000 94%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, transparent 16%, #000 40%, #000 94%, transparent 100%);
 }
 
-.hero-clock-echo {
-  width: 640px;
-  height: 640px;
-  left: calc(50% + 7vw);
-  top: 3.2rem;
-  color: var(--industry);
-  opacity: 0.16;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 30%, #000 46%, #000 58%, transparent 72%);
-  mask-image: linear-gradient(to bottom, transparent 0%, transparent 30%, #000 46%, #000 58%, transparent 72%);
+.tower-clock {
+  position: absolute;
+  top: -250px;
+  right: -600px;
+  width: 1000px;
+  height: 1000px;
+  color: var(--research);
+  opacity: 0.62;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 90%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 90%);
 }
 
-.hero-clock-echo .hero-clock-ticks,
-.hero-clock-echo .hero-clock-hour,
-.hero-clock-echo .hero-clock-minute,
-.hero-clock-echo .hero-clock-ring-inner { display: none; }
-
-.hero-clock line,
-.hero-clock circle {
+.tower-clock line,
+.tower-clock circle,
+.tower-clock path {
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.35px;
   stroke-linecap: round;
-  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
 }
 
-.hero-clock-ring-inner,
-.hero-clock-minute { color: var(--industry); }
+.tower-bezel { stroke-width: 2.4; }
 
-.hero-clock-hour { stroke-width: 1.6px; }
+.tower-bezel-mid { stroke-width: 1; }
 
-.hero-clock-face,
-.hero-clock-hour,
-.hero-clock-minute {
+.tower-guilloche {
+  stroke-width: 0.7;
+  stroke-dasharray: 0.9 1.7;
+  color: var(--industry);
+}
+
+.tower-ring { stroke-width: 0.95; }
+
+.tower-ring-fine {
+  stroke-width: 0.55;
+  color: var(--industry);
+}
+
+.tower-tick {
+  stroke-width: 0.6;
+  color: var(--industry);
+}
+
+.tower-tick-major {
+  stroke-width: 1.45;
+  color: var(--research);
+}
+
+.tower-numerals text {
+  fill: currentColor;
+  stroke: none;
+  font-family: var(--latin);
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.tower-boss { stroke-width: 1.15; }
+
+.tower-boss-jade { color: var(--industry); }
+
+.tower-hour,
+.tower-minute {
+  stroke-width: 1.3;
   transform-box: view-box;
   transform-origin: center;
-  animation: hero-clock-spin 110s linear infinite;
 }
 
-.hero-clock-hour { animation-duration: 96s; }
+.tower-minute { color: var(--industry); }
 
-.hero-clock-minute { animation-duration: 72s; }
-
-.hero-clock-echo .hero-clock-face {
-  animation-duration: 140s;
-  animation-direction: reverse;
+.tower-hour {
+  transform: rotate(232deg);
+  animation: tower-hour 960s linear infinite;
 }
 
-@keyframes hero-clock-spin {
-  to { transform: rotate(360deg); }
+.tower-minute {
+  transform: rotate(258deg);
+  animation: tower-minute 90s linear infinite;
+}
+
+@keyframes tower-hour {
+  from { transform: rotate(232deg); }
+  to { transform: rotate(592deg); }
+}
+
+@keyframes tower-minute {
+  from { transform: rotate(258deg); }
+  to { transform: rotate(618deg); }
 }
 
 @media (prefers-color-scheme: dark) {
-  .hero-clock { opacity: 0.34; }
-  .hero-clock-echo { opacity: 0.14; }
+  .tower-clock { opacity: 0.5; }
 }
 
 @media (max-width: 699px) {
@@ -364,21 +401,16 @@ html[lang="en"] .brand {
     border-radius: 16px;
   }
 
-  .hero-mast { min-height: 210px; }
+  .hero-mast { min-height: 112px; }
 
   .hero-copy { padding: 0.9rem 0.75rem 0.1rem; }
 
-  .hero-clock {
-    top: 1.7rem;
-    width: 280px;
-    height: 280px;
-  }
-
-  .hero-clock-echo {
-    top: 2.2rem;
-    left: calc(50% + 10vw);
-    width: 360px;
-    height: 360px;
+  .tower-clock {
+    top: -250px;
+    right: -430px;
+    width: 560px;
+    height: 560px;
+    opacity: 0.58;
   }
 }
 
@@ -941,10 +973,8 @@ html[lang="en"] .hero-date { letter-spacing: 0.08em; }
   .hero-motion,
   .hero.is-live .hero-motion { opacity: 0.28; }
 
-  .hero-clock-face,
-  .hero-clock-hour,
-  .hero-clock-minute,
-  .hero-clock-echo .hero-clock-face { animation: none; }
+  .tower-hour,
+  .tower-minute { animation: none; }
 }
 
 @media print {
@@ -952,7 +982,7 @@ html[lang="en"] .hero-date { letter-spacing: 0.08em; }
   .hero { color: #000; background: none; padding: 0; }
   .hero-frame { height: auto; border: 0; box-shadow: none; background: none; }
   .hero-copy { position: static; padding: 0.4rem 0; }
-  .hero-img, .hero-shade, .hero-motion, .hero-clock, .modal-root { display: none; }
+  .hero-img, .hero-shade, .hero-motion, .tower-clock, .modal-root { display: none; }
   .hero h1::after { box-shadow: none; }
   .hero-date, .hero h1, .hero-weekday { color: #000; text-shadow: none; }
 }
