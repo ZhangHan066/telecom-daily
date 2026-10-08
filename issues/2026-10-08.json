@@ -1,0 +1,312 @@
+{
+  "date": "2026-10-08",
+  "weekday": "周四",
+  "title": "通信行业日报 · 2026-10-08（周四）",
+  "theme": "卫星直连手机加速落地",
+  "cover": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Starlink_Mission_%2847926144123%29.jpg",
+    "credit": "SpaceX / CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Starlink_Mission_(47926144123).jpg"
+  },
+  "highlights": [
+    {
+      "label": "科研",
+      "text": "无人机通信论文聚焦“网络为飞行服务”，包括风险感知的 5G 上行调度、FR3 空中基站信道知识图数据集，以及 657 g、28 W 的机载 5G DU 实测。"
+    },
+    {
+      "label": "频谱与卫星",
+      "text": "FCC 批准 SpaceX 1.5 万颗超低轨手机直连卫星，随后提出 D2D 频谱拍卖，并拟向无人机开放 800 MHz 蜂窝频段，10/29 表决。"
+    },
+    {
+      "label": "产业",
+      "text": "华为与高通签下首份涵盖 5G 的专利交叉许可；FCC 拟禁止中国实验室为美国市场设备做检测。"
+    }
+  ],
+  "research": [
+    {
+      "title": "风险感知 5G 上行调度：低空机队尾部风险降 96%",
+      "date": "10/5",
+      "title_en": "Who Can Safely Wait? Risk-Aware 5G Scheduling for Low-Altitude UAV Operation",
+      "authors": "André Melo, Yueqi Chen, Lourenço Pereira Jr., Igor Kadota",
+      "summary": "把信息新鲜度和飞行场景换算为单机运行风险，按风险边际增长排序，用 Max-Weight 做上行调度。在最多 120 架无人机的配送和赛事场景中，99 分位风险比 PF 低最多 96%。调度目标从网络 KPI 转向飞行安全后果，可直接借鉴到低空专网。",
+      "links": [
+        {
+          "label": "arXiv:2610.07101",
+          "url": "https://arxiv.org/abs/2610.07101"
+        }
+      ]
+    },
+    {
+      "title": "657 g 机载 5G DU：ARM 平台跑通 OAI 空中基站",
+      "date": "10/4",
+      "title_en": "Toward Lightweight Aerial 5G gNBs: Reproducible OAI Testbed on Commodity ARM Platforms",
+      "authors": "Marc Duboc, Ammar El Falou",
+      "summary": "核心网和 CU 留在地面，机上只放 DU、射频和回传。Jetson Orin Nano 保持 x86 约 88% 的下行吞吐，整机约 657 g、28 W，并开源了经 F1 下发 PWS 告警的补丁。为应急通信无人机基站提供了可复现的重量、功耗和吞吐基线。",
+      "links": [
+        {
+          "label": "arXiv:2610.05007",
+          "url": "https://arxiv.org/abs/2610.05007"
+        }
+      ]
+    },
+    {
+      "title": "FR3 无人机基站信道知识图数据集：7.125 GHz、66 城",
+      "date": "10/5",
+      "title_en": "Channel Knowledge Maps for FR3 UAV Base Stations: Dataset and ML-based Modeling",
+      "authors": "Guillem Moreno Garcia, Sergi Abadal, Evgenii Vinogradov",
+      "summary": "16180 个样本，机载基站高度至 500 m，含 LOS 状态、衰减、时延扩展和角度扩展。配套的高度感知衰减模型在未见城市上 RMSE 1.93 dB。FR3 是 6G 重点频段，可直接用于空中基站覆盖仿真。",
+      "links": [
+        {
+          "label": "arXiv:2610.06356",
+          "url": "https://arxiv.org/abs/2610.06356"
+        }
+      ]
+    },
+    {
+      "title": "LiLib：会“记住”环境的空地路损预测",
+      "date": "10/5",
+      "title_en": "LiLib: Lifelong Air-to-Ground Path-Loss Prediction on UAVs via a Drift-Triggered Model Library",
+      "authors": "Minh Tran",
+      "summary": "无人机维护一个小型 RLS 专家库，检测到环境漂移后复用旧模型或新建。路损预测 RMSE 从 5.89 dB 降到 4.03 dB，模型库不到 0.5 KB。适合机载中继或空中基站的链路自适应。",
+      "links": [
+        {
+          "label": "arXiv:2610.07111",
+          "url": "https://arxiv.org/abs/2610.07111"
+        }
+      ]
+    },
+    {
+      "title": "无人机载 RIS 安全通感：MPC 在线优化轨迹与波束",
+      "date": "10/3",
+      "title_en": "Beamforming and Trajectory Optimization for Aerial RIS-Aided Secure ISAC via Model Predictive Control",
+      "authors": "Zhendong Li, Zesheng Zhang, Zhou Su, Ziwei Liu, Ying Wang, Wen Chen",
+      "summary": "无人机载 RIS 建立虚拟视距链路，同时服务用户并感知窃听者；联合优化轨迹、基站波束与人工噪声、RIS 相移。用 MPC 滚动求解，相比静态方案保密速率更高、对扰动更鲁棒。",
+      "links": [
+        {
+          "label": "arXiv:2610.04885",
+          "url": "https://arxiv.org/abs/2610.04885"
+        }
+      ]
+    },
+    {
+      "title": "波形随机化：抵御无人机载窃听的安全通感",
+      "date": "10/6",
+      "title_en": "Waveform Randomization for Secure ISAC",
+      "authors": "Zexin Fang, Bin Han, Shuangyang Li, Hans D. Schotten",
+      "summary": "用相位密钥和切向人工噪声随机化感知波形，窃听者无法构造相干匹配参考。重点考虑视距占优的空中窃听者，包括同时监听直达和回波的情形。不依赖波束或功率分配，属于波形层防护。",
+      "links": [
+        {
+          "label": "arXiv:2610.07994",
+          "url": "https://arxiv.org/abs/2610.07994"
+        }
+      ]
+    },
+    {
+      "title": "无人机群协同感知：弱报告上传减少 97%",
+      "date": "10/6",
+      "title_en": "When Weak Reports Matter: Staged Anchored Fusion for Cooperative UAV Sensing",
+      "authors": "Xingqin Lin",
+      "summary": "先确认强报告，再用未使用的强锚点按需查询弱报告。五机仿真中比严格共识多检出 30 个目标、仅多 3 个虚警，弱报告上传减少 97.4%。在带宽受限的机群中兼顾检测率与回传开销。",
+      "links": [
+        {
+          "label": "arXiv:2610.07747",
+          "url": "https://arxiv.org/abs/2610.07747"
+        }
+      ]
+    },
+    {
+      "title": "热红外反无人机检测的灾难性遗忘",
+      "date": "10/6",
+      "title_en": "Catastrophic Forgetting in Sequential Thermal Anti-UAV Detection: The Role of Scale-Conditioned Gradient Imbalance",
+      "authors": "Khac Duc Giang Nguyen, Seyed Sahand Mohammadi Ziabari, Ali Mohammed Mansoor Alsahag",
+      "summary": "在三个反无人机数据集上序贯微调，朴素微调丢失约 90% 能力，知识蒸馏可保持约 95%，按目标尺度分层回放可将遗忘减半。对反无人机系统持续更新模型有参考价值。",
+      "links": [
+        {
+          "label": "arXiv:2610.08315",
+          "url": "https://arxiv.org/abs/2610.08315"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "卫星与手机直连",
+      "emoji": "🛰️",
+      "items": [
+        {
+          "title": "FCC 批准 SpaceX 1.5 万颗手机直连卫星",
+          "date": "10/6",
+          "summary": "星座位于约 326–335 km 超低轨，FCC 同时豁免其与地面运营商签租赁协议的要求，并允许使用 EchoStar 频谱和 T-Mobile PCS G 频段；V2 卫星计划 2027 年起部署。更低轨道改善普通手机链路预算，D2D 出现“卫星方自持频谱”的模式。",
+          "links": [
+            {
+              "label": "PCMag",
+              "url": "https://uk.pcmag.com/wireless-carriers/167711/fcc-green-lights-spacexs-15000-satellites-for-starlink-mobile"
+            },
+            {
+              "label": "SpaceNews",
+              "url": "https://spacenews.com/fcc-tees-up-another-d2d-boost-after-approving-starlink-mobile-upgrade/"
+            }
+          ]
+        },
+        {
+          "title": "FCC 三项提案：D2D 频谱、中频段拍卖、800 MHz 给无人机",
+          "date": "10/7",
+          "summary": "10/29 表决：为 D2D 启动新一轮频谱拍卖；拍卖 25 MHz 中频段，可用于地面、D2D 或星地混合网络；允许无人机使用约 50 MHz 的 800 MHz 蜂窝频段。网联无人机用频路线可与国内低空专网方案对照。",
+          "links": [
+            {
+              "label": "IT之家",
+              "url": "https://www.ithome.com/1/010/340.htm"
+            }
+          ]
+        },
+        {
+          "title": "TELUS 与 AST SpaceMobile 完成端到端集成测试",
+          "date": "10/5",
+          "summary": "普通手机经 BlueBird 卫星接入 TELUS 核心网，打通语音、短信和宽带数据，预计一年内向用户开放。代表“运营商频谱 + 卫星接入”路线，关键在核心网集成与星地移动性。",
+          "links": [
+            {
+              "label": "PR Newswire",
+              "url": "https://www.prnewswire.com/news-releases/telus-and-ast-spacemobile-successfully-complete-first-satellite-to-smartphone-integration-test-on-the-telus-network-819217221.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政策监管",
+      "emoji": "🏛️",
+      "items": [
+        {
+          "title": "FCC 拟禁止中国实验室为美国市场设备做检测",
+          "date": "10/7",
+          "summary": "10/29 表决，对象为不给美国实验室互惠待遇国家的检测与认证机构，覆盖手机、相机、电脑等；FCC 称 2025 年 82% 的电子产品在中国检测。出海终端与通信设备的认证周期和成本可能变化。",
+          "links": [
+            {
+              "label": "三立新闻（引中央社）",
+              "url": "https://www.setn.com/news/1919119"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "设备商与 AI-RAN",
+      "emoji": "🏭",
+      "items": [
+        {
+          "title": "华为与高通签署多年期专利交叉许可",
+          "date": "10/5",
+          "summary": "覆盖 5G、计算、AI 与网络，高通还将购买华为部分非蜂窝领域美国专利，尚待美国监管批准；这是双方首份涵盖 5G 的协议。华为 5G 标准必要专利获头部芯片厂商认可。",
+          "links": [
+            {
+              "label": "华为",
+              "url": "https://www.huawei.com/en/news/2026/10/qualcomm-broad-patent-agreement"
+            },
+            {
+              "label": "TechSpot",
+              "url": "https://www.techspot.com/news/114104-qualcomm-signs-first-5g-patent-deal-huawei-agrees.html"
+            }
+          ]
+        },
+        {
+          "title": "爱立信 AI 原生链路自适应商用：频谱效率最高 +25%",
+          "date": "10/5",
+          "summary": "现网平均频谱效率提升最多 10%，最佳站点 +25%、下行吞吐 +50%；纯软件运行在现有基带上，无需新增 AI 硬件。AI-RAN 先从调度类功能落地，存量网络可软件升级。",
+          "links": [
+            {
+              "label": "Ericsson",
+              "url": "https://www.ericsson.com/en/blog/2026/10/ai-native-link-adaptation-for-spectral-gains"
+            }
+          ]
+        },
+        {
+          "title": "印度移动大会 IMC 2026：cmWave 6G 与频谱诉求",
+          "date": "至 10/10",
+          "summary": "爱立信展示 cmWave 6G 数据呼叫，并将向欧洲出口印度制造天线；诺基亚称印度 2030 年前后商用 6G，每家运营商约需 200 MHz 频谱。",
+          "links": [
+            {
+              "label": "Ericsson",
+              "url": "https://www.ericsson.com/en/press-releases/2/2026/ericsson-showcases-whats-next-in-5g-ai-and-innovation-at-india-mobile-congress-2026"
+            },
+            {
+              "label": "Economic Times",
+              "url": "https://economictimes.indiatimes.com/industry/telecom/telecom-news/ericsson-to-export-india-made-antennas-to-europe-india-has-competitive-edge-for-6g-executive/articleshow/134760920.cms"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "运营商",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "中国电信回应原员工实名举报",
+          "date": "10/7",
+          "summary": "原员工举报“国家工业互联网大数据中心”项目存在围标串标等问题；中国电信称项目已于 2024 年专项核查，言论与事实不符，并逐条回应“13 天完工”等说法。",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://m.c114.com.cn/w3542-1318758.html"
+            }
+          ]
+        },
+        {
+          "title": "中国电信首设集团总审计师，韩芳出任",
+          "date": "10/8",
+          "summary": "审计部总经理韩芳升任集团总审计师，为三大运营商集团层面首设该岗位（暂未官方证实）。算力基建与数字化项目的审计将更严格。",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/6564/a1318761.html"
+            }
+          ]
+        },
+        {
+          "title": "德国电信：中期不因 AI 上行追加 RAN 投资",
+          "date": "10/7",
+          "summary": "德电下任 CFO 表示不预期 2027 年后因 AI 上行需求提高资本开支强度；而爱立信本周刚强调 AI 应用至少需要 5 Mbps 上行。上行增强更可能在既有预算内完成。",
+          "links": [
+            {
+              "label": "Light Reading",
+              "url": "https://www.lightreading.com/ai-machine-learning/deutsche-telekom-dashes-vendor-hopes-for-big-mobile-uplink-spending"
+            },
+            {
+              "label": "RCR Wireless",
+              "url": "https://rcrwireless.com/20261005/networks/ericsson-ai-ran-networks"
+            }
+          ]
+        },
+        {
+          "title": "AT&T 联合 GIP、CPP 成立批发光纤合资公司",
+          "date": "10/7",
+          "summary": "AT&T 持股 50%，整合 Forged Fiber 37 与 Gigapower，覆盖 16 个州，目标 2030 年底超 6000 万光纤端点，预计 2027 上半年交割。",
+          "links": [
+            {
+              "label": "Telecoms.com",
+              "url": "https://www.telecoms.com/fibre/at-t-and-partners-form-new-fibre-jv"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "光通信与算力",
+      "emoji": "💡",
+      "items": [
+        {
+          "title": "Marvell 上调 FY28 收入指引至约 200 亿美元",
+          "date": "10/6",
+          "summary": "其中数据中心约 180 亿美元，增量主要来自 scale-out/scale-up 光互连与交换。光 DSP 与互连需求持续上修，是 1.6T 光模块链景气的先行信号。",
+          "links": [
+            {
+              "label": "Reuters",
+              "url": "https://money.usnews.com/investing/news/articles/2026-10-06/marvell-raises-2028-revenue-forecast-on-strong-ai-data-center-demand"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notion_url": "https://app.notion.com/p/3f33a1fdbe1881a6b507dc9b9c0291d4"
+}
