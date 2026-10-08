@@ -306,6 +306,8 @@ function renderHero(issue) {
     <div class="hero-frame">
       ${image}
       <div class="hero-shade" aria-hidden="true"></div>
+    </div>
+    <div class="hero-mast">
       <canvas class="hero-motion" aria-hidden="true"></canvas>
       <div class="hero-copy">
         <h1>${esc(t("brand"))}</h1>
@@ -313,32 +315,6 @@ function renderHero(issue) {
       </div>
     </div>
   </header>`;
-}
-
-function tuneHeroPlate(img) {
-  const plate = img.closest(".hero-frame")?.querySelector(".hero-copy");
-  if (!plate || !img.src) return;
-  const probe = new Image();
-  probe.crossOrigin = "anonymous";
-  probe.onload = () => {
-    try {
-      const canvas = document.createElement("canvas");
-      canvas.width = 24;
-      canvas.height = 24;
-      const ctx = canvas.getContext("2d", { willReadFrequently: true });
-      ctx.drawImage(probe, 0, Math.max(0, probe.naturalHeight * 0.55), probe.naturalWidth, probe.naturalHeight * 0.45, 0, 0, 24, 24);
-      const data = ctx.getImageData(0, 0, 24, 24).data;
-      let sum = 0;
-      for (let i = 0; i < data.length; i += 4) {
-        sum += 0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2];
-      }
-      plate.classList.toggle("is-light", sum / (data.length / 4) / 255 > 0.62);
-    } catch {
-      plate.classList.remove("is-light");
-    }
-  };
-  probe.onerror = () => plate.classList.remove("is-light");
-  probe.src = img.currentSrc || img.src;
 }
 
 function mountHeroMotion(root) {
@@ -355,9 +331,9 @@ function mountHeroMotion(root) {
   let raf = 0;
   const t0 = performance.now();
   const orbits = [
-    { cx: 0.5, cy: 0.74, rx: 0.32, ry: 0.16, speed: 0.42, tilt: -0.38, color: "research", n: 7, depth: 0.55 },
-    { cx: 0.5, cy: 0.8, rx: 0.18, ry: 0.12, speed: -0.33, tilt: 0.48, color: "industry", n: 5, depth: 0.82 },
-    { cx: 0.62, cy: 0.7, rx: 0.1, ry: 0.09, speed: 0.58, tilt: 0.18, color: "research", n: 4, depth: 1 },
+    { cx: 0.5, cy: 0.48, rx: 0.36, ry: 0.42, speed: 0.42, tilt: -0.28, color: "research", n: 7, depth: 0.55 },
+    { cx: 0.5, cy: 0.52, rx: 0.2, ry: 0.5, speed: -0.33, tilt: 0.42, color: "industry", n: 5, depth: 0.82 },
+    { cx: 0.64, cy: 0.4, rx: 0.12, ry: 0.28, speed: 0.55, tilt: 0.16, color: "research", n: 4, depth: 1 },
   ];
 
   function luma(hex) {
@@ -458,7 +434,7 @@ function mountHeroMotion(root) {
     raf = requestAnimationFrame(tick);
   }
 
-  const frame = root.querySelector(".hero-frame");
+  const frame = root.querySelector(".hero");
   let live = false;
 
   function paint() {
@@ -593,11 +569,7 @@ function renderIssue(issue, issues) {
     </div>`;
 
   const heroImg = main.querySelector(".hero-img");
-  if (heroImg) {
-    heroImg.addEventListener("error", () => heroImg.remove());
-    if (heroImg.complete) tuneHeroPlate(heroImg);
-    else heroImg.addEventListener("load", () => tuneHeroPlate(heroImg), { once: true });
-  }
+  if (heroImg) heroImg.addEventListener("error", () => heroImg.remove());
   stopHeroMotion();
   stopHeroMotion = mountHeroMotion(main);
 
