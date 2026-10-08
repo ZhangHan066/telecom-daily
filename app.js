@@ -289,6 +289,31 @@ function renderArchive(issues, current) {
   </section>`;
 }
 
+function renderClock(className) {
+  return `<svg class="${className}" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+    <g class="hero-clock-face">
+      <circle class="hero-clock-ring" cx="100" cy="100" r="92"/>
+      <circle class="hero-clock-ring hero-clock-ring-inner" cx="100" cy="100" r="79"/>
+      <g class="hero-clock-ticks">
+        <line x1="100.00" y1="27.00" x2="100.00" y2="9.00"/>
+        <line x1="140.50" y1="29.85" x2="145.50" y2="21.19"/>
+        <line x1="170.15" y1="59.50" x2="178.81" y2="54.50"/>
+        <line x1="173.00" y1="100.00" x2="191.00" y2="100.00"/>
+        <line x1="170.15" y1="140.50" x2="178.81" y2="145.50"/>
+        <line x1="140.50" y1="170.15" x2="145.50" y2="178.81"/>
+        <line x1="100.00" y1="173.00" x2="100.00" y2="191.00"/>
+        <line x1="59.50" y1="170.15" x2="54.50" y2="178.81"/>
+        <line x1="29.85" y1="140.50" x2="21.19" y2="145.50"/>
+        <line x1="27.00" y1="100.00" x2="9.00" y2="100.00"/>
+        <line x1="29.85" y1="59.50" x2="21.19" y2="54.50"/>
+        <line x1="59.50" y1="29.85" x2="54.50" y2="21.19"/>
+      </g>
+    </g>
+    <g class="hero-clock-hour"><line x1="156.48" y1="150.85" x2="163.91" y2="157.55"/></g>
+    <g class="hero-clock-minute"><line x1="57.50" y1="163.01" x2="49.11" y2="175.44"/></g>
+  </svg>`;
+}
+
 function renderHero(issue) {
   const cover = issue.cover && typeof issue.cover === "object" ? issue.cover : {};
   const coverUrl = safeUrl(cover.url);
@@ -310,6 +335,8 @@ function renderHero(issue) {
     <div class="hero-mast">
       <canvas class="hero-motion" aria-hidden="true"></canvas>
       <div class="hero-copy">
+        ${renderClock("hero-clock")}
+        ${renderClock("hero-clock hero-clock-echo")}
         <h1>${esc(t("brand"))}</h1>
         <p class="hero-date">${dateText}${weekday}</p>
       </div>
