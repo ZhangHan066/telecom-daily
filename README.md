@@ -96,3 +96,5 @@ python3 -m http.server 8000
 线上地址：[https://zhanghan066.github.io/telecom-daily/](https://zhanghan066.github.io/telecom-daily/)。
 
 推送到 `main` 时，`.github/workflows/pages.yml` 会部署。同一工作流也可以在 Actions 页面手动运行（`workflow_dispatch`）。Pages 的 Source 需为 GitHub Actions。
+
+部署时工作流把 `index.html` 里的 `__ASSET_VERSION__` 换成该次提交 SHA 的前 7 位，`styles.css` 和 `app.js` 因此每次发布都是新地址。期刊 JSON 由页面以 `cache: "no-cache"` 请求。

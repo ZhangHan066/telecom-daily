@@ -26,6 +26,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Cache-bust CSS and JS
+        run: sed -i "s/__ASSET_VERSION__/${GITHUB_SHA::7}/g" index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
