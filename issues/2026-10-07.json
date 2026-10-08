@@ -1,0 +1,245 @@
+{
+  "date": "2026-10-07",
+  "weekday": "周三",
+  "weekday_en": "Wed",
+  "title": "通信行业日报 · 2026-10-07（周三）",
+  "theme": "FCC 连推手机直连与无人机频谱",
+  "theme_en": "FCC advances D2D and drone spectrum rules",
+  "cover": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Cellular_5G_Equipment_-_Cell_Tower_Antennas.jpg/1920px-Cellular_5G_Equipment_-_Cell_Tower_Antennas.jpg",
+    "credit": "Tony Webster / CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cellular_5G_Equipment_-_Cell_Tower_Antennas.jpg"
+  },
+  "highlights": [
+    {
+      "label": "科研",
+      "text": "FR3 空天地一体化 RIS 关联、UAV 采集 LoRa 新鲜度优化，以及 6G NeXt 面向无人机防撞的拆分计算架构。"
+    },
+    {
+      "label": "频谱与卫星",
+      "text": "FCC 批准 SpaceX 1.5 万颗手机直连卫星；次日公布 10/29 议程，含 25 MHz 中频拍卖、SCS 扩容约 482 MHz、800 MHz 向无人机开放约 50 MHz。"
+    },
+    {
+      "label": "产业",
+      "text": "华为发布 Peerium 架构与灵衢总线，测试 25.6 万卡 Atlas 950 超节点；华为与高通多年期专利交叉许可继续发酵。"
+    }
+  ],
+  "research": [
+    {
+      "title": "FR3 空天地一体化：分层 RIS 关联提升网络总速率",
+      "date": "10/6",
+      "title_en": "Hierarchical RIS Association for FR3 Space-Air-Ground Integrated Networks",
+      "authors": "Muddasir Rahim, Irfan Azam, Soumaya Cherkaoui",
+      "summary": "在 FR3 上中频段构建含地面 RIS 与无人机载 RIS、辅以 LEO 卫星的 SAGIN，用分层多对一匹配做 RIS 关联。仿真显示，所提框架的网络总速率明显优于贪心与随机关联。",
+      "summary_en": "Builds an FR3 SAGIN with terrestrial and UAV-mounted RISs plus a LEO satellite, associating UEs to RISs via hierarchical many-to-one matching. Simulations show the framework's network sum rate clearly beats greedy and random association.",
+      "detail": "地面基站无法可靠服务远端或遮挡环境时，需要空天地一体化补覆盖。该文提出 FR3 上中频段 RIS 辅助 SAGIN：地面基站为主接入，LEO 卫星在地面链路不可用或达不到 QoS 时补位，网络中同时有地面 RIS（TRIS）与无人机载 RIS（ARIS）。\n\n作者把最大化网络总速率且受 RIS 容量约束的关联问题建模为混合整数非凸问题，并用分层多对一匹配求解：先把地面连接良好的用户关联到 TRIS，再把地面侧无法可靠服务的用户经非地面网络关联到 ARIS。\n\n仿真显示，该分层关联框架在可达网络总速率上显著优于贪心与随机关联方案。面向 FR3 与低空 RIS 部署的关联策略可直接对照。",
+      "detail_en": "When terrestrial base stations cannot reliably serve remote or blocked environments, space-air-ground integration is needed to fill coverage gaps. This paper proposes an RIS-assisted SAGIN in the FR3 upper mid-band: the terrestrial BS is the primary access node, a LEO satellite complements when terrestrial links are unavailable or miss QoS targets, and the network includes both terrestrial RISs (TRISs) and UAV-mounted RISs (ARISs).\n\nThe authors cast RIS association that maximizes network sum rate under RIS capacity constraints as a mixed-integer nonconvex problem, and solve it with hierarchical many-to-one matching: UEs with satisfactory terrestrial connectivity are first associated with TRISs, then UEs the terrestrial network cannot serve reliably are associated with ARISs through the non-terrestrial network.\n\nSimulations show the hierarchical framework significantly outperforms greedy and random association in achievable network sum rate. The association strategy is directly relevant to FR3 and low-altitude RIS deployments.",
+      "links": [
+        {
+          "label": "arXiv:2610.09010",
+          "url": "https://arxiv.org/abs/2610.09010"
+        }
+      ]
+    },
+    {
+      "title": "FLoRa：能量受限下 UAV 采集占空比 LoRa 节点",
+      "date": "10/6",
+      "title_en": "FLoRa: Flight-Assisted Data Collection from Duty Cycling LoRa Nodes under Energy Constraints",
+      "authors": "Naresh Babu Kakarla, V. Mahendran",
+      "summary": "用模拟退火规划航线、CMA-ES 定悬停点、POMDP 决定探测次数，并以 VIP 度量新鲜度收益。相对元启发式、贪心与深度强化学习基线，期望 VIP 分别高 30.6%、27.8%、15.2%。",
+      "summary_en": "Uses simulated annealing for routing, CMA-ES for hover points and POMDPs for probe counts, with a VIP freshness metric. Expected VIP beats metaheuristic, greedy and deep-RL baselines by 30.6%, 27.8% and 15.2%.",
+      "detail": "LoRa 物联网节点为省电而占空比工作，无人机采集时必须决定拜访谁、顺序、悬停位置和探测次数，同时数据新鲜度随时间衰减，电池又硬约束。\n\nFLoRa 用模拟退火做路径规划、CMA-ES 做悬停定位、POMDP 做节点探测决策；并提出面向拉取系统的信息价值（VIP）指标，奖励新鲜数据、惩罚失败探测。网络级 POMDP 被分解为节点级近似以降低复杂度。\n\n评估显示，相对元启发式、贪心与深度强化学习基线，总期望 VIP 分别提升 30.6%、27.8%、15.2%，节点覆盖提升 24.5%、29.2%、8.8%，成功采集提升 24.3%、25.6%、15.2%。",
+      "detail_en": "LoRa IoT nodes duty-cycle to save energy, so a UAV collector must choose which nodes to visit, in what order, where to hover and how often to probe, while data freshness decays and the battery is hard-constrained.\n\nFLoRa uses simulated annealing for path planning, CMA-ES for hover positioning and POMDPs for probe decisions, and introduces Value of Information for Pull-based systems (VIP), which rewards fresh data and penalizes failed probes. The network-wide POMDP is decomposed into node-level approximations for tractability.\n\nEvaluation shows total expected VIP rises 30.6%, 27.8% and 15.2% versus metaheuristic, greedy and deep-RL baselines, with node coverage up 24.5%, 29.2% and 8.8%, and successful collections up 24.3%, 25.6% and 15.2%.",
+      "links": [
+        {
+          "label": "arXiv:2610.09226",
+          "url": "https://arxiv.org/abs/2610.09226"
+        }
+      ]
+    },
+    {
+      "title": "6G NeXt：面向全息通信与无人机防撞的拆分计算",
+      "date": "10/6",
+      "title_en": "6G NeXt - Towards 6G Split Computing Network Applications: Use Cases and Architecture",
+      "authors": "Sergiy Melnyk, Qiuheng Zhou, Hans D. Schotten, Mandy Galkow-Schneider, Ingo Friese, Tobias Pfandzelter et al.",
+      "summary": "德国 6G NeXt 项目以全息通信和无人机防撞为用例，论证分布式骨干上的拆分计算，以及处理设施与无线网的紧耦合。该文给出用例需求与通信—计算整体架构。",
+      "summary_en": "Germany's 6G NeXt project uses holographic communications and drone collision avoidance as use cases to argue for split computing on a distributed backbone and tight coupling between processing and the radio network. The paper lays out requirements and an end-to-end communications–computing architecture.",
+      "detail": "6G 面向物理、人类与数字世界融合，对通信与计算同时提出异构需求。研究项目 6G NeXt 选取全息通信与无人机防撞两类用例：客户端在网络中广泛分布并协同交互，全息通信还需要高处理能力。\n\n作者认为，高速分布式骨干上的拆分计算（split computing）以及处理设施与无线网络的紧耦合，是满足服务质量的必要条件。\n\n该文梳理用例场景与需求，并给出相应的通信与计算整体架构及关键技术路径，为低时延机群协同与边缘拆分计算提供参考。",
+      "detail_en": "6G aims to converge the physical, human and digital worlds, placing heterogeneous demands on both communications and computing. The 6G NeXt research project focuses on holographic communications and drone anti-collision: clients are widely spread and interact cooperatively, and holography also needs high processing power.\n\nThe authors argue that split computing on a high-speed distributed backbone, plus tight integration between processing facilities and the wireless network, is required to deliver adequate QoS.\n\nThe paper maps the use-case scenarios and requirements, then outlines an overall communications and computing architecture and key technology paths, as a reference for low-latency swarm coordination and edge split computing.",
+      "links": [
+        {
+          "label": "arXiv:2610.08352",
+          "url": "https://arxiv.org/abs/2610.08352"
+        }
+      ]
+    },
+    {
+      "title": "空中走廊通感一体：三维 BPP 随机几何框架",
+      "date": "10/1",
+      "title_en": "Joint Communication and Sensing in Aerial Corridors: A Novel Stochastic Geometry Framework",
+      "authors": "Harris K. Armeniakos, Petros S. Bithas, Athanasios G. Kanatas, Harpreet S. Dhillon",
+      "summary": "把空中走廊建成有限圆柱，机载用户按三维二项点过程分布，分析装有 3GPP 三维天线的 UAV 基站在杂波与上行干扰下的通感覆盖概率，并给出精确解析式。",
+      "summary_en": "Models the aerial corridor as a finite cylinder with UAV-UEs as a 3D binomial point process, and derives exact expressions for the JCAS coverage probability of a UAV-BS with a 3GPP 3D antenna under clutter and uplink interference.",
+      "detail": "机群在空中走廊内运行时，通感一体（JCAS）可同时支撑跟踪与通信。该文将走廊建模为有限圆柱，固定数量的 UAV 用户按三维二项点过程（BPP）分布。\n\nUAV 基站配备现实的 3GPP 三维天线方向图，先用雷达感知跟踪已知 UAV 用户，再由该用户做上行通信；作者在杂波与上行干扰并存下分析通感覆盖概率，并导出精确解析表达式。\n\n结果表明，提高 UAV 基站天线波束指向性可带来明显的通感性能增益，在较短走廊上尤为显著。据作者称，这是首个以三维 BPP 建模空中走廊 JCAS 的随机几何框架。",
+      "detail_en": "In aerial corridors, joint communication and sensing (JCAS) can support tracking and communications at once. The paper models the corridor as a finite cylinder with a fixed number of UAV-UEs distributed as a 3D binomial point process (BPP).\n\nThe UAV-BS has a realistic 3GPP 3D antenna pattern, uses radar sensing to track a known UAV-UE, then receives that UE's uplink; the authors analyze JCAS coverage probability under clutter and uplink interference and derive exact-form expressions.\n\nResults show that increasing UAV-BS beam directivity yields notable JCAS gains, especially on shorter corridors. The authors say this is the first stochastic-geometry framework for aerial-corridor JCAS with UAV-UEs as a 3D BPP.",
+      "links": [
+        {
+          "label": "arXiv:2610.01359",
+          "url": "https://arxiv.org/abs/2610.01359"
+        }
+      ]
+    },
+    {
+      "title": "智能体无人机群：兴趣感知 Gossip 减半推理开销",
+      "date": "10/1",
+      "title_en": "Managing Context and Communication in Distributed Agentic UAV Swarms",
+      "authors": "Andrea Iannoli, Ivan Zyrianoff, Angelo Trotta, Lorenzo Gigli, Marco Di Felice",
+      "summary": "每机运行本地小语言模型，用结构化笔记与兴趣感知 gossip 选择性同步。十机搜救仿真中任务全部完成，相对无限制洪泛约减半推理 token，并降低幸存者计数误差。",
+      "summary_en": "Each UAV runs a local small language model and syncs selectively via structured notes and interest-aware gossip. In a ten-UAV search-and-rescue simulation every run completes, roughly halves inference tokens versus unrestricted flooding, and lowers survivor-count error.",
+      "detail": "分布式无人机群若每机跑独立小语言模型（SLM），可去掉中心协调器，但长交互历史会污染推理上下文，无差别扩散又推高通信与推理开销。\n\n作者提出事件驱动的 reason-act-observe 架构：运行时知识写成原子笔记，分为核心、本地与对端记忆；确定性兴趣感知 gossip 按接收方语义新颖度与近因选择性传播。\n\n十机搜救仿真中，该方法全部完成任务，无限制洪泛仅完成 70–85%，把转发决策交给 SLM 则无一完成；相对洪泛约减半推理 token、减少传输数据，并取得更低的幸存者计数误差。",
+      "detail_en": "If each UAV in a distributed swarm runs its own small language model (SLM), the central coordinator can go, but long interaction histories degrade reasoning context and indiscriminate dissemination raises communication and inference cost.\n\nThe authors propose an event-driven reason-act-observe architecture: runtime knowledge is stored as atomic notes in core, local and peer-specific memory, and a deterministic interest-aware gossip engine disseminates notes by recipient-specific semantic novelty and recency.\n\nIn a ten-UAV search-and-rescue simulation the method completes every run, unrestricted flooding completes only 70–85%, and delegating forwarding to the SLM completes none; versus flooding it roughly halves inference tokens, cuts transmitted data and achieves lower survivor-count error.",
+      "links": [
+        {
+          "label": "arXiv:2610.01569",
+          "url": "https://arxiv.org/abs/2610.01569"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "卫星与频谱",
+      "section_en": "Satellite & Spectrum",
+      "emoji": "🛰️",
+      "items": [
+        {
+          "title": "FCC 批准 SpaceX 1.5 万颗手机直连卫星",
+          "title_en": "FCC approves 15,000 SpaceX direct-to-cell satellites",
+          "date": "10/6",
+          "summary": "星座位于约 326–335 km 超低轨，FCC 同时豁免与地面运营商签租赁协议的要求，并获准使用 EchoStar 频谱与 T-Mobile PCS G 频段；现网约 650 颗、约 4 Mbps，新星座目标每用户 150 Mbps。",
+          "summary_en": "The constellation will sit in VLEO at about 326–335 km. The FCC also waived leasing agreements with terrestrial operators and cleared EchoStar spectrum plus T-Mobile's PCS G block; today's ~650 satellites deliver about 4 Mbps, while the new constellation targets 150 Mbps per user.",
+          "detail": "FCC 于美国时间周二（10/6）批准 SpaceX 发射并运营 1.5 万颗下一代 Starlink Mobile 卫星，申请于 2025 年 9 月提交。\n\nFCC 同时豁免其与地面运营商签租赁协议的要求。现有 Starlink Mobile 在美国经 T-Mobile 以 T-Satellite 提供，约 650 颗卫星，数据速率估计 4 Mbps；SpaceX 称新星座目标为每用户 150 Mbps。获批频段包括从 EchoStar 收购的频谱，以及 T-Mobile 的 PCS G 频段。\n\nPCMag 认为，该批准为 SpaceX 把 Starlink Mobile 做成可与美国三大运营商竞争的服务打开了监管路径。",
+          "detail_en": "The FCC on Tuesday (10/6, US time) approved SpaceX to launch and operate 15,000 next-generation Starlink Mobile satellites, under an application filed in September 2025.\n\nThe FCC also waived the requirement for leasing agreements with terrestrial operators. Current Starlink Mobile is offered in the US through T-Mobile as T-Satellite, with about 650 satellites and an estimated data rate of 4 Mbps; SpaceX says the new constellation targets 150 Mbps per user. Approved spectrum includes bands acquired from EchoStar and T-Mobile's PCS G block.\n\nPCMag says the grant opens a regulatory path for SpaceX to turn Starlink Mobile into a rival to the US big-three carriers.",
+          "links": [
+            {
+              "label": "PCMag",
+              "url": "https://uk.pcmag.com/wireless-carriers/167711/fcc-green-lights-spacexs-15000-satellites-for-starlink-mobile"
+            }
+          ]
+        },
+        {
+          "title": "FCC 10/29 议程：中频拍卖、SCS 扩容、无人机用 800 MHz",
+          "title_en": "FCC Oct 29 agenda: mid-band auction, SCS expansion, 800 MHz for drones",
+          "date": "10/7",
+          "summary": "拟就 1675–1695 与 2020–2025 MHz 共 25 MHz 征求意见，可用于地面 5G、D2D 或二者兼用；更新 SCS 规则并拟再开放约 482 MHz 可租赁频谱；将约 50 MHz 的 800 MHz 蜂窝频段向无人机开放。",
+          "summary_en": "Will seek comment on auctioning 25 MHz at 1675–1695 and 2020–2025 MHz for terrestrial 5G, D2D or both; update SCS rules and add about 482 MHz of leasable spectrum; and open about 50 MHz of 800 MHz cellular spectrum to drones.",
+          "detail": "FCC 于美国时间 10 月 7 日公布将于 10 月 29 日表决的一揽子无线事项。\n\n一是就拍卖 1675–1695 与 2020–2025 MHz 共 25 MHz 征求意见，可用于地面 5G、直连手机或二者兼用；其中 2020–2025 MHz 在批准 SpaceX 星座时被推迟审议。二是更新 2023 年落地的 Supplemental Coverage from Space（SCS）规则，拟再开放约 482 MHz 可租赁频谱并降低交易门槛。三是修订规则，向无人机开放约 50 MHz 的 800 MHz 蜂窝频段。\n\n同日议程还包括禁止“无互惠”国家的实验室做美方设备认证，拟 2028 年 12 月生效。",
+          "detail_en": "On October 7 (US time) the FCC published a slate of wireless items for an October 29 vote.\n\nOne seeks comment on auctioning 25 MHz at 1675–1695 and 2020–2025 MHz for terrestrial 5G, direct-to-device or both; the 2020–2025 MHz request was deferred when SpaceX's constellation was cleared. Another would update the 2023 Supplemental Coverage from Space (SCS) rules, adding about 482 MHz of spectrum eligible for leasing and lowering deal barriers. A third would open about 50 MHz of 800 MHz cellular spectrum to drones by fixing a rule that had barred them.\n\nThe same agenda includes barring labs in “non-reciprocal” countries from FCC equipment certification, set to take effect in December 2028.",
+          "links": [
+            {
+              "label": "Broadband Breakfast",
+              "url": "https://broadbandbreakfast.com/fcc-to-consider-new-spectrum-auction-slate-of-other-wireless-initiatives/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政策监管",
+      "section_en": "Policy & Regulation",
+      "emoji": "🏛️",
+      "items": [
+        {
+          "title": "FCC 拟禁止无互惠国家实验室为美国市场设备做检测",
+          "title_en": "FCC moves to bar non-reciprocal labs from testing devices for the US market",
+          "date": "10/7",
+          "summary": "10/29 表决，对象为不给美国实验室互惠待遇国家的检测与认证机构；Carr 称超 80% 的设备授权基于海外检测，禁令拟 2028 年 12 月生效。",
+          "summary_en": "Vote on 10/29, targeting test and certification bodies in countries that deny reciprocity to US labs; Carr says more than 80% of device authorizations rely on overseas testing, with the ban set for December 2028.",
+          "detail": "据 Broadband Breakfast，FCC 将在 10 月 29 日就禁止“无互惠”国家的测试实验室和认证机构办理 FCC 设备认证进行表决，禁令拟于 2028 年 12 月生效。\n\nFCC 主席 Carr 在博客中称，超过 80% 的电子设备授权基于海外检测。FCC 近年已取消部分其认为与中国政府关联过密的实验室资质。\n\n若通过，面向美国市场的终端与通信设备需更多转向有互惠安排的实验室完成认证。",
+          "detail_en": "According to Broadband Breakfast, the FCC will vote on October 29 on barring testing labs and certification bodies in “non-reciprocal” countries from handling FCC equipment certifications, with the ban set to take effect in December 2028.\n\nFCC Chairman Carr wrote that more than 80% of electronics authorizations are based on overseas testing. The agency has already been de-certifying labs it says are too closely tied to the Chinese government.\n\nIf adopted, devices and telecom equipment for the US market would need more certifications at labs covered by reciprocal arrangements.",
+          "links": [
+            {
+              "label": "Broadband Breakfast",
+              "url": "https://broadbandbreakfast.com/fcc-to-consider-new-spectrum-auction-slate-of-other-wireless-initiatives/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "设备商与算力",
+      "section_en": "Vendors & Compute",
+      "emoji": "🏭",
+      "items": [
+        {
+          "title": "华为发布 Peerium 架构与灵衢总线，测试 25.6 万卡超节点",
+          "title_en": "Huawei unveils Peerium architecture and UnifiedBus; testing 256k-card SuperPoD",
+          "date": "10/6",
+          "summary": "HC 大会上徐直军介绍 Peerium 与灵衢（UB）：目标让百万级处理器成为一台计算机；Atlas 950 SuperPoD 25.6 万卡规模已在部署测试，950DT 训练超节点预计年底或明年初规模供货。",
+          "summary_en": "At HC, Eric Xu described Peerium and UnifiedBus (UB) as aiming to make a million processors act as one computer; the 256,000-card Atlas 950 SuperPoD is already being deployed and tested, with 950DT training SuperPoDs due for volume supply by end-2026 or early 2027.",
+          "detail": "在上海华为全联接大会期间，轮值董事长徐直军与海思首席科学家廖恒介绍 AI 时代计算架构 Peerium 与高速总线灵衢（UnifiedBus）。Peerium 基于嵌套并行、统一内存寻址与平等互联，目标让百万级处理器成为一台计算机。\n\nAtlas 950 超节点即采用该架构，25.6 万卡规模集群已在部署和测试。昇腾 950PR 面向推理已于 2026 年一季度上市；基于 950DT 的训练超节点仍在测试，规模供货预计今年年底或明年初。\n\n华为同步强调基于 NPO 的 Hi-ONE 模组（支持 7.2T），并称柜间带宽最高可达 800 GB/s。徐直军表示，从华为可统计数据看，国内昇腾份额应已超过英伟达，但国内需求仍远未满足。",
+          "detail_en": "During Huawei Connect in Shanghai, rotating chairman Eric Xu and HiSilicon chief scientist Liao Heng described the Peerium AI computing architecture and the UnifiedBus (UB) high-speed bus. Peerium uses nested parallelism, unified memory addressing and peer interconnect, aiming to make a million processors act as one computer.\n\nThe Atlas 950 SuperPoD uses that architecture; a 256,000-card cluster is already being deployed and tested. Ascend 950PR for inference launched in Q1 2026; 950DT-based training SuperPoDs are still in testing, with volume supply expected by end-2026 or early 2027.\n\nHuawei also highlighted the NPO-based Hi-ONE module (7.2T) and said inter-rack bandwidth can reach 800 GB/s. Xu said Ascend's share in China should already exceed NVIDIA on Huawei's measurable data, while domestic demand remains far from met.",
+          "links": [
+            {
+              "label": "科创板日报/腾讯新闻",
+              "url": "https://news.qq.com/rain/a/20261006A07SVG00"
+            }
+          ]
+        },
+        {
+          "title": "华为与高通签署多年期专利交叉许可",
+          "title_en": "Huawei and Qualcomm sign multi-year patent cross-license",
+          "date": "10/5",
+          "summary": "覆盖 5G、计算、AI 与网络的交叉许可，高通还将购买华为部分非蜂窝领域美国专利，尚待监管批准。双方称遵循 FRAND，未披露财务条款。",
+          "summary_en": "A cross-license covering 5G, compute, AI and networking; Qualcomm will also buy some of Huawei's non-cellular US patents, pending regulatory approval. Both cite FRAND; financial terms were not disclosed.",
+          "detail": "华为与高通 10 月 5 日宣布签署多年期广泛专利许可协议：双方交叉许可 5G、计算、AI 和网络等领域的专利组合，高通还将购买华为在计算、AI、网络等领域的部分美国专利。交易需获得监管批准后完成。\n\n华为称该协议展示其创新价值；高通技术许可业务负责人 John Han 称协议再次确认其 5G SEP 地位，并体现对华为持续创新的认可。\n\n财务条款、期限和具体专利数量均未披露。这是双方关系中首份明确覆盖 5G 的许可安排。",
+          "detail_en": "Huawei and Qualcomm announced on October 5 a multi-year broad patent license: cross-licenses to portfolios in 5G, compute, AI and networking, plus Qualcomm's purchase of certain Huawei US patents in compute, AI, networking and related fields. The deal requires regulatory approvals to close.\n\nHuawei said the agreement shows the value of its innovation; Qualcomm licensing head John Han said it reaffirms Qualcomm's 5G SEP standing and recognizes Huawei's ongoing advances.\n\nFinancial terms, duration and patent counts were not disclosed. It is the first arrangement between them that explicitly covers 5G.",
+          "links": [
+            {
+              "label": "华为",
+              "url": "https://www.huawei.com/en/news/2026/10/qualcomm-broad-patent-agreement"
+            }
+          ]
+        },
+        {
+          "title": "爱立信谈 6G：多厂商 RAN 主路径仍是地理分片",
+          "title_en": "Ericsson on 6G: multi-vendor RAN still mainly by geography",
+          "date": "10/7",
+          "summary": "爱立信称 6G 时代 RAN 内部接口可做多厂商互通，但预期主部署模式仍是按厂商地理分区，站点内跨厂商组合多为“基本/有限性能”。对已深度绑定爱立信的 AT&T 构成观感压力。",
+          "summary_en": "Ericsson says 6G RAN-internal interfaces can be multi-vendor, but expects the main deployment model to remain geographic vendor areas, with cross-vendor mixes at a site offering only “basic/limited performance.” That sits awkwardly with AT&T's deep Ericsson reliance.",
+          "detail": "Light Reading 10 月 7 日报道，爱立信在近期 6G 网络架构更新中称：RAN 内部接口可作为潜在多厂商接口并做互通测试，但“至少是基本/有限性能/特性”；预期多厂商 RAN 的主部署模式仍是按厂商地理分区，依托区间移动接口。\n\n报道回顾 AT&T 约 140 亿美元爱立信合同被称作 Open RAN，但宏站层面基本由爱立信承接原诺基亚份额；截至今年 5 月，仅两个城市共 21 个站点使用戴尔服务器托管的通用处理器云化 RAN。\n\n分析认为，在 AT&T 基本去掉诺基亚后，地理分片空间有限，而依赖第三方射频接入爱立信基带的路径，正是爱立信自己标注为有限性能的模式。",
+          "detail_en": "Light Reading reported on October 7 that Ericsson's recent 6G architecture update says RAN-internal interfaces can be potential multi-vendor interfaces with interoperability testing, but “at least with basic/limited performance/features,” and that the main multi-vendor RAN model will remain geographic vendor areas using an inter-RAN area mobility interface.\n\nThe piece revisits AT&T's roughly $14 billion Ericsson contract branded as open RAN, under which Ericsson also took over Nokia's share of macro sites; as of May this year only 21 sites in two cities used Dell servers hosting general-purpose processors for cloud RAN.\n\nAnalysts note that after AT&T largely removed Nokia, geographic splits are largely off the table, while third-party radios on an Ericsson foundation is the arrangement Ericsson itself labels limited-performance.",
+          "links": [
+            {
+              "label": "Light Reading",
+              "url": "https://www.lightreading.com/6g/ericsson-s-6g-talk-puts-at-t-in-a-tight-spot"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "运营商",
+      "section_en": "Operators",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "中国电信回应原员工实名举报",
+          "title_en": "China Telecom responds to former employee's whistleblower allegations",
+          "date": "10/6",
+          "summary": "原员工举报“国家工业互联网大数据中心”项目存在围标串标等问题；中国电信称项目已于 2024 年专项核查，言论与事实不符，并以长期旷工为由已解除劳动关系。",
+          "summary_en": "A former employee alleged bid-rigging in the “National Industrial Internet Big Data Center” project; China Telecom said the project had a special review in 2024, that the claims are inconsistent with the facts, and that employment was ended for prolonged absence.",
+          "detail": "原中国电信员工郑某实名举报多名高管，称“国家工业互联网大数据中心”项目存在组织围标串标、伪造合同等问题，涉及违规套取 3800 万元财政资金，并列举“13 天完工”、33779 人日等工作量指控。\n\n10 月 6 日，中国电信政企服务方面回应：郑某自 2023 年起无正当理由旷工 635 天，已于 2026 年 8 月 31 日依法解除劳动关系；该项目已于 2024 年做过内部专项核查，相关言论与事实不符。\n\n举报与回应同日发酵，后续是否有监管或审计跟进仍待观察。",
+          "detail_en": "Zheng, a former China Telecom employee, made real-name allegations against several executives, claiming the “National Industrial Internet Big Data Center” project involved organized bid-rigging and forged contracts and the improper extraction of RMB 38 million in government funds, citing claims such as “completed in 13 days” and 33,779 person-days.\n\nOn October 6, China Telecom's enterprise unit said Zheng had been absent without valid reason for 635 days since 2023 and that the employment relationship was lawfully ended on August 31, 2026; it said the project underwent a special internal review in 2024 and that the claims are inconsistent with the facts.\n\nThe allegation and response circulated the same day; any further regulatory or audit follow-up remains to be seen.",
+          "links": [
+            {
+              "label": "新浪财经",
+              "url": "https://finance.sina.com.cn/roll/2026-10-07/doc-iniukaap5147489.shtml"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notion_url": "https://app.notion.com/p/3f33a1fdbe1881e4adaed5ed3222e51f"
+}
