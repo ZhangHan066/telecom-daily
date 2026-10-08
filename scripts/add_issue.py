@@ -63,6 +63,11 @@ def check_links(links: object, path: str, errors: list[str]) -> None:
         check_url(link.get("url"), f"{where}.url", errors)
 
 
+def optional_str(obj: dict, key: str, path: str, errors: list[str]) -> None:
+    if key in obj and not isinstance(obj[key], str):
+        errors.append(f"{path}.{key} must be a string")
+
+
 def check_item(item: object, path: str, errors: list[str], *, paper: bool) -> None:
     if not isinstance(item, dict):
         errors.append(f"{path} must be an object")
@@ -77,10 +82,13 @@ def check_item(item: object, path: str, errors: list[str], *, paper: bool) -> No
     # Optional long text. Paragraphs are separated by a blank line; do not parse it.
     if "detail" in item and not isinstance(item["detail"], str):
         errors.append(f"{path}.detail must be a string")
+    for key in ("summary_en", "detail_en"):
+        optional_str(item, key, path, errors)
     if paper:
         for key in ("title_en", "authors"):
-            if key in item and not isinstance(item[key], str):
-                errors.append(f"{path}.{key} must be a string")
+            optional_str(item, key, path, errors)
+    else:
+        optional_str(item, "title_en", path, errors)
     if "links" in item:
         check_links(item["links"], f"{path}.links", errors)
 
@@ -97,6 +105,8 @@ def validate(issue: object) -> list[str]:
 
     for key in ("weekday", "title", "theme"):
         require_str(issue, key, "issue", errors)
+    for key in ("weekday_en", "theme_en"):
+        optional_str(issue, key, "issue", errors)
 
     cover = issue.get("cover")
     if not isinstance(cover, dict):
@@ -138,6 +148,7 @@ def validate(issue: object) -> list[str]:
                 errors.append(f"{where} must be an object")
                 continue
             require_str(group, "section", where, errors)
+            optional_str(group, "section_en", where, errors)
             if "emoji" in group and not isinstance(group["emoji"], str):
                 errors.append(f"{where}.emoji must be a string")
             items = group.get("items")
@@ -154,7 +165,7 @@ def validate(issue: object) -> list[str]:
 
 
 def index_entry(issue: dict) -> dict:
-    return {
+    entry = {
         "date": issue["date"],
         "weekday": issue["weekday"],
         "title": issue["title"],
@@ -162,6 +173,11 @@ def index_entry(issue: dict) -> dict:
         "cover": issue["cover"]["url"],
         "highlights": issue["highlights"],
     }
+    for key in ("weekday_en", "theme_en"):
+        value = issue.get(key)
+        if isinstance(value, str) and value.strip():
+            entry[key] = value
+    return entry
 
 
 def read_json(path: Path) -> object:
