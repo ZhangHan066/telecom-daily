@@ -46,8 +46,10 @@ python3 -m http.server 8000
 | --- | --- | --- |
 | `date` | string | `YYYY-MM-DD`，须是真实日历日期，并作为文件名 |
 | `weekday` | string | 星期，如 `周四` |
+| `weekday_en` | string | 可省略。英文星期，如 `Thu`。英文界面没有该字段时仍显示中文 |
 | `title` | string | 这一期的标题 |
-| `theme` | string | 封面大标题 |
+| `theme` | string | 主题，用于往期列表 |
+| `theme_en` | string | 可省略。英文主题。英文界面没有该字段时仍显示中文 |
 | `cover.url` | string | 封面图，`http` 或 `https` |
 | `cover.credit` | string | 封面署名，可省略 |
 | `cover.source` | string | 封面来源链接，可省略 |
@@ -56,13 +58,17 @@ python3 -m http.server 8000
 | `industry` | array | 行业分组，见下 |
 | `notion_url` | string | 可省略。有则页头显示 Notion 链接 |
 
-`research[]`：`title`、`date`、`summary` 必填；`title_en`、`authors`、`links`、`detail` 可省略。
+`research[]`：`title`、`date`、`summary` 必填；`title_en`、`authors`、`summary_en`、`detail_en`、`links`、`detail` 可省略。`title_en` 是英文论文标题。英文界面用它做条目标题；中文界面的对话框里，它仍以斜体出现在中文标题下面。页面不使用 `title_en_display`。
 
-`industry[]`：`section`、`items` 必填；`emoji` 可省略。
+`industry[]`：`section`、`items` 必填；`section_en`、`emoji` 可省略。
 
-`items[]` 与论文相同，但没有 `title_en` / `authors`：`title`、`date`、`summary` 必填；`links`、`detail` 可省略。
+`items[]`：`title`、`date`、`summary` 必填；`title_en`、`summary_en`、`detail_en`、`links`、`detail` 可省略。行业条目没有 `authors`。
 
-`detail` 是可选字符串，给对话框用。宽屏条目只显示标题、日期和分类，摘要收起；较窄屏幕摘要最多一行。点开后若有 `detail` 就显示它，否则显示 `summary`。多段之间用空行分开，也就是 JSON 里的 `\n\n`，页面会渲染成多个段落。
+英文界面按字段回退：某个英文字段为空或不存在时，这一项仍显示对应的中文，其它字段不受影响。页头的「中 / EN」会记住在本地（`localStorage` 键 `telecom-daily-lang`），默认中文。
+
+`detail` 是可选字符串，给对话框用。条目上显示标题、最多两行 `summary`、日期和分类。点开后若有 `detail` 就显示它，否则显示 `summary`。多段之间用空行分开，也就是 JSON 里的 `\n\n`，页面会渲染成多个段落。英文界面优先用 `detail_en` / `summary_en`。
+
+`highlights` 仍写在 JSON 里，页面不再展示「今日要点」。
 
 `links[]`：`{label, url}`，`url` 为 `http` 或 `https`。
 
@@ -80,6 +86,7 @@ python3 -m http.server 8000
       "weekday": "周四",
       "title": "通信行业日报 · 2026-10-08（周四）",
       "theme": "卫星直连手机加速落地",
+      "theme_en": "Direct-to-device satellite service gathers pace",
       "cover": "https://example.com/cover.jpg",
       "highlights": [
         { "label": "科研", "text": "……" }

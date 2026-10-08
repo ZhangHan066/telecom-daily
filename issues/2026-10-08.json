@@ -1,8 +1,10 @@
 {
   "date": "2026-10-08",
   "weekday": "周四",
+  "weekday_en": "Thu",
   "title": "通信行业日报 · 2026-10-08（周四）",
   "theme": "卫星直连手机加速落地",
+  "theme_en": "Direct-to-device satellite service gathers pace",
   "cover": {
     "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Constellation_satellites_in_low_Earth_orbits_%28artist%E2%80%99s_impression%2C_not_to_scale%29_%28noirlab2022a%29.jpg",
     "credit": "NOIRLab/NSF/AURA/P. Marenfeld / CC BY 4.0",
@@ -29,7 +31,9 @@
       "title_en": "Who Can Safely Wait? Risk-Aware 5G Scheduling for Low-Altitude UAV Operation",
       "authors": "André Melo, Yueqi Chen, Lourenço Pereira Jr., Igor Kadota",
       "summary": "把信息新鲜度和飞行场景换算为单机运行风险，按风险边际增长排序，用 Max-Weight 做上行调度。在最多 120 架无人机的配送和赛事场景中，99 分位风险比 PF 低最多 96%。调度目标从网络 KPI 转向飞行安全后果，可直接借鉴到低空专网。",
+      "summary_en": "Converts information freshness and flight context into per-UAV operational risk, ranks UAVs by marginal risk growth and schedules the uplink with Max-Weight. In delivery and race-event scenarios with up to 120 UAVs, 99th-percentile risk is up to 96% lower than with PF. Shifting the scheduling objective from network KPIs to flight-safety outcomes carries over directly to low-altitude private networks.",
       "detail": "蜂窝网联无人机已在多国投入运行，但蜂窝网络按地面用户设计，调度时不考虑低空飞行器信息延迟带来的运行后果。\n\n作者提出 Risk-Aware（RA）框架：把信息新鲜度和运行情境换算为单机运行风险，用监管启发的风险代理指标和风险边际增长决定优先级，再由带 Lyapunov 性能保证的 Max-Weight 调度器分配上行资源，同时权衡单时隙与多时隙更新的服务开销。\n\n评估覆盖 48 个工作点、最多 120 架无人机，场景为圣保罗配送和 Interlagos F1 赛事。RA 的 99 分位单机风险比比例公平（PF）低最多 96%，比轮询（RR）低 86%；在相同风险范围内，可支持的机队规模分别是 PF 的 1.5 倍、RR 的 3 倍。",
+      "detail_en": "Cellular-connected UAVs are already operating in several countries, but cellular networks are designed for ground users, and their schedulers ignore the operational consequences of stale information from low-altitude aircraft.\n\nThe authors propose a Risk-Aware (RA) framework that maps information freshness and operational context to per-UAV operational risk, sets priorities using regulation-inspired risk proxies and marginal risk growth, and allocates uplink resources with a Max-Weight scheduler backed by Lyapunov performance guarantees, while trading off the service cost of single-slot and multi-slot updates.\n\nThe evaluation spans 48 operating points and up to 120 UAVs in São Paulo delivery and Interlagos F1 event scenarios. RA cuts 99th-percentile per-UAV risk by up to 96% versus proportional fair (PF) and 86% versus round robin (RR); within the same risk envelope, it supports fleets 1.5x the size of PF and 3x that of RR.",
       "links": [
         {
           "label": "arXiv:2610.07101",
@@ -43,7 +47,9 @@
       "title_en": "Toward Lightweight Aerial 5G gNBs: Reproducible OAI Testbed on Commodity ARM Platforms",
       "authors": "Marc Duboc, Ammar El Falou",
       "summary": "核心网和 CU 留在地面，机上只放 DU、射频和回传。Jetson Orin Nano 保持 x86 约 88% 的下行吞吐，整机约 657 g、28 W，并开源了经 F1 下发 PWS 告警的补丁。为应急通信无人机基站提供了可复现的重量、功耗和吞吐基线。",
+      "summary_en": "The core network and CU stay on the ground; only the DU, radio and backhaul fly. A Jetson Orin Nano retains about 88% of x86 downlink throughput, the airborne setup weighs about 657 g and draws 28 W, and the authors open-source a patch that delivers PWS alerts over F1. It gives emergency UAV base stations a reproducible baseline for weight, power and throughput.",
       "detail": "电池供电的无人机基站上，RAN 计算每多一克、一瓦都会压缩续航。作者把 5GC 和 CU 留在地面，机上只保留回传端点、DU 和射频，验证商用 ARM 计算机能否运行带真实射频的 OAI 5G DU。\n\n测试平台为 Raspberry Pi 5、Jetson Orin Nano、USRP B210 和商用手机，回传用以太网、Wi-Fi/GRE 和 5G/WireGuard。Jetson 保持 x86 分离式 DU 以太网下行吞吐的 88.4%；5G/WireGuard 回传保持各主机有线下行速率的 76.4–77.1%。\n\n验证过的电子部分重 657.4 g，持续业务功耗约 28 W；主导 MCS 从 3 升到 26 时，分离式下行从 23.4 提升到 99.4 Mb/s。作者开源了经 F1 由 CU 向 DU 传递 PWS 告警、通过 SIB8 下发到手机的 OAI 补丁。",
+      "detail_en": "On a battery-powered UAV base station, every extra gram and watt of RAN compute cuts flight time. The authors keep the 5GC and CU on the ground, fly only the backhaul endpoint, DU and radio, and test whether commercial ARM computers can run an OAI 5G DU with real RF.\n\nThe testbed uses a Raspberry Pi 5, Jetson Orin Nano, USRP B210 and commercial phones, with Ethernet, Wi-Fi/GRE and 5G/WireGuard backhaul. The Jetson retains 88.4% of the downlink throughput of an x86 split DU over Ethernet; 5G/WireGuard backhaul retains 76.4–77.1% of each host's wired downlink rate.\n\nThe validated electronics weigh 657.4 g and draw about 28 W under sustained traffic; as the dominant MCS rises from 3 to 26, split-mode downlink increases from 23.4 to 99.4 Mb/s. The authors open-source an OAI patch that carries PWS alerts from CU to DU over F1 and delivers them to phones via SIB8.",
       "links": [
         {
           "label": "arXiv:2610.05007",
@@ -57,7 +63,9 @@
       "title_en": "Channel Knowledge Maps for FR3 UAV Base Stations: Dataset and ML-based Modeling",
       "authors": "Guillem Moreno Garcia, Sergi Abadal, Evgenii Vinogradov",
       "summary": "16180 个样本，机载基站高度至 500 m，含 LOS 状态、衰减、时延扩展和角度扩展。配套的高度感知衰减模型在未见城市上 RMSE 1.93 dB。FR3 是 6G 重点频段，可直接用于空中基站覆盖仿真。",
+      "summary_en": "16,180 samples with airborne base-station heights up to 500 m, covering LOS state, attenuation, delay spread and angular spread. The accompanying height-aware attenuation model reaches 1.93 dB RMSE on unseen cities. FR3 is a key 6G band, and the dataset can be used directly for aerial base-station coverage simulation.",
       "detail": "该文发布面向机载基站（UxNB）的 FR3 上中频段信道知识图（CKM）数据集：频点 7.125 GHz，覆盖 66 个城市的 3236 个城区位置，共 16180 个样本，UxNB 高度最高 500 m。每个 513×513 样本记录建筑几何、LOS 状态、衰减、时延扩展、角度扩展和发射高度。\n\n作为首个用例，作者提出可解释的高度感知衰减模型：LOS 分支由自由空间损耗、两径项和基于数据的高度/距离标定组成；NLOS 分支以 COST 231-Hata 为基础，加局部环境线性标定。\n\n在 14 个未见城市、500 多个位置（共 2590 个样本）上，整体 RMSE 为 1.93 dB，其中 LOS 1.74 dB、NLOS 3.54 dB。数据集可直接用于 FR3 空中基站的覆盖与衰减建模。",
+      "detail_en": "The paper releases an FR3 upper mid-band channel knowledge map (CKM) dataset for UAV-mounted base stations (UxNB): 7.125 GHz, 3,236 urban locations across 66 cities, 16,180 samples in total, with UxNB heights up to 500 m. Each 513×513 sample records building geometry, LOS state, attenuation, delay spread, angular spread and transmitter height.\n\nAs a first use case, the authors propose an interpretable height-aware attenuation model: the LOS branch combines free-space loss, a two-ray term and data-driven height/distance calibration; the NLOS branch builds on COST 231-Hata with local linear environmental calibration.\n\nOn 14 unseen cities and more than 500 locations (2,590 samples), overall RMSE is 1.93 dB, with 1.74 dB for LOS and 3.54 dB for NLOS. The dataset can be used directly for coverage and attenuation modeling of FR3 aerial base stations.",
       "links": [
         {
           "label": "arXiv:2610.06356",
@@ -71,7 +79,9 @@
       "title_en": "LiLib: Lifelong Air-to-Ground Path-Loss Prediction on UAVs via a Drift-Triggered Model Library",
       "authors": "Minh Tran",
       "summary": "无人机维护一个小型 RLS 专家库，检测到环境漂移后复用旧模型或新建。路损预测 RMSE 从 5.89 dB 降到 4.03 dB，模型库不到 0.5 KB。适合机载中继或空中基站的链路自适应。",
+      "summary_en": "Each UAV keeps a small library of RLS experts, reusing an old model or creating a new one when environmental drift is detected. Path-loss RMSE drops from 5.89 dB to 4.03 dB with a library under 0.5 KB. Suited to link adaptation on UAV relays and aerial base stations.",
       "detail": "作为中继或基站的无人机需要准确的空地路损预测来做速率自适应和部署，但它在郊区、城区和高楼区之间移动时传播条件会变，而且常常回到同一区域。靠遗忘来适应的在线回归器每次都要重新学习，单一全局模型又会把不同环境平均掉。\n\nLiLib 让无人机维护一个小型递归最小二乘（RLS）专家库：用窗口残差检验发现漂移，短暂探测后复用最合适的已有专家或新建一个。\n\n基于四种标准城市化场景的仿真中，RMSE 从 5.89 dB（最佳滑动窗口基线）降到 4.03 dB；回到已知环境后的误差从 12.3 dB 降到 5.7 dB；速率自适应达到理想基线 99% 的吞吐。四个专家占用不到 0.5 KB，无标签环境识别纯度 92%；用同伴的模型库初始化第二架无人机，环境切换后误差减半。",
+      "detail_en": "UAVs acting as relays or base stations need accurate air-to-ground path-loss prediction for rate adaptation and placement, but propagation conditions change as they move between suburban, urban and high-rise areas, and they often return to the same areas. Online regressors that adapt by forgetting must relearn every time, while a single global model averages different environments together.\n\nLiLib has the UAV maintain a small library of recursive least squares (RLS) experts: a windowed residual test detects drift, and after a brief probe the UAV reuses the best-matching existing expert or creates a new one.\n\nIn simulations across four standard urbanization scenarios, RMSE falls from 5.89 dB (best sliding-window baseline) to 4.03 dB; error on returning to a known environment drops from 12.3 dB to 5.7 dB; and rate adaptation reaches 99% of the oracle baseline's throughput. Four experts take under 0.5 KB, unlabeled environment identification reaches 92% purity, and initializing a second UAV with a peer's library halves its error after environment switches.",
       "links": [
         {
           "label": "arXiv:2610.07111",
@@ -85,7 +95,9 @@
       "title_en": "Beamforming and Trajectory Optimization for Aerial RIS-Aided Secure ISAC via Model Predictive Control",
       "authors": "Zhendong Li, Zesheng Zhang, Zhou Su, Ziwei Liu, Ying Wang, Wen Chen",
       "summary": "无人机载 RIS 建立虚拟视距链路，同时服务用户并感知窃听者；联合优化轨迹、基站波束与人工噪声、RIS 相移。用 MPC 滚动求解，相比静态方案保密速率更高、对扰动更鲁棒。",
+      "summary_en": "A UAV-mounted RIS creates virtual LoS links, serving users while sensing eavesdroppers; UAV trajectory, base-station beamforming and artificial noise, and RIS phase shifts are optimized jointly. Solved on a receding horizon with MPC, the scheme achieves a higher secrecy rate than static schemes and is more robust to disturbances.",
       "detail": "该文提出无人机载 RIS 辅助的安全通感（ISAC）架构：RIS 随无人机飞行，建立虚拟视距链路绕开遮挡，在服务合法用户的同时感知潜在窃听者。\n\n问题建模为无限时域动态控制：最大化长期平均保密速率并降低飞行能耗，联合优化无人机轨迹、基站有源波束与人工噪声、RIS 相移，满足雷达信噪比和无人机运动学约束。变量高度耦合且非凸，作者用模型预测控制（MPC）在线求解，每个滚动时域内用交替优化拆成三个子问题，分别以逐次凸近似和 DC 规划求解。\n\n仿真显示，MPC 方案的保密速率明显优于静态基线，并具备在线纠偏能力和对环境扰动的鲁棒性。摘要未给出具体数值。",
+      "detail_en": "The paper proposes a secure ISAC architecture assisted by a UAV-mounted RIS: the RIS flies with the UAV, creating virtual line-of-sight links around blockages and sensing potential eavesdroppers while serving legitimate users.\n\nThe problem is cast as infinite-horizon dynamic control: maximize long-term average secrecy rate while reducing flight energy, jointly optimizing UAV trajectory, base-station active beamforming and artificial noise, and RIS phase shifts, subject to radar SNR and UAV kinematic constraints. Because the variables are highly coupled and non-convex, the authors solve the problem online with model predictive control (MPC), using alternating optimization within each receding horizon to split it into three subproblems solved by successive convex approximation and DC programming.\n\nSimulations show the MPC scheme clearly outperforms static baselines in secrecy rate, with online correction capability and robustness to environmental disturbances. The abstract gives no specific figures.",
       "links": [
         {
           "label": "arXiv:2610.04885",
@@ -99,7 +111,9 @@
       "title_en": "Waveform Randomization for Secure ISAC",
       "authors": "Zexin Fang, Bin Han, Shuangyang Li, Hans D. Schotten",
       "summary": "用相位密钥和切向人工噪声随机化感知波形，窃听者无法构造相干匹配参考。重点考虑视距占优的空中窃听者，包括同时监听直达和回波的情形。不依赖波束或功率分配，属于波形层防护。",
+      "summary_en": "Randomizes the sensing waveform with a phase key and tangential artificial noise, so eavesdroppers cannot build a coherent matched reference. The focus is LoS-dominant airborne eavesdroppers, including those listening to both the direct and echo paths. Protection works at the waveform layer, without relying on beamforming or power allocation.",
       "detail": "该文研究通感一体化的波形层安全。方法不依赖空间波束或功率分配，而是在傅里叶曲线星座上施加相位密钥和切向人工噪声，直接随机化感知波形：掌握密钥的合法节点能恢复感知参考，窃听者只能看到随机化波形，无法构造正确的相干匹配参考。\n\n威胁模型是视距占优、充分利用有利几何的无人机载窃听者，包括同时监听直达和回波两侧的旁路场景；还考虑了试图从长期观测重建相位密钥的更强窃听者，此时残余密钥失配仍会削弱相关和人工噪声抵消，精确恢复密钥则计算复杂度很高。\n\n数值结果显示，该设计降低了窃听者用非相干检测发现感知参考的概率，旁路场景下显著抑制其正确时延锁定概率，合法接收端则靠回波累积可靠锁定。",
+      "detail_en": "The paper addresses waveform-level security for ISAC. Rather than relying on spatial beamforming or power allocation, it applies a phase key and tangential artificial noise to a Fourier-curve constellation to randomize the sensing waveform directly: legitimate nodes holding the key can recover the sensing reference, while eavesdroppers see only a randomized waveform and cannot build the correct coherent matched reference.\n\nThe threat model is a LoS-dominant UAV-borne eavesdropper exploiting favorable geometry, including a bypass scenario that listens to both the direct and echo paths. It also considers a stronger eavesdropper trying to reconstruct the phase key from long-term observations; residual key mismatch still degrades its correlation and artificial-noise cancellation, while exact key recovery is computationally expensive.\n\nNumerical results show the design lowers the eavesdropper's probability of detecting the sensing reference with non-coherent detection and sharply suppresses its probability of correct delay lock in the bypass scenario, while the legitimate receiver locks reliably through echo accumulation.",
       "links": [
         {
           "label": "arXiv:2610.07994",
@@ -113,7 +127,9 @@
       "title_en": "When Weak Reports Matter: Staged Anchored Fusion for Cooperative UAV Sensing",
       "authors": "Xingqin Lin",
       "summary": "先确认强报告，再用未使用的强锚点按需查询弱报告。五机仿真中比严格共识多检出 30 个目标、仅多 3 个虚警，弱报告上传减少 97.4%。在带宽受限的机群中兼顾检测率与回传开销。",
+      "summary_en": "Strong reports are confirmed first, then unused strong anchors query weak reports on demand. In five-UAV simulations the scheme detects 30 more targets than strict consensus with only 3 more false alarms, while cutting weak-report uploads by 97.4%. It balances detection rate against backhaul overhead in bandwidth-limited swarms.",
       "detail": "多节点协同感知中，各节点本地的多径抑制可能把融合所需的证据一并删掉。\n\n该文提出分阶段锚定恢复：先保留仅由强报告给出的确认，再利用未被使用的强锚点查询与之兼容的弱报告。作者证明了对任意节点数的无损残差筛选，并推导了佐证与双向开销规律。\n\n在 1024 次五机随机部署中，与严格共识相比，恢复方案多匹配 30 个目标、多 3 个虚警，检测数与一次性锚定确认相同，但弱报告上传减少 97.4%；使用等长提示/报告记录时，载荷比上传全部合格报告少 4.5%。独立验证中又多恢复 4 个目标，未观察到虚警。",
+      "detail_en": "In multi-node cooperative sensing, local multipath suppression at each node can discard evidence that fusion needs.\n\nThe paper proposes staged anchored recovery: first keep confirmations supported by strong reports alone, then use unused strong anchors to query compatible weak reports. The author proves lossless residual screening for any number of nodes and derives scaling laws for corroboration and two-way overhead.\n\nIn 1,024 random five-UAV deployments, compared with strict consensus, the recovery scheme matches 30 more targets with 3 more false alarms, and detects as many targets as one-shot anchored confirmation while cutting weak-report uploads by 97.4%; with equal-length hint/report records, payload is 4.5% lower than uploading all qualifying reports. Independent validation recovered 4 more targets, with no false alarms observed.",
       "links": [
         {
           "label": "arXiv:2610.07747",
@@ -127,7 +143,9 @@
       "title_en": "Catastrophic Forgetting in Sequential Thermal Anti-UAV Detection: The Role of Scale-Conditioned Gradient Imbalance",
       "authors": "Khac Duc Giang Nguyen, Seyed Sahand Mohammadi Ziabari, Ali Mohammed Mansoor Alsahag",
       "summary": "在三个反无人机数据集上序贯微调，朴素微调丢失约 90% 能力，知识蒸馏可保持约 95%，按目标尺度分层回放可将遗忘减半。对反无人机系统持续更新模型有参考价值。",
+      "summary_en": "Sequential fine-tuning across three counter-UAV datasets: naive fine-tuning loses about 90% of capability, knowledge distillation retains about 95%, and scale-stratified replay halves forgetting. Useful for keeping counter-UAV detection models up to date.",
       "detail": "基于热红外的反无人机系统需要随运行数据集不断更新，但序贯微调会导致对旧任务的灾难性遗忘。\n\n作者用基于 YOLOv5 的 YOLOMG 检测器（单热红外流、关闭运动通道），依次在 Anti-UAV-RGBT、Anti-UAV410、CST Anti-UAV 三个尺度难度递增的数据集上训练。朴素微调到 CST 时遗忘指标为 -0.605，相当于丢失 90% 能力；用冻结教师做知识蒸馏时为 -0.033±0.004（三个种子），相当于保留 95%。\n\n大目标检测在第一个 epoch 内几乎归零，而权重余弦相似度仍为 0.987，作者推测原因是按尺度的梯度失衡而非权重漂移。按四档尺寸均衡的 300 样本回放缓冲将遗忘降到 -0.311，随机分层回放为 -0.221；回放结果为单种子，属初步结论。",
+      "detail_en": "Thermal-infrared counter-UAV systems need continual updates as operational datasets grow, but sequential fine-tuning causes catastrophic forgetting of earlier tasks.\n\nThe authors train a YOLOv5-based YOLOMG detector (single thermal stream, motion channel disabled) sequentially on three datasets of increasing scale difficulty: Anti-UAV-RGBT, Anti-UAV410 and CST Anti-UAV. Naive fine-tuning through CST yields a forgetting score of -0.605, equivalent to losing 90% of capability; knowledge distillation from a frozen teacher yields -0.033±0.004 (three seeds), equivalent to retaining 95%.\n\nLarge-object detection collapses to nearly zero within the first epoch while weight cosine similarity remains 0.987, which the authors attribute to scale-conditioned gradient imbalance rather than weight drift. A 300-sample replay buffer balanced across four size bins reduces forgetting from -0.605 to -0.311, versus -0.221 for random stratified replay; replay results are single-seed and preliminary.",
       "links": [
         {
           "label": "arXiv:2610.08315",
@@ -139,13 +157,17 @@
   "industry": [
     {
       "section": "卫星与手机直连",
+      "section_en": "Satellite & Direct-to-Device",
       "emoji": "🛰️",
       "items": [
         {
           "title": "FCC 批准 SpaceX 1.5 万颗手机直连卫星",
+          "title_en": "FCC approves 15,000 SpaceX direct-to-cell satellites",
           "date": "10/6",
           "summary": "星座位于约 326–335 km 超低轨，FCC 同时豁免其与地面运营商签租赁协议的要求，并获准使用 EchoStar 频谱（交易完成前仅限测试）和 T-Mobile PCS G 频段；V2 卫星计划 2027 年起部署。更低轨道改善普通手机链路预算，D2D 出现“卫星方自持频谱”的模式。",
+          "summary_en": "The constellation will sit in very low orbit at about 326–335 km. The FCC also waived the requirement for leasing agreements with terrestrial operators, and SpaceX may use EchoStar spectrum (testing only until the deal closes) and T-Mobile's PCS G block; V2 satellites are slated to deploy from 2027. Lower orbits improve the link budget for ordinary phones, and D2D now has a model in which the satellite operator holds its own spectrum.",
           "detail": "FCC 于美国时间周二（10/6）批准 SpaceX 发射并运营 1.5 万颗下一代 Starlink Mobile 卫星，申请于 2025 年 9 月提交。FCC 同时豁免其与地面运营商签租赁协议的要求。\n\n卫星轨道高度 326–335 km。现有 Starlink Mobile 在美国经 T-Mobile 以 T-Satellite 提供，约 650 颗卫星，数据速率估计 4 Mbps；SpaceX 称新星座目标为每用户 150 Mbps。获批频段包括从 EchoStar 收购的 1695–1710、2000–2020、2180–2200、1915–1920、1995–2000 MHz，但在交易第二步完成（计划 2027 年 11 月 30 日）前仅限测试；另可使用 T-Mobile 的 PCS G 频段。\n\n据 SpaceNews，V2 卫星需星舰发射，计划 2027 年开始部署。",
+          "detail_en": "The FCC on Tuesday (10/6, US time) approved SpaceX to launch and operate 15,000 next-generation Starlink Mobile satellites, under an application filed in September 2025. The FCC also waived the requirement for leasing agreements with terrestrial operators.\n\nThe satellites will orbit at 326–335 km. The current Starlink Mobile service is offered in the US through T-Mobile as T-Satellite, with about 650 satellites and an estimated data rate of 4 Mbps; SpaceX says the new constellation targets 150 Mbps per user. Approved spectrum includes 1695–1710, 2000–2020, 2180–2200, 1915–1920 and 1995–2000 MHz acquired from EchoStar, limited to testing until the second step of that deal closes (planned for November 30, 2027); SpaceX may also use T-Mobile's PCS G block.\n\nAccording to SpaceNews, the V2 satellites require Starship launches, with deployment planned to begin in 2027.",
           "links": [
             {
               "label": "PCMag",
@@ -159,9 +181,12 @@
         },
         {
           "title": "FCC 三项提案：D2D 频谱、中频段拍卖、800 MHz 给无人机",
+          "title_en": "FCC proposes three rules: D2D spectrum, mid-band auction, 800 MHz for drones",
           "date": "10/7",
           "summary": "10/29 表决：为 D2D 启动新一轮频谱拍卖；拍卖 25 MHz 中频段，可用于地面、D2D 或星地混合网络；允许无人机使用约 50 MHz 的 800 MHz 蜂窝频段。网联无人机用频路线可与国内低空专网方案对照。",
+          "summary_en": "Vote on 10/29: a new spectrum auction for D2D; an auction of 25 MHz of mid-band spectrum usable for terrestrial, D2D or hybrid satellite-terrestrial networks; and about 50 MHz of 800 MHz cellular spectrum opened to drones. The US spectrum path for connected drones offers a point of comparison with China's low-altitude private network plans.",
           "detail": "FCC 于美国时间 10 月 7 日公布三项无线规则提案，计划 10 月 29 日表决。\n\n一是改革现有 D2D 服务规则，支持更灵活的地面、卫星及混合商业模式，并推进新一轮频谱拍卖。二是拍卖 25 MHz 中频段，可用于灵活使用的地面网络、D2D 业务或星地混合网络；FCC 主席 Carr 此前表示，未来几年的频谱拍卖收入可能超过 1000 亿美元。三是允许无人机使用 800 MHz 蜂窝频段，获批后将为无人机开放约 50 MHz，目前无人机禁止使用该频段。\n\n800 MHz 近年也被用于卫星直连测试，FCC 曾临时批准 AST SpaceMobile 在得州和马里兰州指定区域开展相关测试。",
+          "detail_en": "The FCC on October 7 (US time) released three wireless rule proposals, with a vote planned for October 29.\n\nThe first would reform the existing D2D service rules to support more flexible terrestrial, satellite and hybrid business models, and move ahead with a new spectrum auction. The second would auction 25 MHz of mid-band spectrum for flexible-use terrestrial networks, D2D services or hybrid satellite-terrestrial networks; FCC Chairman Carr has said spectrum auction revenue over the next few years could exceed $100 billion. The third would allow drones to use the 800 MHz cellular band, opening about 50 MHz to drones if approved; drones are currently barred from the band.\n\nThe 800 MHz band has also been used for direct-to-device testing in recent years; the FCC previously granted AST SpaceMobile temporary authority to test in designated areas of Texas and Maryland.",
           "links": [
             {
               "label": "IT之家",
@@ -171,9 +196,12 @@
         },
         {
           "title": "TELUS 与 AST SpaceMobile 完成端到端集成测试",
+          "title_en": "TELUS and AST SpaceMobile complete end-to-end integration test",
           "date": "10/5",
           "summary": "普通手机经 AST 低轨卫星接入 TELUS 核心网，打通语音、短信和宽带数据，预计一年内向用户开放。代表“运营商频谱 + 卫星接入”路线，关键在核心网集成与星地移动性。",
+          "summary_en": "Ordinary phones connected to the TELUS core network via AST's LEO satellites, with voice, SMS and broadband data working end to end; launch to customers is expected within a year. It represents the \"operator spectrum + satellite access\" approach, where the key challenges are core network integration and satellite-terrestrial mobility.",
           "detail": "TELUS 与 AST SpaceMobile 于 10 月 5 日宣布，双方完成首次集成测试，打通 TELUS 地面无线网络与 AST 天基网络，涉及智能手机直接经卫星进行宽带数据、语音通话和短信。\n\nAST 称其低轨星座配备迄今在 LEO 部署的最大通信阵列，网络面向标准、未改装的手机。TELUS 表示服务预计一年内向持合格手机的客户开放，用于高速公路、国家公园、偏远北方社区等无基站覆盖区域，并提供另一条拨打 9-1-1 的途径。\n\n与 SpaceX 获准自持频谱、无需租赁地面频谱的模式不同，这是卫星接入运营商现网、扩展既有覆盖的路线。",
+          "detail_en": "TELUS and AST SpaceMobile announced on October 5 that they had completed their first integration test, connecting TELUS's terrestrial wireless network with AST's space-based network for broadband data, voice calls and SMS directly between smartphones and satellites.\n\nAST says its LEO constellation carries the largest communications arrays deployed in LEO to date, and the network is designed for standard, unmodified phones. TELUS expects to make the service available within a year to customers with eligible phones in areas without coverage, such as highways, national parks and remote northern communities, providing another way to reach 9-1-1.\n\nUnlike SpaceX's approved model of holding its own spectrum without leasing terrestrial spectrum, this approach connects satellites to an operator's existing network to extend its coverage.",
           "links": [
             {
               "label": "PR Newswire",
@@ -185,13 +213,17 @@
     },
     {
       "section": "政策监管",
+      "section_en": "Policy & Regulation",
       "emoji": "🏛️",
       "items": [
         {
           "title": "FCC 拟禁止中国实验室为美国市场设备做检测",
+          "title_en": "FCC moves to bar Chinese labs from testing devices for the US market",
           "date": "10/7",
           "summary": "10/29 表决，对象为不给美国实验室互惠待遇国家的检测与认证机构，覆盖手机、相机、电脑等；FCC 称 2025 年 82% 的电子产品在中国检测。出海终端与通信设备的认证周期和成本可能变化。",
+          "summary_en": "Vote on 10/29, targeting test and certification bodies in countries that do not grant reciprocity to US labs, covering phones, cameras, computers and more; the FCC says 82% of electronics were tested in China in 2025. Certification timelines and costs for exported devices and telecom equipment may change.",
           "detail": "据中央社引述路透社报道，FCC 于美国时间 10 月 7 日表示，将于 29 日表决，禁止中国等拒绝给予美国境内测试实验室互惠待遇的国家的测试实验室和认证机构，为在美国使用的电子设备做检测，范围包括智能手机、相机和电脑，是此前对华措施的扩大。\n\nFCC 主席 Carr 称，2025 年有 82% 的电子产品在中国接受测试，而中美之间没有相关协议。\n\n若规则通过，面向美国市场的终端和通信设备需要转到其他地区的实验室完成认证测试。",
+          "detail_en": "According to CNA, citing Reuters, the FCC said on October 7 (US time) that it will vote on the 29th to bar testing labs and certification bodies from China and other countries that refuse reciprocity to US-based testing labs from testing electronics used in the US, including smartphones, cameras and computers, expanding earlier measures targeting China.\n\nFCC Chairman Carr said 82% of electronics were tested in China in 2025, and there is no such agreement between the US and China.\n\nIf the rule is adopted, devices and telecom equipment for the US market would need to be certified at labs in other regions.",
           "links": [
             {
               "label": "三立新闻（引中央社）",
@@ -203,13 +235,17 @@
     },
     {
       "section": "设备商与 AI-RAN",
+      "section_en": "Vendors & AI-RAN",
       "emoji": "🏭",
       "items": [
         {
           "title": "华为与高通签署多年期专利交叉许可",
+          "title_en": "Huawei and Qualcomm sign multi-year patent cross-license",
           "date": "10/5",
           "summary": "覆盖 5G、计算、AI 与网络，高通还将购买华为部分非蜂窝领域美国专利，尚待美国监管批准；这是双方首份涵盖 5G 的协议。华为 5G 标准必要专利获头部芯片厂商认可。",
+          "summary_en": "Covers 5G, computing, AI and networking; Qualcomm will also buy some of Huawei's US patents outside the cellular field, pending US regulatory approval. It is the two companies' first agreement covering 5G. Huawei's 5G standard-essential patents gain recognition from a leading chipmaker.",
           "detail": "华为与高通 10 月 5 日宣布签署多年期广泛专利许可协议：双方交叉许可 5G、计算、AI 和网络等领域的专利组合，高通还将购买华为在计算、AI、网络等领域的部分美国专利。交易需获得监管批准后完成，双方表示遵循 FRAND 原则。\n\n据 TechSpot，这是双方首份覆盖 5G 的协议，财务条款、期限和具体专利均未披露。华为首席知识产权官 Alan Fan 提到极化码等对 4G/5G 标准的贡献；华为称其知识产权许可业务自 2021 年起实现正收入，2025 年底有效授权专利超过 16.5 万件。\n\n华为自 2019 年起列入美国实体清单，该交易将触发美方监管审查。",
+          "detail_en": "Huawei and Qualcomm announced on October 5 a multi-year broad patent license agreement: the two companies will cross-license patent portfolios in 5G, computing, AI and networking, and Qualcomm will also buy some of Huawei's US patents in computing, AI and networking. The deal requires regulatory approval to close, and both say it follows FRAND principles.\n\nAccording to TechSpot, this is the companies' first agreement covering 5G; financial terms, duration and specific patents were not disclosed. Huawei Chief IP Officer Alan Fan cited contributions such as polar codes to 4G/5G standards; Huawei says its IP licensing business has been revenue-positive since 2021 and it held more than 165,000 active granted patents at the end of 2025.\n\nHuawei has been on the US Entity List since 2019, and the deal will trigger US regulatory review.",
           "links": [
             {
               "label": "华为",
@@ -223,9 +259,12 @@
         },
         {
           "title": "爱立信 AI 原生链路自适应商用：频谱效率最高 +25%",
+          "title_en": "Ericsson's AI-native link adaptation goes commercial: up to 25% spectral efficiency gain",
           "date": "10/5",
           "summary": "现网平均频谱效率提升最多 10%，最佳站点 +25%、下行吞吐 +50%；纯软件运行在现有基带上，无需新增 AI 硬件。AI-RAN 先从调度类功能落地，存量网络可软件升级。",
+          "summary_en": "In live networks, average spectral efficiency improves by up to 10%, with +25% at the best sites and +50% downlink throughput; it runs purely in software on existing basebands, with no new AI hardware. AI-RAN is landing first in scheduling functions, and installed networks can be upgraded in software.",
           "detail": "传统外环链路自适应（OLLA）依据终端信道质量反馈和 BLER 目标调整 MCS，在小区间干扰剧烈波动、终端高速移动时容易选错。爱立信的 AI 原生链路自适应调度器结合无线测量、业务模式和历史表现来选择 MCS。\n\n爱立信称，在北美和亚太多家运营商的 5G-Advanced 现网大规模商用试验中，相比传统规则算法，大范围站点频谱效率提升约 10%，部分站点达 25%；吞吐提升在各站点最高约 20%，试验中的高端结果达 50%。基于 Intel Xeon 6 的 Cloud RAN 概念验证结果与专用硬件一致。\n\n该功能已商用，以软件形式运行在爱立信自研芯片（EMCA）上，无需新增 AI 硬件；增益主要出现在覆盖边缘和强干扰场景。",
+          "detail_en": "Conventional outer-loop link adaptation (OLLA) adjusts MCS based on UE channel-quality feedback and a BLER target, and tends to pick the wrong MCS when inter-cell interference fluctuates sharply or UEs move fast. Ericsson's AI-native link adaptation scheduler selects MCS using radio measurements, traffic patterns and historical performance.\n\nEricsson says that in large-scale commercial trials on 5G-Advanced live networks with multiple operators in North America and Asia-Pacific, spectral efficiency improved by about 10% across a broad range of sites and by up to 25% at some sites versus conventional rule-based algorithms; throughput gains reached about 20% across sites, with high-end trial results of 50%. A Cloud RAN proof of concept on Intel Xeon 6 matched the results on purpose-built hardware.\n\nThe feature is commercially available and runs as software on Ericsson's in-house silicon (EMCA) with no added AI hardware; gains are concentrated at the cell edge and in high-interference scenarios.",
           "links": [
             {
               "label": "Ericsson",
@@ -235,9 +274,12 @@
         },
         {
           "title": "印度移动大会 IMC 2026：爱立信印度造天线出口欧洲，诺基亚谈 6G 频谱",
+          "title_en": "India Mobile Congress 2026: Ericsson to export India-made antennas to Europe; Nokia on 6G spectrum",
           "date": "10/7",
           "summary": "爱立信宣布将印度制造的天线出口欧洲，其印度生态自 2025 年 7 月以来已生产超 1.5 万副天线；诺基亚称印度 6G 预计 2030 年商用，每家运营商至少需要约 200 MHz 频谱。",
+          "summary_en": "Ericsson announced it will export India-made antennas to Europe, with its India ecosystem producing more than 15,000 antennas since July 2025; Nokia expects India's 6G to launch commercially in 2030, with each operator needing at least about 200 MHz of spectrum.",
           "detail": "爱立信东南亚、大洋洲和印度区负责人 Andres Vicente 10 月 7 日在 IMC 上宣布，将把印度制造的天线出口欧洲。爱立信称自 2025 年 7 月以来，印度本地生态已生产超过 1.5 万副天线和 2500 万个元器件。Vicente 引用的数据：印度 5G 用户 4.3 亿，占总用户 35%；中频 5G 人口覆盖率 95%（全球 45%）；43% 的移动数据流量由 5G 承载。\n\n诺基亚标准化负责人 Ulrich Dropmann 表示，6G 预计 2030 年商用，频谱是印度 6G 顺利推出的首要政策问题，每家运营商至少需要约 200 MHz，最好更多，并应选用能利用现有站址的频段。\n\n爱立信展台还展示了系留无人机搭载 5G 射频和天线的空中基站，用于快速扩展或恢复覆盖。",
+          "detail_en": "Andres Vicente, head of Ericsson Southeast Asia, Oceania and India, announced at IMC on October 7 that Ericsson will export India-made antennas to Europe. Ericsson says its local ecosystem in India has produced more than 15,000 antennas and 25 million components since July 2025. Figures cited by Vicente: India has 430 million 5G subscribers, 35% of the total; mid-band 5G population coverage is 95% (versus 45% globally); and 5G carries 43% of mobile data traffic.\n\nUlrich Dropmann, head of standardization at Nokia, said 6G is expected to launch commercially in 2030, that spectrum is the top policy issue for a smooth 6G rollout in India, and that each operator needs at least about 200 MHz, ideally more, in bands that can reuse existing sites.\n\nEricsson's booth also showed a tethered-drone aerial base station carrying a 5G radio and antenna for rapidly extending or restoring coverage.",
           "links": [
             {
               "label": "Economic Times",
@@ -257,13 +299,17 @@
     },
     {
       "section": "运营商",
+      "section_en": "Operators",
       "emoji": "📡",
       "items": [
         {
           "title": "中国电信回应原员工实名举报",
+          "title_en": "China Telecom responds to former employee's whistleblower allegations",
           "date": "10/7",
           "summary": "原员工举报“国家工业互联网大数据中心”项目存在围标串标等问题；中国电信称项目已于 2024 年专项核查，言论与事实不符，并逐条回应“13 天完工”等说法。",
+          "summary_en": "A former employee alleged bid-rigging and other irregularities in the \"National Industrial Internet Big Data Center\" project; China Telecom said the project underwent a special review in 2024, that the claims are inconsistent with the facts, and rebutted points such as \"completed in 13 days\" one by one.",
           "detail": "原中国电信员工郑某近日实名举报多名高管，称其参与的“国家工业互联网大数据中心”项目存在组织围标串标、伪造合同等问题，涉及违规套取 3800 万元财政资金。\n\n10 月 6 日，中国电信大客户事业部回应：郑某自 2023 年起无理由旷工 635 天，已于 2026 年 8 月 31 日依法解除劳动关系；该项目已于 2024 年做过内部专项核查，相关言论与事实不符。\n\n据 C114 援引知情人士，“13 天完工”是用第一阶段合同截止日（2021-06-30）减去第三阶段软件开发合同签约日（2021-06-17）得出；“33779 人日”是 2021 年 3 月需求评审时的事前估算。软件开发分包从签约到 2022 年 5 月竣工验收约 11 个月。",
+          "detail_en": "Zheng, a former China Telecom employee, recently made whistleblower allegations under their real name against several executives, claiming that the \"National Industrial Internet Big Data Center\" project Zheng worked on involved organized bid-rigging and forged contracts, and the improper extraction of RMB 38 million in government funds.\n\nOn October 6, China Telecom's Key Accounts business unit responded that Zheng had been absent without valid reason for 635 days since 2023 and that the employment relationship was lawfully terminated on August 31, 2026; it said the project underwent a special internal review in 2024 and that the claims are inconsistent with the facts.\n\nAccording to an informed source cited by C114, the \"completed in 13 days\" figure was derived by subtracting the signing date of the phase-3 software development contract (2021-06-17) from the phase-1 contract end date (2021-06-30); the \"33,779 person-days\" figure was an ex-ante estimate made during the requirements review in March 2021. The software development subcontract took about 11 months from signing to final acceptance in May 2022.",
           "links": [
             {
               "label": "C114",
@@ -273,9 +319,12 @@
         },
         {
           "title": "中国电信首设集团总审计师，韩芳出任",
+          "title_en": "China Telecom creates first group chief auditor post, appoints Han Fang",
           "date": "10/8",
           "summary": "审计部总经理韩芳升任集团总审计师，为三大运营商集团层面首设该岗位（暂未官方证实）。算力基建与数字化项目的审计将更严格。",
+          "summary_en": "Han Fang, general manager of the audit department, has been promoted to group chief auditor, the first such post at group level among China's three major operators (not yet officially confirmed). Audits of computing infrastructure and digital projects will become stricter.",
           "detail": "C114 援引业内信息称，中国电信审计部总经理韩芳已于日前升任集团总审计师，暂未官方证实。此前三大运营商集团层面均设有总会计师，但未单独设置总审计师。\n\n韩芳 1995 年毕业于北京邮电大学管理工程系，持注册会计师、国际内部审计师、高级会计师资质。她历任集团审计部处长、副总经理，中国电信国际有限公司财务总监、集团国际部副总经理；2020 年任集团审计部总经理，2023 年调任资本运营部总经理并兼任天翼资本董事长等职。\n\nC114 认为，此举将强化集团对投资、资本运作、数字化项目、算力基建等重大业务的全流程风险监督。",
+          "detail_en": "Citing industry sources, C114 reports that Han Fang, general manager of China Telecom's audit department, has recently been promoted to group chief auditor; this has not been officially confirmed. All three major operators have a chief accountant at group level, but none previously had a separate chief auditor.\n\nHan graduated from the Department of Management Engineering at Beijing University of Posts and Telecommunications in 1995 and is a certified public accountant, certified internal auditor and senior accountant. She has served as division director and deputy general manager of the group audit department, CFO of China Telecom Global, and deputy general manager of the group international department; she became general manager of the group audit department in 2020 and moved in 2023 to general manager of the capital operations department, also serving as chairman of Tianyi Capital, among other roles.\n\nC114 says the move will strengthen the group's end-to-end risk oversight of major activities such as investment, capital operations, digital projects and computing infrastructure.",
           "links": [
             {
               "label": "C114",
@@ -285,9 +334,12 @@
         },
         {
           "title": "德国电信：中期不因 AI 上行追加 RAN 投资",
+          "title_en": "Deutsche Telekom: no extra RAN spending for AI uplink in the medium term",
           "date": "10/7",
           "summary": "德电下任 CFO 表示不预期 2027 年后因 AI 上行需求提高资本开支强度；而爱立信本周刚强调 AI 应用至少需要 5 Mbps 上行。上行增强更可能在既有预算内完成。",
+          "summary_en": "DT's incoming CFO does not expect AI uplink demand to raise capex intensity after 2027, even as Ericsson stressed this week that AI apps need at least 5 Mbps of uplink. Uplink upgrades are more likely to fit within existing budgets.",
           "detail": "德国电信在首届 AI 投资者日上被分析师问到，AI 是否会在 2027 年后推高资本开支强度。将于明年 5 月 1 日接任 CFO 的 Dhananjay Mirchandani 给出否定答案：没人提出要在现有 RAN 现代化路线之外，为 AI 上行流量追加投资。\n\n德电 2024 年给出的指引是 2027 年资本开支（不含美国和频谱）占服务收入 21%，目前因德国光纤建设略高于此。其德国 RAN 约三分之二来自华为、三分之一来自爱立信，计划到 2027 年在 3000 个站点用诺基亚 Open RAN 替换华为。\n\n对照来看，爱立信 10/5 称其对 100 多张网络的测量显示 AI 应用至少需要 5 Mbps 上行。Light Reading 认为，运营商的上行投资可能落在既有 RAN 预算之内。",
+          "detail_en": "At its first AI investor day, Deutsche Telekom was asked by analysts whether AI would push up capex intensity after 2027. Dhananjay Mirchandani, who takes over as CFO on May 1 next year, said no: nobody has proposed investing in AI uplink traffic beyond the existing RAN modernization roadmap.\n\nDT's 2024 guidance calls for 2027 capex (excluding the US and spectrum) of 21% of service revenue; it is currently slightly above that because of fiber build-out in Germany. About two-thirds of its German RAN comes from Huawei and one-third from Ericsson, and it plans to replace Huawei with Nokia Open RAN at 3,000 sites by 2027.\n\nBy contrast, Ericsson said on 10/5 that its measurements across more than 100 networks show AI applications need at least 5 Mbps of uplink. Light Reading suggests operators' uplink investment is likely to fall within existing RAN budgets.",
           "links": [
             {
               "label": "Light Reading",
@@ -301,9 +353,12 @@
         },
         {
           "title": "AT&T 联合 GIP、CPP 成立批发光纤合资公司",
+          "title_en": "AT&T forms wholesale fiber joint venture with GIP and CPP Investments",
           "date": "10/7",
           "summary": "AT&T 持股 50%，整合 Forged Fiber 37 与 Gigapower，覆盖 16 个州，目标 2030 年底超 6000 万光纤端点，预计 2027 上半年交割。",
+          "summary_en": "AT&T holds 50%, combining Forged Fiber 37 and Gigapower across 16 states, with a target of more than 60 million fiber locations by end-2030; closing is expected in the first half of 2027.",
           "detail": "AT&T、Global Infrastructure Partners（GIP）和加拿大养老金投资公司（CPP Investments）同意在美国成立批发型开放接入光纤合资公司，整合 Forged Fiber 37（持有 AT&T 从 Lumen 收购的光纤建设团队、网络资产和运营）以及 AT&T 与 GIP 现有的批发光纤合资公司 Gigapower。\n\nGIP 和 CPP 将为向 16 个州的都市区扩张提供“轻资本”路径，包括亚利桑那、科罗拉多、佛罗里达、俄勒冈和华盛顿州。AT&T 计划到 2030 年底覆盖超过 6000 万个光纤端点。交易预计 2027 年上半年完成，AT&T 持股 50%。\n\nAT&T 今年 2 月以 57.5 亿美元现金完成收购 Lumen 大众市场光纤业务，新增超过 100 万光纤用户。",
+          "detail_en": "AT&T, Global Infrastructure Partners (GIP) and CPP Investments have agreed to form a wholesale open-access fiber joint venture in the US, combining Forged Fiber 37 (which holds the fiber build teams, network assets and operations AT&T acquired from Lumen) with Gigapower, AT&T's existing wholesale fiber JV with GIP.\n\nGIP and CPP will provide a \"capital-light\" path for expansion into metro areas in 16 states, including Arizona, Colorado, Florida, Oregon and Washington. AT&T plans to reach more than 60 million fiber locations by the end of 2030. The deal is expected to close in the first half of 2027, with AT&T holding 50%.\n\nIn February, AT&T completed its $5.75 billion all-cash acquisition of Lumen's Mass Markets fiber business, adding more than 1 million fiber subscribers.",
           "links": [
             {
               "label": "Telecoms.com",
@@ -315,13 +370,17 @@
     },
     {
       "section": "光通信与算力",
+      "section_en": "Optical & Compute",
       "emoji": "💡",
       "items": [
         {
           "title": "Marvell 上调 FY28 收入指引至约 200 亿美元",
+          "title_en": "Marvell raises FY28 revenue outlook to about $20 billion",
           "date": "10/6",
           "summary": "其中数据中心约 180 亿美元，增量主要来自 scale-out/scale-up 光互连与交换。光 DSP 与互连需求持续上修，是 1.6T 光模块链景气的先行信号。",
+          "summary_en": "Data center accounts for about $18 billion, with the increase driven mainly by scale-out/scale-up optical interconnect and switching. Demand for optical DSPs and interconnect keeps being revised up, a leading indicator for the 1.6T optical module supply chain.",
           "detail": "Marvell 在 10 月 6 日投资者日上将 FY2028 收入指引从 8 月给出的 180 亿美元上调至约 200 亿美元，同比增长约 67%，其中数据中心收入约 180 亿美元、增长约 80%，高于 FiscalAI 统计的 181 亿美元一致预期。\n\nCEO Matt Murphy 表示，新增的 20 亿美元增长与 8 月上调时的驱动因素相同：scale-out 光互连加速、scale-up 光互连继续增长、交换产品全线发力。公司还给出 FY2031 收入 700–900 亿美元的目标；在 800 亿美元情景下，互连业务约 375 亿美元，定制芯片约 300 亿美元。\n\n互连业务指数据中心内部及数据中心之间的数据传输网络技术。",
+          "detail_en": "At its October 6 investor day, Marvell raised its FY2028 revenue outlook from the $18 billion given in August to about $20 billion, up about 67% year over year and above the $18.1 billion consensus tracked by FiscalAI. Data center revenue is expected at about $18 billion, up about 80%.\n\nCEO Matt Murphy said the additional $2 billion of growth comes from the same drivers as the August raise: accelerating scale-out optical interconnect, continued growth in scale-up optical interconnect, and strength across the switching portfolio. The company also set an FY2031 revenue target of $70–90 billion; in the $80 billion scenario, interconnect would be about $37.5 billion and custom silicon about $30 billion.\n\nInterconnect refers to networking technologies that move data within and between data centers.",
           "links": [
             {
               "label": "Reuters",

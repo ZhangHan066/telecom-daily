@@ -1,6 +1,63 @@
 /* Renders issues/*.json. A new day only needs a JSON file and an index update. */
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const LANG_KEY = "telecom-daily-lang";
+const SECTION_RANK = ["政策监管", "卫星与手机直连", "运营商", "设备商与 AI-RAN", "光通信与算力"];
+
+const UI = {
+  zh: {
+    skip: "跳到正文",
+    brand: "通信行业日报",
+    nav: "站点",
+    lang: "语言",
+    archive: "往期",
+    close: "关闭",
+    loading: "载入中",
+    file: "请用本地静态服务器打开本页，例如 python3 -m http.server。",
+    indexFail: "目录没有载入。",
+    badDate: "日期格式应为 YYYY-MM-DD。",
+    empty: "还没有日报。",
+    missing: (date) => `没有找到 ${date} 这一期。`,
+    research: "无人机通信科研",
+    industry: "行业动态",
+    papers: (n) => `${n} 篇`,
+    items: (n) => (n === 1 ? "1 条" : `${n} 条`),
+    researchCat: "科研",
+    earlier: "‹ 更早",
+    later: "更新 ›",
+    pager: "前后期",
+    cover: "封面",
+    source: "来源",
+    colophon: (date) => `通信行业日报 · ${date}`,
+    desc: "通信行业日报：无人机通信科研与行业动态。",
+  },
+  en: {
+    skip: "Skip to content",
+    brand: "Telecom Daily",
+    nav: "Site",
+    lang: "Language",
+    archive: "Archive",
+    close: "Close",
+    loading: "Loading",
+    file: "Open this page from a local static server, for example python3 -m http.server.",
+    indexFail: "Could not load the index.",
+    badDate: "Use a date in YYYY-MM-DD form.",
+    empty: "No issues yet.",
+    missing: (date) => `No issue for ${date}.`,
+    research: "UAV communications research",
+    industry: "Industry",
+    papers: (n) => (n === 1 ? "1 paper" : `${n} papers`),
+    items: (n) => (n === 1 ? "1 item" : `${n} items`),
+    researchCat: "Research",
+    earlier: "‹ Earlier",
+    later: "Later ›",
+    pager: "Issues",
+    cover: "Cover",
+    source: "Source",
+    colophon: (date) => `Telecom Daily · ${date}`,
+    desc: "Telecom Daily: UAV communications research and industry news.",
+  },
+};
 
 const main = document.getElementById("main");
 const notionLink = document.getElementById("notion-link");
@@ -8,11 +65,23 @@ const modalRoot = document.getElementById("modal-root");
 const modalDialog = document.getElementById("modal-dialog");
 const modalBody = document.getElementById("modal-body");
 const modalClose = document.getElementById("modal-close");
+const langZh = document.getElementById("lang-zh");
+const langEn = document.getElementById("lang-en");
 
 const catalog = new Map();
+let lang = "zh";
+let loadedIssue = null;
+let loadedIssues = [];
+let firstPaint = true;
 let modalId = "";
 let opener = null;
 let lockedScroll = 0;
+
+try {
+  if (localStorage.getItem(LANG_KEY) === "en") lang = "en";
+} catch {
+  lang = "zh";
+}
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>"']/g, (ch) => ({
@@ -60,6 +129,45 @@ async function fetchJSON(path) {
   return response.json();
 }
 
+function t(key) {
+  return UI[lang][key];
+}
+
+function text(zh, en) {
+  const zhText = typeof zh === "string" ? zh.trim() : "";
+  const enText = typeof en === "string" ? en.trim() : "";
+  if (lang === "en" && enText) return enText;
+  return zhText || enText;
+}
+
+function applyChrome() {
+  document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
+  document.getElementById("skip-link").textContent = t("skip");
+  document.getElementById("brand").textContent = t("brand");
+  document.getElementById("mast-nav").setAttribute("aria-label", t("nav"));
+  document.getElementById("lang-switch").setAttribute("aria-label", t("lang"));
+  document.getElementById("archive-link").textContent = t("archive");
+  modalClose.setAttribute("aria-label", t("close"));
+  langZh.setAttribute("aria-pressed", lang === "zh" ? "true" : "false");
+  langEn.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+  setMeta("og:locale", lang === "en" ? "en_US" : "zh_CN", "property");
+}
+
+function setLang(next) {
+  if (next !== "zh" && next !== "en" || next === lang) return;
+  lang = next;
+  try {
+    localStorage.setItem(LANG_KEY, lang);
+  } catch {
+    /* private mode */
+  }
+  applyChrome();
+  if (loadedIssue) renderIssue(loadedIssue, loadedIssues);
+}
+
+langZh.addEventListener("click", () => setLang("zh"));
+langEn.addEventListener("click", () => setLang("en"));
+
 function setMeta(name, content, attr = "name") {
   let el = document.head.querySelector(`meta[${attr}="${name}"]`);
   if (!el) {
@@ -71,12 +179,14 @@ function setMeta(name, content, attr = "name") {
 }
 
 function applyMeta(issue, coverUrl) {
-  const title = issue.title || "通信行业日报";
-  const description = [issue.theme, issue.highlights?.[0]?.text].filter(Boolean).join(" ");
+  const title = lang === "en"
+    ? [t("brand"), issue.date].filter(Boolean).join(" · ")
+    : (issue.title || t("brand"));
+  const description = text(issue.theme, issue.theme_en) || t("desc");
   document.title = title;
-  setMeta("description", description || "通信行业日报");
+  setMeta("description", description);
   setMeta("og:title", title, "property");
-  setMeta("og:description", description || title, "property");
+  setMeta("og:description", description, "property");
   setMeta("og:url", location.href, "property");
   if (coverUrl) setMeta("og:image", coverUrl, "property");
 }
@@ -108,56 +218,78 @@ function chipHtml(emoji, label) {
 }
 
 function registerCard(item, meta) {
+  const title = text(item.title, item.title_en);
+  const summary = text(item.summary, item.summary_en);
+  const detail = text(item.detail, item.detail_en);
+  const paperTitle = typeof item.title_en === "string" ? item.title_en.trim() : "";
   catalog.set(meta.id, {
     id: meta.id,
-    title: item.title || "",
+    title,
     date: item.date || "",
-    summary: item.summary || "",
-    detail: typeof item.detail === "string" ? item.detail : "",
-    titleEn: meta.paper ? (item.title_en || "") : "",
+    summary,
+    detail,
+    titleEn: meta.paper && lang === "zh" ? paperTitle : "",
     authors: item.authors || "",
     links: Array.isArray(item.links) ? item.links : [],
     emoji: meta.emoji || "",
     category: meta.category || "",
   });
+  const number = String(meta.number).padStart(2, "0");
   return `<button type="button" class="story-card" id="${esc(meta.id)}" data-item="${esc(meta.id)}" aria-haspopup="dialog">
-    <span class="card-top">${chipHtml(meta.emoji, meta.category)}<span class="card-date">${esc(item.date || "")}</span></span>
-    <span class="card-title">${esc(item.title || "")}</span>
-    <span class="card-summary">${esc(item.summary || "")}</span>
+    <span class="item-no">${number}</span>
+    <span class="card-title">${esc(title)}</span>
+    <span class="card-summary">${esc(summary)}</span>
+    <span class="card-meta">${chipHtml(meta.emoji, meta.category)}<span class="card-date">${esc(item.date || "")}</span></span>
   </button>`;
 }
 
+function issueView(entry) {
+  if (loadedIssue && entry.date === loadedIssue.date) {
+    return {
+      ...entry,
+      weekday: loadedIssue.weekday || entry.weekday,
+      weekday_en: loadedIssue.weekday_en || entry.weekday_en,
+      theme: loadedIssue.theme || entry.theme,
+      theme_en: loadedIssue.theme_en || entry.theme_en,
+      title: loadedIssue.title || entry.title,
+    };
+  }
+  return entry;
+}
+
 function issueMeta(issue) {
-  return [issue.date, issue.weekday].filter(Boolean).map(esc).join(" · ");
+  const view = issueView(issue);
+  return [view.date, text(view.weekday, view.weekday_en)].filter(Boolean).map(esc).join(" · ");
 }
 
 function renderSwitch(older, newer) {
   if (!older && !newer) return "";
   const link = (issue, kind, label) =>
     `<a class="pager-${kind}" href="?d=${esc(issue.date)}"><span class="pager-k">${label}</span><span class="pager-d">${issueMeta(issue)}</span></a>`;
-  const oldLink = older ? link(older, "old", "‹ 更早") : "<span></span>";
-  const newLink = newer ? link(newer, "next", "更新 ›") : "<span></span>";
-  return `<nav class="pager" aria-label="前后期">${oldLink}${newLink}</nav>`;
+  const oldLink = older ? link(older, "old", t("earlier")) : "<span></span>";
+  const newLink = newer ? link(newer, "next", t("later")) : "<span></span>";
+  return `<nav class="pager" aria-label="${esc(t("pager"))}">${oldLink}${newLink}</nav>`;
 }
 
 function renderArchive(issues, current) {
   const items = issues.map((issue) => {
-    const currentAttr = issue.date === current ? ' aria-current="page"' : "";
-    const time = DATE_RE.test(issue.date || "")
-      ? `<time datetime="${esc(issue.date)}">${esc(issue.date)}</time>`
-      : esc(issue.date || "");
-    return `<li><a class="arch-card" href="?d=${esc(issue.date)}"${currentAttr}>
-      <span class="arch-meta">${time}<span>${esc(issue.weekday || "")}</span></span>
-      <span class="arch-theme">${esc(issue.theme || issue.title || "")}</span>
+    const view = issueView(issue);
+    const currentAttr = view.date === current ? ' aria-current="page"' : "";
+    const time = DATE_RE.test(view.date || "")
+      ? `<time datetime="${esc(view.date)}">${esc(view.date)}</time>`
+      : esc(view.date || "");
+    return `<li><a class="arch-card" href="?d=${esc(view.date)}"${currentAttr}>
+      <span class="arch-meta">${time}<span>${esc(text(view.weekday, view.weekday_en))}</span></span>
+      <span class="arch-theme">${esc(text(view.theme, view.theme_en) || view.title || "")}</span>
     </a></li>`;
   }).join("");
   return `<section class="archive" id="archive">
-    <h2>往期</h2>
+    <h2>${esc(t("archive"))}</h2>
     <ul class="archive-grid">${items}</ul>
   </section>`;
 }
 
-function renderHero(issue, highlights) {
+function renderHero(issue) {
   const cover = issue.cover && typeof issue.cover === "object" ? issue.cover : {};
   const coverUrl = safeUrl(cover.url);
   const image = coverUrl
@@ -166,15 +298,16 @@ function renderHero(issue, highlights) {
   const dateText = DATE_RE.test(issue.date || "")
     ? `<time datetime="${esc(issue.date)}">${esc(issue.date)}</time>`
     : esc(issue.date || "");
-  const weekday = issue.weekday ? ` · ${esc(issue.weekday)}` : "";
+  const weekdayLabel = text(issue.weekday, issue.weekday_en);
+  const weekday = weekdayLabel ? ` · ${esc(weekdayLabel)}` : "";
   let credit = "";
   if (cover.credit || cover.source) {
     const source = safeUrl(cover.source);
-    const label = esc(cover.credit || "来源");
+    const label = esc(cover.credit || t("source"));
     const inner = source
       ? `<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">${label}</a>`
       : label;
-    credit = `<p class="credit">封面 ${inner}</p>`;
+    credit = `<p class="credit">${esc(t("cover"))} ${inner}</p>`;
   }
   return `<header class="hero">
     ${image}
@@ -182,26 +315,11 @@ function renderHero(issue, highlights) {
     <div class="hero-copy">
       <div class="hero-id">
         <p class="hero-date">${dateText}${weekday}</p>
-        <h1>通信行业日报</h1>
+        <h1>${esc(t("brand"))}</h1>
       </div>
-      <div class="hero-bottom">
-        ${renderHighlights(highlights)}
-        ${credit}
-      </div>
+      ${credit}
     </div>
   </header>`;
-}
-
-function renderHighlights(highlights) {
-  if (!highlights.length) return "";
-  const items = highlights.map((item) => {
-    if (!item || typeof item !== "object") return "";
-    return `<article class="hl-card"><span class="hl-label">${esc(item.label || "")}</span><p>${esc(item.text || "")}</p></article>`;
-  }).join("");
-  return `<section class="hl" aria-labelledby="hl-title">
-    <h2 id="hl-title">今日要点</h2>
-    <div class="hl-grid">${items}</div>
-  </section>`;
 }
 
 function renderIssue(issue, issues) {
@@ -213,46 +331,61 @@ function renderIssue(issue, issues) {
   const older = index >= 0 && index < list.length - 1 ? list[index + 1] : null;
   const research = Array.isArray(issue.research) ? issue.research : [];
   const industry = Array.isArray(issue.industry) ? issue.industry : [];
-  const highlights = Array.isArray(issue.highlights) ? issue.highlights : [];
   const switcher = renderSwitch(older, newer);
+  const orderedIndustry = industry
+    .map((group, gi) => ({ group, gi }))
+    .filter((entry) => entry.group && typeof entry.group === "object")
+    .sort((a, b) => {
+      const rank = (name) => {
+        const index = SECTION_RANK.indexOf(name || "");
+        return index === -1 ? SECTION_RANK.length : index;
+      };
+      return rank(a.group.section) - rank(b.group.section) || a.gi - b.gi;
+    });
 
   const papers = research.length
-    ? `<section class="panel" aria-labelledby="part-research">
+    ? `<section class="panel panel-research" aria-labelledby="part-research">
         <header class="sec-head">
-          <h2 id="part-research">🛩️ 无人机通信科研</h2>
-          <span class="sec-count">${research.length} 篇</span>
+          <h2 id="part-research">🛩️ ${esc(t("research"))}</h2>
+          <span class="sec-count">${esc(t("papers")(research.length))}</span>
         </header>
         <div class="rows">${research.map((item, i) => registerCard(item, {
           id: `item-r-${i}`,
+          number: i + 1,
           paper: true,
           emoji: "🛩️",
-          category: "科研",
+          category: t("researchCat"),
         })).join("")}</div>
       </section>`
     : "";
 
-  const groups = industry.map((group, gi) => {
-    if (!group || typeof group !== "object") return "";
+  let industryNumber = 0;
+  const groups = orderedIndustry.map(({ group, gi }) => {
     const items = Array.isArray(group.items) ? group.items : [];
     const emoji = group.emoji || "";
-    const section = group.section || "";
-    return `<section class="group">
-      <h3 class="group-head">${esc([emoji, section].filter(Boolean).join(" "))}</h3>
-      <div class="rows">${items.map((item, ii) => registerCard(item, {
+    const section = text(group.section, group.section_en);
+    const rows = items.map((item, ii) => {
+      industryNumber += 1;
+      return registerCard(item, {
         id: `item-i-${gi}-${ii}`,
+        number: industryNumber,
         paper: false,
         emoji,
         category: section,
-      })).join("")}</div>
+      });
+    }).join("");
+    return `<section class="group">
+      <h3 class="group-head"><span>${esc([emoji, section].filter(Boolean).join(" "))}</span><span class="group-count">${esc(t("items")(items.length))}</span></h3>
+      <div class="rows">${rows}</div>
     </section>`;
   }).join("");
 
   const newsCount = industry.reduce((sum, group) => sum + (Array.isArray(group?.items) ? group.items.length : 0), 0);
   const news = groups
-    ? `<section class="panel" aria-labelledby="part-industry">
+    ? `<section class="panel panel-industry" aria-labelledby="part-industry">
         <header class="sec-head">
-          <h2 id="part-industry">📰 行业动态</h2>
-          <span class="sec-count">${newsCount} 条</span>
+          <h2 id="part-industry">📰 ${esc(t("industry"))}</h2>
+          <span class="sec-count">${esc(t("items")(newsCount))}</span>
         </header>
         <div class="groups">${groups}</div>
       </section>`
@@ -269,7 +402,7 @@ function renderIssue(issue, issues) {
     notionLink.removeAttribute("href");
   }
 
-  main.innerHTML = `${renderHero(issue, highlights)}
+  main.innerHTML = `${renderHero(issue)}
     <div id="content" class="content shell">
       <div class="board">
         ${papers}
@@ -277,12 +410,14 @@ function renderIssue(issue, issues) {
       </div>
       ${switcher}
       ${renderArchive(list, issue.date)}
-      <p class="colophon">通信行业日报 · ${esc(issue.date || "")}</p>
+      <p class="colophon">${esc(t("colophon")(issue.date || ""))}</p>
     </div>`;
 
   const heroImg = main.querySelector(".hero-img");
   if (heroImg) heroImg.addEventListener("error", () => heroImg.remove());
 
+  if (!firstPaint) return;
+  firstPaint = false;
   const deep = hashId();
   if (catalog.has(deep)) openModal(deep, { fromHistory: true });
   else if (deep === "archive") document.getElementById("archive")?.scrollIntoView();
@@ -533,7 +668,7 @@ function show(message) {
 
 async function load() {
   if (location.protocol === "file:") {
-    show("请用本地静态服务器打开本页，例如 python3 -m http.server。");
+    show(t("file"));
     return;
   }
 
@@ -541,34 +676,39 @@ async function load() {
   try {
     issues = normalizeIndex(await fetchJSON("issues/index.json"));
   } catch {
-    show("目录没有载入。");
+    show(t("indexFail"));
     return;
   }
 
   const wanted = requestedDate();
   if (wanted && !DATE_RE.test(wanted)) {
-    document.title = "通信行业日报";
+    document.title = t("brand");
+    loadedIssues = issues;
     const archive = issues.length ? renderArchive(issues, "") : "";
     notionLink.hidden = true;
-    main.innerHTML = `<p class="status">日期格式应为 YYYY-MM-DD。</p><div class="page shell">${archive}</div>`;
+    main.innerHTML = `<p class="status">${esc(t("badDate"))}</p><div class="page shell">${archive}</div>`;
     return;
   }
 
   const date = wanted || issues[0]?.date;
   if (!date) {
-    show("还没有日报。");
+    show(t("empty"));
     return;
   }
 
   try {
     const issue = await fetchJSON(`issues/${encodeURIComponent(date)}.json`);
+    loadedIssue = issue;
+    loadedIssues = issues;
     renderIssue(issue, issues);
   } catch {
-    document.title = "通信行业日报";
+    document.title = t("brand");
+    loadedIssues = issues;
     const archive = issues.length ? renderArchive(issues, "") : "";
     notionLink.hidden = true;
-    main.innerHTML = `<p class="status">没有找到 ${esc(date)} 这一期。</p><div class="page shell">${archive}</div>`;
+    main.innerHTML = `<p class="status">${esc(t("missing")(date))}</p><div class="page shell">${archive}</div>`;
   }
 }
 
+applyChrome();
 load();

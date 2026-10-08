@@ -15,13 +15,17 @@
   <link rel="stylesheet" href="styles.css?v=__ASSET_VERSION__">
 </head>
 <body>
-  <a class="skip" href="#main">跳到正文</a>
+  <a class="skip" id="skip-link" href="#main">跳到正文</a>
   <header class="mast">
     <div class="mast-inner">
-      <a class="brand" href="./">通信行业日报</a>
-      <nav class="mast-nav" aria-label="站点">
+      <a class="brand" id="brand" href="./">通信行业日报</a>
+      <nav class="mast-nav" id="mast-nav" aria-label="站点">
+        <div class="lang" id="lang-switch" role="group" aria-label="语言">
+          <button type="button" id="lang-zh" aria-pressed="true">中</button>
+          <button type="button" id="lang-en" aria-pressed="false">EN</button>
+        </div>
         <a id="notion-link" class="mast-link" hidden target="_blank" rel="noopener noreferrer">Notion</a>
-        <a class="mast-link" href="#archive">往期</a>
+        <a class="mast-link" id="archive-link" href="#archive">往期</a>
       </nav>
     </div>
   </header>
