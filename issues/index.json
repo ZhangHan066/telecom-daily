@@ -21,6 +21,29 @@
           "text": "华为与高通签下首份涵盖 5G 的专利交叉许可；FCC 拟禁止中国实验室为美国市场设备做检测。"
         }
       ]
+    },
+    {
+      "date": "2026-10-07",
+      "weekday": "周三",
+      "title": "通信行业日报 · 2026-10-07（周三）",
+      "theme": "FCC 连推手机直连与无人机频谱",
+      "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Cellular_5G_Equipment_-_Cell_Tower_Antennas.jpg/1920px-Cellular_5G_Equipment_-_Cell_Tower_Antennas.jpg",
+      "highlights": [
+        {
+          "label": "科研",
+          "text": "FR3 空天地一体化 RIS 关联、UAV 采集 LoRa 新鲜度优化，以及 6G NeXt 面向无人机防撞的拆分计算架构。"
+        },
+        {
+          "label": "频谱与卫星",
+          "text": "FCC 批准 SpaceX 1.5 万颗手机直连卫星；次日公布 10/29 议程，含 25 MHz 中频拍卖、SCS 扩容约 482 MHz、800 MHz 向无人机开放约 50 MHz。"
+        },
+        {
+          "label": "产业",
+          "text": "华为发布 Peerium 架构与灵衢总线，测试 25.6 万卡 Atlas 950 超节点；华为与高通多年期专利交叉许可继续发酵。"
+        }
+      ],
+      "weekday_en": "Wed",
+      "theme_en": "FCC advances D2D and drone spectrum rules"
     }
   ]
 }
