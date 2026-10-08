@@ -237,10 +237,9 @@ function registerCard(item, meta) {
   });
   const number = String(meta.number).padStart(2, "0");
   return `<button type="button" class="story-card" id="${esc(meta.id)}" data-item="${esc(meta.id)}" aria-haspopup="dialog">
-    <span class="item-no">${number}</span>
     <span class="card-title">${esc(title)}</span>
     <span class="card-summary"><span class="card-summary-text">${esc(summary)}</span></span>
-    <span class="card-meta">${chipHtml(meta.emoji, meta.category)}<span class="card-date">${esc(item.date || "")}</span></span>
+    <span class="card-meta"><span class="item-no">${number}</span>${chipHtml(meta.emoji, meta.category)}<span class="card-date">${esc(item.date || "")}</span></span>
   </button>`;
 }
 
@@ -303,24 +302,14 @@ function renderHero(issue) {
   const weekday = weekdayLabel
     ? `<span class="hero-dot" aria-hidden="true"></span><span class="hero-weekday">${esc(weekdayLabel)}</span>`
     : "";
-  let credit = "";
-  if (cover.credit || cover.source) {
-    const source = safeUrl(cover.source);
-    const label = esc(cover.credit || t("source"));
-    const inner = source
-      ? `<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">${label}</a>`
-      : label;
-    credit = `<p class="credit">${esc(t("cover"))} ${inner}</p>`;
-  }
   return `<header class="hero">
     <div class="hero-frame">
       ${image}
       <div class="hero-shade" aria-hidden="true"></div>
       <canvas class="hero-motion" aria-hidden="true"></canvas>
       <div class="hero-copy">
-        <p class="hero-date">${dateText}${weekday}</p>
         <h1>${esc(t("brand"))}</h1>
-        ${credit}
+        <p class="hero-date">${dateText}${weekday}</p>
       </div>
     </div>
   </header>`;
@@ -402,7 +391,7 @@ function mountHeroMotion(root) {
       ctx.beginPath();
       ctx.ellipse(0, 0, orbit.rx * w, orbit.ry * h, 0, 0, Math.PI * 2);
       ctx.strokeStyle = color;
-      ctx.globalAlpha = 0.16 * tone;
+      ctx.globalAlpha = 0.1 * tone;
       ctx.lineWidth = 1;
       ctx.stroke();
       ctx.restore();
@@ -420,7 +409,7 @@ function mountHeroMotion(root) {
           y: orbit.cy * h + lx * s + ly * c,
           color,
           r: (i % 3 === 0 ? 2.2 : 1.35) * (0.75 + orbit.depth * 0.4),
-          alpha: (0.34 + orbit.depth * 0.26) * tone,
+          alpha: (0.22 + orbit.depth * 0.16) * tone,
         });
       }
     }
@@ -443,20 +432,40 @@ function mountHeroMotion(root) {
     raf = requestAnimationFrame(tick);
   }
 
+  const frame = root.querySelector(".hero-frame");
+  let live = false;
+
   function paint() {
     for (const scene of scenes) resize(scene);
     draw(reduceQuery.matches ? 1.35 : (performance.now() - t0) / 1000);
   }
 
+  function stop() {
+    live = false;
+    frame?.classList.remove("is-live");
+    cancelAnimationFrame(raf);
+    raf = 0;
+  }
+
+  function start() {
+    if (reduceQuery.matches || live) return;
+    live = true;
+    frame?.classList.add("is-live");
+    raf = requestAnimationFrame(tick);
+  }
+
   paint();
-  if (!reduceQuery.matches) raf = requestAnimationFrame(tick);
+  frame?.addEventListener("pointerenter", start, { signal: ac.signal });
+  frame?.addEventListener("pointerleave", stop, { signal: ac.signal });
+  frame?.addEventListener("focusin", start, { signal: ac.signal });
+  frame?.addEventListener("focusout", (event) => {
+    if (!frame?.contains(event.relatedTarget)) stop();
+  }, { signal: ac.signal });
   const ro = typeof ResizeObserver === "function" ? new ResizeObserver(paint) : null;
   for (const scene of scenes) ro?.observe(scene.canvas);
   reduceQuery.addEventListener("change", () => {
-    cancelAnimationFrame(raf);
-    raf = 0;
+    stop();
     paint();
-    if (!reduceQuery.matches) raf = requestAnimationFrame(tick);
   }, { signal: ac.signal });
 
   return () => {
