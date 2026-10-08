@@ -62,7 +62,7 @@ python3 -m http.server 8000
 
 `items[]` 与论文相同，但没有 `title_en` / `authors`：`title`、`date`、`summary` 必填；`links`、`detail` 可省略。
 
-`detail` 是可选字符串，给对话框用。卡片上只显示 `summary`（大约三行）。点开后若有 `detail` 就显示它，否则显示 `summary`。多段之间用空行分开，也就是 JSON 里的 `\n\n`，页面会渲染成多个段落。
+`detail` 是可选字符串，给对话框用。宽屏条目只显示标题、日期和分类，摘要收起；较窄屏幕摘要最多一行。点开后若有 `detail` 就显示它，否则显示 `summary`。多段之间用空行分开，也就是 JSON 里的 `\n\n`，页面会渲染成多个段落。
 
 `links[]`：`{label, url}`，`url` 为 `http` 或 `https`。
 
