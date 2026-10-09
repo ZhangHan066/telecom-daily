@@ -1,0 +1,195 @@
+{
+  "date": "2026-10-09",
+  "weekday": "周五",
+  "weekday_en": "Friday",
+  "title": "通信行业日报 · 2026-10-09（周五）",
+  "theme": "星网完成跨极区低轨通信试验",
+  "theme_en": "China SatNet completes polar LEO communications trial",
+  "cover": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Svalbard_Satellite_Station,_an_important_part_of_the_Copernicus_Sentinel_ground_segment.jpg",
+    "credit": "European Union, Copernicus Sentinel-2 imagery",
+    "source": "https://commons.wikimedia.org/wiki/File:Svalbard_Satellite_Station,_an_important_part_of_the_Copernicus_Sentinel_ground_segment.jpg"
+  },
+  "highlights": [
+    {
+      "label": "卫星",
+      "text": "中国星网 GW 星座在北冰洋科考中完成跨极区视频通信在轨试验，端到端时延低于 1 秒、峰值约 30 Mbps，国内首次依托国产低轨星座实现超大纬度跨度实时视频。"
+    },
+    {
+      "label": "算力网络",
+      "text": "中国移动启动 2026–2027 年 RoCE 交换机集采，预估 2450 台、最高限价超 40 亿元，自主可控标包占比 80%，服务万卡级智算集群。"
+    },
+    {
+      "label": "6G",
+      "text": "中兴称快速收敛 LDPC 已被 3GPP 采纳为 6G 数据信道编码；爱立信/诺基亚与华为在 6G 核心网演进 vs 革命路线上对立加深；WBA 主张将 Wi-Fi 纳入 6G 泛在覆盖。"
+    },
+    {
+      "label": "科研",
+      "text": "新公开 UAV 通信相关工作涵盖联邦学习 GPS 欺骗检测、无人机辅助 LoRa 数据采集，以及 FR3 空天地一体 RIS 关联。"
+    }
+  ],
+  "research": [
+    {
+      "title": "联邦学习 GPS 欺骗检测：接收域行为探测抵御后门",
+      "title_en": "Receiver-Domain Behavioral Probing for Backdoor-Resilient Federated GPS Spoofing Detection in UAV Networks",
+      "date": "10/7",
+      "authors": "Will Jedrzejczak, Cole Walther, Dilpreet Gill, Moh Khalid Hasan",
+      "summary": "指出 UAV 联邦学习中“按自报精度加权”可被攻击利用，提出接收域行为探测，在不共享原始接收机数据前提下提升后门鲁棒性。",
+      "summary_en": "Shows that accuracy self-reports used to weight UAV federated clients are an attack lever, and proposes receiver-domain behavioral probing to harden GPS spoofing detectors without sharing raw receiver data.",
+      "detail": "无人机机队用联邦学习训练共享 GPS 欺骗检测器时，若干方案会按客户端自报验证精度加权。论文证明这是可利用攻击面：在十机中仅两台被攻破即可投毒、放大更新并虚报精度，后门提升高于不加谎的同类攻击。作者提出接收域行为探测（Receiver-Domain Behavioral Probing），用本地可观测的接收机行为特征校验客户端可信度，降低对自报指标的依赖。对低空通信与导航安全一体的机群协同场景，该方法直接关系到欺骗检测模型在带宽与隐私约束下的可部署性。",
+      "detail_en": "When UAV fleets train a shared GPS-spoofing detector with federated learning, some designs weight clients by self-reported validation accuracy. The authors show this is exploitable: two compromised clients out of ten that poison data, scale updates, and inflate reported accuracy achieve higher backdoor lift than the same attack without lying. They propose receiver-domain behavioral probing that uses locally observable receiver behavior to assess client trustworthiness without exporting raw receiver samples. For low-altitude networks that couple navigation integrity with limited uplink, the result matters for deploying FL-based spoofing defenses under bandwidth and privacy constraints.",
+      "links": [
+        {
+          "label": "arXiv:2610.10360",
+          "url": "https://arxiv.org/abs/2610.10360"
+        }
+      ]
+    },
+    {
+      "title": "FLoRa：能量约束下无人机辅助 LoRa 节点数据采集",
+      "title_en": "FLoRa: Flight-Assisted Data Collection from Duty Cycling LoRa Nodes under Energy Constraints",
+      "date": "10/7",
+      "authors": "Naresh Babu Kakarla, V. Mahendran",
+      "summary": "在 LoRa 物联网节点休眠节电时，联合优化无人机拜访集合、顺序、悬停点与探测次数，用多层优化兼顾能耗与信息新鲜度。",
+      "summary_en": "Under duty-cycled LoRa IoT nodes, jointly optimizes which nodes a UAV visits, the order, hover positions, and probe counts via a multi-level architecture balancing energy and data freshness.",
+      "detail": "LoRa 物联网设备为省电常采用值班休眠，使无人机数据采集必须在有限能量下决定拜访哪些节点、飞行顺序、悬停位置以及每节点探测次数，同时信息新鲜度随时衰。论文采用多层优化：离散组合优化负责路径，连续全局优化负责空间定位，序列决策负责探测策略，把“飞多远”与“采多新”统一起来。对低空物联网回传、野外传感网与应急场景，FLoRa 给出可计算的机载采集规划框架，补足仅考虑覆盖半径而忽略节点值班节奏的常见简化。",
+      "detail_en": "Duty-cycled LoRa IoT devices force a UAV collector to choose which nodes to visit, in what order, where to hover, and how many probes to send under energy limits while freshness decays. FLoRa uses a multi-level architecture: combinatorial routing, continuous spatial positioning, and sequential probing. That couples flight cost with information freshness instead of treating coverage radius alone. The framework is relevant to low-altitude IoT backhaul, remote sensing, and emergency collection when ground gateways are sparse.",
+      "links": [
+        {
+          "label": "arXiv:2610.09226",
+          "url": "https://arxiv.org/abs/2610.09226"
+        }
+      ]
+    },
+    {
+      "title": "FR3 空天地一体：分层 RIS 关联扩展覆盖",
+      "title_en": "Hierarchical RIS Association for FR3 Space-Air-Ground Integrated Networks",
+      "date": "10/7",
+      "authors": "Muddasir Rahim, Irfan Azam, Soumaya Cherkaoui",
+      "summary": "在 FR3 频段的空天地一体网络中引入分层 RIS 关联，缓解地面阻塞与偏远场景可靠性下降，服务 6G 连续覆盖需求。",
+      "summary_en": "Proposes hierarchical RIS association in FR3 space-air-ground integrated networks to improve continuity where terrestrial links are blocked or remote.",
+      "detail": "6G 多业务对连续覆盖与服务连续性提出更高要求，地面基础设施在偏远或严重遮挡环境中可靠性不足。论文面向 FR3（上中频）空天地一体网络（SAGIN），提出分层 RIS 关联方案，用可重构智能表面辅助星—空—地链路选择与用户关联，改善阻塞与覆盖空洞。FR3 正是国内与国际 6G 频谱讨论的重点频段之一，该工作把 RIS 从单层地面辅助扩展到分层空天地协同，对低空与卫星融合组网的关联算法有直接参考价值。",
+      "detail_en": "6G continuity needs stretch beyond dense terrestrial coverage. This paper studies FR3 space-air-ground integrated networks and proposes hierarchical RIS association so reconfigurable surfaces help choose and attach users across satellite, aerial, and ground links when terrestrial paths are blocked. FR3 is a major 6G candidate band; extending RIS association into layered SAGIN is directly useful for low-altitude and satellite-terrestrial integration algorithms.",
+      "links": [
+        {
+          "label": "arXiv:2610.09010",
+          "url": "https://arxiv.org/abs/2610.09010"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "卫星互联网与空天地",
+      "section_en": "Satellite internet & air-space-ground",
+      "emoji": "🛰️",
+      "items": [
+        {
+          "title": "中国星网完成跨极区通信在轨试验：时延<1秒、峰值30Mbps",
+          "title_en": "China SatNet completes cross-polar LEO trial: <1s latency, 30 Mbps peak",
+          "date": "10/8",
+          "summary": "第16次北冰洋科考期间，GW 星座打通南北极视频通话，接入雪龙号等三船并联动南极秦岭站，国内首次依托国产低轨星座完成超大纬度跨度实时视频。",
+          "summary_en": "During China’s 16th Arctic expedition, the GW constellation linked three research ships and Antarctica’s Qinling Station for video calls under 1s end-to-end latency and ~30 Mbps peak—China’s first ultra-wide-latitude real-time video via a domestic LEO system.",
+          "detail": "据央视新闻与 C114 10月8日报道，中国星网 GW 星座在第16次北冰洋科考任务中完成跨极区通信在轨试验，成功实现跨越南北两极的视频通话，端到端视频时延控制在1秒以内，链路峰值上下行约30Mbps。试验接入“雪龙”号、“极地”号、“探索三号”三艘科考船，并联动南极秦岭站，承担科考文件传输、航行日志回传及与国家海洋信息中心、极地中心、新闻直播间的实时连通。报道称这是国内首次依托国产低轨卫星互联网系统完成超大纬度跨度实时视频，数据无需经境外节点中转。GW 规划约12992颗低轨星，分 GW-A59（约590km以下极低轨宽带）与 GW-A2（约1145km广域备份），搭载 Ka 宽带与星间激光链路。能力也可延伸至远洋海事与地面网络损毁下的应急救援。",
+          "detail_en": "Per CCTV News and C114 on Oct 8, China SatNet’s GW constellation completed a cross-polar on-orbit communications trial during the 16th Arctic expedition: pole-to-pole video calls with end-to-end latency under 1 second and peak rates around 30 Mbps. The trial connected research vessels Xue Long, Ji Di, and Tan Suo 3 with Antarctica’s Qinling Station for file transfer, voyage logs, and live links to national ocean and polar centers. It is described as China’s first ultra-wide-latitude real-time video over a domestic LEO internet system without foreign relay nodes. GW plans ~12,992 LEO satellites (GW-A59 below ~590 km for capacity/latency; GW-A2 near 1145 km for coverage/redundancy) with Ka payloads and inter-satellite lasers—also relevant to maritime and disaster emergency links.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/16/a1318832.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "光通信、算力网络与数据中心",
+      "section_en": "Optical, computing networks & data centers",
+      "emoji": "💡",
+      "items": [
+        {
+          "title": "中国移动 RoCE 交换机集采：2450台、限价超40亿，自主可控80%",
+          "title_en": "China Mobile RoCE switch tender: 2,450 units, >RMB 40bn cap, 80% controllable",
+          "date": "10/8",
+          "summary": "2026–2027 年大规模集群 RoCE 交换机集采发布：标包1自主可控1960台限价32.655亿，标包2共490台限价8.163亿，服务万卡级智算东西向互联。",
+          "summary_en": "China Mobile’s 2026–2027 large-cluster RoCE switch tender seeks 2,450 units: Package 1 (1,960 controllable units, RMB 32.655bn cap) and Package 2 (490 units, RMB 8.163bn), aimed at 10k-GPU AI fabrics.",
+          "detail": "C114 10月8日报道，中国移动采购与招标网发布2026–2027年（一年期）RoCE交换机（大规模集群）集中采购招标公告，预估采购2450台，最高投标限价超40亿元。项目分两包：标包1自主可控RoCE交换机1960台（占比80%），最高限价32.655亿元（不含税）；标包2共490台（20%），最高限价8.163亿元。相较一季度集团首次RoCE集采约1790台、开标约8.8亿元，本次限价显著抬升并标注大规模集群用途，指向万卡级训练集群的东西向无损以太需求。自主可控占比由上次超73%升至80%，在高端交换芯片仍高度依赖博通、Marvell的背景下，用集采订单牵引国产交换芯片与整机验证。",
+          "detail_en": "C114 reported on Oct 8 that China Mobile posted a 2026–2027 one-year RoCE switch tender for large clusters: about 2,450 units with a bid cap above RMB 40 billion. Package 1 covers 1,960 controllable switches (80%) at a RMB 32.655bn pre-tax cap; Package 2 covers 490 units (20%) at RMB 8.163bn. Versus Q1’s first group RoCE buy (~1,790 units, ~RMB 8.8bn award), the much higher cap and “large cluster” label point to east-west lossless Ethernet for 10k-GPU training. Controllable share rises from >73% to 80%, using operator demand to mature domestic switch silicon while Broadcom/Marvell still dominate high-end merchant chips.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/118/a1318819.html"
+            }
+          ]
+        },
+        {
+          "title": "中国移动设计院参与 Micro-LED 并行光互连国重专项",
+          "title_en": "China Mobile Design Institute joins national Micro-LED parallel optical interconnect project",
+          "date": "10/8",
+          "summary": "《高可靠微发光二极管并行光互连系统》获国家重点研发计划颠覆性技术创新专项立项，设计院牵头系统集成，攻关板卡/芯片间短距光互连。",
+          "summary_en": "A national key R&D “disruptive innovation” project on highly reliable Micro-LED parallel optical interconnects was approved; CMDI leads system integration for board-/chip-level short-reach links.",
+          "detail": "C114 10月8日消息，中国移动设计院与清华大学等联合申报的《高可靠微发光二极管并行光互连系统》已获批国家重点研发计划颠覆性技术创新重点专项立项。项目面向智算中心板卡间与芯片间短距互连，以 Micro-LED 并行光互连为核心，突破铜互连在带宽密度、功耗与可靠性上的瓶颈。设计院作为系统集成课题牵头单位，负责光链路设计、器件接口与系统规范、系统级集成与验证，并推动关键器件与封装国产化。对算力网络“光进铜退”与自主可控互连栈具有中长期意义。",
+          "detail_en": "C114 on Oct 8 said China Mobile Design Institute, with Tsinghua and others, won approval for a national key R&D disruptive-innovation project on highly reliable Micro-LED parallel optical interconnects. The work targets short-reach board- and chip-level links in AI/HPC centers where copper hits bandwidth-density, power, and reliability walls. CMDI leads system integration: optical link design, device/interface specs, and system validation, while pushing domestic devices and packaging—material to long-term optical computing-network stacks.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/118/a1318809.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "5G/5G-A 与 6G",
+      "section_en": "5G/5G-A & 6G",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "中兴回应6G布局：快速收敛LDPC入选3GPP，U6GHz 256TR原型机峰值超192Gbps",
+          "title_en": "ZTE on 6G: fast-converging LDPC adopted in 3GPP; U6GHz 256TR prototype >192 Gbps",
+          "date": "10/8",
+          "summary": "互动易称全球6G处定频谱/路线/标准窗口期；中国企业主导的新型高效快速收敛LDPC被3GPP采纳为6G数据信道编码；6G业务尚未形成规模收入。",
+          "summary_en": "In an investor reply, ZTE said 6G is in a spectrum/path/standards window; China-led fast-converging LDPC was adopted by 3GPP as a 6G data-channel coding scheme; 6G revenue is not yet material.",
+          "detail": "10月8日中兴通讯在互动易回应投资者称，全球6G正处于定频谱、定路线、定标准的关键窗口期，公司从标准、关键技术预研、原型验证到生态建设多线推进。标准方面，近期由公司及多家中国企业主导推动的新型高效快速收敛LDPC码被3GPP采纳为6G数据信道编码方案。技术方面称已形成超30项关键技术及10余项核心创新，在U6GHz频段发布业界首款256TR 6G原型机，多用户峰值速率突破192Gbps，并推出6G承载原型样机。生态上探索AI多感官沉浸、柔性制造、星地融合、具身智能群智等场景。公司同时明确目前6G相关业务尚未形成规模收入。",
+          "detail_en": "On Oct 8 ZTE told investors via Interactive Easy that global 6G is in a critical window for spectrum, architecture path, and standards. It said a China-led fast-converging LDPC scheme was recently adopted by 3GPP as a 6G data-channel coding candidate. ZTE cites 30+ key technologies and 10+ core innovations, a first-of-kind U6GHz 256TR 6G prototype with multi-user peak rates above 192 Gbps, and a 6G transport prototype, while exploring AI immersive, flexible manufacturing, NTN, and embodied-swarm scenarios. It also said 6G-related revenue is not yet at scale.",
+          "links": [
+            {
+              "label": "新浪财经",
+              "url": "https://finance.sina.com.cn/jjxw/2026-10-08/doc-iniunvxm3816671.shtml"
+            }
+          ]
+        },
+        {
+          "title": "爱立信/诺基亚与华为交锋：6G核心网“演进”对“革命”",
+          "title_en": "Ericsson/Nokia vs Huawei: evolutionary vs revolutionary 6G core",
+          "date": "10/8",
+          "summary": "Light Reading：欧美运营商倾向在5G独立组网核心上演进并隔离AI域；华为/中兴/中国移动主张AI智能体深度嵌入核心，标准分裂风险上升。",
+          "summary_en": "Light Reading: Western operators favor evolving 5GC with AI in a separate domain; Huawei/ZTE/China Mobile push agent-deep core integration, raising fragmentation risk.",
+          "detail": "Light Reading 10月8日报道，3GPP马德里全会后，6G核心网路线对立公开化。爱立信、诺基亚及17家中国以外运营商主张以独立组网5G核心为重要基础做“演进”，将AI置于独立域或有限功能；华为、中兴与中国移动等则推动“革命”方向，主张AI智能体深度嵌入流程乃至“智能体处理连接”。Omdia分析称若无法妥协，或出现中国市场单厂商革命核心与海外多厂商演进核心的双轨。11月前需敲定架构以维持全球统一标准。欧洲/美国运营商对5G变现失望强化了保守立场，而激进派认为过度保守可能重复“燃油车改电车”的弯路。",
+          "detail_en": "Light Reading on Oct 8 reports a sharper 6G core split after a 3GPP Madrid plenary. Ericsson, Nokia, and 17 non-China operators urge evolution from standalone 5GC with AI in a separate domain or limited functions. Huawei, ZTE, and China Mobile push a more revolutionary “Direction 3” with AI agents deeply embedded in procedures. Omdia warns of possible dual cores—revolutionary single-vendor designs in China versus evolutionary multi-vendor architectures elsewhere—unless architecture is settled by November. Western caution reflects weak 5G monetization; revolution advocates argue timid evolution could prove costlier if AI-native cores become essential.",
+          "links": [
+            {
+              "label": "Light Reading",
+              "url": "https://www.lightreading.com/6g/ericsson-and-nokia-battle-huawei-in-6g-core-clash-over-ai"
+            }
+          ]
+        },
+        {
+          "title": "WBA：Wi-Fi 对 6G 泛在覆盖“不可或缺”",
+          "title_en": "WBA: Wi-Fi is “indispensable” for 6G ubiquitous coverage",
+          "date": "10/8",
+          "summary": "无线宽带联盟发布报告，主张将 Wi-Fi 作为 6G 核心组成部分，强调室内深度覆盖与免配置融合接入，并吸取既往 Wi-Fi/蜂窝融合失败的商业教训。",
+          "summary_en": "The Wireless Broadband Alliance argues Wi-Fi should be a core 6G building block for indoor depth and on-demand convergence, learning from prior Wi-Fi/cellular fusion failures.",
+          "detail": "C114 10月8日援引无线宽带联盟（WBA）观点称，Wi-Fi 的广泛可用性使其成为未来6G标准的理想候选；若缺少该技术，下一代连接变革难以实现。WBA总裁 Tiago Rodrigues 称 Wi-Fi 对实现泛在覆盖“不可或缺”，尤其室内场景，并发布报告阐述将其纳入6G系统的路径，强调降低成本与复杂性的实用框架。联盟主张接入模式按需在 Wi-Fi 与移动网间运行而无需特定配置，同时必须解决网络成本、客户体验、自动化与新服务等商业问题，以避免过去 Wi-Fi 与4G/5G融合方案难以落地的障碍。",
+          "detail_en": "C114 on Oct 8 relayed the Wireless Broadband Alliance’s case that Wi-Fi’s ubiquity makes it a natural 6G candidate and that coverage ambitions fail without it. CEO Tiago Rodrigues called Wi-Fi “indispensable,” especially indoors, and pointed to a WBA report on practical, lower-cost inclusion paths. WBA wants demand-driven Wi-Fi/cellular operation without special configuration, while insisting commercial issues—cost, experience, automation, new services—must be solved to avoid prior Wi-Fi/4G/5G convergence dead ends.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/116/a1318828.html"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notion_url": "https://app.notion.com/p/3f43a1fdbe1881299088fbd4491029d7"
+}
