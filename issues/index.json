@@ -1,6 +1,33 @@
 {
   "issues": [
     {
+      "date": "2026-10-09",
+      "weekday": "周五",
+      "title": "通信行业日报 · 2026-10-09（周五）",
+      "theme": "星网完成跨极区低轨通信试验",
+      "cover": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Svalbard_Satellite_Station,_an_important_part_of_the_Copernicus_Sentinel_ground_segment.jpg",
+      "highlights": [
+        {
+          "label": "卫星",
+          "text": "中国星网 GW 星座在北冰洋科考中完成跨极区视频通信在轨试验，端到端时延低于 1 秒、峰值约 30 Mbps，国内首次依托国产低轨星座实现超大纬度跨度实时视频。"
+        },
+        {
+          "label": "算力网络",
+          "text": "中国移动启动 2026–2027 年 RoCE 交换机集采，预估 2450 台、最高限价超 40 亿元，自主可控标包占比 80%，服务万卡级智算集群。"
+        },
+        {
+          "label": "6G",
+          "text": "中兴称快速收敛 LDPC 已被 3GPP 采纳为 6G 数据信道编码；爱立信/诺基亚与华为在 6G 核心网演进 vs 革命路线上对立加深；WBA 主张将 Wi-Fi 纳入 6G 泛在覆盖。"
+        },
+        {
+          "label": "科研",
+          "text": "新公开 UAV 通信相关工作涵盖联邦学习 GPS 欺骗检测、无人机辅助 LoRa 数据采集，以及 FR3 空天地一体 RIS 关联。"
+        }
+      ],
+      "weekday_en": "Friday",
+      "theme_en": "China SatNet completes polar LEO communications trial"
+    },
+    {
       "date": "2026-10-08",
       "weekday": "周四",
       "title": "通信行业日报 · 2026-10-08（周四）",
