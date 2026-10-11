@@ -1,6 +1,33 @@
 {
   "issues": [
     {
+      "date": "2026-10-12",
+      "weekday": "周一",
+      "title": "通信行业日报 · 2026-10-12（周一）",
+      "theme": "卫星互联网低轨27组组网发射",
+      "cover": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Launch_of_Shenzhou_13.jpg",
+      "highlights": [
+        {
+          "label": "卫星",
+          "text": "10月10日3时27分，长征十二号在海南商业航天发射场将卫星互联网低轨27组卫星送入预定轨道，海南商发第24次发射、二号工位第10次发射。"
+        },
+        {
+          "label": "光通信",
+          "text": "中国电信骨干100G ROADM扩容直接采购华为/中兴/烽火；中国移动启动省内400G OTN新建集采，预估业务端口2264个、三家份额约50%/36%/15%。"
+        },
+        {
+          "label": "算力网络",
+          "text": "中国电信天翼云发布2026年400G白盒交换机集采资格预审，预估350台，要求单芯片≥102.4Tbps、≥128×400GE，并适配基于SONiC的TeleNOS。"
+        },
+        {
+          "label": "科研",
+          "text": "新公开多机协同UAV ISAC工作：基于Token通信的具身多智能体框架，以及面向动态遮挡的失步感知鲁棒功率分配。"
+        }
+      ],
+      "weekday_en": "Monday",
+      "theme_en": "China launches LEO internet satellite group 27"
+    },
+    {
       "date": "2026-10-09",
       "weekday": "周五",
       "title": "通信行业日报 · 2026-10-09（周五）",

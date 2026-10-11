@@ -1,0 +1,183 @@
+{
+  "date": "2026-10-12",
+  "weekday": "周一",
+  "weekday_en": "Monday",
+  "title": "通信行业日报 · 2026-10-12（周一）",
+  "theme": "卫星互联网低轨27组组网发射",
+  "theme_en": "China launches LEO internet satellite group 27",
+  "cover": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Launch_of_Shenzhou_13.jpg",
+    "credit": "China News Service / Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Launch_of_Shenzhou_13.jpg"
+  },
+  "highlights": [
+    {
+      "label": "卫星",
+      "text": "10月10日3时27分，长征十二号在海南商业航天发射场将卫星互联网低轨27组卫星送入预定轨道，海南商发第24次发射、二号工位第10次发射。"
+    },
+    {
+      "label": "光通信",
+      "text": "中国电信骨干100G ROADM扩容直接采购华为/中兴/烽火；中国移动启动省内400G OTN新建集采，预估业务端口2264个、三家份额约50%/36%/15%。"
+    },
+    {
+      "label": "算力网络",
+      "text": "中国电信天翼云发布2026年400G白盒交换机集采资格预审，预估350台，要求单芯片≥102.4Tbps、≥128×400GE，并适配基于SONiC的TeleNOS。"
+    },
+    {
+      "label": "科研",
+      "text": "新公开多机协同UAV ISAC工作：基于Token通信的具身多智能体框架，以及面向动态遮挡的失步感知鲁棒功率分配。"
+    }
+  ],
+  "research": [
+    {
+      "title": "SI-TokCom：Token通信驱动的多机具身协同ISAC",
+      "title_en": "An Embodied Multiagent Framework Based on Token Communications for Cooperative ISAC",
+      "date": "10/9",
+      "authors": "Jiahe Guo, Jun Du, Chunxiao Jiang, Jintao Wang",
+      "summary": "面向低空经济多机通感一体，用状态/意图双Codebook做紧凑机间协同，在96 bit/机/时隙载荷下逼近集中式通感速率。",
+      "summary_en": "For multi-UAV ISAC in the low-altitude economy, dual state/intent token codebooks enable compact air-to-air coordination, approaching centralized rates at 96 bits per UAV per slot.",
+      "detail": "低空经济场景要求无人机在通感一体（ISAC）中同时完成用户下行与目标感知，但机间直接交换本地状态与意图开销大、易过时。清华团队提出状态—意图Token通信（SI-TokCom）：离线预训练共享S-Token/I-Token码本，在线用MAPPO联合学习Token选择与轨迹/关联/带宽/功率，波束赋形用分式规划+KKT闭式更新。仿真中每机每时隙协同载荷96 bit，通信与感知速率分别达到集中式基线的98.9%与99.1%；相对仅本地观测基线，两项速率分别提升约5.0%与43.6%，推进能耗基本持平。工作把语义Token从传输效率延伸到具身多机决策闭环，对低空通感编队的带宽受限协同有直接参考价值。",
+      "detail_en": "Low-altitude multi-UAV ISAC needs joint downlink and sensing, but raw state/intent exchange is costly and stale. Tsinghua authors propose SI-TokCom: offline-pretrained shared S-/I-Token codebooks plus online MAPPO for token selection with trajectory, association, bandwidth, and power, while beamforming uses FP+KKT closed forms. With a 96-bit/UAV/slot coordination payload, communication and sensing rates reach 98.9% and 99.1% of a centralized baseline; versus a local-only baseline they rise about 5.0% and 43.6% at nearly unchanged propulsion energy. The work extends token communications into an embodied multi-agent control loop for bandwidth-limited UAV ISAC fleets.",
+      "links": [
+        {
+          "label": "arXiv:2610.11434",
+          "url": "https://arxiv.org/abs/2610.11434"
+        }
+      ]
+    },
+    {
+      "title": "面向失步的UAV ISAC鲁棒感知功率分配",
+      "title_en": "Outage-Aware Robust Sensing for UAV ISAC Systems",
+      "date": "10/9",
+      "authors": "Qiming Li, Lei Zhang, Haoran Xu, Lina Mohjazi",
+      "summary": "多基站跟踪无人机时，下一时隙可用感知链路不确定；用共形预测保留相关遮挡模式，并对全遮挡失步单独处理，功耗较全保护降低约47%。",
+      "summary_en": "When multi-BS ISAC tracks a UAV under dynamic blockage, next-slot informative links are uncertain; conformal prediction sets retain correlated patterns while treating all-blocked outage separately, cutting power about 47% versus protecting all non-outage patterns.",
+      "detail": "蜂窝ISAC可为空中机器人提供外部感知，但动态遮挡使下一更新时刻的有效基站—无人机链路集合不确定：只押注单一预测易漏掉低信息模式，而对所有模式做功率保护又浪费甚至不可行（全遮挡时Fisher信息为零）。格拉斯哥大学团队提出失步感知的共形鲁棒功率分配：历史感知GRU给出联合可用模式概率，自适应预测集（APS）保留相关模式；可服务模式进入跟踪约束的SDP，全遮挡单独记为物理感知失步。闭环仿真中可服务时隙约束违约率约0.01%，相对保护全部非失步模式可少用约47.0%功率，并把可靠性分解为预测漏盖、优化不可行与物理失步三项。对低空监视与安防跟踪的基站侧功率规划有工程意义。",
+      "detail_en": "Cellular ISAC can track aerial robots, but dynamic blockage makes the next-slot set of informative BS–UAV links uncertain: a single predicted pattern can miss low-information outcomes, while protecting every pattern wastes power and is infeasible when all links are blocked (zero FIM). University of Glasgow authors propose an outage-aware conformal robust allocator: a history-aware GRU predicts joint availability, APS retains correlated patterns, serviceable members enter an SDP tracking constraint, and the all-blocked case is treated as physical sensing outage. In paired closed-loop simulations the serviceable-slot violation rate is about 0.01%, power falls about 47.0% versus protecting all non-outage patterns, and reliability is attributed to miscoverage, infeasibility, and outage—useful for ground-side power planning in low-altitude surveillance.",
+      "links": [
+        {
+          "label": "arXiv:2610.11720",
+          "url": "https://arxiv.org/abs/2610.11720"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "卫星互联网与空天地",
+      "section_en": "Satellite internet & air-space-ground",
+      "emoji": "🛰️",
+      "items": [
+        {
+          "title": "我国成功发射卫星互联网低轨27组卫星",
+          "title_en": "China successfully launches LEO internet satellite group 27",
+          "date": "10/10",
+          "summary": "10日3时27分，长征十二号在海南商业航天发射场将低轨27组卫星送入预定轨道；为海南商发第24次发射、二号工位第10次发射，星网GW组网再进一步。",
+          "summary_en": "At 03:27 on Oct 10, a Long March 12 from Hainan commercial spaceport lofted LEO internet satellite group 27 into orbit—Hainan’s 24th launch and the 10th from Pad 2—continuing GW constellation build-out.",
+          "detail": "据新华社与C114报道，北京时间2026年10月10日03时27分，我国在海南商业航天发射场使用长征十二号运载火箭，成功将卫星互联网低轨27组卫星发射升空并进入预定轨道。海南商业航天发射场累计第24次发射，二号发射工位第10次发射。公开回顾显示，GW星座自2024年12月首批组网以来已连续发射至第27组，组网节奏持续加快。该进展与上周五报道的跨极区在轨通信试验形成能力互补：一边是星座规模扩张，一边是极区海事等场景验证，共同指向国产低轨互联网从建星向用星深化。",
+          "detail_en": "Per Xinhua and C114, at 03:27 Beijing time on Oct 10, 2026, a Long March 12 from the Hainan commercial spaceport successfully placed China SatNet LEO internet satellite group 27 into planned orbit. It was the site’s 24th launch and the 10th from Pad 2. Public timelines show GW constellation launches continuing from the Dec 2024 first batch through group 27, with a faster cadence. Relative to Friday’s cross-polar on-orbit communications trial, this is constellation scale-up rather than a new polar demo—build-out and use-case validation advancing in parallel.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://m.c114.com.cn/w3542-1318893.html"
+            },
+            {
+              "label": "新华社转载",
+              "url": "https://satnet.news/item/31823"
+            }
+          ]
+        },
+        {
+          "title": "SpaceX收购800MHz低频频谱，补齐Starlink Mobile室内覆盖拼图",
+          "title_en": "SpaceX to acquire 800 MHz low-band spectrum for Starlink Mobile indoor reach",
+          "date": "10/10",
+          "summary": "SpaceX拟从Grain Management收购全国性800MHz成对频谱共14MHz，待FCC批准；马斯克称这是美国境内全面手机覆盖的“最后一块关键拼图”。",
+          "summary_en": "SpaceX agreed to buy 14 MHz of paired nationwide 800 MHz spectrum from Grain Management, pending FCC approval; Musk called it the last key piece for full U.S. phone coverage.",
+          "detail": "C114 10月10日晚间独家消息，SpaceX达成协议从Grain Management收购美国全国性800MHz频段中总计14MHz成对频谱，转让待FCC批准，财务条款未披露。马斯克在X上称这是SpaceX实现美国境内全面手机信号覆盖所需的最后一块关键拼图。SpaceX表示Starlink Mobile的全球2GHz中频频谱在美提供高容量覆盖，低频将改善穿墙与室内设备可达性，并计划把卫星与地面飞蜂窝结合提供5G移动覆盖，与T-Mobile、Verizon、AT&T竞争直连手机（D2D）服务。该频谱原由T-Mobile于8月售予Grain。对全球卫星直连手机与地面频谱补网路径是重要行业信号。",
+          "detail_en": "C114 reported late on Oct 10 that SpaceX agreed to acquire 14 MHz of paired nationwide 800 MHz spectrum from Grain Management, pending FCC approval; terms undisclosed. Musk said on X it is the last key piece for full U.S. phone coverage. SpaceX says Starlink Mobile’s global ~2 GHz mid-band will supply capacity while low-band improves indoor penetration, combining satellites with terrestrial pico-cells for 5G mobile service against T-Mobile, Verizon, and AT&T D2D offerings. T-Mobile sold the spectrum to Grain in August. The deal is a major signal for satellite-to-phone plus terrestrial spectrum fill-in strategies.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/116/a1318940.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "光通信、算力网络与数据中心",
+      "section_en": "Optical, computing networks & data centers",
+      "emoji": "💡",
+      "items": [
+        {
+          "title": "中国电信骨干100G ROADM扩容：直接采购华为、中兴、烽火",
+          "title_en": "China Telecom backbone 100G ROADM expansion: direct buy from Huawei, ZTE, FiberHome",
+          "date": "10/10",
+          "summary": "阳光采购网显示2026年骨干100G ROADM扩容拟直接采购原中标人，覆盖华北华南西北西南东北及新疆中哈延伸段；现网100G ROADM约40万公里。",
+          "summary_en": "China Telecom’s 2026 backbone 100G ROADM expansion will directly procure from prior winners Huawei, ZTE, and FiberHome across five regions plus Xinjiang–Kazakhstan extension; the 100G ROADM footprint is ~400,000 km.",
+          "detail": "C114 10月10日消息，中国电信阳光采购网披露骨干100G ROADM设备（2026年）集中采购拟采取直接采购：向原中标人采购，否则影响施工与配套。供应商为华为技术与华为技术服务联合体、中兴通讯、烽火通信。项目覆盖华北、华南、西北、西南、东北五区域及新疆（中哈）国内延伸段扩容。报道称中国电信已建成覆盖五大区域、总长约40万公里的100G ROADM网络，400G ROADM亦初具规模。研究院院长张成良此前强调AI流量增长推动网络与算力协同，ROADM全光网将成为算力集群互联核心底座。相对周五移动RoCE集采，本条是运营商侧光层扩容落地节点。",
+          "detail_en": "C114 on Oct 10 said China Telecom’s sunshine procurement portal plans direct purchase for 2026 backbone 100G ROADM gear from prior winners—Huawei (with Huawei Services), ZTE, and FiberHome—covering North/South/Northwest/Southwest/Northeast China plus the Xinjiang (China–Kazakhstan) domestic extension. The carrier’s 100G ROADM network already spans five regions at about 400,000 km, with 400G ROADM also scaling. Research institute head Zhang Chengliang has argued AI-driven traffic makes ROADM optical fabrics a core base for computing-cluster interconnect. Versus Friday’s China Mobile RoCE tender, this is an optical-layer expansion milestone.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "http://www.c114.com.cn/news/117/a1318910.html"
+            }
+          ]
+        },
+        {
+          "title": "中国移动省内400G OTN新建集采：预估2264端口，三家份额约50%/36%/15%",
+          "title_en": "China Mobile provincial 400G OTN new-build tender: ~2,264 ports, 50%/36%/15% shares",
+          "date": "10/10",
+          "summary": "2026–2027年省内400G OTN（新建）集采10月10日发标，预估业务端口2264个，中标3家按约49.98%/35.51%/14.51%分份额，投标截止11月3日。",
+          "summary_en": "China Mobile’s 2026–2027 provincial 400G OTN (new-build) tender posted Oct 10 for an estimated 2,264 service ports, three winners at ~49.98%/35.51%/14.51% shares, bids due Nov 3.",
+          "detail": "信息化招标等渠道显示，中国移动2026年至2027年省内400G OTN设备（新建部分）集中采购招标公告于2026年10月10日发布。本期集采产品为OTN设备，预估采购业务端口2264个（预估规模，实际以框架协议为准），需求满足期一年、最长可顺延一年。采用份额招标，中标人数量3家，份额按49.98%、35.51%、14.51%分配，允许同时中标最多1个标包；只接受制造商投标（含联合体），不接受代理商。招标文件获取期10月10日18时至10月15日18时，电子投标截止11月3日10时；样品须于10月23日前送达中国移动国际信息港二期并完成自检。400G OTN是省干/城域承载AI与东数西算流量的关键光层增量。",
+          "detail_en": "Procurement mirrors show China Mobile posted its 2026–2027 provincial 400G OTN (new-build) centralized tender on Oct 10. It estimates 2,264 OTN service ports (indicative; framework amount governs), one-year demand window extendable by one year. Three winners share ~49.98%/35.51%/14.51%, at most one package per bidder; manufacturers only (joint ventures OK), no agents. Bid docs available Oct 10 18:00–Oct 15 18:00; electronic bids due Nov 3 10:00; samples must arrive at China Mobile International Information Port Phase II by Oct 23 for self-test. 400G OTN is a key optical increment for provincial/metro AI and east-to-west computing traffic.",
+          "links": [
+            {
+              "label": "招标公告转载",
+              "url": "https://www.xinxihuazhaobiao.com/news-4b5ed990799eccbf4de6b36a2ae09abb/"
+            }
+          ]
+        },
+        {
+          "title": "天翼云400G白盒交换机集采资格预审：预估350台",
+          "title_en": "China Telecom eCloud 400G white-box switch prequalification: ~350 units",
+          "date": "10/10",
+          "summary": "天翼云2026年400G白盒交换机集采启动资格预审，预估350台；要求单交换芯片、双向≥102.4Tbps、≥128×400GE，并运行基于SONiC的TeleNOS。",
+          "summary_en": "China Telecom eCloud opened 2026 400G white-box switch prequalification for ~350 units: single switch ASIC, ≥102.4 Tbps bidirectional, ≥128×400GE, running SONiC-based TeleNOS.",
+          "detail": "10月10日发布的中国电信天翼云2026年400G白盒交换机集中采购资格预审公告显示，预估采购350台（预估量）。关键技术指标包括：高度≤4U；单交换芯片设计，双向交换容量≥102.4Tbps（不大于350字节线速）；业务端口≥128×400GE，其中不少于64口须支持1分2×200GE；须支持400G VR4/DR4/SR8光模块；软件需提供platform BSP源码并适配招标人基于SONiC 202205分支的TeleNOS系统。申请人须自2023年9月1日起在境内累计签约金额不少于3000万元的400GE及以上端口交换机应用案例。相对周五移动RoCE集采，本条指向云侧400G白盒与开源网络操作系统路线并行推进。",
+          "detail_en": "China Telecom eCloud’s Oct 10 prequalification for 2026 400G white-box switches estimates 350 units. Specs include height ≤4U; single switch ASIC with ≥102.4 Tbps bidirectional capacity (line-rate at ≤350-byte frames); ≥128×400GE ports with at least 64 supporting 1:2×200GE; 400G VR4/DR4/SR8 optics; and BSP source to run TeleNOS based on SONiC 202205. Applicants need ≥RMB 30 million cumulative domestic 400GE+ switch contracts since Sep 1, 2023. Versus Friday’s China Mobile RoCE buy, this advances cloud-side 400G white-box plus open NOS in parallel.",
+          "links": [
+            {
+              "label": "资格预审转载",
+              "url": "https://www.xinxihuazhaobiao.com/news-dcaeabd27e93202c62b48ed2ee1b8f9b/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "5G/5G-A 与 6G",
+      "section_en": "5G/5G-A & 6G",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "国资委公开调研中国移动：强调加快6G核心技术攻关与新一代通信网建设",
+          "title_en": "SASAC visit to China Mobile stresses faster 6G core R&D and next-gen networks",
+          "date": "10/10",
+          "summary": "国资委10月10日公开：主任程福波10月8日调研中国移动，要求聚焦6G、云和算力网络等强化关键核心技术攻关，超前布局前沿技术。",
+          "summary_en": "SASAC disclosed on Oct 10 that Director Cheng Fubo visited China Mobile on Oct 8, urging stronger 6G, cloud, and computing-network core tech breakthroughs and forward-looking layouts.",
+          "detail": "同花顺等10月10日援引国资委消息：国务院国资委党委书记、主任程福波10月8日到中国移动调研企业改革创新、党建及加快6G核心技术攻关、推进新一代通信网建设等工作进展。程福波强调要围绕国家所需、产业所趋加强战略规划，超前布局影响未来的前沿技术，抢占网信领域技术制高点；持续加大科技创新，聚焦6G、云和算力网络等重点领域，强化关键核心技术攻关与基础研究，筑牢技术护城河。该表述于10月10日对外公开，属于窗口期内新发布的政策导向信号，与上周五业界关于6G核心网路线分歧的讨论形成上层动员呼应。",
+          "detail_en": "On Oct 10, outlets citing SASAC said Party Secretary and Director Cheng Fubo visited China Mobile on Oct 8 to review reform, Party work, faster 6G core R&D, and next-generation network build-out. He urged strategy aligned with national and industry needs, early layout of frontier tech, and deeper breakthroughs in 6G, cloud, and computing networks plus basic research. The public disclosure on Oct 10 is a new in-window policy signal that resonates with Friday’s industry debate on evolutionary vs revolutionary 6G cores.",
+          "links": [
+            {
+              "label": "同花顺快讯",
+              "url": "https://stock.10jqka.com.cn/20261010/c680544206.shtml"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notion_url": "https://app.notion.com/p/3f63a1fdbe18816e93a9e38848572040"
+}
