@@ -1,6 +1,33 @@
 {
   "issues": [
     {
+      "date": "2026-10-13",
+      "weekday": "周二",
+      "title": "通信行业日报 · 2026-10-13（周二）",
+      "theme": "算力互联自主可控提速——中移动RoCE集采“国产账”",
+      "cover": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Datacenter_Server_Racks_%2822370909788%29.jpg",
+      "highlights": [
+        {
+          "label": "算力网络",
+          "text": "C114深度复盘中移动RoCE集采：2450台、自主可控80%、限价超40亿，较一季度金额上限抬升约4.5倍。"
+        },
+        {
+          "label": "6G标准",
+          "text": "ITU-R WP5D第53次会议收官，IMT-2030前期研究完成，候选无线接口技术征集拟2027年启动。"
+        },
+        {
+          "label": "光通信",
+          "text": "联讯仪器前三季净利预增约19–21倍，受益高速光模块测试需求；Q3环比近翻倍以上。"
+        },
+        {
+          "label": "科研",
+          "text": "回补周一未覆盖的UAV/LAWN通感论文：协同ISAC证据融合，以及低空NOMA用户—目标配对。"
+        }
+      ],
+      "weekday_en": "Tuesday",
+      "theme_en": "Homegrown compute fabric—China Mobile RoCE domestic-controllable deep dive"
+    },
+    {
       "date": "2026-10-12",
       "weekday": "周一",
       "title": "通信行业日报 · 2026-10-12（周一）",
