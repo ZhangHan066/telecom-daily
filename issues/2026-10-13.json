@@ -1,0 +1,182 @@
+{
+  "date": "2026-10-13",
+  "weekday": "周二",
+  "weekday_en": "Tuesday",
+  "title": "通信行业日报 · 2026-10-13（周二）",
+  "theme": "算力互联自主可控提速——中移动RoCE集采“国产账”",
+  "theme_en": "Homegrown compute fabric—China Mobile RoCE domestic-controllable deep dive",
+  "cover": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Datacenter_Server_Racks_%2822370909788%29.jpg",
+    "credit": "Carl Lender / Wikimedia Commons (CC BY 2.0)",
+    "source": "https://commons.wikimedia.org/wiki/File:Datacenter_Server_Racks_(22370909788).jpg"
+  },
+  "highlights": [
+    {
+      "label": "算力网络",
+      "text": "C114深度复盘中移动RoCE集采：2450台、自主可控80%、限价超40亿，较一季度金额上限抬升约4.5倍。"
+    },
+    {
+      "label": "6G标准",
+      "text": "ITU-R WP5D第53次会议收官，IMT-2030前期研究完成，候选无线接口技术征集拟2027年启动。"
+    },
+    {
+      "label": "光通信",
+      "text": "联讯仪器前三季净利预增约19–21倍，受益高速光模块测试需求；Q3环比近翻倍以上。"
+    },
+    {
+      "label": "科研",
+      "text": "回补周一未覆盖的UAV/LAWN通感论文：协同ISAC证据融合，以及低空NOMA用户—目标配对。"
+    }
+  ],
+  "research": [
+    {
+      "title": "从回波到证据：面向通感一体化的协同融合",
+      "title_en": "From Echoes to Evidence: Cooperative Fusion for Integrated Sensing and Communication",
+      "date": "10/8",
+      "authors": "Xingqin Lin",
+      "summary": "多节点协同ISAC易因多径锁定虚目标；将关联确认、状态精炼与残差恢复解耦，UAV场景检测与定位显著提升。",
+      "summary_en": "Cooperative ISAC can lock onto virtual targets under multipath; decoupling association, refinement and residual recovery lifts UAV detection and localization.",
+      "detail": "面向多节点协同ISAC，论文将关联确认、状态精炼与残差目标恢复解耦，并在含偏置、同步/校准干扰与相关误差的蜂窝参考信号模型下，刻画报告可区分性与共享反射体歧义，再用极小极大准则做弱回波方向性精炼，同时计入请求与上传开销。UAV评估覆盖3GPP随机信道与旧金山射线追踪：匹配预算融合使检测率从可观测站点选择的88.75%升至92.46%，虚警输出占比从11.06%降至0.40%；相对最强全带宽固定站点，共检目标P90定位误差由8.54 m降至3.50 m。该文周一日报未收录，属近期低空协同感知重要补充。",
+      "detail_en": "The work decouples association confirmation, bias-aware directional refinement of weak reports, and residual target recovery for cooperative cellular ISAC, including monostatic/bistatic geometry and upload cost. Under matched PRS budgets, UAV trials in a mapped-city ray-tracing scene raise detection from 88.75% to 92.46%, cut false-output fraction from 11.06% to 0.40%, and reduce common-target 90th-percentile position error from 8.54 m to 3.50 m versus the strongest fixed site. Not covered in Monday’s digest; included as a recent LAWN-relevant ISAC add.",
+      "links": [
+        {
+          "label": "arXiv:2610.10994",
+          "url": "https://arxiv.org/abs/2610.10994"
+        }
+      ]
+    },
+    {
+      "title": "低空无线网络中面向NOMA通感一体化的用户—目标配对",
+      "title_en": "User-Target Pairing for NOMA-Enabled ISAC in Low-Altitude Wireless Networks",
+      "date": "10/7",
+      "authors": "Irfan Azam, Muddasir Rahim, Soumaya Cherkaoui",
+      "summary": "为空中接入点同时服务地面用户并感知空中目标的LAWN场景，提出匹配式用户—目标配对与自适应功率分配。",
+      "summary_en": "For LAWN aerial APs serving ground users while sensing aerial targets, matching-based user–target pairing plus adaptive power allocation balances QoS and detection.",
+      "detail": "针对低空无线网络（LAWN），提出NOMA使能的通感一体化框架：空中接入点同时服务地面用户并感知空中目标。匹配式用户—目标配对（MUTP）先按信道强弱组成NOMA组，再以最大化最弱感知增益的准则分配目标；自适应功率分配（APA）在候选功率剖面中权衡通信QoS与目标检测概率。相对固定贪心配对、正交ISAC及穷举搜索基线，所提MUTP-APA在和速率、最差目标检测概率以及通感中断概率上均有提升，并在接近穷举性能的同时显著降低配对复杂度。周一窗口内未收录，今日作为LAWN通感专题回补。",
+      "detail_en": "For LAWN NOMA-ISAC, MUTP builds QoS-aware strong–weak user pairs then assigns sensing targets via a max-min sensing-suitability rule; APA searches candidate power, NOMA split, and beam-control profiles. Versus greedy pairing, OISAC, and exhaustive search, MUTP-APA improves sum rate and worst-target detection probability while cutting communication and sensing outage, approaching exhaustive performance with much lower association complexity. Missed in Monday’s window; added today as LAWN-ISAC research.",
+      "links": [
+        {
+          "label": "arXiv:2610.09080",
+          "url": "https://arxiv.org/abs/2610.09080"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "运营商与招标",
+      "section_en": "Operators & Tenders",
+      "emoji": "📋",
+      "items": [
+        {
+          "title": "中移动RoCE集采“自主可控账”：80%国产托起超40亿上限",
+          "title_en": "China Mobile RoCE Tender Deep Dive: 80% Domestic Share Behind ¥40bn Cap",
+          "date": "10/12",
+          "summary": "C114深度复盘中移动RoCE集采：2450台、自主可控1960台占80%，限价超40亿。",
+          "summary_en": "C114 analysis of CMCC RoCE tender: 2,450 units, 1,960 domestic (80%), bid cap over ¥40bn.",
+          "detail": "10月12日，C114发表《再谈中国移动RoCE集采，其中的“自主可控账”怎么算？》，对10月8日已公布的2026—2027年RoCE交换机（大规模集群）集采作实质进展解读。项目预估采购2450台、最高投标限价超40亿元；其中自主可控标包1960台、占比80%，较一季度首次集团级集采（1790台、开标约8.8亿元、自主可控约73%）数量仅增约37%，金额上限却达上次开标的4.5倍以上。文中指出差异主因是自主可控比例提升与51.2T等高端规格占比上升，并梳理博通/Marvell垄断格局、盛科通信51.2T进度及运营商以集采催熟国产交换芯片的产业逻辑。招标文件获取至10月13日12时，投标截止11月2日。相对昨日电信/移动光层集采报道，本条是算力侧RoCE国产化路径的新进展解读。",
+          "detail_en": "On Oct 12, C114 published a substantive analysis of China Mobile’s 2026–2027 RoCE switch (large-cluster) tender (announced Oct 8): ~2,450 units with a bid cap above ¥40bn; domestic-controllable package 1,960 units (80%). Versus Q1’s first group RoCE buy (~1,790 units, ~¥8.8bn award, ~73% domestic), volume rose ~37% while the price ceiling is >4.5× the prior award—driven by higher domestic share and more 51.2T-class gear. The piece maps Broadcom/Marvell dominance, Shengke’s 51.2T timeline, and operators’ role in maturing domestic switch ASICs. Bid docs close Oct 13 noon; bids due Nov 2. Versus yesterday’s optical-layer tenders, this is new progress on the compute-fabric localization path.",
+          "links": [
+            {
+              "label": "C114深度分析",
+              "url": "https://www.c114.com.cn/news/118/a1318982.html"
+            },
+            {
+              "label": "C114原招标报道",
+              "url": "https://www.c114.com.cn/news/118/a1318819.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政策标准与频谱",
+      "section_en": "Policy, Standards & Spectrum",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "ITU-R WP5D第53次会议收官：6G前期研究完成，2027年起征集候选技术",
+          "title_en": "ITU-R WP5D #53 Closes: 6G Study Phase Done; Candidate Call From 2027",
+          "date": "10/12",
+          "summary": "WP5D第53次会议完成IMT-2030前期研究收官文件，候选RIT/SRIT征集拟2027年启动。",
+          "summary_en": "WP5D #53 finished IMT-2030 preparatory docs; RIT/SRIT candidate submissions slated from 2027.",
+          "detail": "10月12日C114报道，近日在日内瓦闭幕的ITU-R WP5D第53次会议完成6G（IMT-2030）前期研究阶段最后三份关键文件：面向成员国与国际组织的通函及候选无线接口技术（RIT/SRIT）提交模板；宣布2027年2月第54次会议期间举办专题研讨会；正式发布后续工作流程。征集窗口拟自2027年初第54次会议开启，提交截止约2029年初第59次会议前，独立评估后计划2030年初形成技术方案决议、年中完成建议书。此前2月、6月已分别完成技术性能要求与评估指南；本次提交模板对SRIT/成员技术组织方式设有门槛性要求，实质影响哪些方案可进入正式评估名单。",
+          "detail_en": "C114 reported Oct 12 that ITU-R WP5D’s 53rd meeting in Geneva closed the IMT-2030 preparatory phase with three deliverables: a Circular Letter and RIT/SRIT submission templates; a workshop planned at WP5D #54 (Feb 2027); and the follow-on process document. Candidate submissions are to open at #54 in early 2027 and close before #59 in early 2029, with a technical decision targeted for early 2030 and Recommendations mid-2030. TPR and evaluation guidelines were already done in Feb/Jun 2026; the new templates embed organizational thresholds for SRIT/component RITs that shape which proposals enter formal evaluation.",
+          "links": [
+            {
+              "label": "C114报道",
+              "url": "https://www.c114.com.cn/wireless/2935/a1318978.html"
+            },
+            {
+              "label": "ITU WP5D通告",
+              "url": "https://www.itu.int/md/R00-SG05-CIR-0125/en"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "厂商与供应链",
+      "section_en": "Vendors & Supply Chain",
+      "emoji": "🏭",
+      "items": [
+        {
+          "title": "面壁智能与中电信人工智能签战略合作，推进端侧大模型规模化",
+          "title_en": "ModelBest and China Telecom AI Sign Strategic Pact on On-Device Models",
+          "date": "10/12",
+          "summary": "面壁智能与中电信人工智能在京签约，联合做端侧AI应用与垂直行业模型/智能体。",
+          "summary_en": "ModelBest and China Telecom AI signed in Beijing to co-build on-device AI apps and vertical agents.",
+          "detail": "10月12日，C114等报道北京面壁智能科技股份有限公司与中电信人工智能科技（北京）有限公司在北京签署战略合作协议。双方将以联合解决方案、联合推广模式，面向消费电子打造个性化端侧AI应用，面向企业聚焦垂直行业标准化模型与智能体基础设施；并协同提升端侧模型能力、围绕推理加速等开展联合研发。面壁侧MiniCPM系列端侧基座模型已用于汽车、智能家居、AI手机与AI PC等；中电信人工智能侧强调依托云网融合基础设施与全国渠道，把端侧能力融入天翼AI端云结合产品体系。签约标志双方从项目级探索升至战略合作。",
+          "detail_en": "On Oct 12, ModelBest and China Telecom AI Technology (Beijing) signed a strategic cooperation agreement in Beijing. They will co-develop and co-promote personalized on-device AI apps for consumer electronics and standardized vertical models/agent infrastructure for enterprises, plus joint R&D on on-device model capability and inference acceleration. ModelBest’s MiniCPM series already ships in auto, smart home, AI phone and AI PC; China Telecom AI will fold on-device capability into the eSurfing AI cloud-edge product stack via its cloud-network assets and national channels.",
+          "links": [
+            {
+              "label": "C114报道",
+              "url": "https://www.c114.com.cn/other/241/a1318987.html"
+            }
+          ]
+        },
+        {
+          "title": "Omdia复盘中兴全球峰会：Token经济与“连接+AI算力”基础设施",
+          "title_en": "Omdia on ZTE Global Summit: Token Economy and Connectivity+AI Infra",
+          "date": "10/12",
+          "summary": "Omdia复盘中兴吉隆坡峰会，聚焦Token经济、Token专线、400/800GE路由与L4自智。",
+          "summary_en": "Omdia recaps ZTE’s KL summit: token economy, Token Private Line, 400/800GE routing, L4 autonomy.",
+          "detail": "10月12日C114刊发市场研究公司Omdia对9月马来西亚吉隆坡第15届中兴通讯全球峰会的复盘。中兴以“连接+AI算力=数字基础设施新阶段”为主线，提出Token经济，强调按实际Token消耗计量、交付与计费；展示Token专线构想、面向AI流量的大容量IP网络与400GE/800GE路由器、内生安全，以及符合TM Forum的L4级自智网络能力。Omdia分析师Sameer Ashfaq Malik认为全栈优化与集成方案相对单点组件更具差异化，并建议运营商投资AI就绪网络、探索基于Token的服务与自智运维。该文为对9月峰会的分析成稿，10月12日首次在C114中文发布。",
+          "detail_en": "On Oct 12 C114 carried Omdia’s recap of ZTE’s 15th Global Summit (Sep, Kuala Lumpur). ZTE framed “connectivity + AI compute = new digital infrastructure,” advancing a Token Economy billed on actual token use; demos included Token Private Line, high-capacity IP for AI traffic, 400GE/800GE routers, intrinsic security, and TM Forum–aligned L4 autonomous networks. Omdia analyst Sameer Ashfaq Malik argued full-stack integration differentiates versus point products and advised operators to invest in AI-ready networks, token-based services and autonomous ops.",
+          "links": [
+            {
+              "label": "C114/Omdia复盘",
+              "url": "https://www.c114.com.cn/news/16/a1318968.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "光通信、算力网络与数据中心",
+      "section_en": "Optical, computing networks & data centers",
+      "emoji": "💡",
+      "items": [
+        {
+          "title": "联讯仪器前三季度净利预增约20倍，光模块测试景气外溢",
+          "title_en": "OptoTech Q3 Preview: Net Profit Up ~20× on Optical-Module Test Boom",
+          "date": "10/12",
+          "summary": "联讯仪器预告前三季归母净利19–21亿元、同比增约19–21倍，Q3环比近翻倍以上。",
+          "summary_en": "OptoTech guides Q1–Q3 net profit ¥1.9–2.1bn, up ~19–21× YoY; Q3 nearly doubles+ QoQ.",
+          "detail": "10月12日晚间，苏州联讯仪器股份有限公司披露2026年前三季度业绩预告：预计归母净利润19.00亿–21.00亿元，同比增1866.00%–2072.95%；扣非净利润18.00亿–20.00亿元，同比增1836.84%–2052.04%。按区间推算Q3净利约13.33亿–15.33亿元，较Q2的4.48亿元环比增约198%–242%。公司称受益于AI与全球算力需求、数据中心建设加速及高速光通信需求，通信测试仪器与光电子器件测试设备销售增长。报道指其为国内极少数量产供货400G/800G/1.6T高速光模块核心测试仪器的厂商，客户覆盖中际旭创、新易盛、天孚、Lumentum等，上半年境外收入占比已升至53.86%。C114于10月13日清晨跟进报道。",
+          "detail_en": "On the evening of Oct 12, Suzhou OptoTech (联讯仪器, 688808) previewed 2026 Q1–Q3 results: attributable net profit ¥1.90–2.10bn (+1866%–2073% YoY); non-GAAP net ¥1.80–2.00bn (+1837%–2052%). Implied Q3 net ≈¥1.333–1.533bn, up ~198%–242% vs Q2’s ¥0.448bn. Growth is attributed to AI/compute demand, data-center buildout and high-speed optical communications lifting sales of comms test instruments and optoelectronic device test gear. Coverage notes it among the few domestic makers shipping core 400G/800G/1.6T optical-module testers, with customers including Innolight, Eoptolink, TFC and Lumentum; overseas revenue was 53.86% in H1. C114 followed early on Oct 13.",
+          "links": [
+            {
+              "label": "上证报/新浪",
+              "url": "https://finance.sina.com.cn/roll/2026-10-12/doc-iniuypfa0605880.shtml"
+            },
+            {
+              "label": "C114跟进",
+              "url": "https://www.c114.com.cn/news/123/a1318996.html"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
