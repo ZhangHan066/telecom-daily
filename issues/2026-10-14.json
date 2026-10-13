@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-14",
+  "weekday": "周三",
+  "weekday_en": "Wednesday",
+  "title": "通信行业日报 · 2026-10-14（周三）",
+  "theme": "运营商AIDC基建高位——Q3招标约366亿元，九成落子八大枢纽",
+  "theme_en": "Carrier AIDC build-out: ~¥366bn Q3 tenders, 90% in eight hubs",
+  "cover": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Google_Data_Center_in_Council_Bluffs%2C_Iowa.jpg",
+    "credit": "Connie Zhou / Google / Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:Google_Data_Center_in_Council_Bluffs,_Iowa.jpg"
+  },
+  "highlights": [
+    {
+      "label": "算力网络",
+      "text": "C114统计三大运营商Q3 AIDC/数据中心风火水电类招标超225个、预算约366亿元，八大枢纽占90.2%。"
+    },
+    {
+      "label": "光通信",
+      "text": "英伟达与思科发布USFP单通道400G可插拔规范；源杰科技Q3净利预增约5.8–6.6倍。"
+    },
+    {
+      "label": "供应链",
+      "text": "IDC：上半年中国AI加速器英伟达份额降至34%，华为升至28%，差距缩至约6个百分点。"
+    },
+    {
+      "label": "科研",
+      "text": "回补FLoRa占空比LoRa无人机采集框架，以及空中走廊通感随机几何分析。"
+    }
+  ],
+  "research": [
+    {
+      "title": "FLoRa：面向占空比LoRa节点的飞行辅助数据采集",
+      "title_en": "FLoRa: Flight-Assisted Data Collection from Duty Cycling LoRa Nodes under Energy Constraints",
+      "date": "10/9",
+      "authors": "Naresh Babu Kakarla, V. Mahendran",
+      "summary": "在UAV电池硬约束下，对随机占空比LoRa节点提出路径—悬停—探测三级优化，并引入面向拉取系统的信息价值（VIP）指标。",
+      "summary_en": "Under hard UAV battery limits, FLoRa jointly optimizes path, hover, and probing for duty-cycled LoRa nodes via a pull-based Value-of-Information (VIP) metric.",
+      "detail": "印度理工学院蒂鲁帕蒂团队提出FLoRa：用模拟退火做子集路径规划、CMA-ES做“足够近”悬停点、POMDP决定每节点探测次数。针对占空比节点拉取失败时传统VoI不适定的问题，提出VIP——成功采集按剩余新鲜度给正分，失败按浪费时间罚分。相对元启发、贪心与DRL基线，总期望VIP分别提升约30.6%、27.8%、15.2%，节点覆盖与成功采集亦同步改善。该文周五窗口未收录，属低空物联网数据采集重要补充。",
+      "detail_en": "IIT Tirupati authors propose FLoRa: simulated annealing for subset routing, CMA-ES for close-enough hover points, and POMDPs for per-node probe counts. They introduce VIP for pull-based collection—rewarding residual freshness on success and penalizing failed probes—so the problem stays well-posed when LoRa nodes sleep. Versus metaheuristic, greedy, and DRL baselines, expected VIP rises about 30.6%, 27.8%, and 15.2%, with matching gains in coverage and successful collections. Missed in Friday’s window; added as a low-altitude IoT collection complement.",
+      "links": [
+        {
+          "label": "arXiv:2610.09226",
+          "url": "https://arxiv.org/abs/2610.09226"
+        }
+      ]
+    },
+    {
+      "title": "空中走廊通感一体：三维二项点过程随机几何框架",
+      "title_en": "Joint Communication and Sensing in Aerial Corridors: A Novel Stochastic Geometry Framework",
+      "date": "10/1",
+      "authors": "Harris K. Armeniakos, Petros S. Bithas, Athanasios G. Kanatas, Harpreet S. Dhillon",
+      "summary": "将UAV走廊建模为有限圆柱、用户为3D BPP，推导带3GPP方向天线的通感覆盖概率闭式表达。",
+      "summary_en": "Models UAV corridors as finite cylinders with 3D BPP users and derives exact JCAS coverage with realistic 3GPP directional antennas.",
+      "detail": "作者把空中走廊建模为有限圆柱，UAV用户位置服从三维二项点过程；UAV基站采用真实3GPP三维天线方向图，先雷达跟踪再上行通信，并在杂波与上行干扰下给出通感覆盖概率的精确分析。结果指出提高波束方向性可显著提升通感性能，尤其在较短走廊场景；增大走廊半径有助于把干扰用户推到主瓣外。据称系首个以3D BPP刻画空中走廊通感性能的随机几何框架，对接低空航路与6G通感设计。此前日报未收录。",
+      "detail_en": "The work models aerial corridors as finite cylinders and UAV-UEs as a 3D binomial point process; a UAV-BS with a realistic 3GPP 3D antenna pattern tracks then serves a UE in uplink while facing clutter and uplink interference. Exact JCAS coverage-probability expressions show that more directive beams lift performance, especially on shorter corridors, and larger corridor radius helps push interferers outside the main lobe. Claimed as the first stochastic-geometry JCAS analysis for aerial corridors with 3D BPP geometry—useful for low-altitude airways and 6G ISAC design. Not covered in prior digests.",
+      "links": [
+        {
+          "label": "arXiv:2610.01359",
+          "url": "https://arxiv.org/abs/2610.01359"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "光通信、算力网络与数据中心",
+      "section_en": "Optical, computing networks & data centers",
+      "emoji": "💡",
+      "items": [
+        {
+          "title": "Q3运营商AIDC招标约366亿元，九成落子东数西算八大枢纽",
+          "title_en": "Q3 Carrier AIDC Tenders ~¥366bn; 90% Land in Eight East-to-West Hubs",
+          "date": "10/13",
+          "summary": "C114统计三大运营商Q3风火水电类基建招标超225个、预算约365.88亿元；八大枢纽占90.2%。",
+          "summary_en": "C114 tallies 225+ Q3 power/cooling/facility tenders at ~¥365.88bn; eight hubs take 90.2%.",
+          "detail": "10月13日C114不完全统计显示，2026年三季度三大运营商在AIDC及传统数据中心“风火水电”类基础设施招标维持高强度：合计启动超225个项目，预算约365.88亿元。按金额中国移动245.7亿元（67.1%）、电信76.4亿元、联通43.8亿元；按数量则电信99个最多，反映移动偏集中式大单、电联更分散。八大算力枢纽相关预算约329.89亿元、占90.2%，西部四枢纽略高于东部。口径排除服务器/交换机等IT设备。相对昨日RoCE国产化解读，本条是运营商侧机房机电与园区基建投放节奏的新统计。",
+          "detail_en": "On Oct 13 C114’s incomplete tally showed Q3 intensity in carrier AIDC/data-center “power-cooling-water-fire” facility tenders: 225+ projects totaling about ¥365.88bn. By budget China Mobile led at ¥245.7bn (67.1%), Telecom ¥76.4bn, Unicom ¥43.8bn; by count Telecom led with 99, reflecting Mobile’s large concentrated awards versus more fragmented peers. Projects tied to the eight east-to-west computing hubs totaled ~¥329.89bn (90.2%), with the four western hubs slightly ahead of the eastern four. IT gear (servers/switches) is excluded. Versus yesterday’s RoCE localization deep dive, this is a new statistical read on facility/EPC spend cadence.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/6564/a1319020.html"
+            }
+          ]
+        },
+        {
+          "title": "英伟达与思科发布USFP：单通道400G可插拔，瞄AI工厂扩容",
+          "title_en": "NVIDIA and Cisco Unveil USFP: 400G/lane Pluggable for AI Factory Scale-Out",
+          "date": "10/13",
+          "summary": "当地时间12日双方提出超密小型可插拔USFP，首批OSFP尺寸16全双工通道，总容量可达12.8Tb/s。",
+          "summary_en": "On Oct 12 they proposed USFP: 16 full-duplex lanes in an OSFP-class shell, up to 12.8 Tb/s aggregate.",
+          "detail": "C114 10月13日报道，英伟达与思科于当地时间10月12日联合发布USFP（Ultra-Dense Small Form-Factor Pluggable）计划：面向单通道400Gb/s电信号，首批在约OSFP外形内容纳16个全双工通道，未来可扩至32通道以上，理论总容量12.8Tb/s；相对单通道200G可插拔宣称约4倍带宽/面板密度与约1.3倍能效，支持最高约100W且不强制模块内嵌专用冷却。双方正与TE、Amphenol合作笼座与连接器，并拟以社区主导MSA制定开放规范。该形态直接服务AI以太网从200G/lane迈向400G/lane的机柜级扩容。",
+          "detail_en": "C114 reported Oct 13 that NVIDIA and Cisco jointly announced USFP (Ultra-Dense Small Form-Factor Pluggable) on Oct 12 local time: a 400 Gb/s-per-lane pluggable, first shipping ~16 full-duplex lanes in an OSFP-class envelope with a path to 32+ lanes and ~12.8 Tb/s aggregate. Versus 200 Gb/s/lane pluggables they claim ~4× bandwidth/panel density and ~1.3× energy efficiency, with up to ~100 W without mandatory embedded module cooling. TE and Amphenol are co-developing cages/connectors; an open community MSA is planned. The form factor targets AI Ethernet scale-out from 200G to 400G per lane without adding switch tiers.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/4app/3542/a1318999.html"
+            }
+          ]
+        },
+        {
+          "title": "源杰科技前三季净利预增约10–10.6亿元，CW激光器芯片放量",
+          "title_en": "Yuanjie Semiconductor Guides ~¥1.01–1.06bn YTD Net on CW Laser Chip Ramp",
+          "date": "10/12–10/13",
+          "summary": "光芯片龙头预告Q3归母净利约4.03–4.53亿元、同比增约579%–660%；前三季合计约10.1–10.6亿元。",
+          "summary_en": "Optical-chip maker guides Q3 net ~¥403–453m (+~579–660% YoY); YTD ~¥1.01–1.06bn.",
+          "detail": "源杰科技披露2026年三季度业绩预告：Q3归母净利润约4.03亿–4.53亿元，同比增约578.85%–659.70%；叠加上半年后，前三季度归母净利约10.10亿–10.60亿元。公司称增长主要来自数据中心连续波（CW）激光器芯片出货持续放量，受益高速光模块需求。相对昨日联讯仪器测试端预增，本条是光芯片供给侧景气的新披露。",
+          "detail_en": "Yuanjie Semiconductor’s 2026 Q3 preview pegs attributable net profit at about ¥403–453m (+~578.85%–659.70% YoY); with H1, YTD net is about ¥1.010–1.060bn. Growth is attributed to continued volume of data-center continuous-wave (CW) laser chips on high-speed optical-module demand. Versus yesterday’s OptoTech test-gear preview, this is a new supply-side chip disclosure.",
+          "links": [
+            {
+              "label": "中国证券报",
+              "url": "https://epaper.cs.com.cn/zgzqb/html/2026-10/13/nw.D110000zgzqb_20261013_4-B041.htm"
+            },
+            {
+              "label": "讯石光通讯网",
+              "url": "http://www.iccsz.com/site/cn/News/2026/10/13/20261013013939993093.htm"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "运营商与招标",
+      "section_en": "Operators & Tenders",
+      "emoji": "📋",
+      "items": [
+        {
+          "title": "中移动分布式存储新建集采：641套、最高限价近11亿元",
+          "title_en": "China Mobile Distributed-Storage New-Build Tender: 641 Sets, Cap Near ¥11bn",
+          "date": "10/13",
+          "summary": "2026–2027年分布式存储（新建）集采预估641套，分3标包，2–3家中标份额规则明确。",
+          "summary_en": "2026–27 distributed-storage (new-build) tender estimates 641 sets across 3 packages with 2–3 winner share rules.",
+          "detail": "10月13日C114报道，中国移动采购与招标网发布2026年至2027年分布式存储（新建部分）集中采购招标公告，预估采购641套，需求满足期一年、最长可顺延一年。项目按接口类型、产品性能及存储介质划分为3个标包；各标包综合排名选取2至3家，3家时份额50%/27%/23%，2家时70%/30%，允许同一投标人最多中标3个标包。相对昨日RoCE交换机与周一光层集采，本条补齐算力侧存储层新建采购节点。",
+          "detail_en": "C114 on Oct 13 reported China Mobile’s 2026–2027 distributed-storage (new-build) centralized tender: an estimated 641 sets, one-year demand window extendable by one year, split into three packages by interface, performance, and media. Each package picks 2–3 winners (50%/27%/23% if three; 70%/30% if two); one bidder may win up to all three packages. Versus yesterday’s RoCE switches and Monday’s optical-layer buys, this fills in the storage-layer new-build node on the compute stack.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/6564/a1319014.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "厂商与供应链",
+      "section_en": "Vendors & Supply Chain",
+      "emoji": "🏭",
+      "items": [
+        {
+          "title": "IDC：上半年中国AI加速器英伟达份额降至34%，华为升至28%",
+          "title_en": "IDC: H1 China AI Accelerator Share—NVIDIA 34%, Huawei 28%",
+          "date": "10/13",
+          "summary": "路透获IDC数据：英伟达出货同比减44%至67.8万颗、份额34%；华为出货近翻倍至57.2万、份额28%。",
+          "summary_en": "Reuters-cited IDC: NVIDIA shipments −44% to 678k (34% share); Huawei nearly doubles to 572k (28%).",
+          "detail": "10月13日C114援引路透获得的IDC报告：2026年上半年英伟达在中国数据中心AI芯片市场份额降至34%，出货67.8万个、同比减44%；华为AI加速器出货由去年同期30万增至57.2万，份额28%，差距缩至约6个百分点。中国AI加速器总出货约200.8万；GPU出货同比降26%，非GPU加速器增近80%，华为、平头哥、昆仑芯、寒武纪合计占非GPU市场约95%。IDC称竞争正从单芯片性能转向大规模算力集群效率。",
+          "detail_en": "C114 on Oct 13 cited Reuters access to an IDC report: in H1 2026 NVIDIA’s share of China’s data-center AI chip market fell to 34% on 678k units (−44% YoY); Huawei nearly doubled shipments from 300k to 572k, reaching 28% and narrowing the gap to ~6 points. China shipped ~2.008m AI accelerators; GPUs fell 26% YoY while non-GPU accelerators rose ~80%, with Huawei, T-Head, Kunlunxin and Cambricon ~95% of the non-GPU market. IDC says rivalry is shifting from single-chip performance toward large-cluster efficiency.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://m.c114.com.cn/w3542-1319049.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政策标准与频谱",
+      "section_en": "Policy, Standards & Spectrum",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "“六张网”进入资金落地：PSL纳入支持，地方专项债通信网占比仍低",
+          "title_en": "“Six Networks” Enter Funding Phase: PSL Included; Local Telecom Bond Share Still Thin",
+          "date": "10/13",
+          "summary": "央行9月末将“六张网”纳入PSL；湖北专项债中新一代通信网仅约1亿元、占0.46%。",
+          "summary_en": "PBOC folded “six networks” into PSL in late Sep; Hubei special bonds put only ~¥100m (0.46%) into next-gen telecom.",
+          "detail": "10月13日C114梳理：发改委已建立算力网+新型电网+新一代通信网“2+3+N”协调机制；9月29日央行下调PSL利率并将“六张网”纳入支持领域。国资委披露央企相关年度计划投资约2万亿元。地方层面，湖北2026年“六张网”专项债218亿元中，新一代通信网仅1亿元（约0.46%）；湖南推介项目近5000亿元投融资需求。文章指出协同已从机制建立进入资金落地，但通信网在地方专项债盘子中占比偏低，后续份额是否匹配战略定位仍待观察。",
+          "detail_en": "C114 on Oct 13 mapped progress on China’s “six networks”: NDRC set a “2+3+N” coordination mechanism for computing, new power, and next-gen telecom nets; on Sep 29 PBOC cut the PSL rate and added the six networks to eligible support. SASAC cited ~¥2tn of planned central-SOE related investment this year. Locally, Hubei’s 2026 six-network special bonds totaled ¥218bn with only ¥1bn (~0.46%) for next-gen telecom; Hunan pitched ~¥5tn of financing needs. The piece argues coordination has moved from mechanism-building into funding—but telecom’s local bond share remains thin relative to its strategic billing.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/6564/a1319046.html"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notion_url": "https://app.notion.com/p/3f83a1fdbe18810ca322dbb9f0183e7c"
+}

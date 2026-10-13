@@ -1,6 +1,33 @@
 {
   "issues": [
     {
+      "date": "2026-10-14",
+      "weekday": "周三",
+      "title": "通信行业日报 · 2026-10-14（周三）",
+      "theme": "运营商AIDC基建高位——Q3招标约366亿元，九成落子八大枢纽",
+      "cover": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Google_Data_Center_in_Council_Bluffs%2C_Iowa.jpg",
+      "highlights": [
+        {
+          "label": "算力网络",
+          "text": "C114统计三大运营商Q3 AIDC/数据中心风火水电类招标超225个、预算约366亿元，八大枢纽占90.2%。"
+        },
+        {
+          "label": "光通信",
+          "text": "英伟达与思科发布USFP单通道400G可插拔规范；源杰科技Q3净利预增约5.8–6.6倍。"
+        },
+        {
+          "label": "供应链",
+          "text": "IDC：上半年中国AI加速器英伟达份额降至34%，华为升至28%，差距缩至约6个百分点。"
+        },
+        {
+          "label": "科研",
+          "text": "回补FLoRa占空比LoRa无人机采集框架，以及空中走廊通感随机几何分析。"
+        }
+      ],
+      "weekday_en": "Wednesday",
+      "theme_en": "Carrier AIDC build-out: ~¥366bn Q3 tenders, 90% in eight hubs"
+    },
+    {
       "date": "2026-10-13",
       "weekday": "周二",
       "title": "通信行业日报 · 2026-10-13（周二）",
