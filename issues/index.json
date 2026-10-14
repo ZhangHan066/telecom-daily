@@ -1,6 +1,33 @@
 {
   "issues": [
     {
+      "date": "2026-10-15",
+      "weekday": "周四",
+      "title": "通信行业日报 · 2026-10-15（周四）",
+      "theme": "CPO商用与智算存储齐发——算力互联双线落地",
+      "cover": "https://upload.wikimedia.org/wikipedia/commons/6/68/Fiber_optic_illuminated.jpg",
+      "highlights": [
+        {
+          "label": "光通信",
+          "text": "OCP上博通亮相第三代TH6-Davisson CPO，伙伴展出102.4T整机；Coherent称CPO/NPO长协客户各超10个。"
+        },
+        {
+          "label": "运营商",
+          "text": "中移动启动智算存储集采：640套、最高限价约23.35亿元；广州落地全国首个算电协同央地合资平台。"
+        },
+        {
+          "label": "5G-A",
+          "text": "天津移动建成国内规模最大4.9G+FA SUL百站大上行商用网；华为AI WAN称全球超60家运营商部署。"
+        },
+        {
+          "label": "科研",
+          "text": "三篇低空通信新稿：UAV混合RIS通感RSMA、多臂阵列低时延测向、风险感知5G空中切换。"
+        }
+      ],
+      "weekday_en": "Thursday",
+      "theme_en": "CPO goes commercial as AI-storage tenders land—compute interconnect on two tracks"
+    },
+    {
       "date": "2026-10-14",
       "weekday": "周三",
       "title": "通信行业日报 · 2026-10-14（周三）",

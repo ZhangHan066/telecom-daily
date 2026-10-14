@@ -1,0 +1,274 @@
+{
+  "date": "2026-10-15",
+  "weekday": "周四",
+  "weekday_en": "Thursday",
+  "title": "通信行业日报 · 2026-10-15（周四）",
+  "theme": "CPO商用与智算存储齐发——算力互联双线落地",
+  "theme_en": "CPO goes commercial as AI-storage tenders land—compute interconnect on two tracks",
+  "cover": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Fiber_optic_illuminated.jpg",
+    "credit": "D-Kuru / Wikimedia Commons (CC BY-SA 3.0 AT)",
+    "source": "https://commons.wikimedia.org/wiki/File:Fiber_optic_illuminated.jpg"
+  },
+  "highlights": [
+    {
+      "label": "光通信",
+      "text": "OCP上博通亮相第三代TH6-Davisson CPO，伙伴展出102.4T整机；Coherent称CPO/NPO长协客户各超10个。"
+    },
+    {
+      "label": "运营商",
+      "text": "中移动启动智算存储集采：640套、最高限价约23.35亿元；广州落地全国首个算电协同央地合资平台。"
+    },
+    {
+      "label": "5G-A",
+      "text": "天津移动建成国内规模最大4.9G+FA SUL百站大上行商用网；华为AI WAN称全球超60家运营商部署。"
+    },
+    {
+      "label": "科研",
+      "text": "三篇低空通信新稿：UAV混合RIS通感RSMA、多臂阵列低时延测向、风险感知5G空中切换。"
+    }
+  ],
+  "research": [
+    {
+      "title": "无人机挂载混合智能超表面辅助ISAC-RSMA：非理想CSI/SIC下的性能分析",
+      "title_en": "UAV-Mounted Hybrid RIS-Assisted ISAC-RSMA: Performance Analysis with Imperfect CSI and SIC",
+      "date": "10/14",
+      "authors": "Singh, de Sena, Uniyal, Kumar, Upadhyay, Latva-aho",
+      "summary": "无人机混合RIS助力单站ISAC-RSMA，在非理想CSI与SIC下量化通感折中。",
+      "summary_en": "UAV-mounted hybrid RIS aids monostatic ISAC-RSMA under imperfect CSI and residual SIC.",
+      "detail": "针对感知功率挤压通信、遮挡严重的场景，在无人机上挂载少量有源+无源混合RIS（HRIS），结合速率分裂多址（RSMA）做单站ISAC。推导非理想CSI与SIC残留下的中断、遍历速率、吞吐，以及检测概率、虚警与角度CRLB；仅2个有源单元时相对纯无源RIS中断约改善97%、遍历速率约提升89%，并量化感知功率系数与通信可靠性的折中。对接低空通感一体与多用户接入部署。",
+      "detail_en": "Analyzes a UAV-mounted hybrid RIS (few active + passive elements) assisting multi-antenna monostatic ISAC with RSMA under imperfect CSI and residual SIC. Derives outage, ergodic rate, throughput over Nakagami-m, plus detection/false-alarm and angle CRLB; shows large gains vs passive RIS with only two active elements (~97% outage, ~89% ergodic rate) and maps the sensing–communication power tradeoff. Directly relevant to low-altitude ISAC coverage with aerial RIS.",
+      "links": [
+        {
+          "label": "arXiv:2610.15072",
+          "url": "https://arxiv.org/abs/2610.15072"
+        }
+      ]
+    },
+    {
+      "title": "面向低空网络的多臂阵列多视角低时延测向",
+      "title_en": "A Multi-View Low-Latency Direction-Sensing for Low-Altitude Network via a Multi-Armed Array",
+      "date": "10/14",
+      "authors": "Jiang, Shu, Wang",
+      "summary": "多臂定向阵列并行多视角测向，摆脱旋转阵列的时延瓶颈。",
+      "summary_en": "Multi-armed fixed subarrays enable low-latency multi-view DOA for LAWNs without iterative rotation.",
+      "detail": "低空网络中定向阵元偏离主瓣会掉SNR、拖垮DOA；可旋转阵列靠反复转向提精度却拉长时延。提出多臂子阵覆盖低空与地面，各视角并行Root-MUSIC后用SNR加权与logistic加权融合，并给出多视角CRLB。仿真显示两方法优于等权融合，中高SNR逼近CRLB，logistic在极低SNR更稳，适合时延敏感的低空感知与定向链路。",
+      "detail_en": "Replaces rotatable arrays with oriented subarrays covering low-altitude and terrestrial space; fuses Root-MUSIC estimates via SNR-weighted and logistic-weighted rules, with a derived multi-view CRLB. Both schemes beat equal-weight fusion and approach CRLB at mid/high SNR; logistic helps more at very low SNR—suited to delay-sensitive LAWN sensing and secure directional links.",
+      "links": [
+        {
+          "label": "arXiv:2610.15446",
+          "url": "https://arxiv.org/abs/2610.15446"
+        }
+      ]
+    },
+    {
+      "title": "切换中断的代价几何？面向航空器的风险感知5G移动性",
+      "title_en": "What Is the Cost of a Handover Interruption? Rethinking 5G Mobility for Aerial Vehicles",
+      "date": "10/14",
+      "authors": "Melo, Chen, Kadota, Pereira Jr.",
+      "summary": "用运行风险代理优化无人机蜂窝切换时机，而非只看无线指标。",
+      "summary_en": "Risk-Aware Mobility times 5G handovers by operational risk, not radio metrics alone.",
+      "detail": "指出同等数据面中断在巡航空旷区与人群/障碍区上的运行风险不同；提出Risk-Aware Mobility（RAM），将信息陈旧、位置不确定与地面暴露等映射为风险代理，在既有A3目标小区上优化切换执行时刻。圣保罗188扇区走廊仿真相对3 dB A3使平均风险代理降约45%，且不明显牺牲服务链路质量；商用航迹显示空中约16.9%“成功切换”后仍出现秒级数据面中断。对接蜂窝连接无人机与低空运行风险（SORA）评估。",
+      "detail_en": "Maps staleness → position uncertainty → navigation/ground/video risk proxy; RAM keeps A3 target but shifts execution time. In a dense São Paulo reconstruction (188 licensed sectors), risk-aware timing cuts mean risk proxy ~45% vs 3 dB A3 without degrading serving quality; commercial aerial traces show many “successful” HOs still leave second-scale data gaps. Bridges RAN KPIs and SORA-style operational risk for cellular-connected UAVs.",
+      "links": [
+        {
+          "label": "arXiv:2610.17380",
+          "url": "https://arxiv.org/abs/2610.17380"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "光通信、算力网络与数据中心",
+      "section_en": "Optical, computing networks & data centers",
+      "emoji": "💡",
+      "items": [
+        {
+          "title": "博通OCP推出第三代TH6-Davisson CPO，102.4T整机生态成型",
+          "title_en": "Broadcom Unveils Gen-3 TH6-Davisson CPO; 102.4T Systems on OCP Floor",
+          "date": "10/14",
+          "summary": "OCP 2026上博通展示Tomahawk 6全系与第三代CPO；Celestica、台达、Micas展出102.4T CPO交换系统。",
+          "summary_en": "At OCP 2026 Broadcom showed Tomahawk 6 family plus Gen-3 CPO; Celestica, Delta, Micas demoed 102.4T CPO switches.",
+          "detail": "10月14日C114报道，博通在圣何塞OCP全球峰会展示覆盖scale-up/scale-out/scale-across的全线方案：Tomahawk 6、Tomahawk Ultra、Jericho 4，Thor Ultra 800G与Thor 2 400G网卡，以及第三代TH6-Davisson共封装光学（CPO）。现场Celestica、台达、Micas展出基于该方案的102.4T CPO交换系统，纬颖与Ayar Labs做CPO演示，芯片厂模式从芯片、光引擎到整机货架链条已齐。博通还与是德、阿里云完成LLR首次多厂商互操作：Tomahawk 6上200G SerDes的1.6T无损与恢复，Tomahawk Ultra上与CBFC在400GE互操作。相对昨日英伟达/思科USFP可插拔规范，本条是CPO供给侧整机生态的新进展。",
+          "detail_en": "C114 on Oct 14 reported Broadcom at San Jose OCP showcasing scale-up/out/across: Tomahawk 6/Ultra, Jericho 4, Thor Ultra 800G and Thor 2 400G NICs, plus Gen-3 TH6-Davisson CPO. Partners showed 102.4T CPO systems; first multi-vendor LLR demos with Keysight and Alibaba Cloud. Versus yesterday’s USFP MSA, this is new CPO system-ecosystem progress.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/16/a1319093.html"
+            }
+          ]
+        },
+        {
+          "title": "Coherent：CPO/NPO各超10个长协客户，PhotonLink拟Q4量产",
+          "title_en": "Coherent: 10+ LTA Customers Each for CPO/NPO; PhotonLink Q4 Ramp",
+          "date": "10/14",
+          "summary": "高意称CPO与NPO客户项目各超10个且已签长协；一体化光学平台PhotonLink计划2026 Q4量产贡献收入。",
+          "summary_en": "Coherent said 10+ customer programs each for CPO and NPO with LTAs; PhotonLink aims to ship and contribute revenue in 2026 Q4.",
+          "detail": "OCP前后Coherent披露CPO/NPO各超10个客户项目并获核心客户长协；PhotonLink覆盖激光器—硅光—调制器—探测器—组装测试，支持CPO/NPO/芯片间光互联，拟2026年四季度量产贡献收入。展品含3.2T OSFP、6.4T插槽式硅光CPO、800ZR/1600ZR及400G/lane USFP方向原型。与博通整机侧形成双侧印证，标志CPO从单点演示迈向客户长协与量产节奏。",
+          "detail_en": "Around OCP, Coherent said 10+ programs each for CPO/NPO with anchor LTAs; PhotonLink integrated optics platform to ramp Q4 2026 across CPO/NPO/chip-to-chip; demos span 3.2T OSFP, 6.4T socketed SiPh CPO, 800/1600ZR, and 400G/lane USFP-direction devices. Paired with Broadcom’s system demos, it marks CPO moving from point demos into LTA and production cadence.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/4app/3542/a1319100.html"
+            }
+          ]
+        },
+        {
+          "title": "全国首个算电协同央地合资平台落地广州，中国电信入股5%",
+          "title_en": "First Central–Local Compute–Power JV Lands in Guangzhou; China Telecom Takes 5%",
+          "date": "10/14",
+          "summary": "广州市算力产业发展公司成立，注册资本9亿元；南网数字51%、恒运34%、数科10%、电信亿迅5%。",
+          "summary_en": "Guangzhou Computing Industry Development Co. formed with ¥900m capital: CSG Digital 51%, Hengyun 34%, Digital Tech 10%, CT’s Eshore 5%.",
+          "detail": "天眼查与媒体显示公司约10月10日注册，定位全国首个算电协同央地合资平台；股权为南网数字电网集团51%、广州恒运34%、广州数科10%、广东亿迅（电信全资）5%。拟依托变电站节点“多站合一”建算力中心，打造“能源+算力+网络+平台”。广州市政府网与C114等于10月14日公开报道。相对昨日“六张网”资金梳理，本条是地方落地运营实体。",
+          "detail_en": "Registered around Oct 10 as China’s first central–local computing–power synergy JV; equity 51/34/10/5 (CSG Digital / Hengyun / Digital Tech / Eshore). Plans multi-station compute at substations. Gov/media reporting clustered on Oct 14. Versus yesterday’s six-networks funding map, this is a local operating-entity milestone.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/4app/3542/a1319163.html"
+            },
+            {
+              "label": "广州市人民政府",
+              "url": "https://www.gz.gov.cn/zwfw/zxfw/kjcy/content/post_11044114.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "运营商与招标",
+      "section_en": "Operators & Tenders",
+      "emoji": "📋",
+      "items": [
+        {
+          "title": "中移动智算存储集采：640套、最高限价约23.35亿元",
+          "title_en": "China Mobile AI-Compute Storage Tender: 640 Sets, Cap ~¥2.335bn",
+          "date": "10/14",
+          "summary": "2026–2027年智算存储集采预估640套，不含税最高限价约23.35亿元；1–2家中标，2家时份额70%/30%。",
+          "summary_en": "2026–27 AI-compute storage tender: ~640 sets, tax-ex. bid cap ~¥2.335bn; 1–2 winners (70%/30% if two).",
+          "detail": "10月14日C114等报道，中国移动采购与招标网发布2026年至2027年智算存储集中采购（招标编号CMCC20260500261），预估采购640套，最高投标限价2,335,051,970元（不含税总价）；份额招标，中标1–2家（两家则70%:30%，一家100%），投标人最多中标1个标包；需求满足期约1年（可顺延1年）。相对昨日“分布式存储新建641套、最高限价近11亿元”为不同品类新单（智算存储 vs 分布式存储），金额上限显著更高，勿混为一谈。",
+          "detail_en": "C114 on Oct 14 reported China Mobile’s 2026–2027 AI-compute storage centralized tender (CMCC20260500261): ~640 sets with a pre-tax bid ceiling of ¥2,335,051,970; 1–2 winners (70%/30% or 100%), one package max per bidder, ~1-year demand window extendable by one year. Distinct from yesterday’s distributed-storage (new-build) ~641 sets/~¥11bn cap—different product class with a much higher ceiling.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/118/a1319125.html"
+            },
+            {
+              "label": "光纤在线",
+              "url": "https://www.c-fol.net/news/1_202610/20261014150436.html"
+            }
+          ]
+        },
+        {
+          "title": "天津移动建成国内规模最大4.9G+FA SUL百站大上行商用网",
+          "title_en": "Tianjin Mobile Builds China’s Largest 4.9G+FA SUL 100-Site Uplink Commercial Net",
+          "date": "10/14",
+          "summary": "4.9G时隙7:3改3:2叠FA补上行；实测单用户上行+48%、小区吞吐+44%，中近点峰值1Gbps。",
+          "summary_en": "4.9G slot 7:3→3:2 plus FA SUL; UE UL +48%, cell +44%, near-mid peak 1 Gbps.",
+          "detail": "10月14日C114报道，天津移动建成国内首个且目前规模最大的4.9G+FA SUL百站连片大上行商用示范网：将4.9G时隙由7:3调整为3:2，叠加灵活帧结构（FA）补充上行资源。实测单用户上行速率提升约48%、小区吞吐提升约44%，中近点峰值约1Gbps、边缘约20Mbps。对接GSMA GigaUplink方向；计划今年完善百站、2027年按需向千站扩展，属5G-A上行体验经营样板。",
+          "detail_en": "C114 on Oct 14 reported Tianjin Mobile’s first and currently largest contiguous 4.9G+FA SUL ~100-site commercial demo: retiming 4.9G slots from 7:3 to 3:2 plus flexible-frame (FA) uplink boost. Measured UE uplink +~48%, cell throughput +~44%, near/mid peak ~1 Gbps / edge ~20 Mbps. Aligned with GSMA GigaUplink; aiming to refine the 100-site footprint this year and scale toward ~1,000 sites in 2027 on demand—a 5G-A uplink experience template.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/16/a1319145.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "厂商与供应链",
+      "section_en": "Vendors & Supply Chain",
+      "emoji": "🏭",
+      "items": [
+        {
+          "title": "华为AI WAN宣布规模商用：全球超60家运营商部署",
+          "title_en": "Huawei AI WAN Enters Large-Scale Commercial Use at 60+ Carriers",
+          "date": "10/14",
+          "summary": "UBBF上称AI WAN已规模商用；强调无损算效、立体安全与L4自治，星络算法宣称千公里0丢包。",
+          "summary_en": "At UBBF, Huawei said AI WAN is in large-scale commercial use at 60+ carriers, highlighting lossless compute efficiency, multi-layer security and L4 autonomy.",
+          "detail": "10月14日C114与PR Newswire同步：华为在UBBF宣布新一代广域网（AI WAN/NG WAN）进入规模商用，全球超60家运营商部署。数据面称千公里0丢包、拉远算效96%+；设备层TPU威胁检出率超95%，中国某运营商上线约3个多月防御来自8国324次攻击；链路层PQC全场景、内生QKD等，并强调符合TM Forum方向的L4自治能力。相对此前峰会愿景表述，本条是商用规模数字与安全运营案例的新披露。",
+          "detail_en": "C114 and PR Newswire on Oct 14: at UBBF Huawei said AI WAN / NG WAN has entered large-scale commercial use at 60+ carriers. Claims include 1,000 km zero loss, >96% remote compute efficiency, TPU APT tracing (>95%), and 324 attacks blocked in ~3 months at one Chinese carrier, plus PQC/QKD and L4 autonomy. Versus prior summit visioning, this adds commercial-scale counts and security ops case detail.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/126/a1319150.html"
+            },
+            {
+              "label": "PR Newswire",
+              "url": "https://www.prnewswire.com/news-releases/huaweis-ng-wan-solution-enters-large-scale-commercial-use-to-drive-carrier-growth-302908609.html"
+            }
+          ]
+        },
+        {
+          "title": "紫光股份前三季净利预增约72%–118%，智算与国产化驱动",
+          "title_en": "Unisplendour Guides ~72–118% YTD Net Growth on Intelligent Compute & Localization",
+          "date": "10/14",
+          "summary": "预计前三季归母净利24.2亿–30.6亿元，同比增72.38%–117.97%；受益AI基础设施与新华三并表等。",
+          "summary_en": "Guides YTD attributable net ¥2.42–3.06bn (+72.38–117.97% YoY); cites AI infrastructure and H3C consolidation.",
+          "detail": "10月14日晚间，紫光股份披露2026年前三季度业绩预告：预计归母净利润24.2亿–30.6亿元，同比增72.38%–117.97%；扣非净利21.0亿–27.4亿元（+43.84%–87.68%）。公司称把握智算与国产化需求，保障供应链并扩大海外；5月末增持新华三至87.98%，金融负债到期少计利息，非经常性收益约2.7亿–3.7亿元。属ICT设备与算力基础设施供给侧景气的新披露。",
+          "detail_en": "On the evening of Oct 14, Unisplendour previewed 2026 Q1–Q3: attributable net ¥2.42–3.06bn (+72.38–117.97% YoY); non-GAAP ¥2.10–2.74bn (+43.84–87.68%). Growth tied to intelligent-compute and localization demand, supply continuity and overseas expansion; H3C stake raised to 87.98% end-May, with one-off gains ~¥0.27–0.37bn. A new ICT/compute-infra supply-side earnings disclosure.",
+          "links": [
+            {
+              "label": "经济参考网",
+              "url": "https://www.jjckb.cn/20261014/454817660a91406f97faf1897d87841a/c.html"
+            },
+            {
+              "label": "第一财经",
+              "url": "https://www.yicai.com/news/103393471.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政策标准与频谱",
+      "section_en": "Policy, Standards & Spectrum",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "中国代表团完成ITU WP5D会议：7篇文稿获采纳，含手机直连卫星频段",
+          "title_en": "China Delegation Finishes ITU WP5D Meeting; Seven Contributions Adopted",
+          "date": "10/14",
+          "summary": "WP5D会议（9/28–10/8日内瓦）后，中方2篇CPM文稿+5篇频率兼容文稿均被采纳，涉及IMT与手机直连卫星。",
+          "summary_en": "After WP5D (28 Sep–8 Oct, Geneva), China’s 2 CPM texts and 5 coexistence studies were adopted, covering IMT and D2D satellite bands.",
+          "detail": "界面新闻等10月14日转载工信部口径：中国代表团完成ITU-R WP5D第九次会议（9月28日至10月8日，日内瓦），约12家单位50余名代表参会；中方提交的2篇CPM文稿与5篇频率兼容研究文稿均获采纳，涉及IMT与手机直连卫星频段干扰保护规则及WRC-27 CPM草案审议。相对昨日“WP5D第53次会议收官、IMT-2030前期研究完成”的流程报道，本条明确采纳数量（7篇）与结构（2+5），并突出直连卫星频谱兼容这一新进展节点。",
+          "detail_en": "Jiemian and others on Oct 14 relayed MIIT messaging: China’s delegation finished ITU-R WP5D’s 9th meeting (28 Sep–8 Oct, Geneva) with ~50+ delegates from ~12 organizations; 2 CPM texts and 5 coexistence studies were all adopted, covering IMT and direct-to-device satellite interference-protection rules for the WRC-27 CPM draft. Versus yesterday’s “WP5D #53 closed / IMT-2030 prep done” process blurb, this adds concrete adopted-paper counts (7 = 2+5) and a D2D/IMT coexistence progress node.",
+          "links": [
+            {
+              "label": "新浪/界面",
+              "url": "https://k.sina.cn/article_5953189932_162d6782c067050tle.html"
+            },
+            {
+              "label": "同花顺",
+              "url": "https://news.10jqka.com.cn/20261014/c680669701.shtml"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "卫星互联网与空天地一体化",
+      "section_en": "Satellite internet & air-space-ground",
+      "emoji": "🛰️",
+      "items": [
+        {
+          "title": "国电高科增资项目在上海联交所预披露，天启星座一期41星组网",
+          "title_en": "Guodian Hi-Tech Capital Increase Pre-Disclosed; Tianqi Phase-1 41 Sats On Orbit",
+          "date": "10/14",
+          "summary": "天启星座运营方国电高科增资在上海联交所预披露；2026年5月获卫星物联网商用试验许可。",
+          "summary_en": "Tianqi constellation operator Guodian Hi-Tech pre-disclosed a capital raise; May 2026 sat-IoT commercial-trial license.",
+          "detail": "10月14日C114卫星频道报道，国电高科增资项目在上海联合产权交易所预披露。公司运营天启低轨卫星物联网星座，一期41星已组网；2026年5月获卫星物联网商用试验许可。注册资本约1838万元，中移资本持股约39.85%为第一大股东；2023–2025年营收约1.41/0.63/1.53亿元，仍处亏损。募资额待正式披露。属卫星物联网融资进展的新公开信息。",
+          "detail_en": "C114 Satellite on Oct 14: Guodian Hi-Tech’s capital-increase project was pre-disclosed on the Shanghai United Assets and Equity Exchange. It operates the Tianqi LEO sat-IoT constellation with 41 Phase-1 satellites on orbit and obtained a sat-IoT commercial-trial license in May 2026. Registered capital ~¥18.38m; CMCC Capital holds ~39.85% as largest shareholder; 2023–2025 revenue ~¥141/63/153m, still loss-making. Raise size TBD after formal disclosure—new public financing progress for sat-IoT.",
+          "links": [
+            {
+              "label": "C114卫星",
+              "url": "https://www.c114.com.cn/satellite/2515/a1319147.html"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notion_url": "https://app.notion.com/p/3f93a1fdbe1881f29e1dfebcd5b39d7c"
+}
