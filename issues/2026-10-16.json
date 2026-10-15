@@ -1,0 +1,256 @@
+{
+  "date": "2026-10-16",
+  "weekday": "周五",
+  "weekday_en": "Friday",
+  "title": "通信行业日报 · 2026-10-16（周五）",
+  "theme": "6G走出实验室，光缆百亿集采落地——网络底座换代提速",
+  "theme_en": "6G steps out of the lab as a ¥10.9bn fiber-cable award lands—network foundations speed up",
+  "cover": {
+    "url": "covers/2026-10-16.jpg",
+    "credit": "David Ratledge / CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cellular_Telephone_Tower_-_Knoxville,_Tennessee_-_May_26,_2014.jpg"
+  },
+  "highlights": [
+    {
+      "label": "6G",
+      "text": "Verizon与爱立信在加州商用站址完成首个7GHz预标准6G户外呼叫；GSMA Intelligence预计2035年6G连接约24亿。"
+    },
+    {
+      "label": "运营商",
+      "text": "中国电信2026–2027年室外光缆集采结果出炉：18家入围、投标总价约109亿元，规模约8000万芯公里。"
+    },
+    {
+      "label": "厂商",
+      "text": "爱立信Q3有机增长7%但警示元器件涨价；企业无线并入网络业务，2027年起设亚太市场区。"
+    },
+    {
+      "label": "科研",
+      "text": "四篇新稿：多无人机禁飞区异构业务、UxNB FR3传播仿真、飞控逻辑缺陷挖掘、LEO直连手机极化MIMO。"
+    }
+  ],
+  "research": [
+    {
+      "title": "禁飞区与用户移动约束下的多无人机异构业务通信",
+      "title_en": "Heterogeneous Services in Multi-UAV Networks with No-Fly Zone and User Mobility",
+      "date": "10/15",
+      "authors": "Bin Li, Senning Wan, Decheng Zhang, Yonglei Yao, Yu Xue",
+      "summary": "多无人机贴近禁飞区边界服务移动用户，用带优先经验回放的SAC联合优化轨迹、功率与关联。",
+      "summary_en": "Multiple UAVs hug no-fly-zone boundaries to serve mobile users; SAC with prioritized replay jointly optimizes trajectory, power and association.",
+      "detail": "研究由多架无人机支撑的无线通信网络：当移动用户进入指定禁飞区（NFZ）时，无人机需在不越界的前提下尽量逼近禁飞区边界以维持可靠连接。用户按通信类型被赋予不同优先级，优化目标是最大化按优先级加权的用户速率之和，联合优化无人机轨迹规划、发射功率控制以及无人机与用户之间的二元关联因子。针对用户移动、异构业务需求和禁飞区带来的动态约束，作者设计了带优先经验回放的软演员-评论家（SAC）算法来学习自适应控制策略。数值结果显示，该算法在收敛速度和稳定性上优于基准方案，能够满足差异化通信需求和无人机能量约束，并保证在禁飞区约束下可靠运行。对城市低空空域管控条件下的空中基站部署与应急通信具有直接参考价值。",
+      "detail_en": "Studies a multi-UAV-supported wireless network in which UAVs must approach, but never violate, designated no-fly zones when mobile users enter them. Users carry priority weights by service type; the goal is to maximize the priority-weighted sum rate by jointly optimizing UAV trajectories, transmit power and binary UAV–user association. To handle user mobility, heterogeneous requirements and NFZ constraints, the authors develop a soft actor-critic algorithm with prioritized experience replay. Simulations show faster, more stable convergence than benchmarks while meeting diverse service needs, UAV energy limits and NFZ constraints—relevant to aerial base stations under urban airspace control.",
+      "links": [
+        {
+          "label": "arXiv:2610.19515",
+          "url": "https://arxiv.org/abs/2610.19515"
+        }
+      ]
+    },
+    {
+      "title": "UPSim：面向3D地图驱动FR3部署的无人机基站（UxNB）传播仿真器",
+      "title_en": "UPSim: UxNB Propagation Simulator for 3D Map-Driven FR3 Deployments",
+      "date": "10/15",
+      "authors": "Evgenii Vinogradov",
+      "summary": "开源、射线追踪校准的FR3（16.95 GHz）空地传播仿真器，KS距离由3GPP基线的0.33降至0.04。",
+      "summary_en": "Open-source, ray-tracing-calibrated FR3 (16.95 GHz) air-to-ground simulator; aggregate KS distance drops from 0.33 (3GPP) to 0.04.",
+      "detail": "本条为修订版（v2，10月14日提交，已被Globecom 2026 Workshops接收）。作者提出开源的UPSim，用于无人机网络中空间一致的FR3（16.95 GHz）空对地传播建模：不再对每个地面位置逐点发射射线，而是从全球3D建筑数据（3D-GloBFP）经快速阴影投影直接推导确定性可视区域，再叠加按视距状态区分、随无人机高度与距离变化的路径损耗、空间相关的大尺度衰落和对数-逻辑斯蒂小尺度衰落，参数由超过1.36亿条射线追踪信道拟合。与参考射线追踪数据对比，聚合Kolmogorov–Smirnov距离由3GPP基线的0.33降至0.04；生成的衰减图还可做城市航线上的信道演进与中断持续性等轨迹级分析，为6G空中网络规划提供介于全射线追踪与纯统计模型之间的可扩展方案。",
+      "detail_en": "Revised version (v2, submitted Oct 14; accepted to Globecom 2026 Workshops). UPSim derives deterministic visibility regions from global 3D building footprints (3D-GloBFP) via fast shadow projection instead of per-point ray launches, then adds LOS-state-specific, UAV height- and distance-dependent path loss, spatially correlated shadowing and log-logistic small-scale fading fitted on 136M+ ray-traced channels. It cuts the aggregate Kolmogorov–Smirnov distance versus reference ray tracing from 0.33 (3GPP baseline) to 0.04 and supports route-level metrics such as outage persistence—a scalable middle ground for mobility-aware 6G aerial network planning.",
+      "links": [
+        {
+          "label": "arXiv:2605.17378v2",
+          "url": "https://arxiv.org/abs/2605.17378"
+        }
+      ]
+    },
+    {
+      "title": "“不可能的任务”：自动挖掘开源无人机飞控的逻辑缺陷",
+      "title_en": "Mission (Im)Possible: Towards Autonomous Discovery of Autopilot Logic Flaws in Open-Source Drone Frameworks",
+      "date": "10/15",
+      "authors": "Ziyi Liang, Zichuan Li, Bin Yuan, Deqing Zou, Luyi Xing",
+      "summary": "多智能体LLM系统IMF在PX4与ArduPilot中发现105个此前未知的飞控逻辑缺陷，含闯入限飞区等风险。",
+      "summary_en": "Multi-agent LLM system IMF finds 105 previously unknown logic flaws in PX4 and ArduPilot, including restricted-zone entry.",
+      "detail": "自主无人机飞控软件中的逻辑缺陷往往取决于模块、指令与运行状态之间的语义关系，很少表现为崩溃或可检测的故障，现有技术难以发现。作者提出Impossible Mission Finder（IMF），把静态分析、动态执行与日志分析结合起来：审计智能体基于精心构造的程序切片提出缺陷假设，测试智能体为每个候选编写并执行测试用例，日志分析智能体再对照假设核验执行日志，从而逐案动态验证缺陷判据，适用于没有统一模式的逻辑缺陷。在PX4与ArduPilot两大开源飞控上共发现105个此前未知的逻辑缺陷，可导致任务中断失败、无效动作以及闯入限飞区等不安全行为。对低空运行安全和飞控—通信链路的联合可信评估具有参考意义。",
+      "detail_en": "Autopilot logic flaws hinge on semantic relations across modules, commands and runtime state and rarely crash, so they evade existing tools. IMF combines static analysis, dynamic execution and log analysis with three LLM agents: an auditor proposes flaw hypotheses from crafted program slices, testers write and run test cases, and a log analyzer validates execution logs against each hypothesis. On PX4 and ArduPilot it uncovered 105 previously unknown logic flaws causing mission-interruption failures, invalid actions and entry into restricted fly zones—relevant to low-altitude operational safety.",
+      "links": [
+        {
+          "label": "arXiv:2610.19566",
+          "url": "https://arxiv.org/abs/2610.19566"
+        }
+      ]
+    },
+    {
+      "title": "低轨卫星S频段下行直连手机的极化MIMO机会",
+      "title_en": "Opportunities for Direct-to-Cell Polarization MIMO in the S-band Downlink of a LEO Satellite Footprint",
+      "date": "10/15",
+      "authors": "Rainer Bachl, Matteo Ferro, Bingguang Peng, Muhammad Nabeel",
+      "summary": "利用卫星双极化为手机多传一层数据：13 dB时闭环预编码使覆盖区平均频谱效率提升49%。",
+      "summary_en": "Using the satellite's two polarizations for a second layer: closed-loop precoding lifts mean footprint SE by 49% at 13 dB.",
+      "detail": "单颗低轨卫星几乎没有空间自由度，但其两个极化可以为手机承载第二层数据，而现有5G NR非地面网络（NTN）尚未利用这一点。作者以慕尼黑上空330 km、2 GHz发射的卫星为例，把信道建模为相控阵载荷、法拉第旋转、含视距的双极化陆地移动卫星信道与标准化手机天线单元（三种姿态）的Jones因子级联，绘制整个覆盖区内第二层带来的下行频谱效率增益。天线指向天顶的手机在6 dB参考信噪比下，星下点约340 km范围内以至少0.95的概率选择秩2；13 dB时闭环预编码使覆盖区平均频谱效率提升49%，竖握手机约提升31%；3 dB时增益分别降至15%与7%。为手机直连卫星的容量提升与空天地一体化设计提供量化依据。",
+      "detail_en": "A single LEO satellite offers almost no spatial degrees of freedom, but its two polarizations can carry a second layer to a handset—unused by today's 5G NR NTN. Modeling a 330 km satellite at 2 GHz over Munich as a cascade of Jones factors (phased-array payload, Faraday rotation, dual-polarized LMS channel with LOS, standardized handset element at three attitudes), the authors map downlink SE gains over the footprint. A zenith-pointing handset selects rank 2 with probability ≥0.95 within ~340 km of nadir at 6 dB; at 13 dB closed-loop rank selection raises mean SE by 49% (31% for upright handsets), falling to 15%/7% at 3 dB.",
+      "links": [
+        {
+          "label": "arXiv:2610.20296",
+          "url": "https://arxiv.org/abs/2610.20296"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "5G/5G-A 与 6G",
+      "section_en": "5G/5G-A & 6G",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "Verizon联手爱立信完成首个7GHz预标准6G户外外场呼叫",
+          "title_en": "Verizon and Ericsson Complete First Outdoor Pre-Standard 6G Field Call at 7 GHz",
+          "date": "10/15",
+          "summary": "在加州Concord商用站址用爱立信6G概念验证套件、400 MHz载波完成户外呼叫，并测试由外向内的室内覆盖。",
+          "summary_en": "At a Verizon commercial site in Concord, California, Ericsson's 6G PoC kit with a 400 MHz carrier completed an outdoor call and is testing outside-in coverage.",
+          "detail": "美东时间10月15日8时（北京时间当晚20时），Verizon与爱立信宣布在Verizon位于加州Concord的商用网络站址完成全球首个7 GHz频段预标准6G外场呼叫。爱立信6G概念验证基站安装在站址机房内，终端置于一间约12×8英尺的“移动小屋”中，墙体和窗户采用不同材料，用于对比户外与由外向内穿透的室内覆盖；系统采用预标准6G协议栈和400 MHz载波。测试涵盖覆盖、吞吐、时延、稳定性与特性表现，场景包括视距与非视距、植被遮挡以及不同玻璃和建材的穿透。双方强调这是预标准概念验证，并非6G商用发布，结果将用于后续6G研究、测试与部署规划。7 GHz属于业界关注的6G中频上段候选频谱，此次把6G验证从实验室集成推进到真实商用站址。",
+          "detail_en": "On Oct 15 (08:00 ET), Verizon and Ericsson announced the first pre-standard 6G field call in the 7 GHz band from a Verizon commercial site in Concord, California. The Ericsson PoC base station sits in the site shelter; the UE is in a ~12×8 ft 'house on wheels' with varied wall and window materials to compare outdoor and outside-in indoor coverage, using a pre-standard 6G stack and a 400 MHz carrier. Tests cover coverage, throughput, latency, stability and features across LOS/NLOS, foliage and building penetration. Both stress it is a proof of concept, not a commercial 6G launch—moving 6G validation from the lab to a live site in upper-midband spectrum.",
+          "links": [
+            {
+              "label": "Ericsson",
+              "url": "https://www.ericsson.com/en/press-releases/6/2026/verizon-and-ericsson-accelerate-6g-development"
+            },
+            {
+              "label": "PR Newswire",
+              "url": "https://www.prnewswire.com/news-releases/verizon-and-ericsson-accelerate-6g-development-with-worlds-first-outdoor-6g-field-call-302909232.html"
+            }
+          ]
+        },
+        {
+          "title": "GSMA Intelligence：2035年6G连接约24亿，运营商回报决定节奏",
+          "title_en": "GSMA Intelligence: ~2.4bn 6G Connections by 2035, Paced by Operator Economics",
+          "date": "10/15",
+          "summary": "预计2030年底约5000万、2033年约13亿、2035年约24亿6G连接；届时5G仍占全球移动连接约60%。",
+          "summary_en": "Forecast: ~50m 6G connections by end-2030, ~1.3bn in 2033, ~2.4bn in 2035, when 5G still holds ~60% of mobile connections.",
+          "detail": "RCR Wireless 10月15日刊发对GSMA Intelligence数据建模与预测负责人Matthew Iji的采访：容量需求会催生6G早期需求，但部署节奏取决于运营商投资回报，因为运营商仍在变现5G与5G-A，早期6G将以“共存”而非全面替代为特征。预测6G连接数2030年底约5000万，2031年约2.75亿、2032年近7.4亿，2033年约13亿，2034年约19亿，2035年约24亿；到2035年底5G仍占全球移动连接约60%，6G约23%，4G约17%。AI摄像头、可穿戴、传感器与XR设备将使终端从消费内容转向生成并上传内容，加大上行容量、时延与可靠性压力；月均移动流量将由2025年约144EB增至2035年约604EB。区域上，北美2035年约一半连接为6G，东亚处于前列，欧洲约四分之一，多个新兴市场低于10%。",
+          "detail_en": "In an RCR Wireless interview on Oct 15, GSMA Intelligence's Matthew Iji said capacity will create initial 6G demand but operator ROI will set the pace while 5G/5G-A are still being monetized—coexistence, not wholesale replacement. Forecast 6G connections: ~50m by end-2030, ~275m in 2031, ~740m in 2032, ~1.3bn in 2033, 1.9bn in 2034 and ~2.4bn in 2035, when 5G is ~60% of connections (6G 23%, 4G 17%). AI cameras, wearables, sensors and XR will shift pressure to uplink; monthly traffic grows from ~144 EB (2025) to ~604 EB (2035). North America reaches ~50% 6G by 2035, Europe ~25%.",
+          "links": [
+            {
+              "label": "RCR Wireless",
+              "url": "https://rcrwireless.com/20261015/6g/6g-operator-gsma"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "运营商与招标",
+      "section_en": "Operators & Tenders",
+      "emoji": "📋",
+      "items": [
+        {
+          "title": "中国电信室外光缆集采结果出炉：18家入围、投标总价约109亿元",
+          "title_en": "China Telecom Outdoor Fiber-Cable Tender: 18 Suppliers Shortlisted, ~¥10.9bn Total",
+          "date": "10/15",
+          "summary": "2026–2027年室外光缆集采完成评审，长飞、中天、亨通、烽火居前四；规模约8000万芯公里、满足18个月需求。",
+          "summary_en": "The 2026–27 outdoor cable tender is evaluated: YOFC, ZTT, Hengtong and FiberHome lead; ~80m fiber-km covering 18 months of demand.",
+          "detail": "10月15日C114援引中国电信阳光采购网消息，中国电信2026–2027年室外光缆集采项目已完成评审，共18家供应商入围，长飞、中天、亨通、烽火排名前四；除远东通讯外几乎全部顶格报价，投标总价（价税合计）10,904,066,779.75元。采购内容为集团及股份公司下属各单位2026–2027年各工程（不含省际一级光缆线路工程）所需的GYTA、GYTS、GYDTA、GYDXTW等室外光缆；据相关人士透露，集采规模约8000万芯公里，满足18个月需求。在AI数据中心与光纤无人机需求驱动下，2026年全球光纤供需趋紧、价格大涨：CRU评估8月中国G.652.D光纤现货价约96.8元/芯公里（含税），此前中国移动光缆集采推导的裸纤价约81.0元/芯公里。供应商普遍顶格报价，意味着电信裸纤价格基准与移动相当、仍低于现货价。",
+          "detail_en": "C114 on Oct 15, citing China Telecom's procurement portal, said the 2026–27 outdoor optical-cable tender has been evaluated: 18 suppliers shortlisted, led by YOFC, ZTT, Hengtong and FiberHome; nearly all bid at the price cap except Far East, for a combined ¥10,904,066,779.75 (tax incl.). Scope covers GYTA/GYTS/GYDTA/GYDXTW cables for all projects except inter-provincial trunks, reportedly ~80m fiber-km for 18 months. With AI data centers and fiber-guided drones tightening global supply, CRU put August G.652.D spot at ~¥96.8/fiber-km versus ~¥81.0 implied by China Mobile's recent award—cap-level bids imply a similar benchmark, still below spot.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/6541/a1319205.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "厂商与供应链",
+      "section_en": "Vendors & Supply Chain",
+      "emoji": "🏭",
+      "items": [
+        {
+          "title": "爱立信Q3有机增长7%、警示元器件涨价；同日简化架构设亚太区",
+          "title_en": "Ericsson Q3: 7% Organic Growth, Component-Cost Warning; New APAC Area in Simplified Structure",
+          "date": "10/15",
+          "summary": "销售额595亿瑞典克朗，调整后EBITA 101亿；企业无线业务并入网络部门，2027年1月起设亚太市场区。",
+          "summary_en": "Sales SEK 59.5bn, adjusted EBITA SEK 10.1bn; enterprise wireless folded into Networks and a new APAC market area from Jan 2027.",
+          "detail": "爱立信10月15日（北京时间13时）发布三季报：销售额595亿瑞典克朗（上年同期562亿），有机增长7%，主要由网络业务拉动；调整后毛利率47.7%（上年48.1%），调整后EBITA 101亿克朗（上年158亿，含76亿资本利得），净利润58亿克朗，并购前自由现金流49亿克朗。CEO Per Narvinger表示RAN市场持平、地缘不确定性高，AI热潮推高元器件成本，将压制明年毛利率，公司将以组合优化、提价、供应链与效率措施应对。同日宣布简化架构：2027年1月1日起合并东北亚区与东南亚、大洋洲及印度区为亚太区，由现EMEA负责人Patrick Johansson领导；企业无线解决方案（BEWS）拆分，中立主机与爱立信5G专网并入网络业务部，无线广域网独立保留并向美洲区负责人汇报。继诺基亚本周出售园区5G业务后，传统设备商收缩企业专网的趋势更加清晰。",
+          "detail_en": "Ericsson's Q3 (released Oct 15, 05:00 UTC): sales SEK 59.5bn (56.2bn), organic growth 7% led by Networks; adjusted gross margin 47.7% (48.1%); adjusted EBITA SEK 10.1bn (15.8bn incl. a 7.6bn gain); net income SEK 5.8bn; FCF before M&A SEK 4.9bn. CEO Per Narvinger said the RAN market is flat and AI-driven component costs will weigh on gross margin next year, to be offset by portfolio, pricing and supply-chain actions. Ericsson also merged North East Asia and South East Asia, Oceania & India into an APAC area from Jan 1, 2027 under Patrick Johansson, and split its enterprise wireless unit: Neutral Host and Private 5G move into Networks, Wireless WAN stays standalone under the Americas head.",
+          "links": [
+            {
+              "label": "Ericsson",
+              "url": "https://www.ericsson.com/en/press-releases/2026/10/ericsson-reports-third-quarter-results-2026"
+            },
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/137/a1319213.html"
+            },
+            {
+              "label": "RCR Wireless",
+              "url": "https://rcrwireless.com/20261015/network-infrastructure/ericsson-retools-in-flat-market"
+            }
+          ]
+        },
+        {
+          "title": "新华三原CEO于英涛加盟江苏未来网络集团，任联席董事长",
+          "title_en": "Former H3C CEO Yu Yingtao Joins Jiangsu Future Networks Group as Co-Chairman",
+          "date": "10/15",
+          "summary": "江苏未来网络集团是国家重大科技基础设施CENI的独家运营主体；业内认为此举将补齐其商业化与生态短板。",
+          "summary_en": "Jiangsu Future Networks Group is the sole operator of the national CENI testbed; the hire is seen as filling its commercialization gap.",
+          "detail": "10月15日C114援引业内人士消息，紫光股份原董事长、新华三集团原总裁兼首席执行官于英涛已于日前加盟江苏未来网络集团，出任联席董事长。江苏未来网络集团总部位于南京，由南京国资平台与未来网络技术创始团队共同组建，是国家重大科技基础设施“未来网络试验设施”（CENI）的独家运营主体，由中国工程院院士、紫金山实验室荣誉主任刘韵洁牵头。于英涛早年长期任职中国联通，历任联通华盛总经理、集团销售部总经理、浙江联通总经理等职，2016年起执掌新华三近十年，2026年6月辞任紫光股份及新华三相关职务。业内分析认为，江苏未来网络此前优势集中在底层网络技术、国家级试验平台与确定性网络核心技术，于英涛的加盟将补齐其在大规模商业化与产业生态拓展方面的短板。",
+          "detail_en": "C114 reported on Oct 15 that Yu Yingtao, former chairman of Unisplendour and former president & CEO of H3C, has joined Jiangsu Future Networks Group as co-chairman. The Nanjing-based mixed-ownership firm, formed by a Nanjing state platform and the future-network founding team led by academician Liu Yunjie, is the sole operator of the national CENI (China Environment for Network Innovations) facility. Yu spent years at China Unicom before leading H3C from 2016 until stepping down in June 2026. Analysts see the move strengthening large-scale commercialization and ecosystem building for a group whose strengths lie in deterministic networking and national testbeds.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/4app/3542/a1319181.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "光通信、算力网络与数据中心",
+      "section_en": "Optical, computing networks & data centers",
+      "emoji": "💡",
+      "items": [
+        {
+          "title": "鹏城实验室光芯片工艺平台“河套线”通线，发布超级光直连系列成果",
+          "title_en": "Peng Cheng Lab's 'Hetao Line' Photonic-Chip Process Platform Goes Live with Super Optical Direct-Connect Results",
+          "date": "10/15",
+          "summary": "异质集成光芯片量产验证平台10月13日通线；单纤16Tb/s直调直检、20.2Pb/s实时光交换等成果同步发布。",
+          "summary_en": "A heterogeneous-integration photonic-chip pilot line went live Oct 13, alongside 16 Tb/s IM-DD per fiber and 20.2 Pb/s real-time optical switching results.",
+          "detail": "光纤在线10月15日转载人民邮电报报道：鹏城实验室在第六届学术活动周期间发布“超级光直连系统与光芯片”系列技术成果，“特大容量光通信高性能异质集成光芯片工艺平台”（简称“河套线”）于10月13日正式通线。该平台建有超1000平方米百级（ISO 5级）超净实验室，采用“硅光无源工艺+晶圆级异质集成工艺”路线，已完成高速薄膜铌酸锂调制器芯片制备，以及硅基III-V族、硅基薄膜铌酸锂的晶圆级键合工艺验证。芯片层面，团队基于28nm CMOS研制出单波400G PAM-4全CMOS光电集成发射机，O、S、C、L波段一体化可调谐激光器调谐范围达300nm；系统层面，直调直检800G密集波分模块实现单纤16Tb/s实时传输，另有24.8Tb/s、1.2万公里空芯光纤传输原型、2.5Pb/s单纤24芯实时相干传输，以及支持316路光纤交换的20.2Pb/s实时光交换系统，面向算力网扩容与自主可控。",
+          "detail_en": "C-FOL, reprinting People's Posts and Telecommunications News on Oct 15, reported that Peng Cheng Laboratory unveiled its 'super optical direct-connect systems and photonic chips' results, and that its heterogeneous-integration photonic-chip process platform ('Hetao Line') went live on Oct 13. The 1,000+ m² ISO-5 line uses silicon-photonics passives plus wafer-level heterogeneous integration and has validated thin-film lithium niobate modulators and III-V-on-Si / TFLN-on-Si bonding. Results include a single-lane 400G PAM-4 all-CMOS transmitter (28 nm), a 300 nm-tunable O/S/C/L laser, 16 Tb/s per fiber with 800G IM-DD DWDM modules, 24.8 Tb/s over 12,000 km hollow-core fiber, 2.5 Pb/s 24-core coherent transmission and a 20.2 Pb/s optical switch supporting 316 fibers.",
+          "links": [
+            {
+              "label": "光纤在线",
+              "url": "https://www.c-fol.net/news/6_202610/20261015175749.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "卫星互联网与空天地一体化",
+      "section_en": "Satellite internet & air-space-ground",
+      "emoji": "🛰️",
+      "items": [
+        {
+          "title": "欧盟拟快速审批“Project Bromo”：空客、莱昂纳多、泰雷兹卫星合资对标SpaceX",
+          "title_en": "EU Prepares Fast-Track Review of 'Project Bromo' Airbus–Leonardo–Thales Satellite Venture",
+          "date": "10/15",
+          "summary": "据彭博社，欧委会与三方预申报沟通已逾一年，正式申报预计数周内提交，若提出补救措施可走约一个月的一阶段审查。",
+          "summary_en": "Per Bloomberg, pre-notification talks have run over a year; a filing is expected within weeks and a ~one-month Phase 1 clearance is possible with remedies.",
+          "detail": "10月15日，Stocktwits、Headliner等援引彭博社报道：欧盟反垄断官员正为“Project Bromo”快速放行做准备。该项目整合空客、莱昂纳多与泰雷兹的航天业务，被定位为欧洲应对SpaceX的卫星力量。三方与欧委会竞争部门的预申报沟通已持续一年多，以便提前识别并解决竞争问题；企业尚未正式申报，监管方预计数周内提交。若合作方提出剥离资产等补救措施，欧委会可在约一个月的一阶段审查内作出决定。欧委会主席冯德莱恩公开支持该项目，竞争事务专员里贝拉则强调政治支持不意味着免于常规审查；工会和供应商担忧裁员与市场集中。该案也被视为欧盟新版并购评估思路——扶持能与美中竞争的本土龙头——的早期试金石，直接关系欧洲卫星通信与空间基础设施的自主能力。",
+          "detail_en": "On Oct 15, Stocktwits and Headliner, citing Bloomberg, reported that EU antitrust officials are preparing to fast-track Project Bromo, which combines the space businesses of Airbus, Leonardo and Thales as Europe's answer to SpaceX. Pre-notification talks have run for over a year; the companies have not yet filed, but a filing is expected within weeks, and with remedies such as divestments the Commission could clear it in a roughly one-month Phase 1 review. Ursula von der Leyen backs the project, while competition chief Teresa Ribera said political support does not exempt it from scrutiny; unions and suppliers fear job losses and concentration. It is an early test of the EU's updated merger doctrine and of European satcom autonomy.",
+          "links": [
+            {
+              "label": "Stocktwits",
+              "url": "https://stocktwits.com/news-articles/markets/equity/spcx-stock-down-for-third-straight-session-the-european-union-is-preparing-to-fast-track-approvals-for-space-x-s-satellite-rival/cZxh9OhRBrm"
+            },
+            {
+              "label": "Headliner",
+              "url": "https://www.headliner.nl/artikelen/eu-streeft-snelle-antitrustgoedkeuring-satellietproject-project-bromo-203994"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notion_url": "https://app.notion.com/p/3fa3a1fdbe188184a749fcf5cdcf3b4e"
+}
