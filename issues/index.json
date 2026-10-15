@@ -1,6 +1,33 @@
 {
   "issues": [
     {
+      "date": "2026-10-16",
+      "weekday": "周五",
+      "title": "通信行业日报 · 2026-10-16（周五）",
+      "theme": "6G走出实验室，光缆百亿集采落地——网络底座换代提速",
+      "cover": "covers/2026-10-16.jpg",
+      "highlights": [
+        {
+          "label": "6G",
+          "text": "Verizon与爱立信在加州商用站址完成首个7GHz预标准6G户外呼叫；GSMA Intelligence预计2035年6G连接约24亿。"
+        },
+        {
+          "label": "运营商",
+          "text": "中国电信2026–2027年室外光缆集采结果出炉：18家入围、投标总价约109亿元，规模约8000万芯公里。"
+        },
+        {
+          "label": "厂商",
+          "text": "爱立信Q3有机增长7%但警示元器件涨价；企业无线并入网络业务，2027年起设亚太市场区。"
+        },
+        {
+          "label": "科研",
+          "text": "四篇新稿：多无人机禁飞区异构业务、UxNB FR3传播仿真、飞控逻辑缺陷挖掘、LEO直连手机极化MIMO。"
+        }
+      ],
+      "weekday_en": "Friday",
+      "theme_en": "6G steps out of the lab as a ¥10.9bn fiber-cable award lands—network foundations speed up"
+    },
+    {
       "date": "2026-10-15",
       "weekday": "周四",
       "title": "通信行业日报 · 2026-10-15（周四）",
