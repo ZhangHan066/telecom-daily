@@ -31,9 +31,10 @@ python3 -m http.server 8000
 
 3. 脚本会：
    - 校验字段；条目上的 `date`（如 `10/5`、`至 10/10`）只当作展示文字，不会被解析
+   - 若 `cover.url` 是 `http`/`https` 图片地址，下载到 `covers/YYYY-MM-DD.jpg` 并把该字段改成这个相对路径。维基共享资源文件会先用 Commons API 取 1920px 缩略图（文件名对、哈希路径错也能下到）。结果必须是至少 1600px 宽、小于 600KB 的 JPEG，否则脚本失败退出。需要 [Pillow](https://pypi.org/project/Pillow/)（`pip install pillow`）
    - 写入 `issues/YYYY-MM-DD.json`（同一天再次执行则覆盖）
    - 更新 `issues/index.json`：该日期一条，整体按日期从新到旧
-4. 提交这两个文件，PR 合并到 `main`。
+4. 提交 `issues/YYYY-MM-DD.json`、`issues/index.json` 和 `covers/YYYY-MM-DD.jpg`，PR 合并到 `main`。
 5. GitHub Actions（`.github/workflows/pages.yml`）在推送到 `main` 后部署到 GitHub Pages。
 
 校验失败时脚本以非零状态退出，并在 stderr 列出全部问题。
@@ -50,7 +51,7 @@ python3 -m http.server 8000
 | `title` | string | 这一期的标题 |
 | `theme` | string | 主题，用于往期列表 |
 | `theme_en` | string | 可省略。英文主题。英文界面没有该字段时仍显示中文 |
-| `cover.url` | string | 封面图，`http` 或 `https` |
+| `cover.url` | string | 封面图。准备稿可以是 `http`/`https` 图片地址；入库后是相对路径 `covers/YYYY-MM-DD.jpg`。页面用 `document.baseURI` 解析相对地址 |
 | `cover.credit` | string | 封面署名，可省略。页面不展示 |
 | `cover.source` | string | 封面来源链接，可省略 |
 | `highlights` | array | 今日要点，每项 `{label, text}` |
@@ -87,7 +88,7 @@ python3 -m http.server 8000
       "title": "通信行业日报 · 2026-10-08（周四）",
       "theme": "卫星直连手机加速落地",
       "theme_en": "Direct-to-device satellite service gathers pace",
-      "cover": "https://example.com/cover.jpg",
+      "cover": "covers/2026-10-08.jpg",
       "highlights": [
         { "label": "科研", "text": "……" }
       ]
