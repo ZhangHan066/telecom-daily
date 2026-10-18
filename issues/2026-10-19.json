@@ -1,0 +1,263 @@
+{
+  "date": "2026-10-19",
+  "weekday": "周一",
+  "weekday_en": "Monday",
+  "title": "通信行业日报 · 2026-10-19（周一）",
+  "theme": "频谱攻防战——香港U6GHz率先落地，欧美直连卫星频谱交锋",
+  "theme_en": "Spectrum battles: Hong Kong lights up upper 6 GHz as the US and EU clash over direct-to-device satellite spectrum",
+  "cover": {
+    "url": "covers/2026-10-19.jpg",
+    "credit": "Daniel Case / CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kowloon,_Victoria_Harbour_and_Hong_Kong_from_Victoria_Gap.jpg"
+  },
+  "highlights": [
+    {
+      "label": "频谱",
+      "text": "中国移动香港在旺角完成U6GHz现网验证；美驻欧盟大使就欧盟2GHz直连卫星频谱方案警告“毁灭性”报复。"
+    },
+    {
+      "label": "AI-RAN",
+      "text": "诺基亚与软银定档2027年商用AI-RAN外场试验；爱立信称ASIC版AI链路自适应已上6万基站、频谱效率提升10%。"
+    },
+    {
+      "label": "算力网络",
+      "text": "未来网络发展大会发布AXP智能体互联平台、卫星组网控制系统与26公里100Gbps太赫兹传输。"
+    },
+    {
+      "label": "科研",
+      "text": "三篇新稿：无人机集群拓扑自愈、ISAC微多普勒飞行状态估计、夹持天线空中传感网。"
+    }
+  ],
+  "research": [
+    {
+      "title": "部分可观测三维无人机集群网络的保覆盖自愈：对流—扩散图Transformer",
+      "title_en": "Coverage-Preserving Self-Healing in Partially Observable 3D UAV Swarm Networks via an Advection-Diffusion Graph Transformer",
+      "date": "10/16",
+      "authors": "Dongbin Jiao, Zhihao Li, Zongsheng Geng, Dongdong Zhao, Shengcai Liu, Shi Yan",
+      "summary": "地面站凭稀疏局部报告推断集群毁伤，AdDiff-GT恢复多簇分裂拓扑并保持空间覆盖。",
+      "summary_en": "The ground station infers swarm damage from sparse local reports; AdDiff-GT reconnects multi-cluster partitions while preserving spatial coverage.",
+      "detail": "研究复杂对抗环境下无人机集群通信网络遭严重分割后的韧性与自愈问题。针对受损后全局可观测性有限，作者设计毁伤状态推断机制，使地面控制站（GCS）仅凭稀疏的局部上报即可推断全局故障，且无需传输位置敏感坐标。为恢复多簇分裂拓扑，提出物理启发的图Transformer AdDiff-GT：在“节点—超节点”混合图中引入对流—扩散动力学，局部消息传递刻画簇内结构，全局注意力建模簇间交互；训练采用加权复合损失，兼顾连通性恢复、机动代价、运动一致性、簇间协同与空间保持。作者还引入元学习，为不同毁伤模式与集群规模提供可迁移初始化，支持GCS在线快速适配与机载分布式推理。在8000个分割场景（含5000个大规模场景）上，AdDiff-GT的拓扑恢复与空间保持效果优于六种代表性基线；元学习以少量增加恢复步数为代价降低了在线规划开销。对战场与应急场景下的集群组网抗毁具有参考价值。",
+      "detail_en": "Studies the resilience and self-healing of UAV swarm communication networks after severe partitioning in complex, adversarial environments. A damage-state inference mechanism lets the ground control station infer global failures from sparse local reports without transmitting location-sensitive coordinates. To reconnect multi-cluster topologies, AdDiff-GT—a physics-inspired graph Transformer—embeds advection-diffusion dynamics in a node–supernode hybrid graph, using local message passing within clusters and global attention across them, and is trained with a composite loss covering connectivity restoration, maneuvering cost, motion consistency, inter-cluster coordination and spatial preservation. Meta-learning provides transferable initialization across damage patterns and swarm scales for fast online adaptation and distributed airborne inference. On 8,000 partitioned scenarios (5,000 large-scale), it beats six representative baselines in topology recovery and spatial preservation; meta-learning cuts online planning overhead at the cost of slightly more recovery steps.",
+      "links": [
+        {
+          "label": "arXiv:2610.22085",
+          "url": "https://arxiv.org/abs/2610.22085"
+        }
+      ]
+    },
+    {
+      "title": "ISAC网络中基于微多普勒的无人机飞行状态估计",
+      "title_en": "Micro-Doppler Sensing for UAV Flight-State Estimation in ISAC Networks",
+      "date": "10/16",
+      "authors": "Henglin Pu, Lu Su, Zhu Han, Athina P. Petropulu, Husheng Li",
+      "summary": "OFDM-ISAC提取旋翼微多普勒：单站估转速、三视角融合估旋翼轴向，无需站间载波相位同步。",
+      "summary_en": "OFDM-ISAC exploits rotor micro-Doppler: single-station rotor-rate estimation and three-view rotor-axis fusion without inter-station carrier-phase sync.",
+      "detail": "通感一体化（ISAC）被视为低空无人机监测的重要底座，但现有研究多聚焦位置与整体速度，难以反映旋翼动态与姿态。作者提出OFDM-ISAC框架，利用无人机微多普勒特征估计旋翼转速与旋翼轴指向等运行状态：各基站先提取微多普勒并估计转速，再扩展到分布式ISAC网络，融合多个感知方向上随视角变化的微多普勒特征，估计共同的旋翼轴方向。由于融合依赖多普勒带宽特征而非复信道相位，无需站间载波相位同步；文中证明三个几何差异足够的视角即可局部辨识旋翼轴方向与未知的桨尖速度尺度。作者还给出“特征感知雷达方程”，把桨叶雷达截面积、感知距离、发射功率和观测时长与检测及转速估计精度联系起来，并分析残余运动与距离徙动对相干处理间隔的影响。仿真与实测验证了方案可行，为基站侧低空监测提供超越定位测速的状态信息。",
+      "detail_en": "ISAC is a promising foundation for low-altitude UAV monitoring, but most work stops at position and bulk velocity. This OFDM-ISAC framework uses micro-Doppler signatures to estimate operational states such as rotor rate and rotor-axis orientation. Each base station first extracts micro-Doppler to estimate rotor rate; a distributed ISAC network then fuses view-dependent signatures from multiple sensing directions to estimate the common rotor-axis direction. Because fusion relies on Doppler-bandwidth features rather than complex channel phases, no inter-station carrier-phase synchronization is required, and three geometrically diverse views suffice to locally identify both the axis direction and the unknown rotor-tip-speed scale. A feature-aware radar equation links blade RCS, range, transmit power and observation time to detection and rotor-rate accuracy, and the effects of residual motion and range migration on the CPI are analyzed. Simulations and experimental measurements validate the approach.",
+      "links": [
+        {
+          "label": "arXiv:2610.21225",
+          "url": "https://arxiv.org/abs/2610.21225"
+        }
+      ]
+    },
+    {
+      "title": "基于夹持天线系统的高韧性、高效率空中无线传感器网络",
+      "title_en": "Resilient and Efficient Aerial Wireless Sensor Networks Using Pinching-Antenna Systems",
+      "date": "10/16",
+      "authors": "Ahmed A. Al-habob, Octavia A. Dobre, Yindi Jing, Hyundong Shin",
+      "summary": "优化上下行波导上的夹持天线位置以最大化图代数连通度，并以最少无人机满足连通门限。",
+      "summary_en": "Optimizes pinching-antenna placement on uplink/downlink waveguides to maximize algebraic connectivity, using the fewest UAVs that meet a connectivity threshold.",
+      "detail": "夹持天线（pinching antenna）可沿介质波导灵活设置辐射点。本文将其引入空中无线网络：以网络图的代数连通度作为连通性指标，通过优化上行与下行波导上夹持天线单元的位置使其最大化；同时在保持最低网络连通度指标的前提下，最小化需部署的无人机数量。作者设计了启发式夹持天线布置算法以提升连通度，并提出迭代式无人机部署算法，联合求解最少无人机数量、无人机部署位置与夹持天线位置。仿真结果表明，所考虑的夹持天线系统能够同时提升网络连通度与效率。该工作把新型可重构天线与无人机节点规划结合起来，对低空传感网、应急组网中以更少空中节点维持可靠连通具有参考意义。",
+      "detail_en": "Pinching antennas allow radiating points to be placed flexibly along a dielectric waveguide. This paper applies them to aerial wireless networks: it maximizes the network graph's algebraic connectivity by optimizing the placement of pinching-antenna elements on the uplink and downlink waveguides, and minimizes the number of deployed UAVs while maintaining a minimum connectivity indicator. A heuristic placement algorithm maximizes connectivity, and an iterative deployment algorithm finds the minimum number of UAVs, their locations and the antenna placement. Simulations show the pinching-antenna system improves both network connectivity and efficiency—relevant to keeping low-altitude sensor and emergency networks connected with fewer aerial nodes.",
+      "links": [
+        {
+          "label": "arXiv:2610.20924",
+          "url": "https://arxiv.org/abs/2610.20924"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "5G/5G-A 与 6G",
+      "section_en": "5G/5G-A & 6G",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "中国移动香港建成全港首个U6GHz网络",
+          "title_en": "China Mobile Hong Kong Builds Hong Kong's First U6GHz Network",
+          "date": "10/17",
+          "summary": "在旺角旗舰店完成Upper 6GHz网络测试验证；100MHz连续频谱与现网聚合可达3Gbps以上下载。",
+          "summary_en": "Upper 6 GHz network tested and validated at its Mong Kok flagship store; 100 MHz of contiguous spectrum aggregated with existing bands can exceed 3 Gbps downlink.",
+          "detail": "10月17日，中国移动香港通过美通社宣布率先实现U6GHz网络，已在旺角旗舰店完成网络测试及验证，推进Upper 6GHz频段在流动网络中的应用。U6GHz可提供连续大带宽，是支撑5G-A及未来6G演进的重要频谱。香港于2024年11月29日完成6/7GHz频谱拍卖，成为全球首个拍卖该频段供公共流动服务使用的地区，中国移动香港投得100MHz连续频谱。公司称，U6GHz可与现有频段协同，通过频谱聚合实现3Gbps以上下载速率，提升繁忙区域容量；后续将推动U6GHz与智算服务协同，探索AI影像分析、沉浸式互动与工业应用，并联合伙伴加快产品研发测试、按需扩展热点覆盖。公告未披露站点数量、设备供应商与商用时间。这是U6GHz在运营商现网环境中的早期样本，正值国际上围绕该频段划给IMT还是Wi-Fi的争论持续之际。",
+          "detail_en": "On Oct 17, China Mobile Hong Kong announced via PR Newswire that it has launched Hong Kong's first U6GHz network, completing testing and validation at its Mong Kok flagship store. Upper 6 GHz offers wide contiguous bandwidth for 5G-A and future 6G. Hong Kong completed its 6/7 GHz auction on Nov 29, 2024—the first market to auction the band for public mobile services—and CMHK won 100 MHz of contiguous spectrum. Aggregated with existing bands, the company says downlink can exceed 3 Gbps, lifting capacity in busy areas; it plans to pair U6GHz with intelligent-computing services (AI video analytics, immersive and industrial applications) and to expand hotspot coverage with partners. Site counts, vendors and a commercial launch date were not disclosed. It is an early live-operator reference for the band amid the ongoing IMT-versus-Wi-Fi debate.",
+          "links": [
+            {
+              "label": "美通社",
+              "url": "https://www.prnewswire.com/apac/zh/news-releases/u6ghz-302911835.html"
+            },
+            {
+              "label": "PR Newswire",
+              "url": "https://www.prnewswire.com/apac/news-releases/china-mobile-hong-kong-establishes-hong-kongs-first-u6g-network-302911836.html"
+            }
+          ]
+        },
+        {
+          "title": "马来西亚首个专用频谱5G专网在槟城港启用",
+          "title_en": "Malaysia's First Dedicated-Spectrum Private 5G Network Goes Live at Penang Port",
+          "date": "10/17",
+          "summary": "与Altel共建、核心网全部本地部署，覆盖约2.5平方公里、时延低于15毫秒；政府拟推广至巴生港等港口。",
+          "summary_en": "Built with Altel and fully on-premises, it covers ~2.5 km² with sub-15 ms latency; the government plans to extend private 5G to ports such as Port Klang.",
+          "detail": "10月17日（周六），马来西亚通讯部长法米在槟城北海集装箱码头（NBCT）为全国首个采用专用频谱、全本地部署架构的5G专网主持启用。该网络由槟城港与Altel Communications共建，覆盖NBCT及北海深水码头约2.5平方公里，核心网与应用全部部署在港区内，时延低于15毫秒，并预留扩展空间。首批三类应用为远程操控重型机械、自动化安防巡检（含5G机器狗）以及以5G一键通替代传统模拟对讲。法米表示，通讯部将准备内阁文件，研究把5G专网推广至巴生港等全国港口；并考虑修订现行“人口覆盖区”（COPA）5G覆盖统计口径，把港口、铁路与主要公路等经济枢纽纳入，可能在11月多哈ITU会议上提出。槟城港称，专用频谱让港方完全掌控网络性能、运营数据与安全。",
+          "detail_en": "On Saturday, Oct 17, Malaysian Communications Minister Fahmi Fadzil launched the country's first private 5G network on dedicated spectrum with a fully on-premises architecture at Penang Port's North Butterworth Container Terminal (NBCT). Built with Altel Communications, it covers about 2.5 km² across NBCT and the Butterworth Deep Water Wharves, hosts the core network and applications on site, supports latency below 15 ms and leaves room for expansion. Initial uses are remote-controlled heavy machinery, automated security surveillance (including 5G robot dogs) and 5G push-to-talk replacing analogue radios. Fahmi said the ministry will prepare a Cabinet paper on extending private 5G to other ports including Port Klang, and may revise the COPA coverage metric to include ports, railways and major highways—possibly raising it at the ITU meeting in Doha in November. Penang Port said dedicated spectrum gives it full control over performance, operational data and security.",
+          "links": [
+            {
+              "label": "The Star",
+              "url": "https://www.thestar.com.my/news/nation/2026/10/17/malaysia-may-review-5g-coverage-measurement-to-include-economic-hubs-says-fahmi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "AI-RAN 与 Open RAN",
+      "section_en": "AI-RAN & Open RAN",
+      "emoji": "🧠",
+      "items": [
+        {
+          "title": "诺基亚与软银将于2027年在日本开展商用AI-RAN外场试验",
+          "title_en": "Nokia and SoftBank to Run a Commercial AI-RAN Field Trial in Japan in 2027",
+          "date": "10/16",
+          "summary": "在商用网络与真实流量下验证AI-RAN，整合诺基亚anyRAN、软银AITRAS与英伟达ARC-Pro平台。",
+          "summary_en": "AI-RAN will be validated on a commercial network under live traffic, combining Nokia anyRAN, SoftBank AITRAS and the NVIDIA ARC-Pro platform.",
+          "detail": "10月16日，诺基亚宣布已与软银达成协议，计划于2027年在日本商用网络环境及实际商用流量条件下开展AI-RAN外场试验，评估其在真实网络中的关键能力。试验将整合诺基亚AI原生anyRAN Cloud RAN软件、软银AITRAS平台及其编排器，以及英伟达ARC-Pro参考设计；该加速计算平台集成Grace CPU、RTX PRO 4500 GPU与ConnectX-8网络组件，AITRAS编排器负责AI与RAN工作负载编排，并与诺基亚RAN及MantaRay方案协同。诺基亚首席技术与人工智能官Pallavi Mahajan称，AI-RAN有望大幅提升频谱效率，并为物理AI提供分布式智能；软银CTO Ryuji Wakikawa称这是AI-RAN从概念走向落地的里程碑。双方未披露吞吐、时延、能效等量化目标。诺基亚在获英伟达10亿美元投资后于今年7月推出商用AI-RAN平台，此次试验是其GPU路线进入运营商现网验证的关键一步。",
+          "detail_en": "On Oct 16, Nokia said it has agreed with SoftBank to run a commercial AI-RAN field trial in Japan in 2027, validating AI-RAN on a commercial network under live traffic. The trial combines Nokia's AI-native anyRAN Cloud RAN software, SoftBank's AITRAS platform and orchestrator, and the NVIDIA ARC-Pro reference design (Grace CPU, RTX PRO 4500 GPU, ConnectX-8); the AITRAS orchestrator manages AI and RAN workloads alongside Nokia RAN and MantaRay. Nokia CTAIO Pallavi Mahajan said AI-RAN could significantly raise spectral efficiency and provide distributed intelligence for physical AI; SoftBank CTO Ryuji Wakikawa called it a milestone from concept to deployment. No throughput, latency or efficiency targets were disclosed. After NVIDIA's $1bn investment and its July launch of a commercial AI-RAN platform, this is a key live-network step for Nokia's GPU route.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/6564/a1319311.html"
+            },
+            {
+              "label": "TechSignal",
+              "url": "https://techsignal.news/telecom/nokia-and-softbank-schedule-2027-ai-ran-trial-with-no-performance-benchmarks"
+            }
+          ]
+        },
+        {
+          "title": "爱立信：ASIC上的AI原生链路自适应已在6万基站运行，频谱效率提升10%",
+          "title_en": "Ericsson: AI-Native Link Adaptation on Custom ASICs Runs in 60,000 Base Stations with ~10% Spectral-Efficiency Gain",
+          "date": "10/16",
+          "summary": "CEO称自研ASIC是AI-RAN最快变现路径，三家运营商已部署，不排除未来在基带引入GPU。",
+          "summary_en": "The CEO calls custom ASICs the fastest path to AI-RAN revenue—already deployed by three operators—without ruling out GPUs in basebands later.",
+          "detail": "RCR Wireless 10月16日披露爱立信三季报电话会问答中的新信息（上期已报道其财报与架构调整）。面对德意志银行关于是否“完全关闭”在基带中采用GPU的提问，CEO Per Narvinger表示公司“不在哲学上反对任何方案”，软硬件已解耦、保留未来灵活性，但当前自研ASIC能快速交付功能且成本有竞争力。他以AI原生链路自适应为例：该功能可运行在已部署的基带上，已有三家运营商在超过6万个基站上部署，带来约10%的频谱效率增益；报道称Optus为其中之一，AT&T、Bell Canada与T-Mobile至少在测试。Narvinger称这是实实在在的收入机会，并以SpaceX上周约80亿美元购频为例，称10%的频谱效率提升可折算约8亿美元价值。这与诺基亚押注GPU的路线形成鲜明对照。此外，企业无线业务负责人Åsa Tamsons确认卸任该职务，将担任执行顾问以确保平稳过渡。",
+          "detail_en": "RCR Wireless on Oct 16 surfaced new detail from Ericsson's Q3 call (its results and reorganization were covered in the previous issue). Asked by Deutsche Bank whether it had closed the door on GPUs in basebands, CEO Per Narvinger said Ericsson is “not philosophically against anything” and has disaggregated hardware and software, but custom ASICs currently deliver features fast and cost-competitively. He cited AI-native link adaptation, which runs on already-deployed basebands at three operators across more than 60,000 base stations with about 10% spectral-efficiency gains; Optus is one, while AT&T, Bell Canada and T-Mobile are at least testing it. He framed it as a real revenue opportunity—10% more efficiency on spectrum like SpaceX's recent ~$8bn purchase is worth roughly $800m—in sharp contrast to Nokia's GPU bet. Enterprise wireless head Åsa Tamsons confirmed she is leaving the role and will stay on as an executive advisor during the transition.",
+          "links": [
+            {
+              "label": "RCR Wireless",
+              "url": "https://rcrwireless.com/20261016/ai-infrastructure/ai-ran-value-in-asics-gpus-ericsson"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "厂商与供应链",
+      "section_en": "Vendors & Supply Chain",
+      "emoji": "🏭",
+      "items": [
+        {
+          "title": "IDC：三季度全球智能手机出货同比暴跌22%，存储涨价冲击终端",
+          "title_en": "IDC: Q3 Global Smartphone Shipments Plunge 22% as Memory Costs Bite",
+          "date": "10/16",
+          "summary": "出货仅2.553亿部，创有统计以来最大单季降幅；存储芯片价格较去年涨约350%，IDC称市场尚未触底。",
+          "summary_en": "Shipments fell to 255.3m, the steepest quarterly drop on record; memory prices are up ~350% year on year and IDC says the market has not bottomed.",
+          "detail": "IDC全球手机季度跟踪报告初步数据显示，2026年第三季度全球智能手机出货量同比下跌22.0%至2.553亿部，为有统计以来最大单季同比降幅。IDC全球设备高级研究总监Nabila Popal表示，受AI浪潮带动的存储芯片危机冲击，存储价格较去年上涨约350%且仍在上行，虽然本季度环比涨幅已回落至两位数低位（此前几个季度一度达50%–100%），但其他关键元器件成本依旧高企，市场尚未触底。IDC预计2027年市场增长仍受限，复苏最早要到2028年。副总裁Francisco Jeronimo称，终端涨价后不少用户推迟换机，中国品牌大量低端机型面临利润与规模的取舍；三星、苹果份额继续走高，小米、OPPO、vivo出货下滑加剧。IDC还提示，部分厂商预判明年元器件更紧而上调生产计划，若需求持续低迷，2027年可能出现库存积压。这与上期爱立信警示AI推高元器件成本形成上下游呼应。",
+          "detail_en": "IDC's preliminary tracker shows Q3 2026 global smartphone shipments fell 22.0% year on year to 255.3m units—the steepest quarterly decline on record. Senior research director Nabila Popal said memory prices are up about 350% from last year and still rising; quarter-on-quarter increases have eased to the low double digits from 50–100% earlier, but other key component costs remain high and the market has not bottomed. IDC expects limited growth in 2027 and recovery no earlier than 2028. VP Francisco Jeronimo said higher prices are delaying upgrades and squeezing Chinese brands' low-end lines; Samsung and Apple gained share while Xiaomi, OPPO and vivo declined further. IDC warned that vendors raising production on expected tighter supply could face inventory gluts in 2027 if demand stays weak—echoing Ericsson's AI-driven component-cost warning in the previous issue.",
+          "links": [
+            {
+              "label": "新浪科技",
+              "url": "https://finance.sina.com.cn/tech/roll/2026-10-16/doc-inivmtwx6881402.shtml"
+            },
+            {
+              "label": "21经济网",
+              "url": "https://www.21jingji.com/article/20261016/herald/90e54e928aee59c8cbe6060a6282df70.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "光通信、算力网络与数据中心",
+      "section_en": "Optical, computing networks & data centers",
+      "emoji": "💡",
+      "items": [
+        {
+          "title": "未来网络发展大会：AXP智能体互联平台、卫星组网控制系统与26公里100Gbps太赫兹发布",
+          "title_en": "Future Network Conference Unveils AXP Agent Interconnect, a Satellite Network-Control System and 100 Gbps THz over 26 km",
+          "date": "10/16",
+          "summary": "紫金山实验室等发布三项成果：百万级智能体接入的AXP、控制数百颗卫星的组网系统、UTC-PD芯片太赫兹传输。",
+          "summary_en": "Purple Mountain Laboratories and partners released AXP for million-scale agent access, a system controlling hundreds of satellites, and UTC-PD-chip terahertz links.",
+          "detail": "10月16日，第十届未来网络发展大会在南京江宁开幕，紫金山实验室等发布三项成果。一是联合中国移动、江苏未来网络集团等推出基于确定性网络的智能体互联平台AXP，支持百万级智能体注册、十万级同时在线，故障秒级切换，语义寻址响应约百毫秒，可完成4000公里以上跨域访问、任务耗时降低20%以上，中国移动已在13个设区市部署。二是卫星互联网组网控制系统，突破星地分级组网控制、星间快速路由与星地协同传输，已实装并控制数百颗卫星在轨组网，实测业务专线亚秒级建立、星间路由故障百毫秒级恢复、星地传输效率提升15%。三是自研单行载流子光电探测器（UTC-PD）芯片，实现26公里距离100Gbps实时太赫兹无线传输。现场还展示确定性网络把约5TB气象集合预报数据的跨域汇总时间缩至约5分钟；紫金山实验室与中国移动签署战略合作框架协议。相对上期江苏未来网络集团人事新闻，本条为CENI体系的技术成果发布。",
+          "detail_en": "The 10th Future Network Development Conference opened in Nanjing on Oct 16, where Purple Mountain Laboratories and partners released three results. AXP, an agent-interconnection platform on deterministic networking built with China Mobile and Jiangsu Future Networks Group, supports a million registered and 100,000 concurrently online agents, second-level failover, ~100 ms semantic addressing and 4,000+ km cross-domain access, cutting task time by more than 20%; China Mobile has deployed it in 13 prefecture-level cities. A satellite-internet network-control system—covering hierarchical satellite-ground control, fast inter-satellite routing and cooperative satellite-ground transmission—is deployed and controlling hundreds of satellites in orbit, with sub-second private-line setup, ~100 ms inter-satellite route recovery and 15% higher satellite-ground efficiency. A home-grown uni-traveling-carrier photodiode (UTC-PD) chip enabled real-time 100 Gbps terahertz wireless transmission over 26 km. A deterministic network also cut cross-domain aggregation of ~5 TB of weather ensemble data to about five minutes, and the lab signed a strategic framework agreement with China Mobile. Unlike last issue's personnel news at Jiangsu Future Networks Group, this is a technical release from the CENI ecosystem.",
+          "links": [
+            {
+              "label": "新华网",
+              "url": "https://js.news.cn/20261017/196e84d79604496d9bc33c6c6d7029bc/c.html"
+            },
+            {
+              "label": "IT之家",
+              "url": "https://www.ithome.com/1/014/259.htm"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "卫星互联网与空天地一体化",
+      "section_en": "Satellite internet & air-space-ground",
+      "emoji": "🛰️",
+      "items": [
+        {
+          "title": "美驻欧盟大使警告：欧盟2GHz直连卫星频谱若偏向本土将遭“毁灭性”报复",
+          "title_en": "US Ambassador Warns EU of “Devastating” Retaliation over 2 GHz Direct-to-Device Satellite Spectrum Plan",
+          "date": "10/18",
+          "summary": "欧委会拟以欧盟层面程序重新分配2GHz移动卫星频谱，可能限制SpaceX、亚马逊；现行授权2027年5月到期。",
+          "summary_en": "The Commission plans an EU-level procedure to reassign 2 GHz mobile-satellite spectrum that could limit SpaceX and Amazon; current authorizations expire in May 2027.",
+          "detail": "据阿纳多卢通讯社援引英国《金融时报》10月18日（周日）发布的专访，美国驻欧盟大使Andrew Puzder警告，若欧盟推进为欧洲运营商保留手机直连卫星关键频段大部分容量的提案、限制SpaceX和亚马逊等美国企业接入，欧洲企业可能在美国市场遭到“非常具有毁灭性”的报复。他承认欧洲有权保护敏感政府信息，但称立法不应以削弱美国竞争者为目的。争议源于欧委会今年5月27日通过的条例提案：拟建立欧盟层面的2GHz移动卫星业务（MSS）频谱遴选程序，以取代2027年5月到期的2008年决定。SpaceX已批评该提案，称可能削弱星链在乌克兰的连接服务。此事紧随上期欧盟拟快速审批空客、莱昂纳多、泰雷兹卫星合资（Project Bromo）的报道，显示欧美在直连卫星频谱与空间基础设施主权上的博弈正在升温。",
+          "detail_en": "Per Anadolu, citing a Financial Times interview released on Sunday, Oct 18, US Ambassador to the EU Andrew Puzder warned that European companies could face “very devastating” retaliation in the US market if the EU proceeds with a proposal to reserve much of a key direct-to-smartphone satellite band for European operators, potentially limiting SpaceX and Amazon. He accepted Europe's right to protect sensitive government information but said legislation should not aim to make US firms less competitive. The dispute stems from the Commission's May 27 proposal for an EU-level selection procedure for 2 GHz mobile satellite service (MSS) spectrum, replacing the 2008 Decision that expires in May 2027. SpaceX has criticized the plan, citing risks to Starlink connectivity in Ukraine. Coming right after last issue's report on a fast-track review of Project Bromo (Airbus, Leonardo, Thales), it shows transatlantic friction over D2D spectrum and space sovereignty is intensifying.",
+          "links": [
+            {
+              "label": "Anadolu",
+              "url": "https://www.aa.com.tr/en/americas/us-warns-eu-of-devastating-retaliation-over-satellite-spectrum-plans/4092940"
+            },
+            {
+              "label": "European Commission",
+              "url": "https://digital-strategy.ec.europa.eu/en/library/proposal-eu-level-authorisation-systems-providing-mobile-satellite-services-mss"
+            }
+          ]
+        },
+        {
+          "title": "Starlink回应信实：称已在印度建成获批专用基础设施、随时可提供服务",
+          "title_en": "Starlink Tells Reliance It Has Built Approved, India-Only Infrastructure and Is Ready to Launch",
+          "date": "10/16",
+          "summary": "信实称欢迎竞争但须守法、Jio卫星业务同样待批；商用仍取决于安全审查与卫星频谱定价分配。",
+          "summary_en": "Reliance welcomed competition but insisted on compliance, noting Jio's own satellite service awaits clearance; commercial launch still hinges on security clearance and spectrum pricing.",
+          "detail": "据PTI经《印度教徒报》报道，10月16日（周五）信实工业发表声明，首次直接回应马斯克近期的指责，称欢迎包括星链在内的卫星通信竞争，但所有参与者都必须遵守印度法律与政策，并表示Jio自身的卫星业务也在等待审批。星链随即在X上回应，称已与印度监管机构、业界和运营商合作五年以上，在印度境内建成专用系统、关口站等基础设施，专门承载印度流量，且“均已获得必要的政府批准”，已准备好为印度提供高速互联网。印度通信部此前驳斥监管不公的说法，强调所有卫星运营商须满足相同的安全条件与频谱分配规则；部长斯辛迪亚表示，星链、Jio Satcom与Eutelsat OneWeb已获牌照，将在收入分成式收费框架敲定、各运营商满足安全要求后分配频谱。持牌不等于可商用，印度卫星宽带市场的启动节点仍取决于频谱定价与安全审查。",
+          "detail_en": "PTI, via The Hindu, reported that on Friday, Oct 16, Reliance Industries—in its first direct response to Elon Musk's recent barbs—said it welcomes satcom competition including Starlink but every player must follow Indian law, adding that Jio's own satellite services also await clearances. Starlink replied on X that it has worked with Indian regulators, industry and operators for more than five years and built dedicated in-country systems and gateways to serve Indian traffic exclusively, “all with the requisite government approvals,” and is ready to connect India. The communications ministry has rejected claims of unfair treatment, saying all operators must meet the same security and spectrum rules; Minister Jyotiraditya Scindia said Starlink, Jio Satcom and Eutelsat OneWeb hold licences and spectrum will be assigned once a revenue-based charging framework is finalized and security requirements are met. A licence is not a launch: India's satellite broadband start still depends on spectrum pricing and security clearance.",
+          "links": [
+            {
+              "label": "The Hindu",
+              "url": "https://www.thehindu.com/business/starlink-says-built-indias-infrastructure-with-requisite-government-approvals-ready-to-offer-hi-speed-internet/article71595458.ece"
+            },
+            {
+              "label": "Economic Times",
+              "url": "https://economictimes.indiatimes.com/industry/telecom/telecom-news/elon-musks-starlink-responds-to-reliance-says-ready-to-connect-india-with-high-speed-internet/articleshow/135005865.cms"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notion_url": "https://app.notion.com/p/3fd3a1fdbe188163a930f811cbcd5281"
+}

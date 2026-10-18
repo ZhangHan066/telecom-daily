@@ -1,6 +1,33 @@
 {
   "issues": [
     {
+      "date": "2026-10-19",
+      "weekday": "周一",
+      "title": "通信行业日报 · 2026-10-19（周一）",
+      "theme": "频谱攻防战——香港U6GHz率先落地，欧美直连卫星频谱交锋",
+      "cover": "covers/2026-10-19.jpg",
+      "highlights": [
+        {
+          "label": "频谱",
+          "text": "中国移动香港在旺角完成U6GHz现网验证；美驻欧盟大使就欧盟2GHz直连卫星频谱方案警告“毁灭性”报复。"
+        },
+        {
+          "label": "AI-RAN",
+          "text": "诺基亚与软银定档2027年商用AI-RAN外场试验；爱立信称ASIC版AI链路自适应已上6万基站、频谱效率提升10%。"
+        },
+        {
+          "label": "算力网络",
+          "text": "未来网络发展大会发布AXP智能体互联平台、卫星组网控制系统与26公里100Gbps太赫兹传输。"
+        },
+        {
+          "label": "科研",
+          "text": "三篇新稿：无人机集群拓扑自愈、ISAC微多普勒飞行状态估计、夹持天线空中传感网。"
+        }
+      ],
+      "weekday_en": "Monday",
+      "theme_en": "Spectrum battles: Hong Kong lights up upper 6 GHz as the US and EU clash over direct-to-device satellite spectrum"
+    },
+    {
       "date": "2026-10-16",
       "weekday": "周五",
       "title": "通信行业日报 · 2026-10-16（周五）",
