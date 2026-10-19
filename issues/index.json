@@ -1,6 +1,33 @@
 {
   "issues": [
     {
+      "date": "2026-10-20",
+      "weekday": "周二",
+      "title": "通信行业日报 · 2026-10-20（周二）",
+      "theme": "AI拉动光纤新周期——多芯光纤国际标准发布，欧洲运营商抱团争夺直连卫星频谱",
+      "cover": "covers/2026-10-20.jpg",
+      "highlights": [
+        {
+          "label": "光纤",
+          "text": "全球光纤光缆大会开幕：闻库呼吁价格协商与理性扩产；全球首个多芯光纤国际标准在武汉发布。"
+        },
+        {
+          "label": "卫星",
+          "text": "德电、Orange、西班牙电信、沃达丰签意向书，探索联合竞标欧盟MSS频谱、推进手机直连卫星。"
+        },
+        {
+          "label": "5G-A/6G",
+          "text": "陕西电信与华为实现国内首个高铁FDD Massive MIMO商用；爱立信联合KTH、NTU研究可信6G定位。"
+        },
+        {
+          "label": "科研",
+          "text": "四篇新稿：无人机可旋转天线转动时延、低空通感识一体化、3GPP ISAC标准与无人机实测、三维移动性定律。"
+        }
+      ],
+      "weekday_en": "Tuesday",
+      "theme_en": "AI ushers in a new fiber cycle as the first multi-core fiber standard debuts, while Europe's big four telcos team up for direct-to-device satellite spectrum"
+    },
+    {
       "date": "2026-10-19",
       "weekday": "周一",
       "title": "通信行业日报 · 2026-10-19（周一）",
