@@ -1,0 +1,260 @@
+{
+  "date": "2026-10-20",
+  "weekday": "周二",
+  "weekday_en": "Tuesday",
+  "title": "通信行业日报 · 2026-10-20（周二）",
+  "theme": "AI拉动光纤新周期——多芯光纤国际标准发布，欧洲运营商抱团争夺直连卫星频谱",
+  "theme_en": "AI ushers in a new fiber cycle as the first multi-core fiber standard debuts, while Europe's big four telcos team up for direct-to-device satellite spectrum",
+  "cover": {
+    "url": "covers/2026-10-20.jpg",
+    "credit": "Antti Leppänen / CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Optical_fibre_cable_reel_Finland.jpg"
+  },
+  "highlights": [
+    {
+      "label": "光纤",
+      "text": "全球光纤光缆大会开幕：闻库呼吁价格协商与理性扩产；全球首个多芯光纤国际标准在武汉发布。"
+    },
+    {
+      "label": "卫星",
+      "text": "德电、Orange、西班牙电信、沃达丰签意向书，探索联合竞标欧盟MSS频谱、推进手机直连卫星。"
+    },
+    {
+      "label": "5G-A/6G",
+      "text": "陕西电信与华为实现国内首个高铁FDD Massive MIMO商用；爱立信联合KTH、NTU研究可信6G定位。"
+    },
+    {
+      "label": "科研",
+      "text": "四篇新稿：无人机可旋转天线转动时延、低空通感识一体化、3GPP ISAC标准与无人机实测、三维移动性定律。"
+    }
+  ],
+  "research": [
+    {
+      "title": "计入转动时延的无人机可旋转天线通信",
+      "title_en": "UAV Rotatable Antenna under Rotation Delay",
+      "date": "10/19",
+      "authors": "Yinmei Xie, Chiya Zhang, Chunlong He, Weizheng Zhang, Wei Wang",
+      "summary": "在有限时隙内计入机械转动时延，刻画转向增益与传输时间损失的权衡；多用户AG-ZF方案有效速率约为忽略时延方案的2倍。",
+      "summary_en": "Accounts for mechanical rotation delay within a finite slot, capturing the trade-off between reorientation gain and lost airtime; the multi-user AG-ZF scheme roughly doubles the effective rate of a delay-unaware baseline.",
+      "detail": "可旋转天线（RA）通过机械调整阵列朝向获取额外阵列增益，但现有研究大多假设转动瞬时完成。本文在有限时隙内显式建模无人机载可旋转天线的机械转动时延，指出“转得越多增益越大、但可用于传输的时间越少”的权衡，并以最大化用户最小有效速率为目标联合优化转动与传输。单用户情形下，在严格凹性条件下证明最优策略只会落在“不转、部分转、完全转”三种状态之一，并给出闭式二阶近似解；多用户情形下提出基于迫零预编码的AG-ZF交替优化算法。仿真采用5.8 GHz、2×4均匀面阵共8个可旋转天线、4个地面用户、无人机高度100 m、转速2π rad/s、时隙0.5 s，在文中典型设置下有效速率约为忽略转动时延方案的两倍。结果提醒低空可重构天线设计必须把机械动作时间计入调度。",
+      "detail_en": "Rotatable antennas (RAs) gain extra array gain by mechanically reorienting the array, but most studies assume rotation is instantaneous. This paper explicitly models the mechanical rotation delay of a UAV-mounted RA within a finite slot, exposing the trade-off between more reorientation gain and less time left to transmit, and jointly optimizes rotation and transmission to maximize the minimum effective rate. For a single user, under a strict-concavity condition the optimum falls into one of three regimes—no, partial or full rotation—with a closed-form second-order approximation. For multiple users, it proposes AG-ZF, a zero-forcing-based alternating algorithm. With 5.8 GHz, eight rotatable antennas in a 2×4 UPA, four ground users, a 100 m UAV altitude, 2π rad/s rotation speed and 0.5 s slots, it roughly doubles the effective rate of a delay-unaware scheme in the paper's typical setting—a reminder that low-altitude reconfigurable-antenna designs must budget for mechanical motion time.",
+      "links": [
+        {
+          "label": "arXiv:2610.22777",
+          "url": "https://arxiv.org/abs/2610.22777"
+        }
+      ]
+    },
+    {
+      "title": "面向低空经济的通信、感知与识别一体化",
+      "title_en": "Integrated Sensing, Communications, and Identification for the Low-Altitude Economy",
+      "date": "10/19",
+      "authors": "Shanxing Zeng, Jun Wang, Ying-Chang Liang",
+      "summary": "系统梳理低空ISAC波形与资源/轨迹优化，提出以反向散射设备充当飞行器“电子车牌”，构建ISAI/ISCAI。",
+      "summary_en": "Reviews low-altitude ISAC waveforms and resource/trajectory optimization, and proposes backscatter devices as electronic license plates for aircraft to build ISAI/ISCAI.",
+      "detail": "低空经济对“看得见、联得上、认得清”提出同步需求。这篇已被《中国科学：信息科学》（SCIENCE CHINA Information Sciences）接收的综述先梳理低空信息网络架构，再系统回顾低空通感一体化（ISAC）的基础，包括OFDM、OTFS、AFDM与FMCW等波形路线，以及资源分配与轨迹优化方法。在此基础上，作者提出把反向散射通信（BackCom）设备作为飞行器的“电子车牌”，以极低功耗回传身份信息，把感知与识别结合为ISAI，并进一步与通信融合为ISCAI（通信、感知与识别一体化）。文末从信息论、人工智能与智能超表面（RIS）等角度讨论了未来研究方向。对低空监管中“合作目标识别＋非合作目标感知”的融合方案有参考价值。",
+      "detail_en": "The low-altitude economy needs aircraft to be seen, connected and identified at the same time. This survey, accepted by SCIENCE CHINA Information Sciences, first outlines low-altitude information-network architectures, then reviews the fundamentals of low-altitude ISAC—including OFDM, OTFS, AFDM and FMCW waveform options—along with resource-allocation and trajectory-optimization methods. Building on that, the authors propose using backscatter communication (BackCom) devices as electronic license plates for aircraft, returning identity information at ultra-low power, so that sensing and identification combine into ISAI and, together with communication, into ISCAI (integrated sensing, communications and identification). It closes with research directions in information theory, AI and reconfigurable intelligent surfaces (RIS)—useful for low-altitude oversight that must fuse identification of cooperative targets with sensing of non-cooperative ones.",
+      "links": [
+        {
+          "label": "arXiv:2610.23602",
+          "url": "https://arxiv.org/abs/2610.23602"
+        }
+      ]
+    },
+    {
+      "title": "3GPP中的通感一体化：迈向6G的标准化、性能评估与实验验证",
+      "title_en": "Integrated Sensing and Communication in 3GPP: Standardization, Performance Evaluation, and Experimental Validation Toward 6G",
+      "date": "10/19",
+      "authors": "Gosan Noh, Gebremeskel Seiley Abraha, Joshua Yabana, Nathaniel Foli, Michael Ankomah Asare, Evelyn Seyram Kakah, Mildred Nyantakyiwaa Okyere, De-Roy Ekow Sagoe, Shrayan Das, Pekka Kyösti, Junhyeong Kim, Kyoung-Jae Lee, Eunkyung Kim",
+      "summary": "梳理Rel-19/20 ISAC标准进展；多TRP无人机感知混合融合检测概率0.836，预测式切换中断由95.3 ms降至58.0 ms。",
+      "summary_en": "Traces Rel-19/20 ISAC standardization; hybrid fusion in multi-TRP UAV sensing reaches a 0.836 detection probability, and predictive handover cuts interruption from 95.3 ms to 58.0 ms.",
+      "detail": "论文系统梳理3GPP在通感一体化（ISAC）上的标准化路径：Rel-19完成业务需求（TR 22.837/TS 22.137）与信道建模（TR 38.901第7.9节），Rel-20以无人机为基线场景开展TR 38.765研究，并涉及Ns/NsAP接口、感知功能SenF及TS 23.137架构。作者随后给出两项案例：在多TRP无人机感知中，混合融合在500个目标中检出418个（检测概率0.836），优于硬融合的0.796与软融合的0.718，三维定位误差90%分位为2.986 m；在感知辅助的预测式切换中，切换中断时间由95.3 ms降至58.0 ms。论文还报告了DJI Phantom 2等无人机在11–26 GHz的单站/双站雷达截面积实测，为跟踪6G ISAC标准与无人机感知性能提供了一份较完整的参照。",
+      "detail_en": "The paper maps 3GPP's ISAC standardization path: Rel-19 delivered service requirements (TR 22.837/TS 22.137) and channel modeling (TR 38.901 Clause 7.9), while Rel-20 takes UAVs as the baseline scenario in the TR 38.765 study, covering the Ns/NsAP interfaces, the sensing function (SenF) and the TS 23.137 architecture. Two case studies follow. In multi-TRP UAV sensing, hybrid fusion detects 418 of 500 targets (Pd 0.836), ahead of hard fusion (0.796) and soft fusion (0.718), with a 90th-percentile 3D position error of 2.986 m. In sensing-assisted predictive handover, interruption time falls from 95.3 ms to 58.0 ms. The authors also report monostatic and bistatic RCS measurements of UAVs such as the DJI Phantom 2 at 11–26 GHz, giving a fairly complete reference for tracking 6G ISAC standards and UAV-sensing performance.",
+      "links": [
+        {
+          "label": "arXiv:2610.22995",
+          "url": "https://arxiv.org/abs/2610.22995"
+        }
+      ]
+    },
+    {
+      "title": "三维蜂窝网络移动性的统一几何—运动学定律",
+      "title_en": "Unified Geometric–Kinematic Laws of Mobility in 3D Cellular Networks",
+      "date": "10/19",
+      "authors": "Tian Shi, Minghua Xia",
+      "summary": "给出切换率精确定律H=(S_V/2)·v̄，三维泊松网络中H∝λ^{1/3}·v̄；比较单站与4站CoMP在不同飞行速度下的优劣交叉。",
+      "summary_en": "Derives the exact handover law H=(S_V/2)·v̄, giving H∝λ^{1/3}·v̄ in 3D Poisson networks, and maps where single-cell service and four-BS CoMP trade places as flight speed rises.",
+      "detail": "无人机等空中用户在三维蜂窝网络中的切换行为与地面用户差异明显。这篇已被IEEE TWC接收的论文从几何与运动学角度给出统一刻画：切换率满足精确定律H=(S_V/2)·v̄，即与小区（Voronoi胞元）比表面积和平均速度成正比；在三维泊松部署下进一步得到H∝λ^{1/3}·v̄，切换随基站密度的增长比二维更缓。作者引入“巡航—转弯”运动模型，区分多旋翼“悬停转向”与固定翼“边飞边转”两类机动。在泊松—Voronoi单站服务与泊松—Delaunay四站协作（CoMP）的对比中，5 m/s时CoMP占优，到25 m/s时优劣反转；与接入时延τa相关的交叉点在25 m/s时约为270 ms、45 m/s时约为150 ms。结论可用于空中用户的基站密度规划与协作传输启用判据。",
+      "detail_en": "Aerial users such as UAVs hand over very differently from ground users in 3D cellular networks. This paper, accepted by IEEE TWC, gives a unified geometric–kinematic account: the handover rate obeys the exact law H=(S_V/2)·v̄—proportional to the cell's (Voronoi) surface-to-volume ratio and mean speed—and in 3D Poisson deployments H∝λ^{1/3}·v̄, so handovers grow more slowly with base-station density than in 2D. A cruise–turn mobility model separates multirotor pause-to-turn from fixed-wing fly-to-turn maneuvers. Comparing Poisson–Voronoi single-BS service with Poisson–Delaunay four-BS CoMP, CoMP wins at 5 m/s but the ranking flips by 25 m/s; the access-delay crossover τa is about 270 ms at 25 m/s and about 150 ms at 45 m/s. The results translate directly into density planning and CoMP activation rules for aerial users.",
+      "links": [
+        {
+          "label": "arXiv:2610.23075",
+          "url": "https://arxiv.org/abs/2610.23075"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "5G/5G-A 与 6G",
+      "section_en": "5G/5G-A & 6G",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "陕西电信联合华为实现国内首个高铁FDD Massive MIMO商用",
+          "title_en": "Shaanxi Telecom and Huawei Launch China's First Commercial FDD Massive MIMO on High-Speed Rail",
+          "date": "10/19",
+          "summary": "在徐兰、银西高铁陕西段部署1.8GHz+2.1GHz双频32T32R设备，小区边缘上行提升95%、边缘下行提升超100%。",
+          "summary_en": "Dual-band 1.8 GHz + 2.1 GHz 32T32R units on the Shaanxi sections of the Xuzhou–Lanzhou and Yinchuan–Xi'an lines lift cell-edge uplink by 95% and more than double cell-edge downlink.",
+          "detail": "10月19日，陕西电信宣布联合华为在徐兰高铁、银西高铁陕西段完成FDD Massive MIMO部署，实现国内首个高铁场景FDD Massive MIMO商用。高铁场景存在车体穿透损耗大、高速移动带来多普勒频移、用户集中突发等难题，此次方案采用1.8GHz与2.1GHz双频32T32R设备。实测显示，银西高铁沿线覆盖延伸约200米，5G上行速率提升24%、下行提升50%以上，小区边缘上行提升95%、边缘下行提升超过100%；徐兰高铁覆盖电平提升5dB，5G上、下行速率分别提升36%和21%，4G上、下行分别提升42%和56%。FDD中低频Massive MIMO兼顾覆盖与容量，且能同时增强4G与5G体验，为铁路沿线等线状覆盖场景提供了比加密站点更经济的升级路径。",
+          "detail_en": "On Oct 19, Shaanxi Telecom said it has deployed FDD Massive MIMO with Huawei on the Shaanxi sections of the Xuzhou–Lanzhou and Yinchuan–Xi'an high-speed railways—China's first commercial FDD Massive MIMO on high-speed rail. HSR coverage is hard: carriage penetration loss is high, speed brings Doppler shift, and demand arrives in bursts. The solution uses dual-band 1.8 GHz and 2.1 GHz 32T32R equipment. On the Yinchuan–Xi'an line, coverage extends by about 200 m, 5G uplink rises 24% and downlink more than 50%, with cell-edge uplink up 95% and cell-edge downlink more than doubled. On the Xuzhou–Lanzhou line, signal level improves by 5 dB, 5G uplink/downlink by 36%/21% and 4G by 42%/56%. Mid/low-band FDD Massive MIMO balances coverage and capacity and lifts 4G and 5G at once, offering a cheaper upgrade path for rail corridors than densifying sites.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://m.c114.com.cn/w126-1319376.html"
+            },
+            {
+              "label": "同花顺财经",
+              "url": "https://field.10jqka.com.cn/20261019/c680847570.shtml"
+            }
+          ]
+        },
+        {
+          "title": "爱立信联合瑞典皇家理工、南洋理工启动可信6G定位研究",
+          "title_en": "Ericsson Teams Up with KTH and NTU Singapore on Trustworthy 6G Positioning",
+          "date": "10/19",
+          "summary": "多年期项目11月启动，以AI与自动天线校准提升复杂环境（含非视距）定位可信度，服务无人机、机器人等自主系统并输入3GPP 6G标准。",
+          "summary_en": "A multi-year project starting in November combines AI and automated antenna calibration for trustworthy positioning in complex, including non-line-of-sight, environments—serving drones and robots and feeding 3GPP 6G work.",
+          "detail": "10月19日，爱立信宣布牵头与瑞典皇家理工学院（KTH）、新加坡南洋理工大学（NTU）开展名为“复杂环境下的可信6G定位：数据驱动方法”的多年期研究，项目将于2026年11月启动，获瑞典创新署Vinnova支持。研究把传统定位方法与AI、自动天线校准相结合，目标是在室内外复杂环境乃至非视距条件下，为无人机、机器人等自主系统和物理AI提供准确、可靠、可信的定位，面向医疗、机场、港口、制造、物流、智慧城市及应急通信等场景。分工上，爱立信提供商用与研究级定位技术、测试环境和标准化经验，KTH负责AI与算法，NTU机器人技术创新中心贡献传感融合与定位能力，并将在瑞典与新加坡的5G/6G环境中实测。爱立信CTO Erik Ekudden称，可信定位是2030年后6G新用例的关键；成果还将用于支撑3GPP 6G标准化。",
+          "detail_en": "On Oct 19, Ericsson announced a multi-year initiative it coordinates with Sweden's KTH Royal Institute of Technology and NTU Singapore, titled “Trustworthy 6G Positioning in Complex Environments: A Data-Driven Approach.” Starting in November 2026 and backed by Sweden's innovation agency Vinnova, it combines established positioning methods with AI and automated antenna calibration to give drones, robots and other autonomous and physical-AI systems accurate, reliable and trustworthy positioning indoors and outdoors, including non-line-of-sight conditions—targeting healthcare, airports, ports, manufacturing, logistics, smart cities and emergency services. Ericsson contributes commercial and research positioning technology, test environments and standardization insight; KTH leads AI and algorithms; NTU's robotics centre brings sensor fusion and localization, with trials in real 5G/6G environments in Sweden and Singapore. CTO Erik Ekudden called trustworthy positioning key to 6G use cases beyond 2030, and the work is also meant to inform 3GPP 6G standardization.",
+          "links": [
+            {
+              "label": "Ericsson",
+              "url": "https://www.ericsson.com/en/news/2026/10/ericsson-partners-with-leading-technology-institutions-on-6g"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政策与标准",
+      "section_en": "Policy & Standards",
+      "emoji": "🏛️",
+      "items": [
+        {
+          "title": "工信部部署工业互联网一体化进园区“百城千园行”活动",
+          "title_en": "MIIT Launches “Hundred Cities, Thousand Parks” Drive to Bring the Industrial Internet into Industrial Parks",
+          "date": "10/19",
+          "summary": "推动政策、设施、技术、标准、应用、企业、服务“七进园区”，支持5G/5G-A、TSN、工业光网入园，运营商入园提供连接＋算力。",
+          "summary_en": "Pushes policy, infrastructure, technology, standards, applications, companies and services into industrial parks, backing 5G/5G-A, TSN and industrial optical networks, with operators offering connectivity plus computing on site.",
+          "detail": "10月19日，工信部信息通信管理局对外发布《关于组织开展工业互联网一体化进园区“百城千园行”活动的通知》（工信厅信管函〔2026〕478号，落款10月8日）。活动面向高新区、经开区等各级园区及先进制造业集群，推进政策、设施、技术、标准、应用、企业、服务“七进园区”。与通信行业直接相关的是：支持企业运用5G/5G-A、时间敏感网络、工业光网、IPv6等新型工业网络升级，推动标识解析规模化接入，建设普惠算力服务体系；引导卫星互联网、光通信、量子等技术与工业互联网融合，推动工业智能体、低空装备等落地；明确支持基础电信运营商入园，提供网络连接、多元算力和数智工具一体化服务。各地须在2026年12月底前制定本地活动计划，2027年10月底前完成成效总结。这为运营商政企业务、5G专网与工业光网需求提供了明确的政策牵引。",
+          "detail_en": "On Oct 19, MIIT's Information and Communications Administration published a notice (MIIT General Office Letter [2026] No. 478, dated Oct 8) launching the “Hundred Cities, Thousand Parks” campaign to bring the integrated industrial internet into industrial parks. Aimed at high-tech zones, economic development zones and advanced-manufacturing clusters, it pushes seven things into parks: policy, infrastructure, technology, standards, applications, companies and services. For telecom, it backs upgrades to 5G/5G-A, time-sensitive networking, industrial optical networks and IPv6, large-scale adoption of identifier resolution and an inclusive computing-service system; encourages fusing satellite internet, optical communications and quantum technology with the industrial internet and deploying industrial agents and low-altitude equipment; and explicitly invites the basic telecom operators into parks to provide integrated connectivity, diverse computing and digital tools. Local authorities must draw up plans by end-December 2026 and report results by end-October 2027—a clear policy pull for operators' enterprise business, private 5G and industrial optical networks.",
+          "links": [
+            {
+              "label": "第一财经",
+              "url": "https://www.yicai.com/news/103398868.html"
+            },
+            {
+              "label": "智慧城市网",
+              "url": "https://www.afzhan.com/news/detail/112156.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "厂商与供应链",
+      "section_en": "Vendors & Supply Chain",
+      "emoji": "🏭",
+      "items": [
+        {
+          "title": "报道：华为工程师进驻DeepSeek联合设计昇腾芯片，950DT年底前用于训练",
+          "title_en": "Report: Huawei Engineers Embedded at DeepSeek to Co-Design Ascend Chips, with 950DT Training by Year-End",
+          "date": "10/19",
+          "summary": "据The Information，DeepSeek最早年底起用昇腾950DT训练，华为拟优先供应其大部分960DT；万卡级集群的产能与可靠性仍是挑战。",
+          "summary_en": "Per The Information, DeepSeek could start training on Ascend 950DT by year-end and Huawei plans to prioritize it for most 960DT supply; production capacity and reliability at 10,000-chip scale remain hurdles.",
+          "detail": "据Investing.com援引The Information 10月19日报道，DeepSeek正与华为合作设计面向其模型的AI芯片，华为工程师已进驻DeepSeek办公室，把模型的计算方式以及处理器间数据传输等需求反馈到芯片设计中。DeepSeek计划最早于2026年底开始使用昇腾950DT进行模型训练；华为还计划将预计2027年一季度推出的下一代昇腾960DT大部分优先供应DeepSeek。报道援引Epoch AI数据称，英伟达B300的原始算力约为昇腾950的7倍；训练前沿模型可能需要超过1万颗华为芯片连续协同运行数周，制造产能与系统可靠性是关键挑战。DeepSeek还在用开源编程语言TileLang降低对CUDA的依赖，上月已发布兼容昇腾950的版本，但并未放弃英伟达芯片。国产万卡集群若成规模，将进一步拉动片间、机柜间高速互联与光模块需求。",
+          "detail_en": "Investing.com, citing The Information on Oct 19, reported that DeepSeek is working with Huawei on AI chips tailored to its models, with Huawei engineers stationed in DeepSeek's offices feeding back how its models compute and move data between processors. DeepSeek plans to begin training on Ascend 950DT as soon as the end of 2026, and Huawei intends to prioritize DeepSeek for most of its next-generation Ascend 960DT, expected in Q1 2027. Citing Epoch AI, the report said Nvidia's B300 delivers roughly seven times the raw arithmetic performance of Ascend 950; training a frontier model could require more than 10,000 Huawei chips running together for weeks, making manufacturing capacity and system reliability critical. DeepSeek is also using the open-source TileLang language to reduce reliance on CUDA—releasing an Ascend 950-compatible version last month—but has not abandoned Nvidia. If domestic 10,000-chip clusters scale up, demand for chip-to-chip and rack-to-rack interconnect and optical modules will rise further.",
+          "links": [
+            {
+              "label": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/technology/ai/articles/deepseek-teams-huawei-challenge-nvidia-183703468.html"
+            },
+            {
+              "label": "Techmeme",
+              "url": "https://www.techmeme.com/261019/p35"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "光通信、算力网络与数据中心",
+      "section_en": "Optical, computing networks & data centers",
+      "emoji": "💡",
+      "items": [
+        {
+          "title": "全球光纤光缆大会：闻库称AI把光纤推上风口，呼吁建立价格协商机制、理性扩产",
+          "title_en": "Global Optical Fiber & Cable Conference: Wen Ku Says AI Has Put Fiber in the Spotlight, Calls for Price Talks and Disciplined Expansion",
+          "date": "10/19",
+          "summary": "数据中心正替代运营商成为光纤最大买家；光棒扩产需两年、现货涨价快于集采限价，警惕两三年后产能集中释放。",
+          "summary_en": "Data centers are replacing operators as fiber's biggest buyers; preform capacity takes two years to add and spot prices are outrunning tender caps, raising the risk of a glut in two or three years.",
+          "detail": "10月19日，2026全球光纤光缆大会在武汉光谷开幕。中国通信标准化协会理事长闻库在致辞中指出，行业驱动力正从电信网络转向AI、算力与数据中心：2025年全球光纤需求增长4.1%，其中数据通信与数据中心相关增长76%；有机构预测到2027年数据中心内部及互联占光纤需求的比例将从5%升至30%以上，国内不少企业订单已排到2028年。他提到眼前三大挑战：光纤预制棒扩产周期约两年、供给跟不上；现货飞涨而集采限价滞后，今年有大型集采首轮流标、上调价格后才成交；贸易环境不确定。主流单模光纤一年涨了数倍，上半年行业利润同比增长四倍有余。闻库提出“理性、协同、长期、创新”：上下游建立透明的价格沟通机制、多签长期合约、头部企业不盲目扩产，并押注空芯光纤——国内最低衰减已达0.04dB/km、累计交付超1万公里。",
+          "detail_en": "The 2026 Global Optical Fiber & Cable Conference opened in Wuhan's Optics Valley on Oct 19. In his opening remarks, Wen Ku, chairman of the China Communications Standards Association, said the industry's driver has shifted from telecom networks to AI, computing and data centers: global fiber demand grew 4.1% in 2025, but datacom- and data-center-related demand grew 76%; one forecast has data-center internal and interconnect use rising from 5% to over 30% of fiber demand by 2027, and many Chinese makers are booked into 2028. He flagged three near-term problems: preform capacity takes about two years to expand; spot prices are soaring while tender price caps lag—one large tender failed in its first round this year and closed only after prices were raised; and trade uncertainty. Mainstream single-mode fiber prices have multiplied within a year, and first-half industry profits rose more than fourfold. His prescription—rationality, coordination, long-termism and innovation—means transparent price talks along the chain, more long-term contracts, no blind expansion by industry leaders, and a bet on hollow-core fiber, where domestic attenuation has reached 0.04 dB/km with over 10,000 km delivered.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/ftth/5472/a1319371.html"
+            }
+          ]
+        },
+        {
+          "title": "全球首个多芯光纤国际标准在武汉光谷发布",
+          "title_en": "World's First International Standard for Multi-Core Fiber Released in Wuhan",
+          "date": "10/19",
+          "summary": "亚太光纤光缆产业协会发布，覆盖弱耦合两芯、四芯构型，包层沿用125μm兼容在网光纤，面向AIDC光互联与海缆。",
+          "summary_en": "Issued by the Asia-Pacific Optical Fiber and Cable Industry Association, it covers weakly coupled two- and four-core designs with a standard 125 μm cladding compatible with deployed fiber, targeting AIDC interconnect and submarine cables.",
+          "detail": "同日大会上，亚太光纤光缆产业协会（APC）发布全球首个多芯光纤国际标准。标准由APC技术委员会牵头，烽火通信、上海大学等单位联合编制，规定了弱耦合单模两芯、四芯两种构型的全套技术条件，包层直径沿用国际通用的125微米，与在网主流光纤兼容，填补了弱耦合多芯光纤产业化的标准空白。多芯光纤在一根光纤中并行放入多根纤芯“向空间要容量”，主要面向AIDC智算中心高速光互联、大容量海缆和多维复用系统。烽火通信已用自研7芯光纤建成全球首个规模化商用的多芯光纤海缆系统，今年9月又与中国移动设计院联合中标厦门鼓浪屿多芯光纤海缆总包项目。中国信通院副院长敖立表示，国际层面同类标准预计要到2028年才出台。会上数据显示，2026年全球光纤光缆总需求约6.3亿芯公里，北美市场中AI数据中心占比已从2025年不足30%升至70%以上。",
+          "detail_en": "At the same conference, the Asia-Pacific Optical Fiber and Cable Industry Association (APC) released the world's first international standard for multi-core fiber. Led by APC's technical committee and drafted with FiberHome, Shanghai University and others, it sets full specifications for weakly coupled single-mode two-core and four-core designs, keeping the standard 125-micron cladding for compatibility with mainstream deployed fiber and filling a standards gap for industrializing weakly coupled multi-core fiber. By running several cores in parallel within one strand, multi-core fiber “borrows capacity from space” as single-fiber capacity nears its limits, with AIDC high-speed optical interconnect, high-capacity submarine cables and multi-dimensional multiplexing as key uses. FiberHome has already built the first commercial-scale multi-core submarine cable system with its own seven-core fiber, and in September won, with China Mobile's design institute, the turnkey Gulangyu multi-core submarine cable project in Xiamen. CAICT vice president Ao Li said comparable international standards are not expected until 2028. Conference data put 2026 global fiber and cable demand at about 630 million core-km, with AI data centers' share of North American demand jumping from under 30% in 2025 to over 70%.",
+          "links": [
+            {
+              "label": "长江日报",
+              "url": "http://news.cjn.cn/whpd/yw_19947/202610/t5350750.htm"
+            },
+            {
+              "label": "长江云",
+              "url": "https://news.hbtv.com.cn/p/4637064.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "卫星互联网与空天地一体化",
+      "section_en": "Satellite internet & air-space-ground",
+      "emoji": "🛰️",
+      "items": [
+        {
+          "title": "德电、Orange、西班牙电信、沃达丰签意向书，探索联合竞标欧盟移动卫星频谱",
+          "title_en": "Deutsche Telekom, Orange, Telefónica and Vodafone Sign LOI to Explore a Joint Bid for EU Mobile Satellite Spectrum",
+          "date": "10/19",
+          "summary": "四家运营商拟自建地面网络与协调监控功能、另选卫星伙伴提供星座，向所有运营商开放直连手机服务；不替代既有卫星合作。",
+          "summary_en": "The four would build ground infrastructure and coordination and monitoring functions while a yet-to-be-chosen satellite partner supplies the constellation, with open D2D access for all operators; existing satellite deals stay in place.",
+          "detail": "10月19日，德国电信、Orange、西班牙电信和沃达丰宣布签署意向书，探索就欧洲未来移动卫星业务（MSS）频谱分配进行联合竞标，以推动手机直连卫星（D2D）服务。按设想，四家运营商将在欧洲建设关键地面网络基础设施以及核心协调与监控功能，但不直接投资卫星星座，星座由尚待选定的卫星合作伙伴提供；该模式将向所有移动运营商提供开放、无歧视的D2D接入。各方称此举契合欧委会强化关键连接基础设施主权、安全与韧性的目标，并支持欧洲星座发展；意向书不替代各自现有的卫星合作。相对上期美国驻欧盟大使就2GHz MSS频谱方案警告“报复”的报道，本条是欧洲主流运营商首次以联合体姿态入局：现行2GHz授权将于2027年5月到期，欧委会正筹备新的遴选程序，欧洲本土竞标方开始成形。",
+          "detail_en": "On Oct 19, Deutsche Telekom, Orange, Telefónica and Vodafone said they have signed a letter of intent to explore a joint bid for the future allocation of Mobile Satellite Services (MSS) spectrum in Europe to advance direct-to-device (D2D) services. Under the plan, the four would build key ground-network infrastructure and critical coordination and monitoring functions in Europe without investing directly in a constellation, which a satellite partner still to be selected would provide; all mobile operators would get open, non-discriminatory access to offer D2D. The partners say this supports the Commission's push for sovereignty, security and resilience in critical connectivity and the development of a European constellation; the LOI does not replace their existing satellite partnerships. Following last issue's report of the US ambassador threatening retaliation over the EU's 2 GHz MSS plan, this marks Europe's leading operators entering the race as a bloc: current 2 GHz authorizations expire in May 2027 and the Commission is preparing a new selection procedure, so a home-grown European bidder is taking shape.",
+          "links": [
+            {
+              "label": "Deutsche Telekom",
+              "url": "https://www.telekom.com/en/newsroom/latest-updates/news/2026/10/deutsche-telekom-orange-telefonica-and-vodafone-have-signed-a-letter-of-intent"
+            },
+            {
+              "label": "Telefónica",
+              "url": "https://www.telefonica.com/en/communication-room/press-room/european-operators-sign-letter-intent-explore-joint-bid-mobile-satellite-services-spectrum-advance-direct-device-services/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notion_url": "https://app.notion.com/p/3fe3a1fdbe18812da838db6809afc9ce"
+}
