@@ -3,8 +3,8 @@
   "weekday": "周三",
   "weekday_en": "Wednesday",
   "title": "通信行业日报 · 2026-10-21（周三）",
-  "theme": "前三季度成绩单——智能算力同比增146%，运营商主业承压，AI-RAN走向商用流量验证",
-  "theme_en": "Q1–Q3 scorecard: China's intelligent computing power up 146%, operators' core revenue under pressure, and AI-RAN moves to live-traffic validation",
+  "theme": "前三季度成绩单——智能算力同比增146%，运营商主业承压，AI进入无线网现网调优",
+  "theme_en": "Q1–Q3 scorecard: China's intelligent computing power up 146%, operators' core revenue under pressure, and AI moves into live radio-network tuning",
   "cover": {
     "url": "covers/2026-10-21.jpg",
     "credit": "Florian Hirzinger / CC BY-SA 3.0",
@@ -21,7 +21,7 @@
     },
     {
       "label": "AI-RAN",
-      "text": "Singtel与爱立信签五年5G-A合作；T-Mobile公布AI波束赋形现网增益；诺基亚与软银2027年开展商用流量AI-RAN试验。"
+      "text": "Singtel与爱立信签五年5G-A合作；T-Mobile与爱立信公布AI波束赋形现网增益：高峰下行用户吞吐量提升16%。"
     },
     {
       "label": "科研",
@@ -111,21 +111,6 @@
             {
               "label": "Mobile World Live",
               "url": "https://www.mobileworldlive.com/ericsson/t-mobile-us-ericsson-tout-ai-beamforming-gains/"
-            }
-          ]
-        },
-        {
-          "title": "诺基亚与日本软银将于2027年开展商用流量AI-RAN外场试验",
-          "title_en": "Nokia and SoftBank to Run an AI-RAN Field Trial on Commercial Traffic in 2027",
-          "date": "10/20",
-          "summary": "诺基亚anyRAN云化RAN软件运行在软银AITRAS平台上并结合英伟达ARC，让无线与AI负载共用同一计算平台，AI-RAN从实验室走向现网。",
-          "summary_en": "Nokia's anyRAN cloud RAN software will run on SoftBank's AITRAS platform with Nvidia ARC, putting radio and AI workloads on one compute platform as AI-RAN moves from lab to live network.",
-          "detail": "10月20日，诺基亚宣布与日本软银（SoftBank Corp.）达成协议，将于2027年在日本开展AI-RAN外场试验，在商用流量条件下验证该技术。方案把诺基亚AI原生的anyRAN云化RAN软件运行在软银的核心AI-RAN平台AITRAS之上，并结合英伟达ARC平台，使无线与AI工作负载共享同一计算平台，以提高基础设施利用率、加快创新并开拓新的收入来源。双方此前已有基于英伟达加速计算节点的AI-RAN合作，此次试验是把技术从实验室开发推向真实网络部署的一步，也推进了诺基亚的AI-RAN商用化路线图。软银高级副总裁兼CTO Ryuji Wakikawa表示，这标志着AI-RAN从概念走向执行，将开启同时提供连接与AI服务的新一代网络；诺基亚首席技术与AI官Pallavi Mahajan称，AI-RAN有望把频谱效率提升到新水平，并为物理AI提供所需的分布式智能。结合同日T-Mobile与爱立信披露的AI波束赋形现网数据，AI-RAN正从演示阶段进入商用流量验证阶段，运营商关注点随之转向加速计算资源的复用率与投资回报。",
-          "detail_en": "On Oct 20, Nokia said it has agreed with SoftBank Corp. to conduct an AI-RAN field trial in Japan in 2027 under commercial traffic conditions. The setup runs Nokia's AI-native anyRAN cloud RAN software on SoftBank's core AI-RAN platform AITRAS together with Nvidia's ARC platform, bringing radio and AI workloads onto a common platform to improve infrastructure utilization, accelerate innovation and unlock new revenue. The two already have an AI-RAN deal backed by an Nvidia accelerated computing node; this trial moves the technology from lab development toward real-world deployment and advances Nokia's AI-RAN commercialization roadmap. SoftBank SVP and CTO Ryuji Wakikawa called it a significant milestone in AI-RAN's shift from concept to execution, paving the way for networks that deliver both connectivity and AI services; Nokia chief technology and AI officer Pallavi Mahajan said AI-RAN can unlock new levels of spectral efficiency and provide the distributed intelligence physical AI needs. Alongside the same-day T-Mobile/Ericsson beamforming data, AI-RAN is moving from demos to live-traffic validation, and operators' focus is shifting to how well accelerated compute is shared and what return it earns.",
-          "links": [
-            {
-              "label": "Mobile World Live",
-              "url": "https://www.mobileworldlive.com/ai-cloud/nokia-softbank-plot-commercial-ai-ran-trial/"
             }
           ]
         }
