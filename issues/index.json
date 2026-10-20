@@ -4,7 +4,7 @@
       "date": "2026-10-21",
       "weekday": "周三",
       "title": "通信行业日报 · 2026-10-21（周三）",
-      "theme": "前三季度成绩单——智能算力同比增146%，运营商主业承压，AI-RAN走向商用流量验证",
+      "theme": "前三季度成绩单——智能算力同比增146%，运营商主业承压，AI进入无线网现网调优",
       "cover": "covers/2026-10-21.jpg",
       "highlights": [
         {
@@ -17,7 +17,7 @@
         },
         {
           "label": "AI-RAN",
-          "text": "Singtel与爱立信签五年5G-A合作；T-Mobile公布AI波束赋形现网增益；诺基亚与软银2027年开展商用流量AI-RAN试验。"
+          "text": "Singtel与爱立信签五年5G-A合作；T-Mobile与爱立信公布AI波束赋形现网增益：高峰下行用户吞吐量提升16%。"
         },
         {
           "label": "科研",
@@ -25,7 +25,7 @@
         }
       ],
       "weekday_en": "Wednesday",
-      "theme_en": "Q1–Q3 scorecard: China's intelligent computing power up 146%, operators' core revenue under pressure, and AI-RAN moves to live-traffic validation"
+      "theme_en": "Q1–Q3 scorecard: China's intelligent computing power up 146%, operators' core revenue under pressure, and AI moves into live radio-network tuning"
     },
     {
       "date": "2026-10-20",
