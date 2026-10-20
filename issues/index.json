@@ -1,6 +1,33 @@
 {
   "issues": [
     {
+      "date": "2026-10-21",
+      "weekday": "周三",
+      "title": "通信行业日报 · 2026-10-21（周三）",
+      "theme": "前三季度成绩单——智能算力同比增146%，运营商主业承压，AI-RAN走向商用流量验证",
+      "cover": "covers/2026-10-21.jpg",
+      "highlights": [
+        {
+          "label": "算力",
+          "text": "国新办发布会：智能算力达2592 EFLOPS、同比增146%；5G基站525.4万个，两家民企获批卫星物联网商用试验。"
+        },
+        {
+          "label": "运营商",
+          "text": "中国移动Q3归母净利润同比降12.2%、经营现金流增15.1%；中国铁塔前三季度净利增24.2%；中国电信600万台微型机顶盒集采定标。"
+        },
+        {
+          "label": "AI-RAN",
+          "text": "Singtel与爱立信签五年5G-A合作；T-Mobile公布AI波束赋形现网增益；诺基亚与软银2027年开展商用流量AI-RAN试验。"
+        },
+        {
+          "label": "科研",
+          "text": "三篇新稿：无人机任务意图多模态识别基准、多无人机协同细粒度检测、可移动天线多站协同安全通感。"
+        }
+      ],
+      "weekday_en": "Wednesday",
+      "theme_en": "Q1–Q3 scorecard: China's intelligent computing power up 146%, operators' core revenue under pressure, and AI-RAN moves to live-traffic validation"
+    },
+    {
       "date": "2026-10-20",
       "weekday": "周二",
       "title": "通信行业日报 · 2026-10-20（周二）",
