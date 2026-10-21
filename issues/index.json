@@ -1,6 +1,33 @@
 {
   "issues": [
     {
+      "date": "2026-10-22",
+      "weekday": "周四",
+      "title": "通信行业日报 · 2026-10-22（周四）",
+      "theme": "AI-RAN走进商用现网，CPO光引擎扩产，卫星直连与地面网之争升温",
+      "cover": "covers/2026-10-22.jpg",
+      "highlights": [
+        {
+          "label": "AI-RAN",
+          "text": "T-Mobile联合诺基亚、英伟达在商用站点打通全球首个AI-RAN呼叫；德电实验室AI上行信道估计吞吐量提升10–15%。"
+        },
+        {
+          "label": "光互联",
+          "text": "英伟达与矽品计划到2027年中把CPO光引擎产能提升至15倍，2028年底再翻倍。"
+        },
+        {
+          "label": "卫星",
+          "text": "SpaceX定2028年初自营直连手机业务；AT&T称地面网规模优势难被替代，Q3宽带净增76.9万创纪录。"
+        },
+        {
+          "label": "科研",
+          "text": "两篇新稿：扩散模型保护UAV-ISAC告警流量隐蔽性、无人机配送路径规划的跨规模泛化。"
+        }
+      ],
+      "weekday_en": "Thursday",
+      "theme_en": "AI-RAN reaches live commercial networks, co-packaged optics capacity ramps up, and the satellite-vs-terrestrial mobile debate heats up"
+    },
+    {
       "date": "2026-10-21",
       "weekday": "周三",
       "title": "通信行业日报 · 2026-10-21（周三）",

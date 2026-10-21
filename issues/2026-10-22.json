@@ -1,0 +1,217 @@
+{
+  "date": "2026-10-22",
+  "weekday": "周四",
+  "weekday_en": "Thursday",
+  "title": "通信行业日报 · 2026-10-22（周四）",
+  "theme": "AI-RAN走进商用现网，CPO光引擎扩产，卫星直连与地面网之争升温",
+  "theme_en": "AI-RAN reaches live commercial networks, co-packaged optics capacity ramps up, and the satellite-vs-terrestrial mobile debate heats up",
+  "cover": {
+    "url": "covers/2026-10-22.jpg",
+    "credit": "Kevin Kandlbinder / CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cell_Tower_in_Stykkish%C3%B3lmur.jpg"
+  },
+  "highlights": [
+    {
+      "label": "AI-RAN",
+      "text": "T-Mobile联合诺基亚、英伟达在商用站点打通全球首个AI-RAN呼叫；德电实验室AI上行信道估计吞吐量提升10–15%。"
+    },
+    {
+      "label": "光互联",
+      "text": "英伟达与矽品计划到2027年中把CPO光引擎产能提升至15倍，2028年底再翻倍。"
+    },
+    {
+      "label": "卫星",
+      "text": "SpaceX定2028年初自营直连手机业务；AT&T称地面网规模优势难被替代，Q3宽带净增76.9万创纪录。"
+    },
+    {
+      "label": "科研",
+      "text": "两篇新稿：扩散模型保护UAV-ISAC告警流量隐蔽性、无人机配送路径规划的跨规模泛化。"
+    }
+  ],
+  "research": [
+    {
+      "title": "生成式扩散模型赋能安全UAV-ISAC：隐藏事件触发流量的“构成”",
+      "title_en": "Generative Diffusion Models for Secure UAV-ISAC with Real-Time Target Tracking",
+      "date": "10/20",
+      "authors": "Homa Nikbakht, Yonina C. Eldar, H. Vincent Poor",
+      "summary": "提出无密钥的扩散模型“保护波形”叠加方案，使窃听者无法从流量变化判断目标是否进入保护区；Eve的检测准确率接近0.5的盲猜水平。",
+      "summary_en": "A keyless scheme superposes a diffusion-generated safeguard waveform so an eavesdropper cannot tell from traffic changes whether a target has entered a protected zone; Eve's detection stays near a 0.5 blind guess.",
+      "detail": "通感一体化无人机执行监视任务时，一旦跟踪目标进入保护区就会向地面站发出告警，这种事件触发的流量本身就会泄密：窃听者无需解码，只要观察流量变化即可实时推断目标是否被发现。现有物理层安全技术保护的是消息内容或“是否在发送”，流量构成仍然暴露。作者把这一威胁定义为“流量构成隐蔽性”，提出无需共享密钥的扩散模型传输方案：在无人机波束赋形信息流上叠加由条件DDIM生成、与消息无关的保护波形，训练使触发与非触发时隙在窃听端统计上不可区分，并在隐蔽性、可靠性和感知（以PCRB衡量）约束下最大化速率。仿真显示，多天线、Eve信噪比5 dB时，学习型Eve对各种保护波束分配都接近0.5的盲猜；已知保护模型的检测器在主瓣内为0.71–0.73、主瓣外为0.53–0.55，平均位置PCRB仅在0.59–0.70 m²之间变化。",
+      "detail_en": "When an ISAC drone on a surveillance mission alerts a ground station as soon as a tracked target enters a protected zone, the event-triggered traffic itself leaks information: an eavesdropper need not decode anything—watching the traffic change is enough to learn in real time whether the target was detected. Existing physical-layer security protects message content or hides that a transmission occurs, but leaves traffic composition exposed. The authors frame this as traffic-composition covertness and propose a keyless diffusion-based scheme that superposes the UAV's beamformed streams with a message-agnostic safeguard waveform from a conditional DDIM, trained so triggered and non-triggered slots are statistically indistinguishable at Eve; the joint design maximizes rate under covertness, reliability and sensing (PCRB) constraints. With multiple antennas and an Eve SNR of 5 dB, a learned Eve stays near a 0.5 blind guess for every safeguard beam split; a detector that knows the safeguard model reaches 0.71–0.73 inside the legitimate user's main lobe and 0.53–0.55 outside it, while average position PCRB varies only between 0.59 and 0.70 m².",
+      "links": [
+        {
+          "label": "arXiv:2610.28309",
+          "url": "https://arxiv.org/abs/2610.28309"
+        }
+      ]
+    },
+    {
+      "title": "容量受限无人机配送路径：提升强化学习指针网络的跨规模泛化",
+      "title_en": "From Comparison to Selection: Enhancing Cross-Scale Generalization of RL-Trained Pointer Networks for Capacitated Drone Delivery Routing",
+      "date": "10/20",
+      "authors": "Sofiene Lassoued, Devara Tertia, Stefan Lier, Andreas Schwung",
+      "summary": "定位指针网络在扩缩规模时性能退化的三类原因，提出可学习的图上下文聚合与“方法选择器”，在多数训练-测试规模组合上降低配送成本，最高约3.2%。",
+      "summary_en": "Identifies three causes of pointer-network degradation when problem size changes, proposes learned graph-context aggregation and an approach selector, and cuts delivery cost in most train-test size pairs, by up to 3.2%.",
+      "detail": "无人机可用于末端与应急配送，但客户数量变化时路径规划难以兼顾质量与效率：混合整数规划和启发式方法扩展性差或依赖定制设计。基于注意力的指针网络在结构上与规模无关，但向更大或更小规模迁移时解的质量都会下降。作者以载荷固定的CVRP为代理，识别出节点密度变化、注意力分散和均值池化图上下文被稀释三个原因，系统比较整体架构、编码器侧和解码器侧改进，提出以加权平均和Set2Set实现的可学习、置换不变图上下文聚合。结果显示：基于熵的注意力缩放使CVRP20到CVRP100的差距缩小1.41个百分点，所提聚合在更难的CVRP100到CVRP20迁移上改善约0.9个百分点；据此设计的方法选择器在9组已见规模全部、9组含未见规模中的8组上降低成本，最高3.2%。对低空物流调度有参考价值。",
+      "detail_en": "Drones enable fast last-mile and emergency delivery, but routing gets hard as the number of clients varies: mixed-integer programming and heuristics scale poorly or need problem-specific design. Attention-based pointer networks are size-agnostic by construction, yet their solution quality drops when scaling up or down. Using the CVRP with a fixed capacity that reflects drone payload as a proxy, the authors identify three causes—shifts in node density, attention dispersion and dilution of the mean-pooled graph context—compare architecture-wide, encoder-side and decoder-side fixes, and propose a learned permutation-invariant graph-context aggregation implemented as a weighted average and as Set2Set. Entropy-based attention scaling narrows the CVRP20-to-CVRP100 gap by 1.41 points, while the aggregation methods give the largest gain, about 0.9 points, on the harder CVRP100-to-CVRP20 transfer. An approach selector exploiting this complementarity lowers cost on all nine seen train-test pairs and eight of nine pairs with unseen sizes (CVRP35/75/200), by up to 3.2%—useful for low-altitude logistics dispatch.",
+      "links": [
+        {
+          "label": "arXiv:2610.27936",
+          "url": "https://arxiv.org/abs/2610.27936"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "5G/5G-A 与 6G",
+      "section_en": "5G/5G-A & 6G",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "T-Mobile联合诺基亚、英伟达完成全球首个商用网络AI-RAN呼叫；德电实验室AI上行信道估计提升10–15%",
+          "title_en": "T-Mobile, Nokia and NVIDIA Complete World's First AI-RAN Call on a Commercial Network; Deutsche Telekom Lab Shows 10–15% Uplink Gains",
+          "date": "10/21",
+          "summary": "呼叫在美国贝尔维尤的商用站点完成，使用诺基亚Massive MIMO、anyRAN软件与英伟达ARC服务器，接入商用5G SA核心网与商用手机；近20家运营商已公开与两家开展AI-RAN合作。",
+          "summary_en": "Made at a commercial site in Bellevue, Washington, using Nokia Massive MIMO, anyRAN software and NVIDIA ARC servers on a commercial 5G SA core with a commercial phone; nearly 20 operators have announced AI-RAN work with the pair.",
+          "detail": "10月21日，英伟达在GTC柏林宣布，T-Mobile与诺基亚、英伟达在华盛顿州贝尔维尤的商用站点完成全球首个商用网络AI-RAN呼叫，采用诺基亚Massive MIMO射频、经CUDA加速的诺基亚5G anyRAN软件和英伟达Aerial RAN Computer（ARC）服务器，接入商用5G核心网与商用终端；下一阶段外场试验将扩展到新的AI-for-RAN算法及与RAN共享加速平台的AI负载。诺基亚称目标是借AI-RAN实现频谱效率翻倍。同日德国电信公布实验室结果：在诺基亚商用RAN软件与ARC上实时运行AI上行信道估计，典型吞吐量提升10–15%，信道越复杂增益越大，下一步转入外场。Elisa完成欧洲首个AI-RAN外场试验，计划2027年商用；BT计划2027年在伯明翰试验，Orange正在测试。相对昨日T-Mobile与爱立信的AI波束赋形结果，这是GPU加速的软件定义RAN首次在商用站点承载呼叫。",
+          "detail_en": "On Oct 21 at GTC Berlin, NVIDIA announced that T-Mobile, Nokia and NVIDIA completed the world's first AI-RAN call on a commercial network at a live site in Bellevue, Washington, using Nokia Massive MIMO radios, Nokia's CUDA-accelerated 5G anyRAN software and NVIDIA Aerial RAN Computer (ARC) servers, connected to a commercial 5G core and commercial devices. The next field-trial phase will add new AI-for-RAN algorithms and AI workloads sharing the accelerated platform with the RAN. Nokia says its ambition is to double spectral efficiency with AI-RAN. The same day Deutsche Telekom reported lab results: AI-based uplink channel estimation running in real time on Nokia's commercial RAN software and ARC delivered typical throughput gains of 10–15%, rising with channel complexity, with a field trial next. Elisa completed Europe's first AI-RAN field trial and targets commercial service in 2027; BT plans live trials in Birmingham in 2027 and Orange is testing. Compared with yesterday's T-Mobile–Ericsson AI beamforming results, this is the first call carried by GPU-accelerated software-defined RAN at a commercial site.",
+          "links": [
+            {
+              "label": "NVIDIA Newsroom",
+              "url": "https://nvidianews.nvidia.com/news/nvidia-nokia-and-leading-telecom-operators-turn-networks-into-distributed-intelligence-platforms"
+            },
+            {
+              "label": "Nokia",
+              "url": "https://www.nokia.com/blog/from-the-lab-to-the-live-network-nokia-t-mobile-and-nvidia-complete-worlds-first-ai-ran-call/"
+            },
+            {
+              "label": "Deutsche Telekom",
+              "url": "https://www.telekom.com/en/newsroom/latest-updates/media-information/2026/10/ai-ran-lab-tests"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "运营商与集采",
+      "section_en": "Operators & Tenders",
+      "emoji": "🏢",
+      "items": [
+        {
+          "title": "AT&T三季度营收323亿美元、增5.3%，宽带净增76.9万创纪录；Stankey回应SpaceX直连手机挑战",
+          "title_en": "AT&T Q3 Revenue Rises 5.3% to $32.3 Billion With Record 769,000 Internet Net Adds; Stankey Responds to SpaceX's D2D Push",
+          "date": "10/21",
+          "summary": "光纤净增44.2万、固定无线净增32.7万，后付费手机净增37.9万、流失率0.92%；服务收入增速为四年多来最高，并下调长期资本投入指引。",
+          "summary_en": "Fiber added 442,000 and fixed wireless 327,000; postpaid phones added 379,000 with 0.92% churn. Service revenue growth was the best in over four years, and long-term capital investment guidance was lowered.",
+          "detail": "10月21日，AT&T公布2026年第三季度业绩：营收323亿美元、同比增长5.3%；调整后EPS 0.65美元（上年同期0.54美元），调整后EBITDA 125亿美元、增长5.4%，自由现金流50亿美元。因计提墨西哥无线业务（待售）26亿美元非现金减值及员工离职费用，持续经营稀释EPS仅0.13美元。“先进连接”服务收入239亿美元、增长6.1%。宽带净增76.9万户创单季纪录，其中光纤44.2万、固定无线32.7万；后付费手机净增37.9万，流失率0.92%；光纤覆盖超3900万个地址，目标2030年底超6000万。公司上调2026年调整后EPS预期至约2.40美元，并将2027—2028年资本投入下调至每年220亿至230亿美元。电话会上CEO John Stankey回应SpaceX的D2D计划：AT&T拥有6到8个低频载波并深入室内分布系统，“98%的流量在我们已经建好的地方”，不应高估单一低频载波的作用。",
+          "detail_en": "On Oct 21, AT&T reported Q3 2026 revenue of $32.3 billion, up 5.3%; adjusted EPS of $0.65 versus $0.54, adjusted EBITDA of $12.5 billion, up 5.4%, and free cash flow of $5.0 billion. Diluted EPS from continuing operations was only $0.13 after a $2.6 billion non-cash impairment on the held-for-sale Mexico wireless business and employee separation charges. Advanced Connectivity service revenue rose 6.1% to $23.9 billion. Internet net adds hit a record 769,000—442,000 fiber and 327,000 fixed wireless—and postpaid phone net adds were 379,000 with 0.92% churn; fiber now reaches more than 39 million locations, targeting over 60 million by end-2030. AT&T raised its 2026 adjusted EPS outlook to about $2.40 and cut 2027–2028 capital investment to $22–23 billion a year. On the call, CEO John Stankey answered SpaceX's direct-to-device plans: AT&T runs six to eight low-band carriers, including indoor systems, and '98% of the traffic is where we've already built', so one carrier of low-band spectrum should not be over-rated.",
+          "links": [
+            {
+              "label": "AT&T/PR Newswire",
+              "url": "https://www.prnewswire.com/news-releases/att-delivers-strong-third-quarter-2026-results-with-its-best-consolidated-service-revenue-growth-in-more-than-four-years-302915334.html"
+            },
+            {
+              "label": "Mobile World Live",
+              "url": "https://www.mobileworldlive.com/att/att-ceo-stankey-argues-scale-matters-in-satellite-debate/"
+            }
+          ]
+        },
+        {
+          "title": "中国电信TeleAI孵化首家具身智能公司“伽马智能”，依托智传网做机器人群体协同",
+          "title_en": "China Telecom's TeleAI Spins Out Its First Embodied-AI Company, Gamma Robotics, Built on AI Flow Device-Edge-Cloud Networking",
+          "date": "10/21",
+          "summary": "聚焦自进化人形机器人全身模型，由中电信（上海）人工智能产业私募基金战略投资；将基于智传网（AI Flow）端-边-云协同支持机器人共享经验。",
+          "summary_en": "Focused on self-evolving whole-body models for humanoid robots and backed by China Telecom's Shanghai AI fund, it will use AI Flow device-edge-cloud collaboration so robots can share experience.",
+          "detail": "10月21日消息，中国电信人工智能研究院（TeleAI）孵化的具身智能公司伽马智能（Gamma Robtics）已在上海徐汇区注册成立、入驻模速空间，是TeleAI首个市场化孵化企业。公司聚焦自进化人形机器人全模型，目标统一全身运动与灵巧操作建模，并与TeleAI共建人形机器人实验室。通信侧看点在于，伽马智能将依托TeleAI提出的新一代通信网“智传网（AI Flow）”端-边-云协同能力，打通终端、边缘节点与云端，把单个机器人的交互经验转化为群体共享能力；智传网的生成式智能传输思路是在发送端用多模态大模型把信息凝练为少量“词元流”。公司由中电信（上海）人工智能产业私募基金战略投资，中国电信集团CTO李学龙任科学顾问，白辰甲任创始人兼CEO，示范应用将围绕AIDC算力服务及家庭、商业服务展开。",
+          "detail_en": "On Oct 21 it was reported that Gamma Robotics, an embodied-AI company incubated by China Telecom's Institute of Artificial Intelligence (TeleAI), has been registered in Shanghai's Xuhui district at the ModelSpeed Space hub—TeleAI's first market-oriented spin-out. It focuses on self-evolving whole-body models for humanoid robots, aiming to unify locomotion and dexterous manipulation, and will build a humanoid robot lab with TeleAI. The telecom angle is that Gamma will rely on TeleAI's AI Flow, which China Telecom positions as a new-generation communication network, to link devices, edge nodes and cloud so that one robot's interaction experience becomes shared capability for the group; AI Flow's generative transmission approach condenses information into a small token stream with multimodal models at the sender rather than sending raw bitstreams. The company is strategically backed by China Telecom's Shanghai AI industry fund, with group CTO Li Xuelong as scientific adviser and Bai Chenjia as founder and CEO; pilots will target China Telecom's AIDC services and home and business services.",
+          "links": [
+            {
+              "label": "C114",
+              "url": "https://www.c114.com.cn/news/117/a1319495.html"
+            },
+            {
+              "label": "21经济网",
+              "url": "https://www.21jingji.com/article/20261021/herald/2aff0db8b423840bb702d00476dfd553.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政策与标准",
+      "section_en": "Policy & Standards",
+      "emoji": "🏛️",
+      "items": [
+        {
+          "title": "韩国科技部推动5G回传地铁Wi-Fi全国推广，仁川地铁1、2号线率先完成升级",
+          "title_en": "South Korea's MSIT Backs Nationwide Rollout of 5G-Backed Subway Wi-Fi After Incheon Lines 1 and 2 Upgrade",
+          "date": "10/21",
+          "summary": "地铁Wi-Fi回传由LTE换为5G，三家运营商共同支持；MSIT表示将提供政策支持，把5G地铁Wi-Fi扩展到全国。",
+          "summary_en": "Subway Wi-Fi backhaul moved from LTE to 5G with all three operators involved; MSIT pledged policy support to extend 5G-based subway Wi-Fi nationwide.",
+          "detail": "10月21日，韩国科学技术信息通信部（MSIT）在仁川地铁1号线、2号线举办新部署技术展示活动。项目把为车厢Wi-Fi供网的回传链路由LTE替换为5G，三家移动运营商均参与支持。MSIT第二次官柳济明表示，将继续与三家运营商及各地交通运营公司合作并提供政策支持，推动5G地铁Wi-Fi在全国铺开。展示中，官员、运营商代表、仁川交通公社及部分市民在线路区段内体验视频流、网页浏览和社交应用，MSIT称响应速度较升级前更快，多人同时接入时高清视频也能流畅播放。高密度、强移动的地铁场景一直是车地回传的难点，以5G替代LTE回传为地铁、高铁车载Wi-Fi升级提供了一个可对照的政策推进样本。",
+          "detail_en": "On Oct 21, South Korea's Ministry of Science and ICT (MSIT) showcased newly installed technology on Incheon Metro Lines 1 and 2, where the backhaul feeding onboard Wi-Fi was switched from LTE to 5G with support from all three mobile operators. Second Vice Minister Ryu Je-myung said the ministry would keep working with the operators and regional transit corporations and provide policy support so 5G-based subway Wi-Fi can be expanded nationwide. Officials, operator representatives, Incheon Transit Corporation staff and members of the public tried video streaming, web browsing and social apps on a section of line; MSIT said response times were faster than before and HD video played without interruption even with many users connected. Dense, fast-moving subway environments have long been a hard case for train-to-ground backhaul, and replacing LTE with 5G offers a policy reference for upgrading onboard Wi-Fi on metros and high-speed rail.",
+          "links": [
+            {
+              "label": "Mobile World Live",
+              "url": "https://www.mobileworldlive.com/asia-pacific/korea-eyes-wider-rollout-of-5g-based-wi-fi-on-trains/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "光通信、算力网络与数据中心",
+      "section_en": "Optical, Computing Networks & Data Centers",
+      "emoji": "💡",
+      "items": [
+        {
+          "title": "英伟达联合供应链扩产：矽品CPO光引擎产能2027年中提升至15倍，2028年底再翻倍",
+          "title_en": "NVIDIA and Suppliers Expand Capacity: SPIL to Lift Co-Packaged Optics Optical-Engine Output 15x by Mid-2027, Then Double It by End-2028",
+          "date": "10/21",
+          "summary": "同时宣布载板产能三年提升2.5倍、Amkor中介层晶圆产能到2028年底增超300%，并向京元电子预付11亿美元产能保留款建设美国测试厂。",
+          "summary_en": "Also announced: 2.5x substrate capacity over three years, Amkor interposer wafer capacity up more than 300% by end-2028, and a $1.1 billion capacity reservation advance to KYEC for new US test facilities.",
+          "detail": "10月21日，英伟达在GTC柏林宣布与Amkor、揖斐电（IBIDEN）、京元电子（KYEC）、三星电机、矽品精密（SPIL）、欣兴电子等供应链伙伴扩充产能。与光通信直接相关的是共同封装光学（CPO）：英伟达与矽品计划在台湾扩大CPO所用光引擎的制造产能，目标到2027年年中提升至当前的15倍，并争取到2028年底再翻一倍，以满足大规模计算基础设施的互联需求。其他环节方面，载板产能计划三年内提升2.5倍，三星电机新加入载板供应链；Amkor将在韩国把中介层晶圆产能到2028年底提升超过300%；半导体测试总产能预计2026到2027年翻倍，其中英伟达向京元电子提供11亿美元产能保留预付款支持其美国新测试厂，目标2027年4月量产。黄仁勋称“需求非同寻常，产能才是约束”。CPO光引擎扩产节奏是判断硅光与传统可插拔光模块此消彼长的关键信号。",
+          "detail_en": "On Oct 21 at GTC Berlin, NVIDIA announced capacity expansions with supply-chain partners Amkor, IBIDEN, King Yuan Electronics (KYEC), Samsung Electro-Mechanics, Siliconware Precision Industries (SPIL) and Unimicron. Most relevant to optical communications is co-packaged optics (CPO): NVIDIA and SPIL plan to expand manufacturing capacity in Taiwan for the optical engines used in CPO by 15x by mid-2027, aiming to double it again by the end of 2028, to meet the connectivity needs of large-scale computing infrastructure. Elsewhere, substrate capacity is set to rise 2.5x over three years, with Samsung Electro-Mechanics joining the substrate supply chain; Amkor targets a more than 300% increase in interposer wafer capacity in South Korea by end-2028; total semiconductor test capacity is expected to double from 2026 to 2027, including a $1.1 billion capacity reservation advance to KYEC for new US test facilities targeting high-volume production in April 2027. Jensen Huang said, 'Demand is extraordinary. Capacity is the constraint.' The pace of CPO optical-engine expansion is a key signal for the balance between silicon photonics and conventional pluggable optical modules.",
+          "links": [
+            {
+              "label": "NVIDIA Newsroom",
+              "url": "https://nvidianews.nvidia.com/news/nvidia-and-supply-chain-partners-expand-capacity-to-accelerate-ai-infrastructure-buildout"
+            },
+            {
+              "label": "财联社",
+              "url": "https://m.cls.cn/detail/2511315"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "卫星互联网与空天地一体化",
+      "section_en": "Satellite internet & air-space-ground",
+      "emoji": "🛰️",
+      "items": [
+        {
+          "title": "SpaceX定2028年初开通自营直连手机业务，Starlink Mobile月活超2200万；AST SpaceMobile年底前提供间歇覆盖",
+          "title_en": "SpaceX Targets Early 2028 for Its Own D2D Service as Starlink Mobile Tops 22 Million Monthly Users; AST SpaceMobile Plans Intermittent Coverage by Year-End",
+          "date": "10/21",
+          "summary": "SpaceX计划2027年发射第二代Starlink Mobile星座并整合800MHz频谱；AST SpaceMobile确认此前时间表推迟，年底前在美国等五国提供“初始、间歇”的蜂窝宽带覆盖。",
+          "summary_en": "SpaceX plans to launch its second-generation Starlink Mobile constellation in 2027 and integrate 800 MHz spectrum; AST SpaceMobile confirmed earlier targets slipped and aims for initial, intermittent cellular broadband in five countries by year-end.",
+          "detail": "SpaceX总裁Gwynne Shotwell在三季度财报电话会上表示，公司计划2027年发射第二代Starlink Mobile星座、整合正在收购的频谱后，于2028年初开通自营直连手机（D2D）业务；10月8日SpaceX已与Grain Management达成协议，收购最多14MHz的800MHz成对频谱，预计2027年上半年完成交割。她称FCC批准其发射1.5万颗V2卫星，加上低频频谱，将为Starlink Mobile成为美国主要移动运营商铺路，并计划利用已安装的Starlink终端和其他塔址部署地面小型无线电。数据方面，Starlink Mobile季末月活超过2200万、环比增长37%，Starlink消费宽带用户1360万，连接业务收入52亿美元、增长69%。另据Light Reading 10月21日报道，AST SpaceMobile目标在年底前于美国、加拿大、日本、英国和沙特提供“初始、间歇”蜂窝宽带覆盖，美国需激活约5600个小区、已启用3000个，目前在轨13颗卫星，确认此前时间表推迟。",
+          "detail_en": "On SpaceX's Q3 earnings call, president Gwynne Shotwell said the company plans to switch on its own direct-to-device (D2D) service in early 2028, after launching the second-generation Starlink Mobile constellation in 2027 and integrating the spectrum it is buying; on Oct 8 SpaceX agreed to acquire up to 14 MHz of paired 800 MHz spectrum from Grain Management, expected to close in the first half of 2027. She said FCC approval to launch 15,000 V2 satellites plus the low-band spectrum paves the way for Starlink Mobile to become a major US mobile carrier, and that SpaceX will use existing Starlink installs and other towers to host smaller ground radios. Starlink Mobile passed 22 million monthly users at quarter-end, up 37% quarter on quarter; Starlink had 13.6 million consumer broadband subscribers, and connectivity revenue rose 69% to $5.2 billion. Separately, Light Reading reported on Oct 21 that AST SpaceMobile targets initial, intermittent cellular broadband coverage before end-2026 in the US, Canada, Japan, the UK and Saudi Arabia; the US needs about 5,600 coverage cells, 3,000 of which are enabled, and with 13 satellites in orbit the company confirmed its earlier timeline has slipped.",
+          "links": [
+            {
+              "label": "Mobile World Live",
+              "url": "https://www.mobileworldlive.com/starlink/spacex-targets-early-2028-for-own-d2d-service-launch/"
+            },
+            {
+              "label": "Light Reading",
+              "url": "https://www.lightreading.com/satellite/ast-spacemobile-says-limited-coverage-coming-soon-in-us-and-beyond"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notion_url": "https://app.notion.com/p/4003a1fdbe1881528903dc640b7dfa47"
+}
