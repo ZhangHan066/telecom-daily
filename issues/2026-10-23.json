@@ -1,0 +1,235 @@
+{
+  "date": "2026-10-23",
+  "weekday": "周五",
+  "weekday_en": "Friday",
+  "title": "通信行业日报 · 2026-10-23（周五）",
+  "theme": "诺基亚三季报光与IP高增，AI-RAN再添日本现网试验，光模块板块急跌",
+  "theme_en": "Nokia's Q3 optical and IP sales surge, AI-RAN adds a live-network trial in Japan, and optical-module stocks tumble",
+  "cover": {
+    "url": "covers/2026-10-23.jpg",
+    "credit": "Villeke / CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nokia_headquarters_in_Espoo.jpg"
+  },
+  "highlights": [
+    {
+      "label": "诺基亚",
+      "text": "诺基亚Q3营收51.54亿欧元、增10%，AI与云客户销售增123%"
+    },
+    {
+      "label": "AI-RAN",
+      "text": "软银与诺基亚定于2027年在日本商用网开展AI-RAN外场试验"
+    },
+    {
+      "label": "卫星",
+      "text": "FCC批准SpaceX接手Tristar三张AWS-3上行牌照，用于星链直连手机"
+    }
+  ],
+  "research": [
+    {
+      "title": "考虑NLOS的TDOA无人机定位：克拉美-罗界、测量建模与AERPAW实测",
+      "title_en": "NLOS-Aware TDOA UAV Localization: The Cramér–Rao Bound, Measurement Modeling, and AERPAW Field Tests",
+      "date": "10/21",
+      "authors": "Dickerson, Masrur, Özdemir, Güvenç",
+      "summary": "针对低空混合视距/非视距传播，推导NLOS感知的CRLB并用5次AERPAW飞行数据标定模型；发现偏差带来的误差下限无法靠加宽带宽消除。",
+      "summary_en": "For low-altitude mixed line-of-sight and non-line-of-sight propagation, derives an NLOS-aware CRLB and calibrates the model with five AERPAW flights; a bias-driven error floor cannot be removed by widening bandwidth.",
+      "detail": "被动TDOA定位适合追踪不上报位置的非合作无人机，但低空飞行中LOS与NLOS链路混杂，精度明显下降。作者推导NLOS感知的克拉美-罗下界，建立经验标定的测量模型，并用AERPAW平台上5次无人机飞行实测数据检验。理论给出传感器数与NLOS链路数之间的可辨识条件，并揭示一个加宽带宽也无法去除的偏差误差下限。实测表明误差最主要取决于处于LOS的传感器数量，更高飞行高度和更宽带宽可降低中位误差；把一个始终NLOS的传感器移到开阔飞行区并获得LOS，水平误差下界中位数可降两个数量级。拟合模型复现了2.5 MHz与5 MHz飞行的中位误差，但低估了最重的误差尾部；由于剩余误差以偏差为主，剔除离群定位结果比卡尔曼或粒子滤波效果好得多。论文已投IEEE TAES，对低空反无人机与监管定位网络的传感器选址有参考价值。",
+      "detail_en": "Passive TDOA localization is suited to tracking non-cooperative drones that do not report their position, but low-altitude flight mixes LOS and NLOS links and accuracy drops sharply. The authors derive an NLOS-aware Cramér–Rao lower bound, build an empirically calibrated measurement model, and test it with data from five UAV flights on the AERPAW platform. The theory gives identifiability conditions between the number of sensors and the number of NLOS links, and reveals a bias-driven error floor that widening the bandwidth cannot remove. Measurements show that error depends above all on how many sensors are in LOS; higher flight altitude and wider bandwidth can lower the median error, and moving one always-NLOS sensor into an open flight area so that it gains LOS can cut the median horizontal error bound by two orders of magnitude. The fitted model reproduces the median error of the 2.5 MHz and 5 MHz flights but underestimates the heaviest error tail; because the residual error is dominated by bias, discarding outlier location fixes works far better than a Kalman or particle filter. The paper has been submitted to IEEE TAES and is relevant to sensor siting for low-altitude counter-drone and regulatory localization networks.",
+      "links": [
+        {
+          "label": "arXiv:2610.30053",
+          "url": "https://arxiv.org/abs/2610.30053"
+        }
+      ]
+    },
+    {
+      "title": "安全世界模型联合设计移动基站轨迹与波束赋形",
+      "title_en": "A Safe World Model Jointly Designs Mobile Base-Station Trajectories and Beamforming",
+      "date": "10/21",
+      "authors": "Sakhaei Gharagezlou, Askari Donbeh, Monemi, Latva-aho, Rasti",
+      "summary": "把空中/地面移动基站的轨迹与数字波束赋形建模为约束马尔可夫决策过程，基于SafeDreamer世界模型学习策略；时间平均和SINR较PPO、DQN分别平均提升7%和9%。",
+      "summary_en": "Models the trajectory and digital beamforming of aerial and ground mobile base stations as a constrained Markov decision process and learns a policy with a SafeDreamer world model; time-average sum SINR rises by 7% and 9% on average versus PPO and DQN.",
+      "detail": "移动基站（包括无人机等空中平台和地面平台）可通过调整位置灵活补盲，但轨迹与波束赋形强耦合：移动改变信道和干扰，波束赋形决定信号与干扰功率，当前动作还影响未来位置和性能。作者把问题表述为约束马尔可夫决策过程，在移动性、禁入区规避和发射功率约束下最大化时间平均和SINR。为减少无模型强化学习所需的大量环境交互，采用基于SafeDreamer的世界模型框架，从经验中学习潜在系统动态，在“想象”轨迹上优化联合策略；可行性保持的动作映射和安全代价信号把运行约束纳入学习。仿真显示时间平均和SINR较PPO和DQN基线平均分别提升7%和9%，样本效率更高，约束满足更可靠。禁飞区约束与样本效率是无人机基站走向部署的两个关键门槛。",
+      "detail_en": "Mobile base stations, including aerial platforms such as drones and ground platforms, can fill coverage gaps by changing position, but trajectory and beamforming are tightly coupled: movement changes the channel and the interference, beamforming sets signal and interference power, and the current action also affects future position and performance. The authors formulate the problem as a constrained Markov decision process that maximizes time-average sum SINR under mobility, exclusion-zone avoidance and transmit-power constraints. To reduce the large number of environment interactions that model-free reinforcement learning requires, they use a SafeDreamer-based world-model framework that learns latent system dynamics from experience and optimizes the joint policy on imagined trajectories; a feasibility-preserving action map and a safety-cost signal bring the operating constraints into learning. Simulations show time-average sum SINR up 7% and 9% on average versus the PPO and DQN baselines, with higher sample efficiency and more reliable constraint satisfaction. No-fly-zone constraints and sample efficiency are two key hurdles on the way to deploying drone base stations.",
+      "links": [
+        {
+          "label": "arXiv:2610.29534",
+          "url": "https://arxiv.org/abs/2610.29534"
+        }
+      ]
+    },
+    {
+      "title": "混合PPO多目标优化：无人机搭载STAR-RIS兼顾通信与射频能量收集",
+      "title_en": "Hybrid-PPO Multi-Objective Optimization: A UAV-Mounted STAR-RIS Balancing Communication and RF Energy Harvesting",
+      "date": "10/20",
+      "authors": "Hussin, Rabie, Salim, Muqaibel, Al-Awami",
+      "summary": "联合优化基站波束、STAR-RIS透射/反射系数、功率分配因子与无人机轨迹；所提H-PPO收敛速度较PPO、TD3分别快约66%和60%。",
+      "summary_en": "Jointly optimizes the base-station beam, STAR-RIS transmission and reflection coefficients, the power-splitting factor and the UAV trajectory; the proposed H-PPO converges about 66% and 60% faster than PPO and TD3.",
+      "detail": "论文研究面向6G物联网的无人机搭载STAR-RIS系统，在增强通信的同时为终端提供射频能量收集。作者构建加权多目标优化问题，在QoS、功率和移动性约束下联合优化基站波束赋形向量、STAR-RIS透射与反射系数、射频功率分配因子和无人机轨迹。由于变量强耦合、问题高度非凸，作者提出混合近端策略优化（H-PPO）：用类别分布策略决定离散的无人机移动，用Beta分布策略输出连续通信控制变量，并设计两阶段奖励，先保证QoS可行，再在和速率、能效与收集能量之间折中。仿真表明H-PPO收敛比PPO和TD3分别快约66%和60%，训练更稳定，并能在不同QoS要求、STAR-RIS规模、发射功率和用户密度下平衡通信与能量收集。",
+      "detail_en": "The paper studies a UAV-mounted STAR-RIS system for 6G IoT that strengthens communication while providing RF energy harvesting for terminals. The authors formulate a weighted multi-objective problem that jointly optimizes the base-station beamforming vector, the STAR-RIS transmission and reflection coefficients, the RF power-splitting factor and the UAV trajectory under QoS, power and mobility constraints. Because the variables are tightly coupled and the problem is highly non-convex, they propose hybrid proximal policy optimization (H-PPO): a categorical policy decides the discrete UAV moves, a Beta-distribution policy outputs the continuous communication controls, and a two-stage reward first makes QoS feasible and then trades off sum rate, energy efficiency and harvested energy. Simulations show H-PPO converges about 66% and 60% faster than PPO and TD3, trains more stably, and balances communication and energy harvesting under different QoS requirements, STAR-RIS sizes, transmit powers and user densities.",
+      "links": [
+        {
+          "label": "arXiv:2610.28807",
+          "url": "https://arxiv.org/abs/2610.28807"
+        }
+      ]
+    }
+  ],
+  "industry": [
+    {
+      "section": "5G/5G-A 与 6G",
+      "section_en": "5G/5G-A & 6G",
+      "emoji": "📡",
+      "items": [
+        {
+          "title": "软银与诺基亚定于2027年在日本商用网开展AI-RAN外场试验",
+          "title_en": "SoftBank and Nokia Set a 2027 Commercial AI-RAN Field Trial on a Live Network in Japan",
+          "date": "10/22",
+          "summary": "试验将在真实商用流量下验证AI与RAN负载共用同一计算平台，采用诺基亚anyRAN、软银AITRAS与英伟达ARC。",
+          "summary_en": "The trial will test, under real commercial traffic, whether AI and RAN workloads can share one computing platform, using Nokia anyRAN, SoftBank AITRAS and NVIDIA ARC.",
+          "detail": "诺基亚与软银达成协议，将于2027年在日本开展商用AI-RAN外场试验，在真实商用网络和商用流量下评估AI计算与无线接入网负载能否同时运行在同一套共享计算基础设施上。方案组合诺基亚AI原生anyRAN云化RAN软件、软银AITRAS平台和英伟达Aerial RAN Computer（ARC），硬件包括Grace CPU、RTX PRO 4500 GPU和ConnectX-8网卡；无线与AI资源由诺基亚MantaRay与AITRAS Orchestrator协同调度，后者按资源可用性、应用要求和预计功耗动态分配算力，并将检验其作为多厂商RAN软件与AI应用共同承载平台的适用性。软银CTO胁川隆二称这是AI-RAN从概念走向商用的重要里程碑。相对昨日T-Mobile现网呼叫，这是又一家大型运营商公布商用网AI-RAN试验时间表。",
+          "detail_en": "Nokia and SoftBank have agreed to run a commercial AI-RAN field trial in Japan in 2027, assessing on a real commercial network and under commercial traffic whether AI compute and radio-access-network workloads can run at the same time on one shared computing infrastructure. The setup combines Nokia's AI-native anyRAN cloud RAN software, SoftBank's AITRAS platform and NVIDIA's Aerial RAN Computer (ARC); the hardware includes a Grace CPU, an RTX PRO 4500 GPU and a ConnectX-8 network card. Radio and AI resources are scheduled together by Nokia MantaRay and the AITRAS Orchestrator, which allocates compute dynamically according to resource availability, application requirements and expected power consumption, and the trial will also examine its suitability as a shared platform for multi-vendor RAN software and AI applications. SoftBank CTO Ryuji Wakikawa called it an important milestone as AI-RAN moves from concept toward commercial use. After yesterday's T-Mobile live-network call, this is another major operator publishing a timetable for a commercial-network AI-RAN trial.",
+          "links": [
+            {
+              "label": "Light Reading",
+              "url": "https://www.lightreading.com/ai-machine-learning/softbank-nokia-target-2027-for-commercial-ai-ran-trial-in-japan"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "运营商与集采",
+      "section_en": "Operators & Tenders",
+      "emoji": "🏢",
+      "items": [
+        {
+          "title": "中国电信三季报：前三季度营收3801亿元，Q3归母净利66.2亿元、同比降14.65%",
+          "title_en": "China Telecom Q3: Nine-Month Revenue RMB 380.1 Billion; Q3 Attributable Net Profit RMB 6.62 Billion, Down 14.65% Year on Year",
+          "date": "10/22",
+          "summary": "前三季度归母净利262亿元，经营现金流977亿元、增11.92%；移动用户4.45亿户，其中5G网络用户3.30亿户。",
+          "summary_en": "Nine-month attributable net profit was RMB 26.2 billion, and operating cash flow rose 11.92% to RMB 97.7 billion. Mobile users reached 445 million, including 330 million 5G network users.",
+          "detail": "10月22日盘后，中国电信披露2026年三季报。前三季度营收3801亿元，主营收入3593亿元（可比口径基本稳定），其中通信收入3131亿元、智能收入462亿元；归母净利262亿元，基本每股收益0.29元；经营现金流净额977.17亿元、增11.92%。第三季度营收1210.89亿元、同比降3.01%，归母净利66.20亿元、同比降14.65%，按Q2的122.38亿元计环比降约45%。截至9月末，移动用户4.45亿户，其中5G网络用户3.30亿户，有线宽带用户2.01亿户。公司称以Token（词元）经营为主线，适度超前建设新一代通信网和算力网，升级星辰TokenHub平台并发布星辰超级智能体TeleAgent。传统通信收入承压、智能与算力业务占比提升的趋势延续。",
+          "detail_en": "After the close on Oct 22, China Telecom released its 2026 third-quarter report. Revenue for the first three quarters was RMB 380.1 billion, and main operating revenue was RMB 359.3 billion (broadly stable on a comparable basis), of which communications revenue was RMB 313.1 billion and intelligent-business revenue RMB 46.2 billion. Attributable net profit was RMB 26.2 billion, basic earnings per share were RMB 0.29, and net operating cash flow was RMB 97.717 billion, up 11.92%. Third-quarter revenue was RMB 121.089 billion, down 3.01% year on year, and attributable net profit was RMB 6.620 billion, down 14.65% year on year and about 45% quarter on quarter from Q2's RMB 12.238 billion. At the end of September, mobile users totaled 445 million, including 330 million 5G network users, and wireline broadband users totaled 201 million. The company said token operations are its main line, that it is building the next-generation communications network and computing-power network modestly ahead of demand, upgrading the Xingchen TokenHub platform and releasing the Xingchen super agent TeleAgent. Pressure on traditional communications revenue, and a rising share for intelligent and computing businesses, continues.",
+          "links": [
+            {
+              "label": "每日经济新闻",
+              "url": "https://www.nbd.com.cn/articles/2026-10-22/4613368.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "设备商与产业链",
+      "section_en": "Vendors & Industry Chain",
+      "emoji": "🏭",
+      "items": [
+        {
+          "title": "诺基亚Q3营收51.54亿欧元、增10%：IP网络增43%、光网络增18%，AI与云客户销售增123%",
+          "title_en": "Nokia Q3 Revenue Rises 10% to €5.154 Billion: IP Networks Up 43%, Optical Networks Up 18%, AI and Cloud Customer Sales Up 123%",
+          "date": "10/22",
+          "summary": "可比营业利润率升至11.7%，但因重组加速，报告营业利润率降至3.8%；预计2027年光+IP业务合计增长25%–30%，全年指引不变。",
+          "summary_en": "Comparable operating margin rose to 11.7%, but the reported operating margin fell to 3.8% as restructuring accelerated. Optical plus IP is expected to grow 25%–30% combined in 2027, and full-year guidance is unchanged.",
+          "detail": "诺基亚10月22日发布三季报：净销售额51.54亿欧元，报告口径增10%、固定汇率增9%。网络基础设施部门固定汇率增15%，其中IP网络增43%、光网络增18%；面向AI与云客户的销售额增123%、订单增118%，本季新获15亿欧元订单。移动网络基础设施销售额增5%，部分源于Q4收入提前确认。可比营业利润6.05亿欧元、利润率11.7%，同比提升220个基点；受重组与整合费用加速影响，报告营业利润率降至3.8%，重组相关费用假设上调至11亿欧元，并计划年内额外投入4亿欧元营运资金锁定供应。CEO Justin Hotard称Infinera整合将于2026年底完成、比计划提前一年，预计光与IP网络业务2027年合计增长25%–30%；2026年可比营业利润指引维持21亿至26亿欧元。",
+          "detail_en": "Nokia released its third-quarter report on Oct 22: net sales were €5.154 billion, up 10% on a reported basis and 9% at constant currency. Network Infrastructure grew 15% at constant currency, with IP Networks up 43% and Optical Networks up 18%. Sales to AI and cloud customers rose 123% and orders rose 118%, and the quarter brought €1.5 billion of new orders. Mobile Networks infrastructure sales rose 5%, partly from earlier recognition of fourth-quarter revenue. Comparable operating profit was €605 million, a margin of 11.7%, up 220 basis points year on year. As restructuring and integration charges accelerated, the reported operating margin fell to 3.8%, the assumption for restructuring-related costs was raised to €1.1 billion, and the company plans to put in an extra €400 million of working capital this year to lock in supply. CEO Justin Hotard said the Infinera integration will be completed by the end of 2026, a year ahead of plan, and that the optical and IP network businesses together are expected to grow 25%–30% in 2027. Comparable operating-profit guidance for 2026 remains €2.1 billion to €2.6 billion.",
+          "links": [
+            {
+              "label": "Nokia",
+              "url": "https://www.nokia.com/newsroom/nokia-corporation-interim-report-for-q3-2026/"
+            },
+            {
+              "label": "Light Reading",
+              "url": "https://www.lightreading.com/optical-networking/nokia-thrives-in-ai-boom-but-its-costs-are-mounting"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "政策与标准",
+      "section_en": "Policy & Standards",
+      "emoji": "🏛️",
+      "items": [
+        {
+          "title": "FCC首次依据“受管制清单元器件”新规，禁售两款搭载海思芯片的设备",
+          "title_en": "FCC, for the First Time Under Its New Covered-List Component Rule, Blocks Sales of Two Devices Using HiSilicon Chips",
+          "date": "10/22",
+          "summary": "被拦下的是一款行车记录仪和一款无线视频发射器，均使用华为子公司海思芯片；这是上周生效的新规下的首例执法。",
+          "summary_en": "The products blocked are a dashcam and a wireless video transmitter, both using chips from Huawei subsidiary HiSilicon. This is the first enforcement action under the rule that took effect last week.",
+          "detail": "美国FCC 10月22日表示，其工程与技术办公室本周阻止一款行车记录仪和一款无线视频发射器在美营销和销售，理由是这些型号含有受管制清单（Covered List）实体华为子公司海思生产的芯片。FCC称海思将该芯片宣传为“面向监控市场设计”、内置人脸检测算法。这是FCC依据上周生效的规则采取的首起执法，该规则禁止对含有受管制清单实体所产“含逻辑”（智能）元器件的设备授予认证。FCC主席Brendan Carr称此类设备构成不可接受的风险，将继续积极执行元器件规则。监管从整机延伸到芯片级元器件，意味着出口美国的通信与视频终端需更严格梳理上游芯片来源。",
+          "detail_en": "On Oct 22 the US FCC said its Office of Engineering and Technology this week stopped a dashcam and a wireless video transmitter from being marketed and sold in the United States, because the models contain chips made by HiSilicon, a subsidiary of Covered List entity Huawei. The FCC said HiSilicon promotes the chip as designed for the surveillance market, with a built-in face-detection algorithm. This is the FCC's first enforcement action under a rule that took effect last week, which prohibits equipment authorization for devices containing logic-bearing (intelligent) components produced by Covered List entities. FCC Chair Brendan Carr said such devices pose an unacceptable risk and that the component rule will continue to be enforced vigorously. Extending regulation from finished devices to chip-level components means communications and video terminals exported to the United States need a stricter check of upstream chip sources.",
+          "links": [
+            {
+              "label": "Light Reading",
+              "url": "https://www.lightreading.com/regulatory-politics/fcc-blocks-two-devices-powered-by-huawei-silicon-subsidiary"
+            }
+          ]
+        },
+        {
+          "title": "美国5G Broadcast之争：NAB与Sinclair反对低功率电视台自愿转用5G广播",
+          "title_en": "The US 5G Broadcast Dispute: NAB and Sinclair Oppose a Voluntary Switch by Low-Power TV Stations to 5G Broadcast",
+          "date": "10/22",
+          "summary": "两者支持ATSC 3.0，认为另立5G广播规则会造成市场碎片化；支持方强调5G广播可直达智能手机，答复意见截止11月18日。",
+          "summary_en": "Both support ATSC 3.0 and argue that a separate 5G Broadcast rule would fragment the market. Supporters stress that 5G Broadcast can reach smartphones directly. Reply comments are due Nov 18.",
+          "detail": "波士顿地区低功率电视台WCRN及关联方XGN/X1 Mobile、Tyche Media向FCC请愿，允许LPTV台在“自愿、可选”基础上部署3GPP标准的5G Broadcast，并提出转用台须保留一路720p免费高清节目、6MHz信道至少50%用于公共安全；全美最大LPTV运营商HC2也提交了类似请愿。NAB和Sinclair作为ATSC 3.0支持方反对：NAB称请愿不符合公共利益、会割裂市场，ATSC 3.0已在前50大市场中的48个部署；Sinclair称ATSC阵营正与3GPP等推进B2X扩展，并认为干扰共存仍需更多工程验证。支持方则认为5G广播能直接覆盖手机，并为微利的LPTV台带来双向蜂窝容量机会。答复意见截止11月18日。",
+          "detail_en": "Boston-area low-power TV station WCRN and affiliates XGN/X1 Mobile and Tyche Media petitioned the FCC to allow LPTV stations to deploy 3GPP-standard 5G Broadcast on a voluntary, optional basis, and proposed that a converting station must keep one free 720p HD program and devote at least 50% of the 6 MHz channel to public safety. HC2, the largest LPTV operator in the United States, filed a similar petition. NAB and Sinclair, which support ATSC 3.0, oppose it: NAB says the petition is not in the public interest and would fragment the market, and that ATSC 3.0 is already deployed in 48 of the top 50 markets; Sinclair says the ATSC camp is advancing B2X extensions with 3GPP and others, and that interference coexistence still needs more engineering verification. Supporters argue that 5G Broadcast can cover phones directly and give thin-margin LPTV stations a chance at two-way cellular capacity. Reply comments are due Nov 18.",
+          "links": [
+            {
+              "label": "Light Reading",
+              "url": "https://www.lightreading.com/video-broadcast/nab-and-sinclair-blast-5g-broadcast-rule-proposal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "光通信、算力网络与数据中心",
+      "section_en": "Optical, Computing Networks & Data Centers",
+      "emoji": "💡",
+      "items": [
+        {
+          "title": "CPO与光模块板块急跌：新易盛跌超12%，中际旭创、天孚通信跌超8%，多家公司回应经营正常",
+          "title_en": "CPO and Optical-Module Stocks Sell Off: Eoptolink Falls More Than 12%, Innolight and TFC More Than 8%; Several Companies Say Operations Are Normal",
+          "date": "10/22",
+          "summary": "中际旭创全天成交额超173亿元居A股首位；天孚通信称CPO/NPO提产节奏未见明显变化，现行进出口政策未约束光器件产品。",
+          "summary_en": "Innolight's full-day turnover exceeded RMB 17.3 billion, the highest on the A-share market. TFC said the CPO/NPO capacity-ramp pace shows no clear change, and current import-export policy does not constrain optical-component products.",
+          "detail": "10月22日，光模块龙头“易中天”同步重挫：新易盛跌12.28%，中际旭创跌8.76%，两者较年内高点回撤均超56%，中际旭创成交额超173亿元居A股第一；天孚通信跌8.36%，CPO、铜缆高速连接、PCB、先进封装等概念整体走弱。中际旭创称生产经营正常、供应链稳定、产能利用率充足；新易盛称订单交付正常，800G和1.6T是今年交付主力；天孚通信称CPO配套FAU、ELS等产品已具备较好基础，NPO配套产品处于样品阶段，CPO/NPO提产节奏未见明显变化，有源器件瓶颈物料供应较上半年改善，现行进出口政策未约束光器件产品；源杰科技称数据中心CW激光器需求旺盛，二期基地预计2026年底至2027年初形成产能。",
+          "detail_en": "On Oct 22 the optical-module leaders known as Yi-Zhong-Tian sold off together: Eoptolink fell 12.28% and Innolight fell 8.76%, and both are more than 56% below their highs for the year. Innolight's turnover exceeded RMB 17.3 billion, the most of any A-share. TFC fell 8.36%, and the CPO, high-speed copper-interconnect, PCB and advanced-packaging themes weakened as a group. Innolight said production and operations are normal, the supply chain is stable and capacity utilization is ample. Eoptolink said order delivery is normal and that 800G and 1.6T are this year's main shipments. TFC said CPO companion products such as FAU and ELS already have a solid base, NPO companion products are at the sample stage, the CPO/NPO capacity-ramp pace shows no clear change, supply of bottleneck materials for active devices has improved compared with the first half, and current import-export policy does not constrain optical-component products. Yuanjie Semiconductor said demand for data-center CW lasers is strong and that its phase-two site is expected to come into capacity from the end of 2026 to early 2027.",
+          "links": [
+            {
+              "label": "华尔街见闻",
+              "url": "https://wallstreetcn.com/articles/3784214"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "卫星互联网与空天地一体化",
+      "section_en": "Satellite internet & air-space-ground",
+      "emoji": "🛰️",
+      "items": [
+        {
+          "title": "FCC批准SpaceX接手Tristar三张AWS-3上行牌照，用于星链直连手机，豁免重新拍卖",
+          "title_en": "FCC Approves SpaceX Taking Over Tristar's Three AWS-3 Uplink Licenses for Starlink Direct-to-Cell, Waiving a Re-Auction",
+          "date": "10/21",
+          "summary": "牌照位于1695–1710MHz频段的非成对上行资源，覆盖8个州62个县、约4%美国人口；FCC豁免地面建设义务，要求自2029年11月起达到上行使用基准。",
+          "summary_en": "The licenses are unpaired uplink spectrum at 1695–1710 MHz, covering 62 counties in eight states and about 4% of the US population. The FCC waives terrestrial build-out obligations and requires uplink usage benchmarks from November 2029.",
+          "detail": "FCC无线通信局10月21日发布命令，批准SpaceX子公司Starlink Spectrum Holdings收购Tristar License Group旗下TLG Unpaired Holdings全部股权，获得三张此前未使用的非成对AWS-3牌照。牌照位于1695–1710MHz频段、仅用于上行，覆盖马萨诸塞、北卡罗来纳、弗吉尼亚等8个州的62个县，约占美国人口4%。Tristar原计划配合EchoStar的5G网络建设地面服务，但EchoStar已放弃自建运营商计划。按规则闲置频谱本应重新拍卖，FCC以公共利益为由批准豁免，允许以卫星方式服务，并要求自2029年11月起达到上行使用基准。据FCC统计，交易后SpaceX在相关地区频谱持有量增至75MHz，仍远低于三大运营商各自约300MHz。这是继800MHz低频收购后，SpaceX直连手机上行频谱的新一笔补充。",
+          "detail_en": "On Oct 21 the FCC's Wireless Telecommunications Bureau issued an order approving the acquisition by SpaceX subsidiary Starlink Spectrum Holdings of all equity in TLG Unpaired Holdings, under Tristar License Group, giving it three previously unused unpaired AWS-3 licenses. The licenses are in the 1695–1710 MHz band and are uplink only, covering 62 counties in eight states including Massachusetts, North Carolina and Virginia, about 4% of the US population. Tristar had planned terrestrial service alongside EchoStar's 5G network, but EchoStar has given up its plan to build its own operator network. Under the rules, idle spectrum should have been re-auctioned; the FCC approved a waiver on public-interest grounds, allowing service by satellite, and requires uplink usage benchmarks from November 2029. According to FCC figures, after the transaction SpaceX's spectrum holdings in the relevant areas rise to 75 MHz, still far below the roughly 300 MHz each of the three major carriers holds. It is a further addition of uplink spectrum for SpaceX direct-to-cell service, following the 800 MHz low-band acquisition.",
+          "links": [
+            {
+              "label": "PCMag",
+              "url": "https://uk.pcmag.com/wireless-carriers/168051/fcc-lets-spacex-acquire-more-spectrum-for-starlink-mobile-without-an-auction"
+            },
+            {
+              "label": "SatNet News",
+              "url": "https://satnet.news/item/56655"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notion_url": "https://app.notion.com/p/4013a1fdbe1881269bd6fefad8fe2572"
+}
