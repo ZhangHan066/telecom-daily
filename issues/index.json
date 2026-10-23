@@ -4,7 +4,7 @@
       "date": "2026-10-23",
       "weekday": "周五",
       "title": "通信行业日报 · 2026-10-23（周五）",
-      "theme": "诺基亚三季报光与IP高增，AI-RAN再添日本现网试验，光模块板块急跌",
+      "theme": "诺基亚三季报光与IP高增，光模块板块急跌",
       "cover": "covers/2026-10-23.jpg",
       "highlights": [
         {
@@ -12,16 +12,12 @@
           "text": "诺基亚Q3营收51.54亿欧元、增10%，AI与云客户销售增123%"
         },
         {
-          "label": "AI-RAN",
-          "text": "软银与诺基亚定于2027年在日本商用网开展AI-RAN外场试验"
-        },
-        {
           "label": "卫星",
           "text": "FCC批准SpaceX接手Tristar三张AWS-3上行牌照，用于星链直连手机"
         }
       ],
       "weekday_en": "Friday",
-      "theme_en": "Nokia's Q3 optical and IP sales surge, AI-RAN adds a live-network trial in Japan, and optical-module stocks tumble"
+      "theme_en": "Nokia's Q3 optical and IP sales surge and optical-module stocks tumble"
     },
     {
       "date": "2026-10-22",
