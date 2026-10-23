@@ -3,8 +3,8 @@
   "weekday": "周五",
   "weekday_en": "Friday",
   "title": "通信行业日报 · 2026-10-23（周五）",
-  "theme": "诺基亚三季报光与IP高增，AI-RAN再添日本现网试验，光模块板块急跌",
-  "theme_en": "Nokia's Q3 optical and IP sales surge, AI-RAN adds a live-network trial in Japan, and optical-module stocks tumble",
+  "theme": "诺基亚三季报光与IP高增，光模块板块急跌",
+  "theme_en": "Nokia's Q3 optical and IP sales surge and optical-module stocks tumble",
   "cover": {
     "url": "covers/2026-10-23.jpg",
     "credit": "Villeke / CC BY-SA 3.0",
@@ -14,10 +14,6 @@
     {
       "label": "诺基亚",
       "text": "诺基亚Q3营收51.54亿欧元、增10%，AI与云客户销售增123%"
-    },
-    {
-      "label": "AI-RAN",
-      "text": "软银与诺基亚定于2027年在日本商用网开展AI-RAN外场试验"
     },
     {
       "label": "卫星",
@@ -75,28 +71,6 @@
     }
   ],
   "industry": [
-    {
-      "section": "5G/5G-A 与 6G",
-      "section_en": "5G/5G-A & 6G",
-      "emoji": "📡",
-      "items": [
-        {
-          "title": "软银与诺基亚定于2027年在日本商用网开展AI-RAN外场试验",
-          "title_en": "SoftBank and Nokia Set a 2027 Commercial AI-RAN Field Trial on a Live Network in Japan",
-          "date": "10/22",
-          "summary": "试验将在真实商用流量下验证AI与RAN负载共用同一计算平台，采用诺基亚anyRAN、软银AITRAS与英伟达ARC。",
-          "summary_en": "The trial will test, under real commercial traffic, whether AI and RAN workloads can share one computing platform, using Nokia anyRAN, SoftBank AITRAS and NVIDIA ARC.",
-          "detail": "诺基亚与软银达成协议，将于2027年在日本开展商用AI-RAN外场试验，在真实商用网络和商用流量下评估AI计算与无线接入网负载能否同时运行在同一套共享计算基础设施上。方案组合诺基亚AI原生anyRAN云化RAN软件、软银AITRAS平台和英伟达Aerial RAN Computer（ARC），硬件包括Grace CPU、RTX PRO 4500 GPU和ConnectX-8网卡；无线与AI资源由诺基亚MantaRay与AITRAS Orchestrator协同调度，后者按资源可用性、应用要求和预计功耗动态分配算力，并将检验其作为多厂商RAN软件与AI应用共同承载平台的适用性。软银CTO胁川隆二称这是AI-RAN从概念走向商用的重要里程碑。相对昨日T-Mobile现网呼叫，这是又一家大型运营商公布商用网AI-RAN试验时间表。",
-          "detail_en": "Nokia and SoftBank have agreed to run a commercial AI-RAN field trial in Japan in 2027, assessing on a real commercial network and under commercial traffic whether AI compute and radio-access-network workloads can run at the same time on one shared computing infrastructure. The setup combines Nokia's AI-native anyRAN cloud RAN software, SoftBank's AITRAS platform and NVIDIA's Aerial RAN Computer (ARC); the hardware includes a Grace CPU, an RTX PRO 4500 GPU and a ConnectX-8 network card. Radio and AI resources are scheduled together by Nokia MantaRay and the AITRAS Orchestrator, which allocates compute dynamically according to resource availability, application requirements and expected power consumption, and the trial will also examine its suitability as a shared platform for multi-vendor RAN software and AI applications. SoftBank CTO Ryuji Wakikawa called it an important milestone as AI-RAN moves from concept toward commercial use. After yesterday's T-Mobile live-network call, this is another major operator publishing a timetable for a commercial-network AI-RAN trial.",
-          "links": [
-            {
-              "label": "Light Reading",
-              "url": "https://www.lightreading.com/ai-machine-learning/softbank-nokia-target-2027-for-commercial-ai-ran-trial-in-japan"
-            }
-          ]
-        }
-      ]
-    },
     {
       "section": "运营商与集采",
       "section_en": "Operators & Tenders",
